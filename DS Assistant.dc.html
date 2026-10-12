@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;color:#0E1316">
+<sc-if value="{{ showTeaser }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed;right:clamp(10px,1.6vw,20px);bottom:calc(clamp(10px,1.6vw,20px) + 64px);z-index:545;display:flex;align-items:flex-start;gap:8px;max-width:min(300px,calc(100vw - 20px));padding:12px 10px 12px 16px;border-radius:16px 16px 4px 16px;background:#FFFFFF;border:1px solid #DCE4E7;box-shadow:0 20px 50px -20px rgba(14,19,22,.35);font-size:.9375rem;line-height:1.4">
+    <button type="button" onClick="{{ openFromTeaser }}" style="flex:1;min-width:0;padding:0;border:0;background:none;font:inherit;color:#0E1316;text-align:left;cursor:pointer">Un projet en tête&nbsp;? Je vous oriente en une minute.</button>
+    <button type="button" onClick="{{ dismissTeaser }}" aria-label="Masquer" style="flex:none;width:28px;height:28px;border:0;border-radius:50%;background:#F1F5F6;color:#0E1316;font:inherit;font-size:1rem;line-height:1;cursor:pointer">×</button>
+  </div>
+</sc-if>
+
+<sc-if value="{{ closed }}" hint-placeholder-val="{{ true }}">
+  <button type="button" onClick="{{ openPanel }}" aria-haspopup="dialog" aria-label="Ouvrir l'assistant Digital Solutions" style="position:fixed;right:clamp(10px,1.6vw,20px);bottom:clamp(10px,1.6vw,20px);z-index:545;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 10px;border-radius:999px;border:2px solid #FFFFFF;background:#269CBD;color:#FFFFFF;font:inherit;font-size:.9375rem;font-weight:700;cursor:pointer;box-shadow:0 16px 40px -12px rgba(38,156,189,.7),0 0 0 1px rgba(14,19,22,.08);transition:background .25s" style-hover="background:#1C7E9A">
+    <span aria-hidden="true" ref="{{ iconRef }}" style="position:relative;display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#FFFFFF"><span data-k="ring" style="position:absolute;inset:0;border-radius:50%;border:2px solid #FFFFFF"></span><span data-k="spark" style="position:absolute;inset:-3px"><span style="position:absolute;top:0;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#6DCDEA;box-shadow:0 0 0 1.5px #FFFFFF"></span></span><svg data-k="bubble" viewBox="0 0 24 24" width="22" height="22" style="display:block;transform-origin:50% 60%;overflow:visible"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4h0A2.5 2.5 0 0 1 4 13.5z" fill="#269CBD"></path><circle data-k="d0" cx="8.5" cy="9.5" r="1.4" fill="#FFFFFF" style="transform-box:fill-box;transform-origin:center"></circle><circle data-k="d1" cx="12" cy="9.5" r="1.4" fill="#FFFFFF" style="transform-box:fill-box;transform-origin:center"></circle><circle data-k="d2" cx="15.5" cy="9.5" r="1.4" fill="#FFFFFF" style="transform-box:fill-box;transform-origin:center"></circle></svg></span>
+    Une question&nbsp;?
+  </button>
+</sc-if>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="false" aria-labelledby="ds-as-title" onKeyDown="{{ onKey }}" style="position:fixed;right:clamp(10px,1.6vw,20px);bottom:clamp(10px,1.6vw,20px);z-index:610;width:min(400px,calc(100vw - 20px));height:min(640px,calc(100dvh - 20px));display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #DCE4E7;border-radius:20px;box-shadow:0 40px 100px -30px rgba(14,19,22,.45);overflow:hidden">
+    <div style="flex:none;display:flex;align-items:center;gap:12px;padding:14px 14px 14px 18px;border-bottom:1px solid #E6ECEE">
+      <span aria-hidden="true" style="position:relative;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#0E1316;flex:none"><span style="width:12px;height:12px;border-radius:50%;background:#6DCDEA"></span><span data-loop="pulse" style="position:absolute;inset:5px;border-radius:50%;border:2px solid #269CBD"></span></span>
+      <span style="display:flex;flex-direction:column;gap:2px;min-width:0;flex:1">
+        <span id="ds-as-title" style="font-weight:700;font-size:.9375rem">Assistant Digital Solutions</span>
+        <span style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.6875rem;color:#4A5A61"><span style="width:6px;height:6px;border-radius:50%;background:#2E9E6A"></span>{{ statusLine }}</span>
+      </span>
+      <button type="button" onClick="{{ restart }}" aria-label="Recommencer la conversation" title="Recommencer" style="width:40px;height:40px;border:0;border-radius:50%;background:#F1F5F6;color:#0E1316;font:inherit;font-size:1.05rem;cursor:pointer" style-hover="background:#E3EAEC">↺</button>
+      <button type="button" ref="{{ closeRef }}" onClick="{{ closePanel }}" aria-label="Fermer l'assistant" style="width:40px;height:40px;border:0;border-radius:50%;background:#F1F5F6;color:#0E1316;font:inherit;font-size:1.25rem;line-height:1;cursor:pointer" style-hover="background:#E3EAEC">×</button>
+    </div>
+
+    <div ref="{{ listRef }}" role="log" aria-live="polite" aria-label="Conversation" style="flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:18px 16px 8px;display:flex;flex-direction:column;gap:10px">
+      <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="0">
+        <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+          <p style="align-self:flex-end;max-width:82%;margin:0;padding:10px 14px;border-radius:16px 16px 4px 16px;background:#0E1316;color:#FFFFFF;font-size:.9375rem;line-height:1.4">{{ m.text }}</p>
+        </sc-if>
+        <sc-if value="{{ m.isBot }}" hint-placeholder-val="{{ false }}">
+          <div style="align-self:flex-start;max-width:92%;display:flex;flex-direction:column;gap:8px">
+            <p style="margin:0;padding:10px 14px;border-radius:16px 16px 16px 4px;background:#F1F5F6;font-size:.9375rem;line-height:1.45;text-wrap:pretty">{{ m.text }}</p>
+            <sc-if value="{{ m.hasCta }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:12px;padding:16px;border-radius:16px;border:1.5px solid #269CBD;background:#FFFFFF">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:.625rem;letter-spacing:.08em;color:#1C7E9A">{{ m.ctaKicker }}</span>
+                <strong style="font-size:1.0625rem;line-height:1.25">{{ m.ctaTitle }}</strong>
+                <sc-if value="{{ m.hasRecap }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:.8125rem">
+                    <sc-for list="{{ m.recap }}" as="r" hint-placeholder-count="0">
+                      <span style="color:#4A5A61">{{ r.k }}</span><span style="font-weight:700">{{ r.v }}</span>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <span style="font-size:.875rem;line-height:1.45;color:#4A5A61">{{ m.ctaText }}</span>
+                <a href="{{ m.ctaHref }}" target="{{ m.ctaTarget }}" rel="{{ m.ctaRel }}" style="display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;background:#0E1316;color:#FFFFFF;font-weight:700;font-size:.9375rem;text-decoration:none;transition:background .25s" style-hover="background:#1C7E9A">{{ m.ctaLabel }} →</a>
+                <sc-if value="{{ m.hasCta2 }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ m.cta2Href }}" style="align-self:center;padding:6px 0;color:#1C7E9A;font-size:.875rem;font-weight:700;text-underline-offset:.25em">{{ m.cta2Label }}</a>
+                </sc-if>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+      </sc-for>
+      <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+        <div aria-label="L'assistant écrit" style="align-self:flex-start;display:flex;gap:5px;padding:14px 16px;border-radius:16px 16px 16px 4px;background:#F1F5F6">
+          <span data-dot="0" style="width:7px;height:7px;border-radius:50%;background:#269CBD"></span><span data-dot="1" style="width:7px;height:7px;border-radius:50%;background:#269CBD"></span><span data-dot="2" style="width:7px;height:7px;border-radius:50%;background:#269CBD"></span>
+        </div>
+      </sc-if>
+      <sc-if value="{{ showOpts }}" hint-placeholder-val="{{ false }}">
+        <div role="group" aria-label="Réponses suggérées" style="display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;padding-top:4px">
+          <sc-for list="{{ opts }}" as="o" hint-placeholder-count="0">
+            <button type="button" onClick="{{ o.pick }}" style="min-height:40px;padding:6px 14px;border-radius:999px;border:1.5px solid {{ o.bd }};background:#FFFFFF;color:{{ o.fg }};font:inherit;font-size:.875rem;font-weight:700;line-height:1.25;text-align:left;cursor:pointer;transition:background .2s" style-hover="background:#E3F3F8">{{ o.label }}</button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <form onSubmit="{{ onSubmit }}" style="flex:none;display:flex;gap:8px;padding:10px 12px 6px;border-top:1px solid #E6ECEE">
+      <label for="ds-as-input" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Votre message</label>
+      <input id="ds-as-input" ref="{{ inputRef }}" value="{{ input }}" onChange="{{ onInput }}" autoComplete="off" placeholder="Écrivez votre question…" style="flex:1;min-width:0;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #C5D0D4;background:#FFFFFF;color:#0E1316;font:inherit;font-size:.9375rem;outline-color:#269CBD">
+      <button type="submit" aria-label="Envoyer" style="flex:none;width:44px;height:44px;border:0;border-radius:50%;background:#269CBD;color:#FFFFFF;font:inherit;font-size:1.1rem;cursor:pointer" style-hover="background:#1C7E9A">↑</button>
+    </form>
+    <p style="flex:none;margin:0;padding:2px 16px 10px;font-family:'IBM Plex Mono',monospace;font-size:.625rem;color:#4A5A61;text-align:center">Parcours guidé · rien n'est envoyé sans votre accord</p>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SECTORS = ['Administration publique', 'Banque & assurance', 'Industrie & horlogerie', 'Santé & hôpitaux', 'Pharma & medtech', 'Tourisme & hôtellerie', 'Commerce & distribution', 'Autre secteur'];
+const o = (label, to, set) => ({ label, to, set });
+const each = (labels, to, key) => labels.map((l) => o(l, to, { [key]: l }));
+const SOUV_NEXT = [o('Démarrer un projet', 'root'), o('Une autre question', 'souv'), o('Parler à un expert', 'contact')];
+const T = {
+  root: { t: "Bonjour, je suis l'assistant de Digital Solutions. En une minute, je vous oriente vers la bonne personne ou la bonne ressource. Quel est votre objectif ?",
+    o: [o('Automatiser une tâche avec l’IA', 'ai', { need: 'Agents IA' }), o('Exploiter mes documents', 'rag', { need: 'Recherche documentaire (RAG)' }), o('Développer ou moderniser une application', 'dev', { need: 'Développement sur mesure' }), o('Connecter mes outils', 'integ', { need: 'Intégration' }), o('Renforcer mon équipe', 'staff', { need: 'Renfort d’équipe' }), o('Sécurité et souveraineté', 'souv'), o('Rejoindre Digital Solutions', 'jobs'), o('Je découvre', 'discover')] },
+  ai: { t: "Bonne idée. Nos agents IA prennent en charge les tâches répétitives ; vos équipes gardent la main sur les décisions. Dans quel domaine ?",
+    o: [o('Relation client', 'ai_cs', { domain: 'Relation client' }), o('Finance & comptabilité', 'ai_fin', { domain: 'Finance' }), o('Ressources humaines', 'ai_rh', { domain: 'RH' }), o('Juridique & conformité', 'ai_leg', { domain: 'Juridique' }), o('Opérations & logistique', 'ai_ops', { domain: 'Opérations' }), o('Pas encore défini', 'ai_open', { domain: 'À définir' })] },
+  ai_cs: { t: "En relation client, un agent qualifie les demandes, retrouve l'historique et prépare la réponse en français, allemand ou italien. Un collaborateur valide avant l'envoi. Par où arrivent vos demandes ?", o: each(['E-mail', 'Téléphone', 'Formulaire ou chat web', 'Tous ces canaux'], 'q_sector', 'canal') },
+  ai_fin: { t: "En finance, les agents rapprochent factures et écritures, signalent les écarts et préparent les clôtures. Votre direction financière valide les corrections. Quel ERP utilisez-vous ?", o: each(['SAP', 'Abacus', 'Microsoft Dynamics', 'Autre ou plusieurs'], 'q_sector', 'erp') },
+  ai_rh: { t: "Côté RH, un agent trie les candidatures, répond aux questions des collaborateurs sur le règlement interne et prépare les documents d'arrivée. Quelle tâche vous prend le plus de temps ?", o: each(['Recrutement', 'Questions des collaborateurs', 'Arrivée des nouveaux', 'Administration du personnel'], 'q_sector', 'tache') },
+  ai_leg: { t: "En juridique, l'agent prépare les contrats depuis vos modèles, repère les clauses sensibles et suit l'évolution des textes. Un juriste valide toujours. Votre priorité ?", o: each(['Revue de contrats', 'Veille réglementaire', 'Conformité (KYC, nLPD…)'], 'q_sector', 'tache') },
+  ai_ops: { t: "Pour les opérations, les agents suivent les commandes, anticipent les retards et mettent vos outils à jour sans double saisie. Qu'aimeriez-vous fluidifier ?", o: each(['Commandes & achats', 'Planification', 'Contrôle qualité', 'Reporting'], 'q_sector', 'tache') },
+  ai_open: { t: "C'est le cas de la plupart de nos clients au départ. Un atelier de cadrage permet de repérer les tâches où l'IA apporte le plus. Voulez-vous d'abord voir des exemples ?", o: [o('Voir des cas d’usage', 'cta_usages'), o('Continuer', 'q_sector')] },
+  rag: { t: "Notre RAG répond aux questions à partir de vos documents et cite la source de chaque réponse. Vos données restent en Suisse. De quels documents s'agit-il ?", o: each(['Procédures internes', 'Contrats', 'Documentation technique', 'Dossiers clients', 'Textes réglementaires'], 'rag_vol', 'documents') },
+  rag_vol: { t: 'Combien de documents environ ?', o: each(['Moins de 1 000', '1 000 à 50 000', 'Plus de 50 000', 'Je ne sais pas'], 'rag_src', 'volume') },
+  rag_src: { t: "Où sont-ils stockés aujourd'hui ?", o: each(['SharePoint / Microsoft 365', 'Une GED', 'Serveurs de fichiers', 'Plusieurs sources'], 'q_sector', 'stockage') },
+  dev: { t: "Parlons de votre projet. De quoi s'agit-il ?", o: [o('Une nouvelle application', 'dev_users', { projet: 'Nouvelle application' }), o('Moderniser une application existante', 'dev_stack', { projet: 'Modernisation' }), o('Un portail client ou citoyen', 'dev_users', { projet: 'Portail' }), o('Une application mobile', 'dev_users', { projet: 'Application mobile' })] },
+  dev_stack: { t: 'Sur quelle technologie repose-t-elle ?', o: each(['.NET', 'Java', 'PHP / web', 'Je ne sais pas'], 'dev_users', 'techno') },
+  dev_users: { t: "Qui l'utilisera ?", o: each(['Vos collaborateurs', 'Vos clients', 'Le grand public', 'Un peu tout le monde'], 'q_sector', 'utilisateurs') },
+  integ: { t: 'Quels outils voulez-vous faire dialoguer ?', o: each(['ERP', 'CRM', 'GED', 'Outils métier sur mesure', 'Tout cela à la fois'], 'integ_pain', 'outils') },
+  integ_pain: { t: 'Quel est le problème principal ?', o: each(['Doubles saisies', 'Données incohérentes', 'Processus manuels', 'Reporting trop lent'], 'q_sector', 'probleme') },
+  staff: { t: 'Quel profil vous manque-t-il ?', o: each(['Développeur·se', 'Chef·fe de projet / PO', 'Data & IA', 'Infrastructure & cloud', 'Architecte'], 'staff_dur', 'profil') },
+  staff_dur: { t: 'Pour combien de temps ?', o: each(['Moins de 3 mois', '3 à 12 mois', 'Plus de 12 mois'], 'staff_mode', 'duree') },
+  staff_mode: { t: 'Et dans quel mode de travail ?', o: each(['Sur site', 'Hybride', 'À distance'], 'q_when', 'mode') },
+  souv: { t: 'La souveraineté est au cœur de notre offre. Que voulez-vous savoir ?', o: [o('Où sont mes données ?', 'souv_host'), o('nLPD et RGPD', 'souv_law'), o('Quels modèles d’IA ?', 'souv_models'), o('Sécurité', 'souv_sec')] },
+  souv_host: { t: 'Vos données sont hébergées en Suisse. Elles ne servent jamais à entraîner des modèles tiers.', o: SOUV_NEXT },
+  souv_law: { t: "Nos solutions sont conçues pour la nLPD et le RGPD : minimisation des données, registre des traitements, journal de chaque action des agents.", o: SOUV_NEXT },
+  souv_models: { t: "Nous privilégions des modèles ouverts, exécutés sur notre infrastructure suisse. Un modèle externe n'est utilisé qu'avec votre accord.", o: SOUV_NEXT },
+  souv_sec: { t: "Accès SSO, chiffrement, cloisonnement par client et traçabilité complète : chaque décision d'un agent est journalisée et auditable.", o: SOUV_NEXT },
+  jobs: { t: 'Avec plaisir ! Quel est votre profil ?', o: each(['Développeur·se', 'Data & IA', 'Consultant·e', 'Stage ou apprentissage', 'Autre profil'], 'jobs_exp', 'profil') },
+  jobs_exp: { t: 'Et votre expérience ?', o: each(['Je débute', '2 à 5 ans', 'Plus de 5 ans'], 'cta_jobs', 'experience') },
+  discover: { t: 'Par où voulez-vous commencer ?', o: [o('Qui sommes-nous', 'cta_maison'), o('Nos expertises', 'cta_expertises'), o('Des exemples concrets', 'cta_usages'), o('Voir les agents à l’œuvre', 'cta_demo'), o('Notre IA', 'cta_ia')] },
+  q_sector: { t: 'Dans quel secteur êtes-vous ?', o: each(SECTORS, 'q_size', 'secteur') },
+  q_size: { t: 'Quelle est la taille de votre organisation ?', o: each(['Moins de 50 personnes', '50 à 250', '250 à 1 000', 'Plus de 1 000'], 'q_stage', 'taille') },
+  q_stage: { t: 'Où en êtes-vous dans votre réflexion ?', o: [o('J’explore', 'cta_explore', { maturite: 'Exploration' }), o('J’ai un besoin précis', 'q_when', { maturite: 'Besoin précis' }), o('J’ai un budget et un calendrier', 'q_when', { maturite: 'Budget validé' }), o('Je compare des prestataires', 'q_when', { maturite: 'Comparaison' })] },
+  q_when: { t: 'Quand aimeriez-vous démarrer ?', o: each(['Ce trimestre', 'D’ici 6 mois', 'Plus tard'], 'cta_final', 'demarrage') },
+  pricing: { t: "Chaque projet est chiffré après un atelier de cadrage, offert. On peut commencer par un pilote ciblé, puis étendre. Voulez-vous une estimation ?", o: [o('Oui, décrire mon projet', 'root'), o('Parler à un expert', 'contact')] },
+  contact: { t: 'Je vous mets en relation avec un expert. Comment préférez-vous échanger ?', o: [o('Visio de 30 minutes', 'cta_meet'), o('Être rappelé·e', 'cta_call'), o('Écrire un message', 'cta_write')] },
+  cta_final: { t: (c) => 'Merci, j’ai tout ce qu’il faut. ' + (c.demarrage === 'Ce trimestre' ? 'Votre calendrier est serré : un expert peut préparer l’échange dès aujourd’hui.' : 'Voici le récapitulatif que nous transmettrons à l’expert.'),
+    cta: (c) => ({ kicker: 'PROCHAINE ÉTAPE', title: c.maturite === 'Budget validé' ? 'Recevoir une proposition chiffrée' : 'Réserver 30 minutes avec un expert', text: 'Échange sans engagement. L’expert arrive avec des exemples de votre secteur.', label: c.maturite === 'Budget validé' ? 'Demander une proposition' : 'Choisir un créneau', href: c.maturite === 'Budget validé' ? 'Contact.dc.html' : BOOKING, recap: true, label2: 'Voir des cas similaires', href2: 'Usages.dc.html' }) },
+  cta_explore: { t: 'Parfait pour commencer. Voici de quoi vous faire une idée, et un format court si vous voulez aller plus loin.',
+    cta: () => ({ kicker: 'POUR EXPLORER', title: 'Atelier découverte de 2 heures', text: 'Nous identifions avec vous trois cas d’usage prioritaires, sans engagement.', label: 'Réserver l’atelier', href: 'Contact.dc.html', recap: true, label2: 'Parcourir les cas d’usage', href2: 'Usages.dc.html' }) },
+  cta_staff: { t: '', o: [] },
+  cta_jobs: { t: (c) => 'Merci ! ' + (c.profil === 'Stage ou apprentissage' ? 'Nous accueillons régulièrement des stagiaires et apprentis.' : 'Notre équipe grandit, votre profil nous intéresse.'),
+    cta: () => ({ kicker: 'CARRIÈRES', title: 'Voir nos postes ouverts', text: 'Pas de poste qui vous correspond ? La candidature spontanée est bienvenue.', label: 'Découvrir les offres', href: 'Carrieres.dc.html', recap: true, label2: 'Candidature spontanée', href2: 'Contact.dc.html' }) },
+  cta_usages: { t: 'Voici des exemples concrets, classés par secteur.', cta: () => ({ kicker: 'CAS D’USAGE', title: 'Des agents déjà au travail', text: 'Administrations, banques, industrie, santé, tourisme.', label: 'Voir les cas d’usage', href: 'Usages.dc.html', label2: 'Ou décrire mon projet', href2: '#ds-as-restart' }) },
+  cta_maison: { t: 'Une entreprise suisse, des ingénieurs passionnés et un engagement fort pour un numérique responsable.', cta: () => ({ kicker: 'LA MAISON', title: 'Qui nous sommes', text: 'Notre histoire, nos équipes, nos engagements.', label: 'Découvrir la Maison', href: 'Maison.dc.html' }) },
+  cta_expertises: { t: 'Développement, intégration, consulting et outsourcing : tout ce dont vos projets ont besoin.', cta: () => ({ kicker: 'EXPERTISES', title: 'Nos savoir-faire', text: 'Du cadrage à l’exploitation.', label: 'Voir les expertises', href: 'Expertises.dc.html' }) },
+  cta_ia: { t: 'Agents IA, RAG sourcé et modèles souverains hébergés en Suisse.', cta: () => ({ kicker: 'INTELLIGENCE ARTIFICIELLE', title: 'Notre approche de l’IA', text: 'Souveraine, sourcée, supervisée.', label: 'Explorer notre IA', href: 'Intelligence%20Artificielle.dc.html' }) },
+  cta_demo: { t: 'Regardez six agents et deux humains traiter une réclamation client, de l’appel à la clôture.', cta: () => ({ kicker: 'DÉMONSTRATION', title: 'L’équipe d’agents en action', text: 'Cliquez, glissez, validez à la place de Marc.', label: 'Lancer la démo', href: 'Accueil.dc.html#demo' }) },
+  cta_meet: { t: 'Choisissez le créneau qui vous convient.', cta: () => ({ kicker: 'RENDEZ-VOUS', title: 'Visio de 30 minutes', text: 'Avec un expert de votre domaine.', label: 'Choisir un créneau', href: BOOKING, recap: true }) },
+  cta_call: { t: 'Laissez votre numéro, un expert vous rappelle.', cta: () => ({ kicker: 'RAPPEL', title: 'Être rappelé·e', text: 'Indiquez le meilleur moment pour vous joindre.', label: 'Demander un rappel', href: 'Contact.dc.html', recap: true }) },
+  cta_write: { t: 'Écrivez-nous, nous répondons à chaque message.', cta: () => ({ kicker: 'MESSAGE', title: 'Nous écrire', text: 'Le récapitulatif sera joint à votre message.', label: 'Écrire un message', href: 'Contact.dc.html', recap: true }) }
+};
+T.staff_mode.o = each(['Sur site', 'Hybride', 'À distance'], 'cta_staff', 'mode');
+T.cta_staff = { t: 'Merci. Nous avons des consultants disponibles sur ces profils.',
+  cta: () => ({ kicker: 'RENFORT D’ÉQUIPE', title: 'Recevoir des profils', text: 'Un responsable vous propose des profils adaptés et leur disponibilité.', label: 'Demander des profils', href: 'Contact.dc.html', recap: true, label2: 'Notre offre consulting', href2: 'Expertises.dc.html#consulting' }) };
+const LABELS = { need: 'Besoin', domain: 'Domaine', canal: 'Canal', erp: 'ERP', tache: 'Tâche', documents: 'Documents', volume: 'Volume', stockage: 'Stockage', projet: 'Projet', techno: 'Technologie', utilisateurs: 'Utilisateurs', outils: 'Outils', probleme: 'Problème', profil: 'Profil', duree: 'Durée', mode: 'Mode', experience: 'Expérience', secteur: 'Secteur', taille: 'Taille', maturite: 'Maturité', demarrage: 'Démarrage' };
+const KW = [
+  [/emploi|job|poste|carri|stage|apprenti|recrut(e|ez)-?vous|postul|candidat/i, 'jobs'],
+  [/prix|tarif|co[uû]t|combien|budget|devis/i, 'pricing'],
+  [/humain|appel|t[ée]l[ée]phon|contact|rdv|rendez|parler|rappel/i, 'contact'],
+  [/s[ée]curit|souverain|nlpd|rgpd|lpd|h[ée]berg|cloud|donn[ée]es|suisse/i, 'souv'],
+  [/rag|document|pdf|ged|sharepoint|archive|recherche/i, 'rag', { need: 'Recherche documentaire (RAG)' }],
+  [/erp|crm|sap|abacus|dynamics|salesforce|connect|int[ée]gr|api/i, 'integ', { need: 'Intégration' }],
+  [/renfort|consultant|freelance|outsourc|r[ée]gie|profil|d[ée]veloppeur dispo/i, 'staff', { need: 'Renfort d’équipe' }],
+  [/appli|application|site|portail|mobile|d[ée]velopp|moderni|refonte|legacy/i, 'dev', { need: 'Développement sur mesure' }],
+  [/client|r[ée]clamation|support|service client/i, 'ai_cs', { need: 'Agents IA', domain: 'Relation client' }],
+  [/factur|compta|finance|cl[ôo]ture/i, 'ai_fin', { need: 'Agents IA', domain: 'Finance' }],
+  [/rh|ressources humaines|onboarding/i, 'ai_rh', { need: 'Agents IA', domain: 'RH' }],
+  [/contrat|juridi|l[ée]gal|conformit|kyc/i, 'ai_leg', { need: 'Agents IA', domain: 'Juridique' }],
+  [/ia|intelligence|agent|automat|chatgpt|llm|gpt/i, 'ai', { need: 'Agents IA' }],
+  [/d[ée]mo|exemple|cas d.usage|r[ée]f[ée]rence/i, 'cta_usages'],
+  [/qui [eê]tes|entreprise|[ée]quipe|histoire|maison/i, 'cta_maison'],
+  [/bonjour|salut|hello|coucou|bonsoir/i, 'root']
+];
+const KEY = 'ds-assistant';
+const BOOKING = 'https://bookings.cloud.microsoft/book/DigitalSolutionsSAAgendadeThibaultPEPIN@digital-solutions.io/?ismsaljsauthenabled';
+
+class Component extends DCLogic {
+  state = { open: false, msgs: [], node: null, typing: false, revealing: false, hist: [], ctx: {}, input: '', teaser: false };
+  iconRef = React.createRef();
+  playIcon() {
+    const el = this.iconRef.current, spec = window.__dsAsIcon; if (!el || !spec || el.__anim) return; el.__anim = true;
+    spec.layers.forEach((L) => el.querySelectorAll('[data-k="' + L.id + '"]').forEach((n) => n.animate(L.keyframes, { duration: L.duration, delay: L.delay || 0, easing: L.easing || 'linear', iterations: spec.loop ? Infinity : 1 })));
+  }
+  listRef = React.createRef(); inputRef = React.createRef(); closeRef = React.createRef();
+  still() { return window.DSMotion ? window.DSMotion.isPaused() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  componentDidMount() {
+    try { const s = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (s && s.msgs) this.setState({ msgs: s.msgs, node: s.node, hist: s.hist || [], ctx: s.ctx || {} }); } catch (e) {}
+    let teased = false; try { teased = sessionStorage.getItem(KEY + '-teased') === '1'; } catch (e) {}
+    if (!teased) this.tT = setTimeout(() => { if (!this.state.open) this.setState({ teaser: true }); }, 9000);
+    if (window.__dsAsIcon) this.playIcon();
+    else fetch('./ds-assistant-icon.json').then((r) => r.json()).then((j) => { window.__dsAsIcon = j; this.playIcon(); }).catch(() => {});
+    this.onOpenEvt = () => this.openPanel();
+    window.addEventListener('ds-open-assistant', this.onOpenEvt);
+    this.onDocClick = (e) => { const a = e.target.closest && e.target.closest('a[href="#ds-as-restart"]'); if (a) { e.preventDefault(); this.restart(); } };
+    document.addEventListener('click', this.onDocClick);
+  }
+  componentWillUnmount() { clearTimeout(this.tT); clearTimeout(this.bT); clearInterval(this.rI); window.removeEventListener('ds-open-assistant', this.onOpenEvt); document.removeEventListener('click', this.onDocClick); }
+  componentDidUpdate() {
+    this.playIcon();
+    const S = this.state, ps = this._ps || {}; this._ps = { msgs: S.msgs, typing: S.typing, revealing: S.revealing, open: S.open, node: S.node, ctx: S.ctx };
+    const el = this.listRef.current;
+    if (el && (ps.msgs !== S.msgs || ps.typing !== S.typing || ps.revealing !== S.revealing || (!ps.open && S.open))) el.scrollTop = el.scrollHeight;
+    if (el && S.typing && !this.still()) el.querySelectorAll('[data-dot]').forEach((d) => { if (d.__a) return; d.__a = d.animate([{ transform: 'translateY(0)', opacity: .4 }, { transform: 'translateY(-4px)', opacity: 1 }, { transform: 'translateY(0)', opacity: .4 }], { duration: 900, iterations: Infinity, delay: +d.dataset.dot * 150 }); });
+    if (ps.msgs !== S.msgs || ps.node !== S.node || ps.ctx !== S.ctx) { try { sessionStorage.setItem(KEY, JSON.stringify({ msgs: S.msgs, node: S.node, hist: S.hist, ctx: S.ctx })); } catch (e) {} }
+  }
+  dismissTeaser = () => { this.setState({ teaser: false }); try { sessionStorage.setItem(KEY + '-teased', '1'); } catch (e) {} };
+  openPanel = () => {
+    this.dismissTeaser();
+    this.setState({ open: true }, () => { if (!this.state.msgs.length) this.say('root'); setTimeout(() => this.closeRef.current && this.closeRef.current.focus(), 30); });
+  };
+  closePanel = () => { this.setState({ open: false }); };
+  restart = () => { clearTimeout(this.bT); clearInterval(this.rI); this.setState({ msgs: [], node: null, hist: [], ctx: {}, typing: false, revealing: false, open: true }, () => this.say('root')); };
+  say(id, prefix) {
+    const N = T[id] || T.root, ctx = this.state.ctx, st = this.still();
+    let text = typeof N.t === 'function' ? N.t(ctx) : N.t; if (prefix) text = prefix + ' ' + text;
+    let cta = null;
+    if (N.cta) {
+      const C = N.cta(ctx), recap = C.recap ? Object.keys(LABELS).filter((k) => ctx[k]).map((k) => ({ k: LABELS[k], v: ctx[k] })) : [];
+      const sujet = recap.map((r) => r.k + ' : ' + r.v).join(' · ');
+      const ext = /^https?:/.test(C.href), href = C.href + (!ext && C.recap && sujet && C.href.indexOf('#') < 0 ? '?sujet=' + encodeURIComponent(sujet) : '');
+      cta = { ...C, href, recap, ext };
+    }
+    clearTimeout(this.bT); clearInterval(this.rI);
+    this.setState({ typing: true, node: id, revealing: true });
+    this.bT = setTimeout(() => {
+      const words = text.split(' '), msg = { from: 'bot', full: text, shown: st ? text : '', cta, done: st };
+      this.setState((s) => ({ typing: false, msgs: s.msgs.concat([msg]) }));
+      if (st) { this.setState({ revealing: false }); return; }
+      let i = 0;
+      this.rI = setInterval(() => {
+        i += 2;
+        const done = i >= words.length;
+        this.setState((s) => { const m = s.msgs.slice(), last = { ...m[m.length - 1], shown: words.slice(0, i).join(' '), done }; m[m.length - 1] = last; return { msgs: m, revealing: !done }; });
+        if (done) clearInterval(this.rI);
+      }, 45);
+    }, st ? 0 : Math.min(450 + text.length * 6, 1300));
+  }
+  pick(op) {
+    if (this.state.typing || this.state.revealing) return;
+    this.setState((s) => ({ msgs: s.msgs.concat([{ from: 'user', full: op.label }]), ctx: op.set ? { ...s.ctx, ...op.set } : s.ctx, hist: s.node ? s.hist.concat([s.node]) : s.hist }), () => this.say(op.to));
+  }
+  back = () => {
+    const h = this.state.hist.slice(), prev = h.pop(); if (!prev) return;
+    this.setState((s) => ({ hist: h, msgs: s.msgs.concat([{ from: 'user', full: '← Revenir en arrière' }]) }), () => { this.say(prev); this.setState({ hist: h }); });
+  };
+  onSubmit = (e) => {
+    e.preventDefault(); const q = this.state.input.trim(); if (!q || this.state.typing) return;
+    const hit = KW.find(([re]) => re.test(q));
+    this.setState((s) => ({ input: '', msgs: s.msgs.concat([{ from: 'user', full: q }]), ctx: hit && hit[2] ? { ...s.ctx, ...hit[2] } : s.ctx, hist: s.node ? s.hist.concat([s.node]) : s.hist }), () => {
+      if (hit) this.say(hit[1], hit[1] === 'root' ? '' : 'Je vois.');
+      else this.say('root', 'Je préfère être sûr de bien vous orienter.');
+    });
+  };
+  renderVals() {
+    const { open, msgs, node, typing, revealing, hist, input, teaser } = this.state, N = T[node];
+    const busy = typing || revealing;
+    const extra = [];
+    if (hist.length) extra.push({ label: '← Retour', back: true });
+    if (node && node !== 'contact' && !/^cta_(meet|call|write)$/.test(node)) extra.push({ label: 'Parler à un humain', to: 'contact' });
+    if (node && N && N.cta && node !== 'cta_final') extra.unshift({ label: 'Recommencer', to: 'root', reset: true });
+    const base = N && N.o ? N.o : [];
+    const opts = base.map((x) => ({ label: x.label, bd: '#269CBD', fg: '#1C7E9A', pick: () => this.pick(x) }))
+      .concat(extra.map((x) => ({ label: x.label, bd: '#C5D0D4', fg: '#0E1316', pick: () => (x.back ? this.back() : x.reset ? this.restart() : this.pick({ label: x.label, to: x.to })) })));
+    return {
+      open, closed: !open, showTeaser: teaser && !open,
+      statusLine: busy ? 'écrit…' : 'En ligne · répond en un instant',
+      msgs: msgs.map((m) => {
+        const c = m.cta, show = c && (m.done || m.from !== 'bot');
+        return { isUser: m.from === 'user', isBot: m.from === 'bot', text: m.from === 'bot' ? m.shown : m.full, hasCta: !!show,
+          ctaKicker: c ? c.kicker : '', ctaTitle: c ? c.title : '', ctaText: c ? c.text : '', ctaLabel: c ? c.label : '', ctaHref: c ? c.href : '#', ctaTarget: c && c.ext ? '_blank' : '_self', ctaRel: c && c.ext ? 'noopener' : '',
+          hasRecap: !!(c && c.recap && c.recap.length), recap: c && c.recap ? c.recap : [], hasCta2: !!(c && c.label2), cta2Label: c ? c.label2 : '', cta2Href: c ? c.href2 : '#' };
+      }),
+      typing, showOpts: !busy && opts.length > 0, opts,
+      listRef: this.listRef, inputRef: this.inputRef, closeRef: this.closeRef,
+      input, onInput: (e) => this.setState({ input: e.target.value }), onSubmit: this.onSubmit,
+      openPanel: this.openPanel, openFromTeaser: this.openPanel, dismissTeaser: this.dismissTeaser, iconRef: this.iconRef, closePanel: this.closePanel, restart: this.restart,
+      onKey: (e) => { if (e.key === 'Escape') this.closePanel(); }
+    };
+  }
+}
+</script>
+</body>
+</html>

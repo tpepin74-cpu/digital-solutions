@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Digital Solutions · IA &amp; IT conçues et hébergées en Suisse</title>
+<meta name="description" content="Agents IA, RAG, protocole MCP, développement logiciel et intégration. Digital Solutions conçoit et héberge en Suisse des solutions IA &amp; IT souveraines depuis 2016.">
+<link rel="canonical" href="https://www.digital-solutions.io/">
+<meta property="og:title" content="Digital Solutions · La précision suisse, augmentée par l'IA">
+<meta property="og:description" content="Agents IA, logiciels et intégrations conçus et hébergés en Suisse.">
+<meta property="og:locale" content="fr_CH">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&amp;family=Urbanist:wght@300..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%;scroll-padding-top:96px}body{margin:0;background:#FFFFFF;color:#0E1316;-webkit-font-smoothing:antialiased}*,*::before,*::after{box-sizing:border-box}a{color:#1C7E9A;text-underline-offset:.22em;text-decoration-thickness:1px}a:hover{color:#0E1316}em{font-family:'Instrument Sans',system-ui,sans-serif;font-weight:600;letter-spacing:0}h1 em,h2 em,h3 em{color:#1C7E9A}:focus-visible{outline:2px solid #269CBD;outline-offset:3px;box-shadow:0 0 0 5px #FFFFFF}::selection{background:#6DCDEA;color:#FFFFFF}</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Organization", "name": "Digital Solutions SA", "url": "https://www.digital-solutions.io/", "logo": "https://www.digital-solutions.io/assets/logo-digital-solutions.png", "foundingDate": "2016", "email": "contact@digital-solutions.io", "telephone": "+41 32 467 11 09",
+  "address": { "@type": "PostalAddress", "streetAddress": "Rue de la Roche-de-Mars 5", "postalCode": "2900", "addressLocality": "Porrentruy", "addressCountry": "CH" },
+  "award": "EcoVadis Gold 2025", "knowsAbout": ["Intelligence artificielle", "Agents IA", "RAG", "Model Context Protocol", "RPA", "Développement logiciel", "Intégration de systèmes"] }
+</script>
+<script src="ds-motion.js"></script>
+</helmet>
+<div style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;background:#FFFFFF;color:#0E1316;overflow-x:clip">
+<dc-import name="DS Header" current="accueil" hint-size="100%,0px"></dc-import>
+<main id="contenu" tabindex="-1" style="outline:none">
+
+<section data-hero="" aria-roledescription="carrousel" aria-labelledby="h-hero" data-screen-label="01 Hero" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}" onFocus="{{ hoverOn }}" onBlur="{{ hoverOff }}" style="position:relative;height:100svh;min-height:620px;background:#0E1316;color:#FFFFFF;overflow:hidden;display:flex">
+  <div data-hero-media="" style="position:absolute;inset:0;overflow:hidden">
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ slides }}" as="s" hint-placeholder-count="0">
+      <div role="group" aria-roledescription="diapositive" aria-label="{{ s.aria }}" aria-hidden="{{ s.hidden }}" style="position:absolute;inset:0;opacity:{{ s.op }};transition:opacity 1.4s cubic-bezier(.16,1,.3,1)">
+        <div role="img" aria-label="{{ s.alt }}" style="width:100%;height:100%;background-image:{{ s.bgi }};background-size:cover;background-position:center;transform:scale({{ s.scale }});transition:transform 8s linear,opacity .6s"></div>
+      </div>
+    </sc-for></sc-if>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,.55) 0%,rgba(11,18,21,.15) 35%,rgba(11,18,21,.8) 100%)"></div>
+  </div>
+  <div data-hero-content="" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(32px,6vh,64px);width:100%;padding:clamp(120px,18vh,180px) clamp(20px,3vw,40px) clamp(24px,4vh,40px)">
+    <h1 id="h-hero" data-lines="" style="margin:0;font-weight:700;font-size:clamp(3rem,9vw,9.5rem);line-height:.98;letter-spacing:-.045em">
+      <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.26em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block">La précision suisse,</span></span>
+      <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.3em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block"><em style="color:#6DCDEA">augmentée</em> par l'IA.</span></span>
+    </h1>
+    <p data-reveal="fade" data-delay="350" style="margin:-8px 0 0;max-width:30em;font-size:clamp(1.125rem,1.5vw,1.375rem);line-height:1.5;color:#FFFFFF">Des agents IA qui travaillent avec vos équipes. Conçus, hébergés et supervisés en Suisse.</p>
+    <div data-reveal="fade" data-delay="500" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.3)">
+      <div style="display:flex;flex-wrap:wrap;gap:12px"><a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;background:#FFFFFF;color:#0E1316;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#269CBD;color:#FFFFFF">Démarrer un projet <span aria-hidden="true">→</span></a><a href="#demo" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;border:1.5px solid #FFFFFF;color:#FFFFFF;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#FFFFFF;color:#0E1316">Voir nos agents travailler</a></div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <p aria-live="{{ live }}" style="margin:0 12px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#FFFFFF">{{ counter }}</p>
+        <div role="group" aria-label="Choisir une photo" style="display:flex;gap:6px;margin-right:8px">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
+            <button type="button" onClick="{{ s.go }}" aria-label="{{ s.aria }}" aria-current="{{ s.cur }}" style="width:clamp(28px,4vw,56px);height:44px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center">
+              <span style="position:relative;display:block;width:100%;height:2px;background:rgba(255,255,255,.35);overflow:hidden"><span style="position:absolute;inset:0;background:#FFFFFF;transform-origin:0 50%;transform:scaleX({{ s.fill }});transition:transform {{ s.dur }} linear"></span></span>
+            </button>
+          </sc-for>
+        </div>
+        <button type="button" onClick="{{ togglePlay }}" aria-label="{{ playLabel }}" aria-pressed="{{ pausedStr }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:transparent;color:#FFFFFF;font:inherit;font-size:.875rem;font-weight:700;cursor:pointer" style-hover="background:#FFFFFF;color:#0B1215">{{ playText }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Digital Solutions en bref" data-screen-label="02 Preuves" style="padding:clamp(28px,3vw,40px) clamp(20px,3vw,40px);border-bottom:1px solid #E3E8EA">
+  <ul ref="{{ proofRef }}" style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:20px 32px;font-variant-numeric:tabular-nums">
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:clamp(1.75rem,2.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1">Depuis <span data-count="2016" data-from="1980">2016</span></span><span style="font-size:.9375rem;color:#4A5A61">Fondée à Porrentruy</span></li>
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:clamp(1.75rem,2.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1"><span data-count="5" data-from="0">5</span> sites</span><span style="font-size:.9375rem;color:#4A5A61">En Suisse romande</span></li>
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:clamp(1.75rem,2.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1">Top <span data-count="100" data-from="999">100</span></span><span style="font-size:.9375rem;color:#4A5A61">Entreprises IT suisses</span></li>
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:clamp(1.75rem,2.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1">Great Place</span><span style="font-size:.9375rem;color:#4A5A61">to Work, depuis 2019</span></li>
+    <li style="display:flex;align-items:center;gap:14px"><img src="assets/ecovadis-gold-2025.png" alt="" width="56" height="56" style="width:56px;height:56px;flex:none"><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:clamp(1.75rem,2.6vw,2.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1"><span data-scramble="EcoVadis Or">EcoVadis Or</span></span><span style="font-size:.9375rem;color:#4A5A61">Top 5 %, 2025</span></span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-besoin" data-screen-label="03 Besoins" ref="{{ needRef }}" style="position:relative;min-height:100svh;display:flex;overflow:hidden;background:#0B1215;color:#FFFFFF">
+  <sc-for list="{{ needs }}" as="n" hint-placeholder-count="1">
+    <img data-need-img="" src="{{ n.src }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:{{ n.op }};transform:scale({{ n.sc }});transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 2.4s cubic-bezier(.16,1,.3,1)">
+  </sc-for>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,18,21,.86) 0%,rgba(11,18,21,.6) 50%,rgba(11,18,21,.2) 100%)"></div>
+  <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,4vh,48px);padding:clamp(100px,14vh,150px) clamp(20px,3vw,40px)">
+    <h2 id="h-besoin" style="margin:0;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.875rem;color:#FFFFFF">Vous voulez…</h2>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+      <sc-for list="{{ needs }}" as="n" hint-placeholder-count="5">
+        <li style="border-top:1px solid rgba(255,255,255,.22)">
+          <a data-need-link="" href="{{ n.href }}" onMouseEnter="{{ n.on }}" onFocus="{{ n.on }}" style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 32px;padding:clamp(12px,1.8vh,22px) 0;color:{{ n.fg }};text-decoration:none;transition:color .4s">
+            <span data-need-title="" style="font-weight:700;font-size:clamp(2rem,5.4vw,5.6rem);line-height:1.02;letter-spacing:-.045em;transform:translateX({{ n.x }});transition:transform .6s cubic-bezier(.16,1,.3,1)">{{ n.title }}</span>
+            <span data-need-line="" style="display:flex;align-items:center;gap:14px;font-size:1.0625rem;color:#FFFFFF;opacity:{{ n.lineOp }};transition:opacity .4s">{{ n.line }} <span aria-hidden="true" style="display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#FFFFFF;color:#0E1316;font-size:1.125rem">→</span></span>
+          </a>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="demo" aria-labelledby="h-demo" data-screen-label="04 Équipe d'agents" ref="{{ demoRef }}" style="scroll-margin-top:0;background:#FFFFFF;padding:clamp(96px,12vw,170px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(40px,5vw,80px);align-items:center">
+    <div style="flex:1 1 340px;max-width:460px;display:flex;flex-direction:column;gap:24px">
+      <h2 id="h-demo" style="margin:0;font-weight:700;font-size:clamp(2.4rem,5vw,5rem);line-height:1;letter-spacing:-.045em;text-wrap:balance">Une équipe d'agents, <em>orchestrée</em>.</h2>
+      <p style="margin:0;max-width:24em;font-size:1.125rem;line-height:1.5;color:#4A5A61;text-wrap:pretty">L'orchestrateur confie chaque tâche à un <strong style="color:#1C7E9A">agent IA</strong>. Un <strong style="color:#7A5230">humain</strong> valide les décisions clés.</p>
+      <div role="group" aria-label="Choisir une situation" style="display:flex;flex-direction:column;border-top:1px solid #E3E8EA">
+        <sc-for list="{{ missions }}" as="m" hint-placeholder-count="6">
+          <button type="button" onClick="{{ m.run }}" aria-pressed="{{ m.pressed }}" style="display:flex;align-items:center;gap:12px;min-height:48px;padding:0 4px;border:0;border-bottom:1px solid #E3E8EA;background:none;color:{{ m.fg }};font:inherit;font-size:1rem;font-weight:{{ m.fw }};text-align:left;cursor:pointer;transition:color .25s" style-hover="color:#1C7E9A">
+            <span aria-hidden="true" style="flex:none;width:8px;height:8px;border-radius:50%;background:{{ m.dot }};transition:background .25s"></span>
+            <span style="flex:1;min-width:0">{{ m.name }}</span>
+            <span aria-hidden="true" style="flex:none;font-size:.875rem;color:{{ m.arrow }}">→</span>
+          </button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:2 1 600px;min-width:0;border-radius:20px;background:#FFFFFF;color:#0E1316;border:1px solid #DCE4E7;box-shadow:0 40px 100px -60px rgba(14,19,22,.3);overflow:hidden">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding:14px 20px;border-bottom:1px solid #E6ECEE;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#0E1316">
+        <span style="display:flex;align-items:center;gap:10px"><span aria-hidden="true" data-loop="pulse" style="width:8px;height:8px;border-radius:50%;background:#269CBD"></span>{{ headLeft }}</span>
+        <span role="group" aria-label="Contrôles de la démo" style="display:flex;align-items:center;gap:6px">
+          <span style="margin-right:6px;color:#4A5A61">{{ stepCount }}</span>
+          <button type="button" onClick="{{ stepPrev }}" aria-label="Étape précédente" title="Étape précédente" style="display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid #DCE4E7;border-radius:50%;background:#FFFFFF;color:#0E1316;cursor:pointer;transition:background .2s,border-color .2s" style-hover="background:#E3F3F8;border-color:#269CBD"><svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M6 5h2v14H6zM20 5v14L9 12z"></path></svg></button>
+          <sc-if value="{{ isPausedUi }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ togglePlay }}" aria-label="{{ playLabel }}" title="{{ playLabel }}" style="display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:#269CBD;color:#FFFFFF;cursor:pointer;transition:background .2s" style-hover="background:#1C7E9A"><svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button></sc-if>
+          <sc-if value="{{ isPlaying }}" hint-placeholder-val="{{ true }}"><button type="button" onClick="{{ togglePlay }}" aria-label="{{ playLabel }}" title="{{ playLabel }}" style="display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:50%;background:#0E1316;color:#FFFFFF;cursor:pointer;transition:background .2s" style-hover="background:#1C7E9A"><svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></button></sc-if>
+          <button type="button" onClick="{{ stepNext }}" aria-label="Étape suivante" title="Étape suivante" style="display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid #DCE4E7;border-radius:50%;background:#FFFFFF;color:#0E1316;cursor:pointer;transition:background .2s,border-color .2s" style-hover="background:#E3F3F8;border-color:#269CBD"><svg aria-hidden="true" viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16 5h2v14h-2zM4 5v14l11-7z"></path></svg></button>
+        </span>
+      </div>
+      <div ref="{{ graphRef }}" onPointerDown="{{ graphDown }}" role="group" aria-label="Graphe de l'équipe : l'orchestrateur relié à 6 agents IA et 2 humains" style="position:relative;height:max(clamp(380px,31vw,440px),calc(1100px - 100vw));overflow:hidden;background-color:#FFFFFF;background-image:radial-gradient(#E4EBED 1px,transparent 1.2px);background-size:24px 24px">
+        <svg aria-hidden="true" width="100%" height="100%" style="position:absolute;inset:0;display:block">
+          <sc-for list="{{ links }}" as="l" hint-placeholder-count="0">
+            <line data-link="{{ l.i }}" stroke="{{ l.c }}" stroke-width="{{ l.w }}" stroke-dasharray="{{ l.dash }}" stroke-linecap="round" style="transition:stroke .4s,stroke-width .4s"></line>
+          </sc-for>
+        </svg>
+        <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="0">
+          <div data-node="{{ n.id }}" onPointerEnter="{{ n.enter }}" onPointerLeave="{{ n.leave }}" style="position:absolute;left:0;top:0;width:0;height:0;z-index:{{ n.z }}">
+            <sc-if value="{{ n.isOrch }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;left:-70px;top:-30px;width:140px;display:flex;flex-direction:column;align-items:center;gap:6px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none">
+                <span aria-hidden="true" style="display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#0E1316;color:#FFFFFF;font-size:1.5rem;line-height:1;box-shadow:0 0 0 7px rgba(38,156,189,.12),0 0 0 2px #269CBD;transition:transform .45s cubic-bezier(.16,1,.3,1)">◎</span>
+                <span style="padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.92);font-weight:700;font-size:.8125rem;line-height:1.2;white-space:nowrap;color:{{ n.nameC }}">{{ n.name }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ n.isAgent }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;left:-65px;top:-20px;width:130px;display:flex;flex-direction:column;align-items:center;gap:6px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none">
+                <span aria-hidden="true" style="position:relative;display:grid;place-items:center;width:40px;height:40px;border-radius:11px;background:{{ n.icBg }};color:{{ n.icFg }};border:1.5px solid #269CBD;box-shadow:{{ n.glow }};transform:scale({{ n.sc }});transition:background .35s,color .35s,box-shadow .35s,transform .45s cubic-bezier(.16,1,.3,1)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><path d="M12 3v4"></path><circle cx="12" cy="3" r="1"></circle><circle cx="9" cy="13" r="1.3" fill="currentColor"></circle><circle cx="15" cy="13" r="1.3" fill="currentColor"></circle><path d="M2 12v3M22 12v3"></path></svg></span>
+                <span style="padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.92);font-weight:700;font-size:.8125rem;line-height:1.2;white-space:nowrap;color:{{ n.nameC }}">{{ n.name }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ n.isHuman }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;left:-65px;top:-22px;width:130px;display:flex;flex-direction:column;align-items:center;gap:6px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none">
+                <span aria-hidden="true" style="width:44px;height:44px;border-radius:50%;border:2.5px solid #E1B48D;background:#EEF2F3 center/cover no-repeat;background-image:{{ n.avatarBg }};box-shadow:{{ n.glow }};transform:scale({{ n.sc }});transition:box-shadow .35s,transform .45s cubic-bezier(.16,1,.3,1)"></span>
+                <span style="padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.92);font-weight:700;font-size:.8125rem;line-height:1.2;white-space:nowrap;color:{{ n.nameC }}">{{ n.name }}</span>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+        <p aria-hidden="true" style="position:absolute;left:16px;bottom:12px;margin:0;font-family:'IBM Plex Mono',monospace;font-size:.6875rem;color:#4A5A61;pointer-events:none">Glissez un membre · survolez pour le détail</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;padding:20px clamp(16px,2.4vw,28px) 22px;border-top:1px solid #E6ECEE">
+        <p style="margin:0;font-size:.8125rem;font-weight:700;letter-spacing:.04em;color:#4A5A61">{{ nowLabel }}</p>
+        <div aria-live="polite" style="display:flex;align-items:center;gap:14px">
+          <sc-if value="{{ nowIsHuman }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="flex:none;width:44px;height:44px;border-radius:50%;border:2.5px solid #E1B48D;background:#EEF2F3 center/cover no-repeat;background-image:{{ nowAvatar }}"></span></sc-if>
+          <sc-if value="{{ nowIsAgent }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:{{ nowIcBg }};color:{{ nowIcFg }};border:1.5px solid #269CBD"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><path d="M12 3v4"></path><circle cx="12" cy="3" r="1"></circle><circle cx="9" cy="13" r="1.3" fill="currentColor"></circle><circle cx="15" cy="13" r="1.3" fill="currentColor"></circle><path d="M2 12v3M22 12v3"></path></svg></span></sc-if>
+          <p style="flex:1;min-width:0;margin:0;font-size:1.125rem;line-height:1.4;text-wrap:pretty"><strong style="color:{{ nowWhoC }}">{{ nowWho }}</strong> {{ nowText }}</p>
+          <sc-if value="{{ canApprove }}" hint-placeholder-val="{{ false }}">
+            <button type="button" onClick="{{ approve }}" style="flex:none;min-height:48px;padding:0 24px;border-radius:999px;border:0;background:#0E1316;color:#FFFFFF;font:inherit;font-size:1rem;font-weight:700;cursor:pointer;transition:background .25s" style-hover="background:#1C7E9A">Valider</button>
+          </sc-if>
+        </div>
+        <span aria-hidden="true" style="display:block;height:4px;border-radius:2px;background:#E9EEF0;overflow:hidden"><span style="display:block;height:100%;width:{{ progW }};background:#269CBD;border-radius:2px;transition:width .6s cubic-bezier(.16,1,.3,1)"></span></span>
+        <sc-if value="{{ hasDone }}" hint-placeholder-val="{{ false }}">
+          <ul aria-label="Déjà fait" style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:.9375rem;color:#4A5A61">
+            <sc-for list="{{ doneList }}" as="d" hint-placeholder-count="0">
+              <li style="display:flex;gap:10px;align-items:baseline"><span aria-hidden="true" style="flex:none;color:{{ d.c }};font-weight:700">✓</span><span><strong style="color:#0E1316;font-weight:700">{{ d.who }}</strong> · {{ d.out }}</span></li>
+            </sc-for>
+          </ul>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-trois" data-screen-label="05 Engagements" style="position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:#0B1215;color:#FFFFFF">
+  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2400&amp;q=80&amp;auto=format&amp;fit=crop" alt="" loading="lazy" data-parallax="" style="position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;display:block">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:rgba(11,18,21,.5)"></div>
+  <div style="position:relative;width:100%;padding:clamp(100px,14vh,160px) clamp(20px,3vw,40px);display:flex;flex-direction:column;gap:clamp(24px,4vw,48px)">
+    <h2 id="h-trois" style="margin:0;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:.875rem;color:#FFFFFF">Une IA digne de confiance, par conception</h2>
+    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0">
+      <li data-reveal="fade" style="font-weight:700;font-size:clamp(3.2rem,12vw,12rem);line-height:.98;letter-spacing:-.05em">Souveraine.</li>
+      <li data-reveal="fade" data-delay="150" style="font-family:'Instrument Sans',system-ui,sans-serif;font-style:italic;font-weight:600;font-size:clamp(3.2rem,12vw,12rem);line-height:1.04;letter-spacing:-.03em;color:#6DCDEA">Sourcée.</li>
+      <li data-reveal="fade" data-delay="300" style="font-weight:700;font-size:clamp(3.2rem,12vw,12rem);line-height:.98;letter-spacing:-.05em">Supervisée.</li>
+    </ul>
+    <a href="Intelligence%20Artificielle.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;border:1.5px solid #FFFFFF;color:#FFFFFF;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#FFFFFF;color:#0E1316">Notre approche IA <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+
+<section data-slider="" aria-labelledby="h-cas" aria-roledescription="carrousel" data-screen-label="06 Cas d'usage" style="padding:clamp(88px,11vw,150px) 0">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding:0 clamp(20px,3vw,40px);margin-bottom:clamp(32px,4vw,56px)">
+    <h2 id="h-cas" style="margin:0;font-weight:700;font-size:clamp(2.4rem,6vw,6rem);line-height:1;letter-spacing:-.045em">Ce que l'IA <em>change</em>.</h2>
+    <div style="display:flex;align-items:center;gap:12px">
+      <p data-slider-count="" aria-live="polite" style="margin:0 8px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#4A5A61;font-variant-numeric:tabular-nums">01</p>
+      <button type="button" data-slider-prev="" aria-label="Cas d’usage précédent" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1.5px solid #0E1316;background:#FFFFFF;color:#0E1316;font:inherit;font-size:1.25rem;cursor:pointer;transition:background .3s,color .3s,opacity .3s" style-hover="background:#0E1316;color:#FFFFFF">←</button>
+      <button type="button" data-slider-next="" aria-label="Cas d’usage suivant" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1.5px solid #0E1316;background:#FFFFFF;color:#0E1316;font:inherit;font-size:1.25rem;cursor:pointer;transition:background .3s,color .3s,opacity .3s" style-hover="background:#0E1316;color:#FFFFFF">→</button>
+    </div>
+  </div>
+  <ul data-slider-track="" style="list-style:none;margin:0;display:flex;gap:clamp(12px,1.4vw,20px);padding:0 clamp(20px,3vw,40px);overflow-x:hidden">
+    <sc-for list="{{ cases }}" as="c" hint-placeholder-count="4">
+      <li style="flex:none;width:clamp(280px,32vw,520px)">
+        <a href="Usages.dc.html" style="position:relative;display:flex;align-items:flex-end;aspect-ratio:3/4;overflow:hidden;border-radius:6px;background:#0B1215;color:#FFFFFF;text-decoration:none">
+          <img src="{{ c.src }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.06)">
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,0) 40%,rgba(11,18,21,.85) 100%)"></span>
+          <span style="position:relative;display:flex;flex-direction:column;gap:10px;padding:clamp(20px,2vw,28px)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#FFFFFF">{{ c.sector }}</span>
+            <span style="font-size:clamp(1.375rem,1.9vw,1.9rem);font-weight:700;line-height:1.15;letter-spacing:-.02em;text-wrap:balance">{{ c.title }}</span>
+          </span>
+        </a>
+      </li>
+    </sc-for>
+    <li style="flex:none;width:clamp(280px,32vw,520px)">
+      <a href="Usages.dc.html" style="display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:3/4;padding:clamp(20px,2vw,28px);border-radius:6px;background:#1C7E9A;color:#FFFFFF;text-decoration:none;transition:background .3s" style-hover="background:#0E1316;color:#FFFFFF">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem">65 cas</span>
+        <span style="font-size:clamp(2rem,3.4vw,3.4rem);font-weight:700;line-height:1.02;letter-spacing:-.04em">Tous les cas d'usage →</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-equipes" data-screen-label="07 Équipes" style="padding:clamp(8px,1vw,16px)">
+  <div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(260px,40vw,460px);gap:clamp(8px,1vw,16px)">
+    <div style="grid-column:span 12;grid-row:span 2;position:relative;overflow:hidden;border-radius:6px;background:#0B1215;color:#FFFFFF;display:flex;align-items:flex-end">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=2400&amp;q=80&amp;auto=format&amp;fit=crop" alt="Une équipe travaille ensemble autour d'ordinateurs portables, dans la bonne humeur" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,0) 35%,rgba(11,18,21,.8) 100%)"></div>
+      <div style="position:relative;width:100%;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px 40px;padding:clamp(24px,3vw,48px)"><h2 id="h-equipes" style="margin:0;font-weight:700;font-size:clamp(2.2rem,6vw,6rem);line-height:1.02;letter-spacing:-.04em;max-width:12em;text-wrap:balance">Derrière chaque agent, <em style="color:#6DCDEA">une personne</em>.</h2><p style="margin:0;max-width:22em;font-size:1.125rem;color:#FFFFFF">Un seul interlocuteur, du premier atelier à la mise en production.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section aria-labelledby="h-maison" data-screen-label="08 La Maison" style="position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#0B1215;color:#FFFFFF">
+  <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=2400&amp;q=80&amp;auto=format&amp;fit=crop" alt="Forêt et collines du Jura dans la brume" loading="lazy" data-parallax="" style="position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;display:block">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,.3) 0%,rgba(11,18,21,.1) 40%,rgba(11,18,21,.85) 100%)"></div>
+  <div style="position:relative;width:100%;padding:clamp(100px,14vh,160px) clamp(20px,3vw,40px) clamp(40px,7vh,72px);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:28px 48px">
+    <h2 id="h-maison" style="margin:0;font-weight:700;font-size:clamp(2.6rem,7.5vw,7.5rem);line-height:1;letter-spacing:-.045em;max-width:11em;text-wrap:balance">Née dans le Jura, <em style="color:#6DCDEA">au pays de la précision</em>.</h2>
+    <div style="display:flex;align-items:center;gap:20px">
+      <img src="assets/ecovadis-gold-2025.png" alt="EcoVadis, médaille d'or 2025" width="72" height="72" style="width:72px;height:72px;flex:none">
+      <a href="Maison.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;background:#FFFFFF;color:#0E1316;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#269CBD;color:#FFFFFF">Découvrir la Maison <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-journal" data-screen-label="09 Journal" style="padding:clamp(88px,11vw,150px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,4vw,48px)">
+    <h2 id="h-journal" style="margin:0;font-weight:700;font-size:clamp(2.4rem,6vw,6rem);line-height:1;letter-spacing:-.045em">Nos <em>décryptages</em>.</h2>
+    <a href="https://www.digital-solutions.io/actualites-it-suisse/" style="font-weight:700;padding:12px 0">Tout le journal →</a>
+  </div>
+  <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,2vw,28px)">
+    <sc-for list="{{ posts }}" as="j" hint-placeholder-count="3">
+      <li><a href="{{ j.href }}" style="display:flex;flex-direction:column;gap:16px;color:#0E1316;text-decoration:none">
+        <span style="display:block;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#DDE4E7"><img src="{{ j.src }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1)" style-hover="transform:scale(1.06)"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">{{ j.tag }}</span>
+        <span style="font-size:clamp(1.25rem,1.6vw,1.6rem);font-weight:700;line-height:1.25;letter-spacing:-.02em;text-wrap:balance">{{ j.title }}</span>
+      </a></li>
+    </sc-for>
+  </ul>
+</section>
+</main>
+<dc-import name="DS Footer" cta-bg="waveBlanc" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const I = (id) => 'https://images.unsplash.com/' + id + '?w=1800&q=78&auto=format&fit=crop';
+const U = (id) => 'https://unsplash.com/photos/' + id + '/download?w=1400';
+const FALLBACK = I('photo-1522071820081-009f0129c71c');
+const NEEDS = [
+  { title: 'Automatiser un processus', line: 'Agents IA & IPA', href: 'Intelligence%20Artificielle.dc.html', src: I('photo-1573164713714-d95e436ab8d6') },
+  { title: 'Exploiter vos documents', line: 'RAG sourcé', href: 'Intelligence%20Artificielle.dc.html', src: I('photo-1552664730-d307ca884978') },
+  { title: 'Moderniser vos applications', line: 'Développement sur mesure', href: 'Expertises.dc.html#developpement', src: I('photo-1531482615713-2afd69097998') },
+  { title: 'Connecter vos outils', line: 'ERP · CRM · GED', href: 'Expertises.dc.html#integration', src: I('photo-1558494949-ef010cbdcc31') },
+  { title: 'Renforcer vos équipes', line: 'Consulting & outsourcing', href: 'Expertises.dc.html#consulting', src: I('photo-1600880292203-757bb62b4baf') }
+];
+const PH = (id) => 'https://images.unsplash.com/' + id + '?w=160&h=160&q=70&auto=format&fit=crop&crop=faces';
+const AG = {
+  acc: { name: 'Agent Commercial', role: 'Ventes & relation client', glyph: '@' },
+  doc: { name: 'Agent Documents', role: 'RAG · 2 418 docs', glyph: '[≡]' },
+  jur: { name: 'Agent Juridique', role: 'Contrats', glyph: '§' },
+  fin: { name: 'Agent Finance', role: 'Comptabilité', glyph: 'CHF' },
+  it: { name: 'Agent IT', role: 'Accès & infra', glyph: '$_' },
+  red: { name: 'Agent Rédaction', role: 'FR · DE · IT', glyph: 'Aa' },
+  lea: { name: 'Léa', role: 'Juriste', human: true, img: PH('photo-1494790108377-be9c29b29330') },
+  marc: { name: 'Marc', role: 'Directeur financier', human: true, img: PH('photo-1507003211169-0a1dd7228f2d') }
+};
+const LINKS = [['orch','acc'],['orch','doc'],['orch','jur'],['orch','fin'],['orch','it'],['orch','red'],['orch','lea'],['orch','marc'],['jur','lea'],['fin','marc'],['doc','red'],['acc','red']];
+const ORDER = ['acc', 'doc', 'jur', 'lea', 'orch', 'marc', 'fin', 'it', 'red'];
+const MISSIONS = [
+  { name: 'Accueillir un nouveau client', cat: 'COMMERCIAL', steps: [
+    ['acc', 'Lit l’e-mail de la Banque du Jura et crée la fiche CRM', 'Fiche client créée'],
+    ['doc', 'Vérifie les pièces KYC reçues (6 documents)', '6/6 pièces conformes'],
+    ['jur', 'Prépare le contrat cadre depuis le modèle 2026', 'Contrat de 14 pages prêt'],
+    ['lea', 'Relit la clause de responsabilité, art. 9', 'Contrat validé'],
+    ['fin', 'Ouvre le compte et programme la facturation', 'Compte n° 40-218 ouvert'],
+    ['it', 'Crée les accès SSO et l’espace projet', '12 accès provisionnés'],
+    ['red', 'Rédige le message de bienvenue en FR et DE', 'Message envoyé']
+  ] },
+  { name: 'Traiter une réclamation client', cat: 'RELATION CLIENT', steps: [
+    ['acc', 'Reçoit l’appel d’un client et le transcrit en direct', 'Réclamation qualifiée : facture contestée'],
+    ['doc', 'Retrouve le contrat, les 3 dernières factures et l’historique', '4 documents retrouvés'],
+    ['fin', 'Recalcule la facture et détecte une double ligne', 'Erreur de 1 280 CHF confirmée'],
+    ['marc', 'Approuve l’avoir et le geste commercial', 'Avoir approuvé'],
+    ['red', 'Rédige la réponse personnalisée en allemand', 'Réponse prête'],
+    ['acc', 'Envoie la réponse et clôt le ticket', 'Ticket clos en 18 minutes']
+  ] },
+  { name: 'Clôturer le mois', cat: 'FINANCE', steps: [
+    ['it', 'Exporte les écritures de l’ERP', '1 240 écritures exportées'],
+    ['doc', 'Lit et rapproche 312 factures fournisseurs', '309 rapprochées, 3 écarts'],
+    ['fin', 'Analyse les 3 écarts et propose les corrections', 'Corrections proposées'],
+    ['marc', 'Valide les corrections et le bouclement', 'Bouclement validé'],
+    ['red', 'Rédige le commentaire de gestion', 'Commentaire prêt'],
+    ['acc', 'Envoie le reporting au conseil d’administration', 'Reporting envoyé']
+  ] },
+  { name: 'Recruter un développeur', cat: 'RESSOURCES HUMAINES', steps: [
+    ['acc', 'Publie l’offre et trie 86 candidatures', '12 profils retenus'],
+    ['doc', 'Compare les CV aux compétences attendues', '4 profils prioritaires'],
+    ['red', 'Invite les candidats aux entretiens', '4 invitations envoyées'],
+    ['marc', 'Valide le salaire proposé', 'Offre approuvée'],
+    ['jur', 'Prépare le contrat de travail', 'Contrat prêt'],
+    ['lea', 'Relit la clause de non-concurrence', 'Contrat validé'],
+    ['it', 'Prépare le poste et les accès du premier jour', 'Poste prêt']
+  ] },
+  { name: 'Établir un devis', cat: 'COMMERCIAL', steps: [
+    ['acc', 'Reçoit la demande de devis d’un distributeur par e-mail', 'Demande qualifiée : 3 références'],
+    ['doc', 'Retrouve le client dans le CRM et ses conditions tarifaires', 'Client remisé à 12 %'],
+    ['it', 'Consulte le PIM et le stock dans l’ERP', '3 articles · délai 10 jours'],
+    ['fin', 'Calcule le prix, la remise et la marge', 'Devis à 18 640 CHF · marge 31 %'],
+    ['marc', 'Valide la remise exceptionnelle', 'Remise approuvée'],
+    ['red', 'Rédige le devis et le message d’accompagnement', 'Devis prêt'],
+    ['acc', 'Envoie le devis et crée l’opportunité dans le CRM', 'Devis envoyé en 6 minutes']
+  ] },
+  { name: 'Gérer un incident informatique', cat: 'IT & SÉCURITÉ', steps: [
+    ['acc', 'Reçoit l’alerte : messagerie lente pour 40 utilisateurs', 'Incident prioritaire ouvert'],
+    ['it', 'Diagnostique le serveur et relance le service', 'Service rétabli en 9 minutes'],
+    ['doc', 'Retrouve la procédure et l’historique des incidents', 'Cause identifiée'],
+    ['jur', 'Vérifie si des données ont été exposées (nLPD)', 'Aucune donnée exposée'],
+    ['lea', 'Confirme qu’aucune annonce au PFPDT n’est requise', 'Conformité confirmée'],
+    ['red', 'Informe les utilisateurs et rédige le rapport', 'Rapport publié']
+  ] }
+];
+const DUR = 5600, AUTO = 12000;
+const pad = (n) => String(n).padStart(2, '0');
+const CASES = [
+  { sector: 'Administrations publiques', title: 'Un guichet citoyen en trois langues.', src: U('Td-XqY8xexs') },
+  { sector: 'Banque & assurance', title: 'Des dossiers KYC instruits d’avance.', src: U('ULh4MH-VxwI') },
+  { sector: 'Horlogerie & industrie', title: 'Un contrôle qualité horloger.', src: U('ra8E5aSathU') },
+  { sector: 'Hôpitaux', title: 'La lettre de sortie prête avant la visite.', src: I('photo-1579684385127-1ef15d508118') },
+  { sector: 'Pharma', title: 'Une veille réglementaire sans faille.', src: U('drJCfa6h6Is') },
+  { sector: 'Tourisme', title: 'Un concierge qui parle chaque langue.', src: I('photo-1566073771259-6a8506099945') }
+];
+const POSTS = [
+  { title: 'Architecture et diversité des grands modèles de langage', tag: 'Analyse · LLM', href: 'https://www.digital-solutions.io/nos-actualites/architecture-llm/', src: 'https://www.digital-solutions.io/wp-content/uploads/2023/10/fille-en-bleu-1024x684.jpeg' },
+  { title: 'Comment les IA comprennent le langage : les embeddings', tag: 'Pédagogie · RAG', href: 'https://www.digital-solutions.io/nos-actualites/ia-et-embeddings/', src: U('9AjwOAIdsII') },
+  { title: 'Le chiffrement complètement homomorphe', tag: 'Recherche · Sécurité', href: 'https://www.digital-solutions.io/nos-actualites/communique-le-chiffrement-completement-homomorphe/', src: U('2ltzMVdpeO0') }
+];
+
+class Component extends DCLogic {
+  state = { i: 0, paused: false, hover: false, tick: 0, need: 0, mis: -1, step: 0, phase: 'idle', log: [], done: {}, last: {}, hum: 0, bar: 0, vw: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  demoRef = React.createRef(); needRef = React.createRef(); needIdx = 0;
+  setNeed(k) {
+    this.needIdx = k; const root = this.needRef.current; if (!root) return;
+    const st = this.still();
+    root.querySelectorAll('[data-need-img]').forEach((el, i) => { el.style.opacity = i === k ? '1' : '0'; el.style.transform = 'scale(' + (i === k ? 1.04 : 1.12) + ')'; });
+    root.querySelectorAll('[data-need-link]').forEach((el, i) => { el.style.color = i === k ? '#FFFFFF' : 'rgba(255,255,255,.62)'; });
+    root.querySelectorAll('[data-need-title]').forEach((el, i) => { el.style.transform = 'translateX(' + (i === k && !st ? 'clamp(0px,1.4vw,24px)' : '0px') + ')'; });
+    root.querySelectorAll('[data-need-line]').forEach((el, i) => { el.style.opacity = i === k ? '1' : '0'; });
+  }
+  componentDidUpdate() { if (this.needIdx) this.setNeed(this.needIdx); }
+  demoRun = 0;
+  runMission(k) {
+    const run = ++this.demoRun; clearTimeout(this.mT);
+    this.mClock = new Date(2026, 9, 6, 9, 41, 0).getTime(); this.mStart = performance.now();
+    this.loggedStep = -1;
+    this.setState({ mis: k, step: 0, phase: 'go', log: [], done: {}, last: {}, hum: 0, paused: false, w0: Date.now() }, () => this.exec(run));
+  }
+  stamp() { const d = new Date(this.mClock + (performance.now() - this.mStart) * 8); return pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()); }
+  addLog(who, msg, kind) { this.setState((s) => ({ log: [{ t: this.stamp(), who, msg, kind }].concat(s.log).slice(0, 3) })); }
+  exec(run) {
+    if (run !== this.demoRun) return;
+    const M = MISSIONS[this.state.mis], i = this.state.step, paused = this.state.paused;
+    if (i >= M.steps.length) { this.setState({ phase: 'end', paused: false }); this.addLog('Orchestrateur', 'Mission accomplie · ' + M.steps.length + ' tâches', 'ok'); return; }
+    const [who] = M.steps[i], A = AG[who], fresh = this.loggedStep !== i; this.loggedStep = i;
+    if (fresh && i === 0) this.addLog('Orchestrateur', 'Mission « ' + M.name + ' » répartie entre ' + new Set(M.steps.map((x) => x[0])).size + ' membres', 'sys');
+    if (A.human) {
+      this.setState({ phase: 'wait', bar: 0 });
+      if (fresh) this.addLog('Humain · ' + A.name, 'Validation demandée', 'wait');
+      if (!paused) this.mT = setTimeout(() => this.approve(run), this.still() ? 1 : AUTO);
+      return;
+    }
+    this.setState({ phase: 'work', bar: 0 }, () => { if (!paused) setTimeout(() => run === this.demoRun && !this.state.paused && this.setState({ bar: 1 }), 30); });
+    if (!paused) this.mT = setTimeout(() => this.finish(run), this.still() ? 250 : DUR);
+  }
+  finish(run) {
+    if (run !== this.demoRun) return;
+    clearTimeout(this.mT);
+    const M = MISSIONS[this.state.mis], [who, , out] = M.steps[this.state.step] || [];
+    if (!who) return;
+    if (AG[who].human) {
+      this.addLog('Humain · ' + AG[who].name, '✓ ' + out, 'human');
+      this.setState((s) => ({ step: s.step + 1, hum: s.hum + 1, last: { ...s.last, [who]: '✓ ' + out } }), () => this.exec(run));
+    } else {
+      this.addLog(AG[who].name, out, 'ok');
+      this.setState((s) => ({ step: s.step + 1, done: { ...s.done, [who]: (s.done[who] || 0) + 1 }, last: { ...s.last, [who]: out } }), () => this.exec(run));
+    }
+  }
+  approve(run) {
+    run = run || this.demoRun; if (run !== this.demoRun || this.state.phase !== 'wait') return;
+    this.finish(run);
+  }
+  togglePlay = () => {
+    const { phase, paused, mis } = this.state;
+    if (phase === 'end' || phase === 'idle' || !MISSIONS[mis]) return this.runMission(mis || 0);
+    if (paused) this.setState({ paused: false }, () => this.exec(this.demoRun));
+    else { clearTimeout(this.mT); this.setState({ paused: true, bar: 0 }); }
+  };
+  stepNext = () => { const { phase } = this.state; if (phase === 'end' || phase === 'idle') return; this.finish(this.demoRun); };
+  stepPrev = () => {
+    const { mis, step, phase } = this.state, M = MISSIONS[mis]; if (!M || phase === 'idle') return;
+    clearTimeout(this.mT);
+    const k = Math.max(0, Math.min(step, M.steps.length) - 1), done = {}, last = {}; let hum = 0; const log = [];
+    for (let j = 0; j < k; j++) { const [w, , out] = M.steps[j]; if (AG[w].human) { hum++; last[w] = '✓ ' + out; log.unshift({ t: this.stamp(), who: 'Humain · ' + AG[w].name, msg: '✓ ' + out, kind: 'human' }); } else { done[w] = (done[w] || 0) + 1; last[w] = out; log.unshift({ t: this.stamp(), who: AG[w].name, msg: out, kind: 'ok' }); } }
+    this.loggedStep = -1;
+    this.setState({ step: k, done, last, hum, log: log.slice(0, 3), phase: 'go', bar: 0 }, () => this.exec(this.demoRun));
+  };
+  stopDemo = () => { this.demoRun++; clearTimeout(this.mT); this.loggedStep = -1; this.setState({ step: 0, phase: 'idle', log: [], done: {}, last: {}, hum: 0, paused: false, bar: 0 }); };
+  onResize = () => this.setState({ vw: window.innerWidth });
+  SLIDES = [
+    { src: 'https://images.unsplash.com/photo-1681949103006-70066fb25dfe?w=2400&q=80&auto=format&fit=crop', alt: 'Une équipe échange devant un tableau dans un bureau lumineux avec des plantes', caption: 'Des ingénieurs qui portent votre projet' },
+    { src: 'https://images.unsplash.com/photo-1702047149248-a6049168d2a8?w=2400&q=80&auto=format&fit=crop', alt: 'Collègues au travail dans un espace boisé et végétalisé', caption: 'Agents IA, RAG et modèles souverains' },
+    { src: 'https://images.unsplash.com/photo-1590649681928-4b179f773bd5?w=2400&q=80&auto=format&fit=crop', alt: 'Deux collègues discutent à un bureau debout, plante en arrière-plan', caption: 'Infrastructures hébergées en Suisse' },
+    { src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=2400&q=80&auto=format&fit=crop', alt: 'Une équipe travaille autour d\'une grande table dans un open space urbain', caption: 'La précision suisse, depuis 2016' }
+  ];
+  DUR = 6500;
+  proofRef = React.createRef();
+  still() { return window.DSMotion ? window.DSMotion.isPaused() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  componentDidMount() {
+    this.onPrefs = () => this.forceUpdate();
+    window.addEventListener('ds-prefs', this.onPrefs);
+    this.onImgErr = (e) => { const t = e.target; if (t && t.tagName === 'IMG' && !t.dataset.fb && t.closest('main')) { t.dataset.fb = '1'; t.src = FALLBACK; } };
+    document.addEventListener('error', this.onImgErr, true);
+    this.SLIDES.forEach((s) => { const im = new Image(); im.src = s.src; });
+    this.arm();
+    window.addEventListener('resize', this.onResize);
+    setTimeout(() => this.setState({ tick: 1 }), 60);
+    if ('IntersectionObserver' in window) { this.dio = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { this.dio.disconnect(); this.runMission(0); } }, { threshold: .35 }); setTimeout(() => this.demoRef.current && this.dio.observe(this.demoRef.current), 200); } else this.runMission(0);
+    if (!this.still() && 'IntersectionObserver' in window) setTimeout(() => {
+      const root = this.proofRef.current; if (!root) return;
+      root.querySelectorAll('[data-count]').forEach((el) => (el.textContent = el.dataset.from));
+      this.pio = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { this.pio.disconnect(); this.runProofs(); } }, { threshold: .4 });
+      this.pio.observe(root);
+    }, 200);
+    this.gInit();
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.gRaf); clearTimeout(this.gT); this.gro && this.gro.disconnect(); this.gio && this.gio.disconnect(); this.gUp(); clearTimeout(this.t); window.removeEventListener('ds-prefs', this.onPrefs); document.removeEventListener('error', this.onImgErr, true); this.pio && this.pio.disconnect(); cancelAnimationFrame(this.cRaf); this.demoRun++; clearTimeout(this.mT); window.removeEventListener('resize', this.onResize); this.dio && this.dio.disconnect(); }
+  graphRef = React.createRef();
+  gInit() {
+    const el = this.graphRef.current; if (!el) { this.gT = setTimeout(() => this.gInit(), 120); return; }
+    const P = {}; ORDER.forEach((id, k) => { const a = k / ORDER.length * Math.PI * 2 - Math.PI / 2, r = id === 'orch' ? 0 : 150; P[id] = { x: Math.cos(a) * r, y: Math.sin(a) * r, vx: 0, vy: 0 }; });
+    this.G = { P, el }; this.gMeasure(); this.gVis = true;
+    if ('ResizeObserver' in window) { this.gro = new ResizeObserver(() => this.gMeasure()); this.gro.observe(el); }
+    if ('IntersectionObserver' in window) { this.gio = new IntersectionObserver((es) => { this.gVis = es.some((x) => x.isIntersecting); }); this.gio.observe(el); }
+    for (let i = 0; i < 300; i++) this.gStep(0, false);
+    this.gDraw(0);
+    const loop = (t) => { this.gRaf = requestAnimationFrame(loop); if (!this.gVis && !this.drag) return; const st = this.still(); this.gStep(t, !st); this.gDraw(st ? 0 : t); };
+    this.gRaf = requestAnimationFrame(loop);
+  }
+  gMeasure() { const G = this.G; G.W = G.el.clientWidth; G.H = G.el.clientHeight; G.S = Math.max(Math.min(G.W, G.H), 1); G.kx = Math.min(Math.max(G.W / G.S, 1), 1.75); G.ky = Math.min(Math.max(G.H / G.S, 1), 1.3); }
+  gBounds(id) { const G = this.G, o = id === 'orch'; return { mx: Math.max(G.W / 2 - (o ? 75 : 70), 0) / G.kx, top: Math.max(G.H / 2 - (o ? 40 : 30), 0) / G.ky, bot: Math.max(G.H / 2 - (o ? 70 : 60), 0) / G.ky }; }
+  gStep(t, live) {
+    const G = this.G, P = G.P, s = G.S / 500, ids = ORDER, n = ids.length, R = 7000 * s * s * s, act = this.activeId;
+    for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+      const a = P[ids[i]], b = P[ids[j]]; let dx = b.x - a.x, dy = b.y - a.y, d2 = dx * dx + dy * dy;
+      if (d2 < 1) { dx = Math.random() - .5; dy = Math.random() - .5; d2 = 1; }
+      const d = Math.sqrt(d2), f = Math.min(R / d2, 4 * s) / d; a.vx -= dx * f; a.vy -= dy * f; b.vx += dx * f; b.vy += dy * f;
+    }
+    LINKS.forEach(([ia, ib]) => {
+      const a = P[ia], b = P[ib]; let L = (ia === 'orch' ? 178 : 128) * s; if (ia === act || ib === act) L *= .74;
+      const dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 1, f = (d - L) * .03 / d, wa = ia === 'orch' ? .15 : 1;
+      a.vx += dx * f * wa; a.vy += dy * f * wa; b.vx -= dx * f; b.vy -= dy * f;
+    });
+    ids.forEach((id, k) => {
+      const p = P[id], g = id === 'orch' ? .06 : .004; p.vx -= p.x * g; p.vy -= p.y * g;
+      if (live) { p.vx += Math.sin(t / 3000 + k * 1.9) * .025 * s; p.vy += Math.cos(t / 3600 + k * 1.3) * .025 * s; }
+      if (this.drag === id) { p.x = this.dragX; p.y = this.dragY; p.vx = p.vy = 0; return; }
+      p.vx *= .82; p.vy *= .82; p.x += p.vx; p.y += p.vy;
+      const B = this.gBounds(id); p.x = Math.max(-B.mx, Math.min(B.mx, p.x)); p.y = Math.max(-B.top, Math.min(B.bot, p.y));
+    });
+    for (let it = 0; it < 3; it++) for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+      const ia = ids[i], ib = ids[j], a = P[ia], b = P[ib], wx = ((ia === 'orch' || ib === 'orch') ? 140 : 128) / G.kx, wy = ((ia === 'orch' || ib === 'orch') ? 96 : 82) / G.ky;
+      const dx = b.x - a.x, dy = b.y - a.y, ox = wx - Math.abs(dx), oy = wy - Math.abs(dy);
+      if (ox <= 0 || oy <= 0) continue;
+      const fa = this.drag === ia ? 0 : this.drag === ib ? 1 : .5, fb = 1 - fa;
+      if (ox * G.kx < oy * G.ky) { const m = ox * (dx < 0 ? -1 : 1); a.x -= m * fa; b.x += m * fb; a.vx *= .5; b.vx *= .5; }
+      else { const m = oy * (dy < 0 ? -1 : 1); a.y -= m * fa; b.y += m * fb; a.vy *= .5; b.vy *= .5; }
+    }
+    ids.forEach((id) => { if (this.drag === id) return; const p = P[id], B = this.gBounds(id); p.x = Math.max(-B.mx, Math.min(B.mx, p.x)); p.y = Math.max(-B.top, Math.min(B.bot, p.y)); });
+  }
+  gDraw(t) {
+    const G = this.G, cx = G.W / 2, cy = G.H / 2, X = (id) => cx + G.P[id].x * G.kx, Y = (id) => cy + G.P[id].y * G.ky;
+    G.el.querySelectorAll('[data-node]').forEach((el) => { const id = el.dataset.node; if (G.P[id]) el.style.transform = 'translate3d(' + X(id).toFixed(1) + 'px,' + Y(id).toFixed(1) + 'px,0)'; });
+    G.el.querySelectorAll('[data-link]').forEach((el) => { const L = LINKS[+el.dataset.link]; if (!L) return; el.setAttribute('x1', X(L[0]).toFixed(1)); el.setAttribute('y1', Y(L[0]).toFixed(1)); el.setAttribute('x2', X(L[1]).toFixed(1)); el.setAttribute('y2', Y(L[1]).toFixed(1)); el.style.strokeDashoffset = String(-t / 90); });
+  }
+  graphDown = (e) => {
+    const n = e.target.closest && e.target.closest('[data-node]'); if (!n || !this.G) return;
+    e.preventDefault(); this.drag = n.dataset.node; this.gMove(e);
+    window.addEventListener('pointermove', this.gMove); window.addEventListener('pointerup', this.gUp); window.addEventListener('pointercancel', this.gUp);
+  };
+  gMove = (e) => {
+    if (!this.drag) return; const G = this.G, r = G.el.getBoundingClientRect(), B = this.gBounds(this.drag);
+    this.dragX = Math.max(-B.mx, Math.min(B.mx, (e.clientX - r.left - G.W / 2) / G.kx));
+    this.dragY = Math.max(-B.top, Math.min(B.bot, (e.clientY - r.top - G.H / 2) / G.ky));
+  };
+  gUp = () => { this.drag = null; window.removeEventListener('pointermove', this.gMove); window.removeEventListener('pointerup', this.gUp); window.removeEventListener('pointercancel', this.gUp); };
+  demoVals() {
+    const { mis, step, phase, log, done, last, hum, bar, hov } = this.state, M = MISSIONS[mis];
+    const cur = M && phase !== 'idle' && step < M.steps.length ? M.steps[step] : null, active = cur ? cur[0] : null;
+    this.activeId = active;
+    const enter = (id) => () => { if (!this.drag) this.setState({ hov: id }); }, leave = () => { if (!this.drag) this.setState({ hov: null }); };
+    const orchTask = !M ? 'Choisissez une mission.' : phase === 'idle' ? 'Prêt. Appuyez sur lecture pour lancer la mission.' : phase === 'end' ? 'Mission accomplie. Tout est tracé.' : (AG[active].human ? 'Attend la validation de ' + AG[active].name + '.' : 'Délègue à ' + AG[active].name + '.');
+    const info = (id) => {
+      if (id === 'orch') return { kind: '◆ AGENT IA · CHEF D’ORCHESTRE', kindBg: '#0E1316', kindFg: '#FFFFFF', name: 'Orchestrateur', role: 'Répartit · contrôle · trace', task: orchTask };
+      const A = AG[id];
+      return { kind: A.human ? '● HUMAIN' : '◆ AGENT IA', kindBg: A.human ? '#F5E8DC' : '#E3F3F8', kindFg: A.human ? '#7A5230' : '#1C7E9A', name: A.name, role: A.role,
+        task: id === active ? cur[1] : (last[id] || (A.human ? 'Intervient sur les décisions clés.' : 'Prêt à prendre une tâche.')) };
+    };
+    const nodes = ORDER.map((id) => {
+      const I = info(id), base = { id, ...I, enter: enter(id), leave };
+      if (id === 'orch') return { ...base, kind: 'CHEF D’ORCHESTRE', isOrch: true, isAgent: false, isHuman: false, z: 3, nameC: '#0E1316',
+        st: phase === 'end' ? 'TERMINÉ' : phase === 'idle' ? 'PRÊT' : (M ? pad(Math.min(step + 1, M.steps.length)) + '/' + pad(M.steps.length) : 'PRÊT'), stC: '#1C7E9A' };
+      const A = AG[id], on = id === active, waiting = on && phase === 'wait', working = on && phase === 'work';
+      return { ...base, isOrch: false, isAgent: !A.human, isHuman: !!A.human, glyph: A.glyph || '', avatarBg: A.img ? 'url("' + A.img + '")' : 'none', z: on || hov === id ? 4 : 2,
+        st: waiting ? 'À VALIDER' : working ? 'EN COURS' : (done[id] ? '✓ ' + done[id] + ' tâche' + (done[id] > 1 ? 's' : '') : (A.human ? 'DISPONIBLE' : 'EN VEILLE')),
+        stC: waiting ? '#7A5230' : working ? '#1C7E9A' : '#4A5A61', nameC: waiting ? '#7A5230' : working ? '#1C7E9A' : '#0E1316',
+        glow: waiting ? '0 0 0 7px rgba(225,180,141,.4)' : working ? '0 0 0 7px rgba(38,156,189,.18)' : (hov === id ? '0 0 0 6px rgba(14,19,22,.06)' : '0 0 0 0 transparent'),
+        sc: on ? 1.12 : 1, icBg: working ? '#269CBD' : '#FFFFFF', icFg: working ? '#FFFFFF' : '#1C7E9A' };
+    });
+    const links = LINKS.map(([a, b], i) => {
+      const other = a === 'orch' ? b : a, h = !!(AG[a] && AG[a].human) || !!(AG[b] && AG[b].human);
+      const on = (a === active || b === active) && (a === 'orch' || true), hv = hov && (a === hov || b === hov);
+      return { i, c: on ? (h ? '#C9925F' : '#269CBD') : hv ? '#8FA3AA' : '#D3DCDF', w: on ? 2.5 : hv ? 1.75 : 1.25, dash: on ? '6 7' : (h ? '3 5' : 'none') };
+    });
+    const C = { ok: '#0E1316', sys: '#1C7E9A', wait: '#7A5230', human: '#7A5230' };
+    const tasks = M ? Object.values(done).reduce((a, b) => a + b, 0) : 0;
+    const nA = active ? AG[active] : null, nH = !!(nA && nA.human), total = M ? M.steps.length : 0, cnt = phase === 'end' ? total : (phase === 'idle' ? 0 : step);
+    const lower = (s) => s.charAt(0).toLowerCase() + s.slice(1);
+    const doneList = M ? M.steps.slice(0, cnt).map(([w, , out]) => ({ who: AG[w].name, out, c: AG[w].human ? '#B07A45' : '#269CBD' })).reverse().slice(0, 3) : [];
+    return {
+      nodes, links, graphRef: this.graphRef, graphDown: this.graphDown,
+      nowLabel: !M ? 'PRÊT' : phase === 'end' ? 'TERMINÉ' : phase === 'idle' ? 'PRÊT' : (nH ? 'À VOUS DE DÉCIDER' : 'EN CE MOMENT') + ' · étape ' + (step + 1) + ' sur ' + total + (this.state.paused ? ' · en pause' : ''),
+      nowIsHuman: nH, nowIsAgent: !nH, nowAvatar: nH ? 'url("' + nA.img + '")' : 'none',
+      nowIcBg: phase === 'work' ? '#269CBD' : '#FFFFFF', nowIcFg: phase === 'work' ? '#FFFFFF' : '#1C7E9A',
+      nowWho: !M || phase === 'idle' ? 'Orchestrateur' : phase === 'end' ? 'Mission accomplie.' : (nH ? nA.name + ', ' + lower(nA.role) + ',' : nA.name),
+      nowWhoC: nH ? '#7A5230' : '#1C7E9A',
+      nowText: !M || phase === 'idle' ? 'attend que vous lanciez la mission.' : phase === 'end' ? total + ' tâches, dont ' + hum + ' validée' + (hum > 1 ? 's' : '') + ' par un humain.' : (nH ? 'doit valider : ' + lower(cur[1]) + '.' : lower(cur[1]) + '.'),
+      progW: total ? Math.round(cnt / total * 100) + '%' : '0%',
+      hasDone: doneList.length > 0, doneList,
+      canApprove: phase === 'wait', approveLabel: phase === 'wait' && active ? 'Valider pour ' + AG[active].name : 'Valider',
+      log: log.map((g, k) => ({ ...g, c: C[g.kind] || '#0E1316', op: 1 - k * .12 })),
+      missions: MISSIONS.map((m, k) => { const on = k === mis; return { name: m.name, pressed: String(on), fg: on ? '#0E1316' : '#4A5A61', fw: on ? 700 : 400, dot: on ? '#269CBD' : 'transparent', arrow: on ? '#269CBD' : '#C5D0D4', run: () => this.runMission(k) }; }),
+      approve: () => this.approve(),
+      headLeft: M ? 'Mission · ' + M.name : 'Équipe d’agents IA',
+      isPlaying: !!M && !this.state.paused && phase !== 'end' && phase !== 'idle', isPausedUi: !M || !!this.state.paused || phase === 'end' || phase === 'idle',
+      playLabel: !M || phase === 'end' || phase === 'idle' ? 'Lancer la mission' : this.state.paused ? 'Reprendre' : 'Mettre en pause',
+      togglePlay: this.togglePlay, stepNext: this.stepNext, stepPrev: this.stepPrev, stopDemo: this.stopDemo,
+      stepCount: M ? pad(Math.min(phase === 'idle' ? 0 : step + (phase === 'end' ? 0 : 1), M.steps.length)) + ' / ' + pad(M.steps.length) : '',
+      summary: !M ? '' : phase === 'end' ? M.steps.length + ' tâches · ' + tasks + ' par les agents · ' + hum + ' validations humaines' : this.state.paused ? 'En pause.' : phase === 'idle' ? 'Mission arrêtée.' : phase === 'wait' ? 'Un humain décide. Cliquez sur « Valider ».' : tasks + ' tâche' + (tasks > 1 ? 's' : '') + ' accomplie' + (tasks > 1 ? 's' : '')
+    };
+  }
+  runProofs() {
+    const root = this.proofRef.current; if (!root) return;
+    const nums = [...root.querySelectorAll('[data-count]')], scr = [...root.querySelectorAll('[data-scramble]')];
+    const G = '01<>/#$%&*+=?ABCDEFXYZ', t0 = performance.now(), D = 1700, ease = (t) => 1 - Math.pow(1 - t, 4);
+    const step = (now) => {
+      const t = Math.min(1, (now - t0) / D), k = ease(t);
+      nums.forEach((el) => { const a = +el.dataset.from, b = +el.dataset.count; el.textContent = String(Math.round(a + (b - a) * k)); });
+      scr.forEach((el) => { const w = el.dataset.scramble, n = Math.floor(w.length * k); el.textContent = w.slice(0, n) + w.slice(n).replace(/\S/g, () => G[Math.floor(Math.random() * G.length)]); });
+      if (t < 1) this.cRaf = requestAnimationFrame(step); else { nums.forEach((el) => (el.textContent = el.dataset.count)); scr.forEach((el) => (el.textContent = el.dataset.scramble)); }
+    };
+    this.cRaf = requestAnimationFrame(step);
+  }
+  running() { return !this.state.paused && !this.state.hover && !this.still(); }
+  arm() { clearTimeout(this.t); this.t = setTimeout(() => { if (this.running()) this.go(this.state.i + 1); else this.arm(); }, this.DUR); }
+  go(n) { const L = this.SLIDES.length; this.setState({ i: (n + L) % L, tick: 0 }, () => { setTimeout(() => this.setState({ tick: 1 }), 40); this.arm(); }); }
+  renderVals() {
+    const { i, paused, tick } = this.state, run = this.running(), still = this.still(), L = this.SLIDES.length;
+    return {
+      ready: true,
+      slides: this.SLIDES.map((s, k) => ({
+        ...s, bgi: 'url("' + s.src + '")', op: k === i ? 1 : 0, hidden: String(k !== i), cur: k === i ? 'true' : 'false',
+        scale: still ? 1 : (k === i && tick ? 1.08 : 1), aria: (k + 1) + ' sur ' + L + ' : ' + s.caption,
+        fill: k < i ? 1 : k === i ? (run && tick ? 1 : (still || paused ? 1 : 0)) : 0,
+        dur: k === i && run && tick ? this.DUR + 'ms' : '0s',
+        go: () => this.go(k)
+      })),
+      counter: String(i + 1).padStart(2, '0') + ' / ' + String(L).padStart(2, '0'),
+      live: run ? 'off' : 'polite',
+      togglePlay: () => this.setState((s) => ({ paused: !s.paused, tick: 0 }), () => setTimeout(() => this.setState({ tick: 1 }), 40)),
+      pausedStr: String(paused || still), playText: paused || still ? 'Lecture' : 'Pause',
+      playLabel: paused || still ? 'Reprendre le défilement des photos' : 'Mettre en pause le défilement des photos',
+      hoverOn: () => this.setState({ hover: true }), hoverOff: () => this.setState({ hover: false }),
+      proofRef: this.proofRef,
+      cases: CASES, posts: POSTS,
+      needs: NEEDS.map((n, k) => { const on = k === this.needIdx; return { ...n, op: on ? 1 : 0, sc: on ? 1.04 : 1.12, fg: on ? '#FFFFFF' : 'rgba(255,255,255,.62)', x: on && !still ? 'clamp(0px,1.4vw,24px)' : '0px', lineOp: on ? 1 : 0, on: () => this.setNeed(k) }; }),
+      needRef: this.needRef,
+      demoRef: this.demoRef,
+      ...this.demoVals()
+    };
+  }
+}
+</script>
+</body>
+</html>

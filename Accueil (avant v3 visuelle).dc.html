@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Digital Solutions · IA &amp; IT conçues et hébergées en Suisse</title>
+<meta name="description" content="Agents IA, RAG, protocole MCP, développement logiciel et intégration. Digital Solutions conçoit et héberge en Suisse des solutions IA &amp; IT souveraines depuis 2016.">
+<link rel="canonical" href="https://www.digital-solutions.io/">
+<meta property="og:title" content="Digital Solutions · La précision suisse, augmentée par l'IA">
+<meta property="og:description" content="Agents IA, logiciels et intégrations conçus et hébergés en Suisse.">
+<meta property="og:locale" content="fr_CH">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&amp;family=Urbanist:wght@300..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%;scroll-padding-top:96px}body{margin:0;background:#FFFFFF;color:#0E1316;-webkit-font-smoothing:antialiased}*,*::before,*::after{box-sizing:border-box}a{color:#1C7E9A;text-underline-offset:.22em;text-decoration-thickness:1px}a:hover{color:#0E1316}em{font-family:'Bodoni Moda',Didot,serif;font-weight:600;font-optical-sizing:none;font-variation-settings:'opsz' 11;letter-spacing:0}h1 em,h2 em,h3 em{color:#1C7E9A}:focus-visible{outline:2px solid #269CBD;outline-offset:3px;box-shadow:0 0 0 5px #FFFFFF}::selection{background:#6DCDEA;color:#FFFFFF}summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Organization", "name": "Digital Solutions SA", "url": "https://www.digital-solutions.io/", "logo": "https://www.digital-solutions.io/assets/logo-digital-solutions.png", "foundingDate": "2016", "email": "contact@digital-solutions.io", "telephone": "+41 32 467 11 09",
+  "address": { "@type": "PostalAddress", "streetAddress": "Rue de la Roche-de-Mars 5", "postalCode": "2900", "addressLocality": "Porrentruy", "addressCountry": "CH" },
+  "award": "EcoVadis Gold 2025", "knowsAbout": ["Intelligence artificielle", "Agents IA", "RAG", "Model Context Protocol", "RPA", "Développement logiciel", "Intégration de systèmes"] }
+</script>
+<script src="ds-motion.js"></script>
+</helmet>
+<div style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:1.0625rem;line-height:1.7;background:#FFFFFF;color:#0E1316;overflow-x:clip">
+<dc-import name="DS Header" current="accueil" hint-size="100%,0px"></dc-import>
+<main id="contenu" tabindex="-1" style="outline:none">
+
+<section data-hero="" aria-roledescription="carrousel" aria-labelledby="h-hero" data-screen-label="01 Hero" onMouseEnter="{{ hoverOn }}" onMouseLeave="{{ hoverOff }}" onFocus="{{ hoverOn }}" onBlur="{{ hoverOff }}" style="position:relative;height:100svh;min-height:620px;background:#0E1316;color:#FFFFFF;overflow:hidden;display:flex">
+  <div data-hero-media="" style="position:absolute;inset:0;overflow:hidden">
+    <sc-if value="{{ ready }}" hint-placeholder-val="{{ false }}"><sc-for list="{{ slides }}" as="s" hint-placeholder-count="0">
+      <div role="group" aria-roledescription="diapositive" aria-label="{{ s.aria }}" aria-hidden="{{ s.hidden }}" style="position:absolute;inset:0;opacity:{{ s.op }};transition:opacity 1.4s cubic-bezier(.16,1,.3,1)">
+        <div role="img" aria-label="{{ s.alt }}" style="width:100%;height:100%;background-image:{{ s.bgi }};background-size:cover;background-position:center;transform:scale({{ s.scale }});transition:transform 8s linear,opacity .6s"></div>
+      </div>
+    </sc-for></sc-if>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,18,21,.78) 0%,rgba(11,18,21,.5) 45%,rgba(11,18,21,.12) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(180deg,rgba(11,18,21,0) 0%,rgba(11,18,21,.55) 100%)"></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:180px;background:linear-gradient(180deg,rgba(11,18,21,.5) 0%,rgba(11,18,21,0) 100%)"></div>
+  </div>
+  <div data-hero-content="" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(36px,7vh,80px);width:100%;max-width:1440px;margin:0 auto;padding:clamp(120px,18vh,180px) clamp(20px,3vw,40px) clamp(24px,4vh,40px)">
+    <div style="display:flex;flex-direction:column;gap:26px;max-width:60rem">
+      <p data-reveal="fade" style="margin:0;display:flex;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#6DCDEA"><span aria-hidden="true" data-loop="pulse" style="width:8px;height:8px;border-radius:50%;background:#6DCDEA"></span>IA &amp; IT · conçues et hébergées en Suisse</p>
+      <h1 id="h-hero" data-lines="" style="margin:0;font-weight:700;font-size:clamp(2.6rem,6.4vw,6rem);line-height:1.04;letter-spacing:-.035em;text-wrap:balance">
+        <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.28em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block">La précision suisse,</span></span>
+        <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.3em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block"><em style="color:#6DCDEA">augmentée</em> par l'IA.</span></span>
+      </h1>
+      <p data-reveal="fade" data-delay="400" style="margin:0;max-width:36em;font-size:clamp(1.0625rem,1.3vw,1.25rem);line-height:1.6;color:#E6ECEE">Agents IA, logiciels et intégrations pour les organisations qui veulent avancer vite sans rien céder sur la sécurité ni sur la souveraineté de leurs données.</p>
+      <div data-reveal="fade" data-delay="550" style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;background:#269CBD;color:#FFFFFF;text-decoration:none;font-weight:700;transition:background .3s" style-hover="background:#1C7E9A;color:#FFFFFF">Démarrer un projet <span aria-hidden="true">→</span></a>
+        <a href="Intelligence%20Artificielle.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;border:1.5px solid rgba(255,255,255,.75);color:#FFFFFF;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#FFFFFF;color:#0B1215">Nos solutions IA</a>
+      </div>
+    </div>
+    <div data-reveal="fade" data-delay="700" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25)">
+      <p aria-live="{{ live }}" style="margin:0;display:flex;align-items:baseline;gap:14px;font-size:.9375rem;color:#E6ECEE"><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#6DCDEA">{{ counter }}</span>{{ caption }}</p>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div role="group" aria-label="Choisir une photo" style="display:flex;gap:6px;margin-right:8px">
+          <sc-for list="{{ slides }}" as="s" hint-placeholder-count="4">
+            <button type="button" onClick="{{ s.go }}" aria-label="{{ s.aria }}" aria-current="{{ s.cur }}" style="width:clamp(28px,4vw,56px);height:44px;padding:0;border:0;background:none;cursor:pointer;display:flex;align-items:center">
+              <span style="position:relative;display:block;width:100%;height:2px;background:rgba(255,255,255,.35);overflow:hidden"><span style="position:absolute;inset:0;background:#FFFFFF;transform-origin:0 50%;transform:scaleX({{ s.fill }});transition:transform {{ s.dur }} linear"></span></span>
+            </button>
+          </sc-for>
+        </div>
+        <button type="button" onClick="{{ prev }}" aria-label="Photo précédente" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;color:#FFFFFF;font:inherit;font-size:1.125rem;cursor:pointer" style-hover="background:#FFFFFF;color:#0B1215">←</button>
+        <button type="button" onClick="{{ next }}" aria-label="Photo suivante" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;color:#FFFFFF;font:inherit;font-size:1.125rem;cursor:pointer" style-hover="background:#FFFFFF;color:#0B1215">→</button>
+        <button type="button" onClick="{{ togglePlay }}" aria-label="{{ playLabel }}" aria-pressed="{{ pausedStr }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.5);background:transparent;color:#FFFFFF;font:inherit;font-size:.875rem;font-weight:700;cursor:pointer" style-hover="background:#FFFFFF;color:#0B1215">{{ playText }}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Digital Solutions en bref" data-screen-label="01b Preuves" style="border-bottom:1px solid #E3E8EA;padding:clamp(28px,3vw,40px) clamp(20px,3vw,40px)">
+  <ul ref="{{ proofRef }}" style="list-style:none;margin:0 auto;padding:0;max-width:1360px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:20px 32px;font-variant-numeric:tabular-nums">
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:1.5rem;font-weight:700;letter-spacing:-.02em">Depuis <span data-count="2016" data-from="1980">2016</span></span><span style="font-size:.9375rem;color:#4A5A61">Fondée à Porrentruy, dans le Jura</span></li>
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:1.5rem;font-weight:700;letter-spacing:-.02em"><span data-count="5" data-from="0">5</span> sites</span><span style="font-size:.9375rem;color:#4A5A61">De Porrentruy à Genève</span></li>
+    <li style="display:flex;flex-direction:column;gap:2px"><span style="font-size:1.5rem;font-weight:700;letter-spacing:-.02em">Top <span data-count="100" data-from="999">100</span></span><span style="font-size:.9375rem;color:#4A5A61">Des entreprises IT suisses</span></li>
+    <li style="display:flex;align-items:center;gap:14px"><img src="assets/ecovadis-gold-2025.png" alt="" width="56" height="56" style="width:56px;height:56px;flex:none"><span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:1.5rem;font-weight:700;letter-spacing:-.02em"><span data-scramble="EcoVadis Or">EcoVadis Or</span></span><span style="font-size:.9375rem;color:#4A5A61">Top 5 %, avril 2025</span></span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="h-exp" data-screen-label="02 Expertises" style="padding:clamp(88px,11vw,160px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px;margin-bottom:clamp(40px,5vw,64px)">
+      <div style="flex:1 1 560px;display:flex;flex-direction:column;gap:16px">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">01 · Expertises</p>
+        <h2 id="h-exp" style="margin:0;font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.1;letter-spacing:-.03em;text-wrap:balance">Quatre savoir-faire, <em>une seule équipe</em>.</h2>
+        <p style="margin:0;max-width:40em;color:#4A5A61;font-size:1.125rem">Du cadrage à l'exploitation, les mêmes ingénieurs portent votre projet. Pas de sous-traitance cachée, pas de rupture entre conseil et livraison.</p>
+      </div>
+      <a href="Expertises.dc.html" style="font-weight:700;padding:12px 0">Toutes nos expertises →</a>
+    </div>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px">
+      <li data-reveal="fade" style="display:flex"><a href="Intelligence%20Artificielle.dc.html" style="flex:1;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.4vw,36px);border:1px solid #DDE4E7;border-radius:8px;background:#FFFFFF;color:#0E1316;text-decoration:none;transform-style:preserve-3d;transition:border-color .3s,box-shadow .4s,transform .25s ease-out" style-hover="border-color:#269CBD;box-shadow:0 30px 60px -36px rgba(28,126,154,.55)" onMouseMove="{{ cardMove }}" onMouseLeave="{{ cardLeave }}">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">01</span>
+        <h3 style="margin:0;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em">Intelligence artificielle</h3>
+        <p style="margin:0;color:#4A5A61">Agents qui exécutent vos processus, assistants documentaires sourcés, vision et automatisation intelligente.</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Agents IA</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">RAG</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">MCP</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">RPA &amp; IPA</li></ul>
+        <span style="margin-top:auto;padding-top:8px;font-weight:700;color:#1C7E9A">En savoir plus →</span>
+      </a></li>
+      <li data-reveal="fade" data-delay="100" style="display:flex"><a href="Expertises.dc.html#developpement" style="flex:1;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.4vw,36px);border:1px solid #DDE4E7;border-radius:8px;background:#FFFFFF;color:#0E1316;text-decoration:none;transform-style:preserve-3d;transition:border-color .3s,box-shadow .4s,transform .25s ease-out" style-hover="border-color:#269CBD;box-shadow:0 30px 60px -36px rgba(28,126,154,.55)" onMouseMove="{{ cardMove }}" onMouseLeave="{{ cardLeave }}">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">02</span>
+        <h3 style="margin:0;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em">Développement logiciel</h3>
+        <p style="margin:0;color:#4A5A61">Applications métier sur mesure, conçues pour durer&nbsp;: architecture solide, sécurité intégrée, maintenance assurée.</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Architecture</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">DevSecOps</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Web &amp; mobile</li></ul>
+        <span style="margin-top:auto;padding-top:8px;font-weight:700;color:#1C7E9A">En savoir plus →</span>
+      </a></li>
+      <li data-reveal="fade" data-delay="200" style="display:flex"><a href="Expertises.dc.html#integration" style="flex:1;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.4vw,36px);border:1px solid #DDE4E7;border-radius:8px;background:#FFFFFF;color:#0E1316;text-decoration:none;transform-style:preserve-3d;transition:border-color .3s,box-shadow .4s,transform .25s ease-out" style-hover="border-color:#269CBD;box-shadow:0 30px 60px -36px rgba(28,126,154,.55)" onMouseMove="{{ cardMove }}" onMouseLeave="{{ cardLeave }}">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">03</span>
+        <h3 style="margin:0;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em">Intégration &amp; innovation</h3>
+        <p style="margin:0;color:#4A5A61">Vos outils enfin connectés&nbsp;: ERP, CRM et GED qui échangent leurs données sans ressaisie.</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">ERP · CRM · GED</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">API</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Conteneurs</li></ul>
+        <span style="margin-top:auto;padding-top:8px;font-weight:700;color:#1C7E9A">En savoir plus →</span>
+      </a></li>
+      <li data-reveal="fade" data-delay="300" style="display:flex"><a href="Expertises.dc.html#consulting" style="flex:1;display:flex;flex-direction:column;gap:18px;padding:clamp(24px,2.4vw,36px);border:1px solid #DDE4E7;border-radius:8px;background:#FFFFFF;color:#0E1316;text-decoration:none;transform-style:preserve-3d;transition:border-color .3s,box-shadow .4s,transform .25s ease-out" style-hover="border-color:#269CBD;box-shadow:0 30px 60px -36px rgba(28,126,154,.55)" onMouseMove="{{ cardMove }}" onMouseLeave="{{ cardLeave }}">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">04</span>
+        <h3 style="margin:0;font-size:1.5rem;font-weight:700;line-height:1.2;letter-spacing:-.02em">Consulting &amp; outsourcing</h3>
+        <p style="margin:0;color:#4A5A61">Des experts intégrés à vos équipes, une équipe dédiée ou un mandat au forfait, selon votre besoin.</p>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Délégation</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Équipes dédiées</li><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:4px 10px;border-radius:999px;background:#EEF4F6">Forfait</li></ul>
+        <span style="margin-top:auto;padding-top:8px;font-weight:700;color:#1C7E9A">En savoir plus →</span>
+      </a></li>
+    </ul>
+  </div>
+</section>
+
+<section aria-labelledby="h-trois" data-screen-label="03 Engagements" data-bg="waveBleu" style="position:relative;overflow:hidden;background:#FFFFFF;color:#0E1316;padding:clamp(96px,12vw,170px) clamp(20px,3vw,40px)">
+  <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden">
+    
+    <div style="position:absolute;inset:0;background:transparent"></div>
+  </div>
+  <div style="position:relative;max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(48px,6vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:52rem">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">02 · Nos engagements</p>
+      <h2 id="h-trois" data-lines="" style="margin:0;font-weight:700;font-size:clamp(2rem,4.4vw,4rem);line-height:1.08;letter-spacing:-.03em">
+        <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.28em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block">Une IA <em>digne de confiance</em>,</span></span>
+        <span style="display:block;overflow:hidden;padding:0.16em 0.14em 0.28em 0.14em;margin:-0.16em -0.14em -0.22em"><span data-line="" style="display:block">par conception.</span></span>
+      </h2>
+    </div>
+    <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(24px,3vw,48px)">
+      <li data-reveal="fade" style="display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:2px solid #269CBD"><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">01</span><h3 style="margin:0;font-size:1.75rem;font-weight:700;letter-spacing:-.02em">Souveraine</h3><p style="margin:0;color:#4A5A61">Vos données restent en Suisse, sur site ou dans un cloud suisse. Aucun transfert hors de votre contrôle.</p></li>
+      <li data-reveal="fade" data-delay="120" style="display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:2px solid #269CBD"><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">02</span><h3 style="margin:0;font-size:1.75rem;font-weight:700;letter-spacing:-.02em">Sourcée</h3><p style="margin:0;color:#4A5A61">Chaque réponse cite le document dont elle provient. Vous vérifiez en un clic, sans boîte noire.</p></li>
+      <li data-reveal="fade" data-delay="240" style="display:flex;flex-direction:column;gap:14px;padding-top:24px;border-top:2px solid #269CBD"><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">03</span><h3 style="margin:0;font-size:1.75rem;font-weight:700;letter-spacing:-.02em">Supervisée</h3><p style="margin:0;color:#4A5A61">Une personne valide toujours les décisions qui comptent. L'IA prépare, vos équipes tranchent.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-equipes" data-screen-label="03b Équipes" style="padding:clamp(88px,11vw,160px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(40px,5vw,64px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 64px">
+      <div style="flex:1 1 520px;display:flex;flex-direction:column;gap:16px;max-width:52rem">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">03 · Nos équipes</p>
+        <h2 id="h-equipes" style="margin:0;font-weight:700;font-size:clamp(2rem,4.4vw,4rem);line-height:1.08;letter-spacing:-.03em">Derrière chaque agent, <em>une personne</em> que vous connaissez.</h2>
+      </div>
+      <p style="flex:0 1 26em;margin:0;color:#4A5A61;font-size:1.125rem">Un même interlocuteur du premier atelier à la mise en production. Il connaît vos métiers, vos contraintes et le prénom de vos équipes.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,2vw,28px);align-items:start">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div data-reveal="img" style="aspect-ratio:4/5;overflow:hidden;background:#DDE4E7;border-radius:8px"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Une équipe travaille ensemble autour d'ordinateurs portables, dans la bonne humeur" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Atelier de cadrage, Porrentruy</figcaption></figure>
+      <figure style="margin:clamp(0px,6vw,96px) 0 0;display:flex;flex-direction:column;gap:12px"><div data-reveal="img" data-delay="120" style="aspect-ratio:4/5;overflow:hidden;background:#DDE4E7;border-radius:8px"><img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Une ingénieure travaille sur son poste, concentrée et souriante" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Revue d'un agent avant mise en production</figcaption></figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div data-reveal="img" data-delay="240" style="aspect-ratio:4/5;overflow:hidden;background:#DDE4E7;border-radius:8px"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Des collègues échangent autour d'une table lors d'une réunion client" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div><figcaption style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Point d'avancement avec un client</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-ia" data-screen-label="04 IA de bout en bout" style="padding:clamp(88px,11vw,160px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,120px);align-items:flex-start">
+    <div style="flex:1 1 380px;position:sticky;top:clamp(110px,16vh,150px);display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">04 · Intelligence artificielle</p>
+      <h2 id="h-ia" style="margin:0;font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.1;letter-spacing:-.03em">L'IA, <em>de bout en bout</em>.</h2>
+      <p style="margin:0;max-width:30em;color:#4A5A61;font-size:1.125rem">De l'atelier de cadrage à l'exploitation, nous maîtrisons chaque maillon&nbsp;: données, modèles, agents, interfaces et gouvernance.</p>
+      <a href="Intelligence%20Artificielle.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;background:#0E1316;color:#FFFFFF;border-radius:999px;text-decoration:none;font-weight:700;transition:background .3s,color .3s" style-hover="background:#269CBD;color:#FFFFFF">Notre expertise IA <span aria-hidden="true">→</span></a>
+    </div>
+    <ol style="flex:1 1 520px;list-style:none;margin:0;padding:0;border-top:1px solid #DDE4E7">
+      <li data-reveal="fade" style="padding:clamp(26px,2.8vw,40px) 0;border-bottom:1px solid #DDE4E7;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:4px 16px"><span style="grid-row:span 3;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A;padding-top:.35em">01</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Agents &amp; orchestration</span><h3 style="margin:0;font-size:clamp(1.375rem,2vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.02em">Des agents qui agissent, pas seulement des chatbots.</h3><p style="margin:4px 0 0;color:#4A5A61;max-width:36em">Ils enchaînent les étapes d'un processus, utilisent vos outils via MCP et passent la main au bon moment.</p></li>
+      <li data-reveal="fade" style="padding:clamp(26px,2.8vw,40px) 0;border-bottom:1px solid #DDE4E7;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:4px 16px"><span style="grid-row:span 3;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A;padding-top:.35em">02</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">RAG &amp; connaissance</span><h3 style="margin:0;font-size:clamp(1.375rem,2vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.02em">Vos documents, interrogeables et cités.</h3><p style="margin:4px 0 0;color:#4A5A61;max-width:36em">Recherche hybride, reranking, GraphRAG et filtrage selon les droits de chaque utilisateur.</p></li>
+      <li data-reveal="fade" style="padding:clamp(26px,2.8vw,40px) 0;border-bottom:1px solid #DDE4E7;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:4px 16px"><span style="grid-row:span 3;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A;padding-top:.35em">03</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Modèles souverains</span><h3 style="margin:0;font-size:clamp(1.375rem,2vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.02em">Le bon modèle, hébergé chez vous.</h3><p style="margin:4px 0 0;color:#4A5A61;max-width:36em">Mistral, Llama, Qwen, Apertus&nbsp;: open-weight, affinés et quantifiés, sur site ou dans le cloud suisse.</p></li>
+      <li data-reveal="fade" style="padding:clamp(26px,2.8vw,40px) 0;border-bottom:1px solid #DDE4E7;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:4px 16px"><span style="grid-row:span 3;font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A;padding-top:.35em">04</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Qualité &amp; gouvernance</span><h3 style="margin:0;font-size:clamp(1.375rem,2vw,1.75rem);font-weight:700;line-height:1.25;letter-spacing:-.02em">On ne déploie que ce que l'on sait mesurer.</h3><p style="margin:4px 0 0;color:#4A5A61;max-width:36em">Évaluations, red teaming, garde-fous et observabilité. Conformité nLPD et AI Act intégrée dès la conception.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-stack" data-screen-label="05 Technologies" data-bg="waveCiel" style="background:#FFFFFF;padding:clamp(80px,10vw,140px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(36px,4vw,56px)">
+    <div style="display:flex;flex-direction:column;gap:16px;max-width:48rem">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">05 · Technologies</p>
+      <h2 id="h-stack" style="margin:0;font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.1;letter-spacing:-.03em">Une stack <em>maîtrisée</em>, de la donnée à l'infrastructure.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px">
+      <div data-reveal="fade" style="background:#FFFFFF;border:1px solid #DDE4E7;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:16px"><h3 style="margin:0;font-size:1.125rem;font-weight:700">Modèles &amp; agents</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.8125rem"><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Mistral</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Llama</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Qwen</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Apertus</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Agents IA</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Protocole MCP</li></ul></div>
+      <div data-reveal="fade" data-delay="100" style="background:#FFFFFF;border:1px solid #DDE4E7;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:16px"><h3 style="margin:0;font-size:1.125rem;font-weight:700">Données &amp; recherche</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.8125rem"><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">RAG</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">GraphRAG</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Embeddings</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Recherche hybride</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Reranking</li></ul></div>
+      <div data-reveal="fade" data-delay="200" style="background:#FFFFFF;border:1px solid #DDE4E7;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:16px"><h3 style="margin:0;font-size:1.125rem;font-weight:700">Développement</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.8125rem"><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Architecture</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">DevSecOps</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">API</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Vision</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">RPA &amp; IPA</li></ul></div>
+      <div data-reveal="fade" data-delay="300" style="background:#FFFFFF;border:1px solid #DDE4E7;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:16px"><h3 style="margin:0;font-size:1.125rem;font-weight:700">Exploitation</h3><ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.8125rem"><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">LLMOps</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Conteneurisation</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Cloud suisse</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Sur site</li><li style="padding:5px 11px;border-radius:999px;border:1px solid #C5D0D4">Observabilité</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section data-slider="" data-bg="waveSable" aria-labelledby="h-cas" aria-roledescription="carrousel" data-screen-label="06 Cas d'usage" style="position:relative;background:#FFFFFF;color:#0E1316;padding:clamp(96px,12vw,160px) 0">
+    <ul data-slider-track="" style="list-style:none;margin:0;display:flex;align-items:flex-start;gap:clamp(20px,2.4vw,36px);padding:0 clamp(20px,3vw,40px);overflow-x:hidden">
+      <li style="flex:none;width:min(84vw,520px);display:flex;flex-direction:column;gap:22px;padding-right:clamp(0px,3vw,60px);align-self:center">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">06 · Cas d'usage</p>
+        <h2 id="h-cas" style="margin:0;font-weight:700;font-size:clamp(2.2rem,4.4vw,4rem);line-height:1.08;letter-spacing:-.03em">Ce que l'IA <em>change</em>, secteur par secteur.</h2>
+        <p style="margin:0;max-width:28em;color:#4A5A61;font-size:1.125rem">Six secteurs, une même exigence&nbsp;: des équipes soulagées, des résultats mesurables et des données protégées.</p>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/Td-XqY8xexs/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Administrations publiques</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">Un guichet citoyen qui répond juste, en trois langues.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/ULh4MH-VxwI/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Banque &amp; assurance</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">Des dossiers KYC instruits avant même d'être ouverts.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/ra8E5aSathU/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Horlogerie &amp; industrie</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">Un contrôle qualité à la précision horlogère.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/drJCfa6h6Is/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Pharma &amp; sciences de la vie</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">Une veille réglementaire qui ne laisse rien passer.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/YyJNda7nsPo/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Fiduciaires</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">La saisie comptable qui se fait presque toute seule.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(270px,26vw,400px)">
+        <a href="Usages.dc.html" style="display:flex;flex-direction:column;gap:14px;color:#0E1316;text-decoration:none">
+          <div data-reveal="img" style="aspect-ratio:4/3;overflow:hidden;background:#DDE4E7;border-radius:6px"><img src="https://unsplash.com/photos/V7GrFTVwdko/download?w=1200" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#1C7E9A">Retail &amp; e-commerce</span>
+          <span style="font-size:1.375rem;font-weight:700;line-height:1.3;letter-spacing:-.015em">Un conseiller produit disponible à toute heure.</span>
+        </a>
+      </li>
+      <li style="flex:none;width:clamp(220px,20vw,300px);align-self:center;display:grid;place-items:center">
+        <a href="Usages.dc.html" style="display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 28px;border-radius:999px;background:#269CBD;color:#FFFFFF;text-decoration:none;font-weight:700;transition:background .3s" style-hover="background:#269CBD">Tous les cas d'usage <span aria-hidden="true">→</span></a>
+      </li>
+    </ul>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:clamp(24px,3vw,40px) clamp(20px,3vw,40px) 0">
+    <p data-slider-count="" aria-live="polite" style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#4A5A61;font-variant-numeric:tabular-nums">01</p>
+    <div style="display:flex;gap:12px">
+      <button type="button" data-slider-prev="" aria-label="Cas d’usage précédent" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1.5px solid #0E1316;background:#FFFFFF;color:#0E1316;font:inherit;font-size:1.25rem;cursor:pointer;transition:background .3s,color .3s,opacity .3s" style-hover="background:#0E1316;color:#FFFFFF">←</button>
+      <button type="button" data-slider-next="" aria-label="Cas d’usage suivant" style="display:grid;place-items:center;width:56px;height:56px;border-radius:50%;border:1.5px solid #0E1316;background:#FFFFFF;color:#0E1316;font:inherit;font-size:1.25rem;cursor:pointer;transition:background .3s,color .3s,opacity .3s" style-hover="background:#0E1316;color:#FFFFFF">→</button>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-maison" data-screen-label="07 La Maison" data-bg="waveArdoise" style="padding:clamp(88px,11vw,160px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,110px);align-items:center">
+    <div data-reveal="img" style="flex:1 1 380px;aspect-ratio:5/4;overflow:hidden;background:#DDE4E7;border-radius:8px">
+      <img src="https://www.digital-solutions.io/wp-content/uploads/2021/07/digital-solutions-porrentruy.jpg" alt="Les bureaux de Digital Solutions à Porrentruy" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    <div style="flex:1 1 440px;display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">07 · La Maison</p>
+      <h2 id="h-maison" style="margin:0;font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.1;letter-spacing:-.03em">Née dans le Jura, <em>au pays de la précision</em>.</h2>
+      <p style="margin:0;max-width:32em;font-size:1.125rem">En 2016, Xavier Van Nuvel fonde Digital Solutions à Porrentruy. De cette terre horlogère, nous avons gardé le goût du travail bien fait et du temps long.</p>
+      <p style="margin:0;max-width:32em;color:#4A5A61">Aujourd'hui, nos ingénieures et ingénieurs accompagnent banques, cantons, industriels et horlogers depuis cinq sites, avec la même exigence.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;padding:18px 0 0;border-top:1px solid #DDE4E7">
+        <img src="assets/ecovadis-gold-2025.png" alt="EcoVadis, médaille d'or, top 5 %, avril 2025" width="88" height="88" style="width:88px;height:88px;flex:none">
+        <p style="margin:0;flex:1 1 220px;color:#4A5A61;font-size:.9375rem"><strong style="color:#0E1316">Médaille d'or EcoVadis 2025.</strong> Parmi les 5 % d'entreprises les mieux notées pour leurs engagements environnementaux, sociaux et éthiques.</p>
+      </div>
+      <a href="Maison.dc.html" style="align-self:flex-start;font-weight:700;padding:10px 0">Découvrir la Maison →</a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-journal" data-screen-label="08 Journal" data-bg="waveProfond" style="background:#FFFFFF;padding:clamp(88px,11vw,150px) clamp(20px,3vw,40px)">
+  <div style="max-width:1360px;margin:0 auto">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,4vw,48px)">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.875rem;color:#1C7E9A">08 · Journal</p>
+        <h2 id="h-journal" style="margin:0;font-weight:700;font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.1;letter-spacing:-.03em">Nos <em>décryptages</em></h2>
+      </div>
+      <a href="https://www.digital-solutions.io/actualites-it-suisse/" style="font-weight:700;padding:12px 0">Tout le journal →</a>
+    </div>
+    <ul data-hover-list="" style="list-style:none;margin:0;padding:0;border-top:1px solid #C5D0D4">
+      <li><a href="https://www.digital-solutions.io/nos-actualites/architecture-llm/" data-hover-src="https://www.digital-solutions.io/wp-content/uploads/2023/10/fille-en-bleu-1024x684.jpeg" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding:clamp(20px,2.2vw,30px) 0;border-bottom:1px solid #C5D0D4;color:#0E1316;text-decoration:none;transition:color .25s" style-hover="color:#1C7E9A">
+        <span style="font-size:clamp(1.25rem,2vw,1.75rem);font-weight:700;line-height:1.3;letter-spacing:-.015em;max-width:30em">Architecture et diversité des grands modèles de langage</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Analyse · LLM</span></a></li>
+      <li><a href="https://www.digital-solutions.io/nos-actualites/ia-et-embeddings/" data-hover-src="https://unsplash.com/photos/9AjwOAIdsII/download?w=900" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding:clamp(20px,2.2vw,30px) 0;border-bottom:1px solid #C5D0D4;color:#0E1316;text-decoration:none;transition:color .25s" style-hover="color:#1C7E9A">
+        <span style="font-size:clamp(1.25rem,2vw,1.75rem);font-weight:700;line-height:1.3;letter-spacing:-.015em;max-width:30em">Comment les IA comprennent le langage&nbsp;: les embeddings</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Pédagogie · RAG</span></a></li>
+      <li><a href="https://www.digital-solutions.io/nos-actualites/communique-le-chiffrement-completement-homomorphe/" data-hover-src="https://unsplash.com/photos/2ltzMVdpeO0/download?w=900" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 32px;padding:clamp(20px,2.2vw,30px) 0;border-bottom:1px solid #C5D0D4;color:#0E1316;text-decoration:none;transition:color .25s" style-hover="color:#1C7E9A">
+        <span style="font-size:clamp(1.25rem,2vw,1.75rem);font-weight:700;line-height:1.3;letter-spacing:-.015em;max-width:30em">Le chiffrement complètement homomorphe</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">Recherche · Sécurité</span></a></li>
+    </ul>
+  </div>
+</section>
+</main>
+<dc-import name="DS Footer" cta-bg="waveBlanc" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0, paused: false, hover: false, tick: 0, w: 0 };
+  SLIDES = [
+    { src: 'https://images.unsplash.com/photo-1681949103006-70066fb25dfe?w=2400&q=80&auto=format&fit=crop', alt: 'Une équipe échange devant un tableau dans un bureau lumineux avec des plantes', caption: 'Des ingénieurs qui portent votre projet' },
+    { src: 'https://images.unsplash.com/photo-1702047149248-a6049168d2a8?w=2400&q=80&auto=format&fit=crop', alt: 'Collègues au travail dans un espace boisé et végétalisé', caption: 'Agents IA, RAG et modèles souverains' },
+    { src: 'https://images.unsplash.com/photo-1590649681928-4b179f773bd5?w=2400&q=80&auto=format&fit=crop', alt: 'Deux collègues discutent à un bureau debout, plante en arrière-plan', caption: 'Infrastructures hébergées en Suisse' },
+    { src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=2400&q=80&auto=format&fit=crop', alt: 'Une équipe travaille autour d\'une grande table dans un open space urbain', caption: 'La précision suisse, depuis 2016' }
+  ];
+  DUR = 6500;
+  still() { return window.DSMotion ? window.DSMotion.isPaused() : window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  componentDidMount() {
+    this.onPrefs = () => this.forceUpdate();
+    window.addEventListener('ds-prefs', this.onPrefs);
+    this.SLIDES.forEach((s) => { const im = new Image(); im.src = s.src; });
+    this.arm();
+    setTimeout(() => this.setState({ tick: 1 }), 60);
+    if (!this.still() && 'IntersectionObserver' in window) setTimeout(() => {
+      const root = this.proofRef.current; if (!root) return;
+      root.querySelectorAll('[data-count]').forEach((el) => (el.textContent = el.dataset.from));
+      this.pio = new IntersectionObserver((es) => { if (es.some((x) => x.isIntersecting)) { this.pio.disconnect(); this.runProofs(); } }, { threshold: .4 });
+      this.pio.observe(root);
+    }, 200);
+  }
+  componentWillUnmount() { clearTimeout(this.t); window.removeEventListener('ds-prefs', this.onPrefs); this.pio && this.pio.disconnect(); cancelAnimationFrame(this.cRaf); }
+  proofRef = React.createRef();
+  fine() { return window.matchMedia('(hover: hover) and (pointer: fine)').matches; }
+  cardMove = (e) => {
+    if (this.still() || !this.fine()) return;
+    const el = e.currentTarget, r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+    el.style.transform = 'perspective(900px) rotateX(' + ((.5 - py) * 9).toFixed(2) + 'deg) rotateY(' + ((px - .5) * 11).toFixed(2) + 'deg) translateY(-6px)';
+    el.style.backgroundImage = 'radial-gradient(circle 260px at ' + (px * 100).toFixed(1) + '% ' + (py * 100).toFixed(1) + '%,rgba(109,205,234,.22),rgba(255,255,255,0) 70%)';
+  };
+  cardLeave = (e) => { const el = e.currentTarget; el.style.transform = ''; el.style.backgroundImage = ''; };
+  runProofs() {
+    const root = this.proofRef.current; if (!root) return;
+    const nums = [...root.querySelectorAll('[data-count]')], scr = [...root.querySelectorAll('[data-scramble]')];
+    const G = '01<>/#$%&*+=?ABCDEFXYZ', t0 = performance.now(), D = 1700, ease = (t) => 1 - Math.pow(1 - t, 4);
+    const step = (now) => {
+      const t = Math.min(1, (now - t0) / D), k = ease(t);
+      nums.forEach((el) => { const a = +el.dataset.from, b = +el.dataset.count; el.textContent = String(Math.round(a + (b - a) * k)); });
+      scr.forEach((el) => { const w = el.dataset.scramble, n = Math.floor(w.length * k); el.textContent = w.slice(0, n) + w.slice(n).replace(/\S/g, () => G[Math.floor(Math.random() * G.length)]); });
+      if (t < 1) this.cRaf = requestAnimationFrame(step); else { nums.forEach((el) => (el.textContent = el.dataset.count)); scr.forEach((el) => (el.textContent = el.dataset.scramble)); }
+    };
+    this.cRaf = requestAnimationFrame(step);
+  }
+  running() { return !this.state.paused && !this.state.hover && !this.still(); }
+  arm() { clearTimeout(this.t); this.t = setTimeout(() => { if (this.running()) this.go(this.state.i + 1, true); else this.arm(); }, this.DUR); }
+  go(n, auto) { const L = this.SLIDES.length; this.setState({ i: (n + L) % L, tick: 0, auto: !!auto }, () => { setTimeout(() => this.setState({ tick: 1 }), 40); this.arm(); }); }
+  renderVals() {
+    const { i, paused, tick } = this.state, run = this.running(), still = this.still(), L = this.SLIDES.length;
+    return {
+      ready: true,
+      slides: this.SLIDES.map((s, k) => ({
+        ...s, bgi: 'url("' + s.src + '")', op: k === i ? 1 : 0, hidden: String(k !== i), cur: k === i ? 'true' : 'false',
+        scale: still ? 1 : (k === i && tick ? 1.08 : 1), aria: (k + 1) + ' sur ' + L + ' : ' + s.caption,
+        fill: k < i ? 1 : k === i ? (run && tick ? 1 : (still || paused ? 1 : 0)) : 0,
+        dur: k === i && run && tick ? this.DUR + 'ms' : '0s',
+        go: () => this.go(k)
+      })),
+      counter: String(i + 1).padStart(2, '0') + ' / ' + String(L).padStart(2, '0'),
+      caption: this.SLIDES[i].caption,
+      live: run ? 'off' : 'polite',
+      prev: () => this.go(i - 1), next: () => this.go(i + 1),
+      togglePlay: () => this.setState((s) => ({ paused: !s.paused, tick: 0 }), () => setTimeout(() => this.setState({ tick: 1 }), 40)),
+      pausedStr: String(paused || still), playText: paused || still ? 'Lecture' : 'Pause',
+      playLabel: paused || still ? 'Reprendre le défilement des photos' : 'Mettre en pause le défilement des photos',
+      hoverOn: () => this.setState({ hover: true }), hoverOff: () => this.setState({ hover: false }),
+      cardMove: this.cardMove, cardLeave: this.cardLeave, proofRef: this.proofRef
+    };
+  }
+}
+</script>
+</body>
+</html>

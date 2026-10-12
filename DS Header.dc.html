@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div>
+<a href="#contenu" style="position:fixed;left:-9999px;top:12px;z-index:700;background:#0E1316;color:#FFFFFF;padding:14px 20px;font-weight:700;text-decoration:none" style-focus="left:12px">Aller au contenu</a>
+
+<header data-solid="{{ solidStr }}" style="position:fixed;top:0;left:0;right:0;z-index:80;background:{{ hBg }};backdrop-filter:{{ hBlur }};-webkit-backdrop-filter:{{ hBlur }};border-bottom:1px solid {{ hBd }};color:{{ fg }};transition:background .45s cubic-bezier(.16,1,.3,1),border-color .45s,color .45s;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <div style="display:flex;align-items:center;gap:clamp(16px,2.4vw,40px);height:76px;padding:0 clamp(20px,3vw,40px)">
+    <a href="Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="flex:none;display:flex;align-items:center;min-height:44px">
+      <img src="{{ logoSrc }}" alt="Digital Solutions" width="130" height="40" style="height:38px;width:auto;display:block">
+    </a>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:12px;font-size:.9375rem;font-weight:600">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="Contact.dc.html" style="display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:{{ ctaBg }};color:{{ ctaFg }};text-decoration:none;white-space:nowrap;transition:background .3s,color .3s" style-hover="background:#269CBD;color:#FFFFFF">Parlons projet <span aria-hidden="true">→</span></a>
+      </sc-if>
+      <button type="button" id="ds-menu-btn" onClick="{{ openMenu }}" aria-expanded="{{ openStr }}" aria-controls="ds-menu" style="min-height:44px;display:flex;align-items:center;gap:12px;padding:0 18px;border-radius:999px;border:1px solid {{ mBd }};background:{{ mBg }};color:{{ fg }};font:inherit;cursor:pointer;transition:background .45s,border-color .45s,color .45s" style-hover="border-color:{{ fg }}">
+        Menu
+        <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:22px"><span style="height:2px;background:{{ fg }};transition:background .45s"></span><span style="height:2px;background:#269CBD;width:60%;margin-left:auto"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div id="ds-menu" role="dialog" aria-modal="true" aria-label="Menu principal" onKeyDown="{{ trap }}" style="position:fixed;inset:0;z-index:90;background:#FFFFFF;color:#0E1316;overflow:auto;display:flex;flex-direction:column;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <div style="display:flex;align-items:center;justify-content:space-between;height:76px;padding:0 clamp(20px,3vw,40px);border-bottom:1px solid #E3E8EA;font-size:.9375rem;font-weight:600">
+    <a href="Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="display:flex;align-items:center;min-height:44px"><img src="assets/logo-digital-solutions.png" alt="Digital Solutions" width="130" height="40" style="height:38px;width:auto;display:block"></a>
+    <button type="button" id="ds-menu-close" onClick="{{ closeMenu }}" style="min-height:44px;display:flex;align-items:center;gap:12px;padding:0 18px;border-radius:999px;border:1px solid #C5D0D4;background:#FFFFFF;color:#0E1316;font:inherit;cursor:pointer">Fermer<span aria-hidden="true" style="position:relative;width:18px;height:18px"><span style="position:absolute;left:0;top:8px;width:18px;height:2px;background:#0E1316;transform:rotate(45deg)"></span><span style="position:absolute;left:0;top:8px;width:18px;height:2px;background:#0E1316;transform:rotate(-45deg)"></span></span></button>
+  </div>
+
+  <div style="flex:1;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);align-items:center;width:100%;max-width:1440px;margin:0 auto;padding:clamp(24px,4vw,56px) clamp(20px,3vw,40px)">
+    <nav aria-label="Menu" style="flex:1 1 560px;min-width:0">
+      <ol data-lines="" style="list-style:none;margin:0;padding:0;border-top:1px solid #E3E8EA">
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="7">
+          <li style="overflow:hidden;border-bottom:1px solid #E3E8EA">
+            <a data-line="" href="{{ m.href }}" aria-current="{{ m.cur }}" onMouseEnter="{{ m.hover }}" onFocus="{{ m.hover }}" style="display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);padding:clamp(10px,1.1vw,16px) 0;color:{{ m.color }};text-decoration:none;font-weight:700;font-size:clamp(1.75rem,3.8vw,3.4rem);line-height:1.12;letter-spacing:-.025em;transition:color .25s,padding .5s cubic-bezier(.16,1,.3,1)" style-hover="color:#1C7E9A;padding-left:12px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:.8125rem;letter-spacing:.04em;color:#1C7E9A;min-width:2.4em">{{ m.idx }}</span>{{ m.label }}
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </nav>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <figure style="flex:0 1 min(30vw,420px);margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="aspect-ratio:4/5;overflow:hidden;background:#FFFFFF;border-radius:6px">
+          <img src="{{ previewSrc }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s">
+        </div>
+        <figcaption style="font-size:.9375rem;color:#4A5A61">{{ previewCaption }}</figcaption>
+      </figure>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:16px 40px;align-items:center;padding:16px clamp(20px,3vw,40px) clamp(16px,3vw,28px);border-top:1px solid #E3E8EA;background:#FFFFFF;font-size:.875rem">
+    <div role="group" aria-label="Accessibilité et sobriété" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px">
+      <button type="button" role="switch" aria-checked="{{ ecoStr }}" onClick="{{ toggleEco }}" style="min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:0 16px;border-radius:999px;border:1px solid {{ ecoBorder }};background:{{ ecoBg }};color:#0E1316;font:inherit;font-weight:700;cursor:pointer">Mode sobre · {{ ecoState }}</button>
+      <span style="display:flex;align-items:center;gap:4px" role="group" aria-label="Taille du texte">
+        <span style="color:#4A5A61;margin-right:6px">Texte</span>
+        <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+          <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" style="min-width:44px;min-height:44px;border-radius:999px;border:1px solid {{ s.bd }};background:#FFFFFF;color:#0E1316;font:inherit;font-weight:700;cursor:pointer">{{ s.label }}</button>
+        </sc-for>
+      </span>
+      <button type="button" role="switch" aria-checked="{{ spacingStr }}" onClick="{{ toggleSpacing }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:1px solid {{ spacingBd }};background:#FFFFFF;color:#0E1316;font:inherit;cursor:pointer">Espacement de lecture</button>
+    </div>
+    <nav aria-label="Langue" style="display:flex;gap:16px;margin-left:auto;letter-spacing:.1em;font-weight:600">
+      <a href="#" aria-current="true" lang="fr" style="color:#0E1316;padding:12px 0">FR</a>
+      <a href="#" lang="de" style="color:#4A5A61;padding:12px 0;text-decoration:none">DE</a>
+      <a href="#" lang="en" style="color:#4A5A61;padding:12px 0;text-decoration:none">EN</a>
+    </nav>
+    <p style="margin:0;color:#4A5A61"><a href="tel:+41324671109" style="color:#0E1316;text-decoration:none;font-weight:600">+41 32 467 11 09</a> · <a href="mailto:contact@digital-solutions.io" style="color:#0E1316;text-decoration:none;font-weight:600">contact@digital-solutions.io</a></p>
+  </div>
+</div>
+</sc-if>
+
+<dc-import name="DS Consentement" hint-size="0px,0px"></dc-import>
+<dc-import name="DS Assistant" hint-size="0px,0px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;accueil&quot;,&quot;ia&quot;,&quot;expertises&quot;,&quot;usages&quot;,&quot;maison&quot;,&quot;carrieres&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;accueil&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const IMG = {
+  mist: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1000&q=70&auto=format&fit=crop',
+  appenzell: 'https://unsplash.com/photos/ig5JsKMQpIU/download?w=1000',
+  basel: 'https://unsplash.com/photos/drJCfa6h6Is/download?w=1000',
+  chur: 'https://unsplash.com/photos/9AjwOAIdsII/download?w=1000',
+  bern: 'https://unsplash.com/photos/Td-XqY8xexs/download?w=1000',
+  team: 'https://unsplash.com/photos/UikYLDQj9_I/download?w=1000',
+  lenzer: 'https://unsplash.com/photos/2ltzMVdpeO0/download?w=1000'
+};
+const MENU = [
+  ['accueil', 'Accueil', 'Accueil.dc.html', 'assets/photos/MENU/MENU-ACC-01.webp', 'IA & IT conçues et hébergées en Suisse'],
+  ['ia', 'Intelligence artificielle', 'Intelligence%20Artificielle.dc.html', 'assets/photos/MENU/MENU-IA-01.webp', 'Agents IA, RAG, MCP, modèles souverains'],
+  ['expertises', 'Expertises', 'Expertises.dc.html', 'assets/photos/MENU/MENU-EXP-01.webp', 'Développement, intégration, consulting'],
+  ['usages', "Cas d'usage", 'Usages.dc.html', 'assets/photos/MENU/MENU-USA-01.webp', 'Plus de 60 scénarios livrables'],
+  ['maison', 'La Maison', 'Maison.dc.html', 'assets/photos/MENU/MENU-MAI-01.webp', 'Née dans le Jura en 2016'],
+  ['sustainability', 'Sustainability', 'Sustainability.dc.html', 'assets/photos/MAI/MAI-02.webp', 'Bilan carbone, ESG, EcoVadis Or'],
+  ['carrieres', 'Carrières', 'Carrieres.dc.html', 'assets/photos/MENU/MENU-CAR-01.webp', 'Rejoindre nos équipes'],
+  ['contact', 'Contact', 'Contact.dc.html', 'assets/photos/MENU/MENU-CON-01.webp', 'Cinq sites en Suisse']
+];
+const NAV_KEYS = ['ia', 'expertises', 'usages', 'maison', 'carrieres'];
+const SIZES = [100, 112.5, 125];
+
+class Component extends DCLogic {
+  state = { open: false, hover: 0, eco: false, size: 100, spacing: false, scrolled: typeof window !== 'undefined' ? window.scrollY > 40 : false, w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+
+  componentDidMount() {
+    this.sync = () => {
+      let p = {}; try { p = JSON.parse(localStorage.getItem('ds-a11y') || '{}'); } catch (e) {}
+      this.setState({ eco: !!p.eco, size: p.size || 100, spacing: !!p.spacing });
+    };
+    this.sync();
+    window.addEventListener('ds-prefs', this.sync);
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    this.onS = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this.onS, { passive: true }); this.onS();
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.open) this.closeMenu(); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('ds-prefs', this.sync); window.removeEventListener('resize', this.onR); window.removeEventListener('scroll', this.onS); window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+  openMenu = () => {
+    const i = Math.max(0, MENU.findIndex((m) => m[0] === this.props.current));
+    this.setState({ open: true, hover: i });
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const b = document.getElementById('ds-menu-close'); b && b.focus(); }, 60);
+  };
+  closeMenu = () => {
+    this.setState({ open: false });
+    document.body.style.overflow = '';
+    setTimeout(() => { const b = document.getElementById('ds-menu-btn'); b && b.focus(); }, 60);
+  };
+  trap = (e) => {
+    if (e.key !== 'Tab') return;
+    const f = [...document.querySelectorAll('#ds-menu a[href], #ds-menu button')];
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  setPref(fn) { const M = window.DSMotion; if (M) fn(M); }
+
+  renderVals() {
+    const cur = this.props.current || 'accueil';
+    const { open, hover, eco, size, spacing, w } = this.state;
+    const wide = w >= 1100;
+    const solid = this.state.scrolled || open;
+    return {
+      solidStr: String(solid),
+      hBg: solid ? 'rgba(255,255,255,.96)' : 'transparent',
+      hBlur: solid ? 'saturate(1.4) blur(14px)' : 'none',
+      hBd: solid ? '#E3E8EA' : 'transparent',
+      fg: solid ? '#0E1316' : '#FFFFFF',
+      logoSrc: solid ? 'assets/logo-digital-solutions.png' : 'assets/logo-digital-solutions-blanc.png',
+      ctaBg: solid ? '#0E1316' : '#FFFFFF', ctaFg: solid ? '#FFFFFF' : '#0E1316',
+      mBd: solid ? '#C5D0D4' : 'rgba(255,255,255,.6)', mBg: solid ? '#FFFFFF' : 'transparent',
+      wide, open, openStr: String(open),
+      openMenu: this.openMenu, closeMenu: this.closeMenu, trap: this.trap,
+      nav: NAV_KEYS.map((k) => { const m = MENU.find((x) => x[0] === k); return { label: m[1], href: m[2], cur: k === cur ? 'page' : 'false', line: k === cur ? '#269CBD' : 'transparent' }; }),
+      menu: MENU.map((m, i) => ({
+        idx: '0' + (i + 1), label: m[1], href: m[2], cur: m[0] === cur ? 'page' : 'false',
+        color: m[0] === cur ? '#1C7E9A' : '#0E1316',
+        hover: () => this.setState({ hover: i })
+      })),
+      previewSrc: MENU[hover][3], previewCaption: MENU[hover][4],
+      ecoStr: String(eco), ecoState: eco ? 'activé' : 'désactivé',
+      ecoBg: eco ? '#E1B48D' : '#FFFFFF', ecoBorder: eco ? '#E1B48D' : '#C5D0D4',
+      toggleEco: () => { const n = !eco; this.setPref((M) => M.setEco(n)); this.setState({ eco: n }); },
+      sizes: SIZES.map((v, i) => ({
+        label: ['A', 'A+', 'A++'][i], aria: ['Texte normal', 'Texte agrandi', 'Texte très agrandi'][i],
+        pressed: String(size === v), bd: size === v ? '#0E1316' : '#C5D0D4',
+        onClick: () => { this.setPref((M) => M.setSize(v)); this.setState({ size: v }); }
+      })),
+      spacingStr: String(spacing), spacingBd: spacing ? '#0E1316' : '#C5D0D4',
+      toggleSpacing: () => { const n = !spacing; this.setPref((M) => M.setSpacing(n)); this.setState({ spacing: n }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

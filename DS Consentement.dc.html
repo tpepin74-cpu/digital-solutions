@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+<p role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:-1px">{{ liveMsg }}</p>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div id="ds-cc" ref="{{ dialogRef }}" role="dialog" aria-modal="false" aria-labelledby="ds-cc-title" aria-describedby="ds-cc-desc" onKeyDown="{{ onKey }}" style="position:fixed;left:clamp(10px,2vw,24px);bottom:clamp(10px,2vw,24px);z-index:600;width:min(620px,calc(100vw - 20px));max-height:calc(100dvh - 20px);overflow:auto;overscroll-behavior:contain;background:#0B1215;color:#F2F0EC;border:1px solid rgba(242,240,236,.16);box-shadow:0 40px 90px -20px rgba(0,0,0,.6);font-size:.9375rem;line-height:1.55">
+
+  <div style="background:#E1B48D;color:#0B1215;padding:clamp(18px,3vw,26px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 18px;align-items:center">
+    <span aria-hidden="true" style="position:relative;width:52px;height:56px;flex:none">
+      <span style="position:absolute;left:0;bottom:0;width:44px;height:44px;border:5px solid #0B1215;border-radius:50%"></span>
+      <span style="position:absolute;left:39px;top:0;width:5px;height:34px;background:#0B1215"></span>
+    </span>
+    <div style="min-width:0">
+      <p style="margin:0 0 2px;font-size:.6875rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase">Médaille d'or EcoVadis 2025</p>
+      <h2 style="margin:0;font-family:'Instrument Sans',system-ui,sans-serif;font-style:italic;font-size:clamp(1.6rem,3.4vw,2.1rem);line-height:1.05;letter-spacing:-.01em;font-weight:600">Naviguer en mode sobre</h2>
+      <p style="margin:6px 0 0;font-size:.875rem;line-height:1.45;max-width:30em">Animations coupées, images allégées, aucun effet superflu. Une visite plus légère pour la planète, fidèle à nos engagements ESG.</p>
+    </div>
+    <button type="button" role="switch" aria-checked="{{ ecoStr }}" aria-label="Mode sobre" onClick="{{ toggleEco }}" style="position:relative;width:64px;height:36px;border-radius:999px;border:2px solid #0B1215;background:{{ ecoTrack }};cursor:pointer;flex:none;padding:0;transition:background .3s">
+      <span aria-hidden="true" style="position:absolute;top:3px;left:{{ ecoKnob }};width:26px;height:26px;border-radius:50%;background:{{ ecoKnobBg }};transition:left .35s cubic-bezier(.16,1,.3,1)"></span>
+    </button>
+  </div>
+
+  <div style="padding:clamp(18px,3vw,26px);display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px">
+      <h2 id="ds-cc-title" tabindex="-1" style="margin:0;font-family:'Instrument Sans',system-ui,sans-serif;font-size:clamp(1.5rem,3vw,1.9rem);line-height:1.05;outline:none;font-weight:600">Vos données, <em>vos choix.</em></h2>
+      <button type="button" onClick="{{ continueWithout }}" style="flex:none;min-height:44px;padding:0 2px;background:none;border:0;color:#F2F0EC;font:inherit;font-size:.8125rem;text-decoration:underline;text-underline-offset:.25em;cursor:pointer">Continuer sans accepter</button>
+    </div>
+    <p id="ds-cc-desc" style="margin:0;color:#C9D2D5">Nous déposons uniquement les cookies indispensables au fonctionnement du site. Avec votre accord, nous mesurons aussi l'audience et activons certains contenus tiers. Rien d'autre n'est déposé sans votre consentement, conformément à la nLPD et au RGPD.</p>
+
+    <sc-if value="{{ gpc }}" hint-placeholder-val="{{ false }}">
+      <p style="margin:0;padding:10px 12px;border:1px solid rgba(109,205,234,.5);font-size:.8125rem;color:#DDF3FA">Signal Global Privacy Control détecté&nbsp;: le marketing reste désactivé par défaut.</p>
+    </sc-if>
+
+    <sc-if value="{{ detail }}" hint-placeholder-val="{{ false }}">
+      <ul aria-label="Catégories de cookies" style="list-style:none;margin:4px 0 0;padding:0;border-top:1px solid rgba(242,240,236,.16)">
+        <sc-for list="{{ cats }}" as="c" hint-placeholder-count="4">
+          <li style="padding:14px 0;border-bottom:1px solid rgba(242,240,236,.16);display:flex;flex-direction:column;gap:6px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
+              <span id="{{ c.labelId }}" style="font-weight:700;font-size:1rem">{{ c.name }}</span>
+              <sc-if value="{{ c.locked }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#C9D2D5">Toujours actifs</span>
+              </sc-if>
+              <sc-if value="{{ c.toggleable }}" hint-placeholder-val="{{ true }}">
+                <button type="button" role="switch" aria-checked="{{ c.on }}" aria-labelledby="{{ c.labelId }}" onClick="{{ c.toggle }}" style="position:relative;width:52px;height:30px;border-radius:999px;border:2px solid #F2F0EC;background:{{ c.track }};cursor:pointer;padding:0;flex:none;transition:background .3s">
+                  <span aria-hidden="true" style="position:absolute;top:3px;left:{{ c.knob }};width:20px;height:20px;border-radius:50%;background:{{ c.knobBg }};transition:left .3s cubic-bezier(.16,1,.3,1)"></span>
+                </button>
+              </sc-if>
+            </div>
+            <p style="margin:0;color:#C9D2D5;font-size:.875rem">{{ c.desc }}</p>
+            <details style="font-size:.8125rem;color:#C9D2D5">
+              <summary style="min-height:32px;display:inline-flex;align-items:center;text-decoration:underline;text-underline-offset:.25em;color:#F2F0EC">Finalités, fournisseurs et durée</summary>
+              <dl style="margin:8px 0 0;display:grid;grid-template-columns:auto 1fr;gap:4px 14px">
+                <dt style="color:#F2F0EC">Finalité</dt><dd style="margin:0">{{ c.purpose }}</dd>
+                <dt style="color:#F2F0EC">Fournisseurs</dt><dd style="margin:0">{{ c.vendors }}</dd>
+                <dt style="color:#F2F0EC">Conservation</dt><dd style="margin:0">{{ c.duration }}</dd>
+                <dt style="color:#F2F0EC">Localisation</dt><dd style="margin:0">{{ c.location }}</dd>
+              </dl>
+            </details>
+          </li>
+        </sc-for>
+      </ul>
+      <sc-if value="{{ hasRecord }}" hint-placeholder-val="{{ false }}">
+        <p style="margin:0;font-size:.75rem;color:#9FB0B6;font-family:'IBM Plex Mono',monospace">Preuve de consentement · {{ recordId }} · {{ recordDate }}</p>
+      </sc-if>
+    </sc-if>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:4px">
+      <button type="button" onClick="{{ refuseAll }}" style="min-height:48px;padding:0 16px;background:#F2F0EC;color:#0B1215;border:1px solid #F2F0EC;font:inherit;font-weight:700;cursor:pointer">Tout refuser</button>
+      <button type="button" onClick="{{ middleAction }}" aria-expanded="{{ detailStr }}" style="min-height:48px;padding:0 16px;background:transparent;color:#F2F0EC;border:1px solid rgba(242,240,236,.55);font:inherit;font-weight:700;cursor:pointer">{{ middleLabel }}</button>
+      <button type="button" onClick="{{ acceptAll }}" style="min-height:48px;padding:0 16px;background:#F2F0EC;color:#0B1215;border:1px solid #F2F0EC;font:inherit;font-weight:700;cursor:pointer">Tout accepter</button>
+    </div>
+    <p style="margin:0;font-size:.75rem;color:#9FB0B6;display:flex;flex-wrap:wrap;gap:4px 14px">
+      <a href="https://www.digital-solutions.io/politique-de-confidentialite/" style="color:#F2F0EC">Politique de confidentialité</a>
+      <a href="https://www.digital-solutions.io/politique-de-cookies-ue/" style="color:#F2F0EC">Politique de cookies</a>
+      <span>Choix valable 6 mois, modifiable à tout moment.</span>
+    </p>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ chip }}" hint-placeholder-val="{{ false }}">
+  <div onMouseLeave="{{ collapse }}" style="position:fixed;left:0;bottom:0;z-index:550;display:flex;align-items:flex-end">
+    <sc-if value="{{ cornerShut }}" hint-placeholder-val="{{ true }}">
+      <button type="button" onClick="{{ expand }}" onMouseEnter="{{ expand }}" aria-expanded="false" aria-label="Préférences : mode sobre et cookies" title="Mode sobre et cookies" style="width:30px;height:30px;padding:0 0 6px 6px;display:flex;align-items:flex-end;justify-content:flex-start;border:0;border-radius:0 16px 0 0;background:{{ chipBg }};color:{{ chipFg }};opacity:.55;cursor:pointer;transition:opacity .25s,width .25s,height .25s" style-hover="opacity:1;width:36px;height:36px" style-focus="opacity:1">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;display:block"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><circle cx="8.5" cy="8.5" r=".6" fill="currentColor"></circle><circle cx="16" cy="15.5" r=".6" fill="currentColor"></circle><circle cx="11" cy="17" r=".6" fill="currentColor"></circle><circle cx="7" cy="13" r=".6" fill="currentColor"></circle></svg>
+      </button>
+    </sc-if>
+    <sc-if value="{{ cornerOpen }}" hint-placeholder-val="{{ false }}">
+      <div role="group" aria-label="Préférences" style="display:flex;align-items:center;gap:6px;padding:8px 8px 8px 10px;border-radius:0 14px 0 0;background:#0B1215;box-shadow:0 10px 30px -10px rgba(0,0,0,.4)">
+        <button type="button" role="switch" aria-checked="{{ ecoStr }}" onClick="{{ toggleEco }}" style="min-height:36px;display:inline-flex;align-items:center;gap:8px;padding:0 12px 0 10px;border-radius:999px;border:1px solid {{ chipBorder }};background:{{ chipBg }};color:{{ chipFg }};font:inherit;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .3s,color .3s">Mode sobre<span style="font-weight:400;opacity:.85">{{ ecoState }}</span></button>
+        <button type="button" onClick="{{ reopen }}" style="min-height:36px;padding:0 12px;border-radius:999px;border:1px solid rgba(242,240,236,.35);background:#0B1215;color:#F2F0EC;font:inherit;font-size:.75rem;cursor:pointer">Cookies</button>
+        <button type="button" onClick="{{ collapse }}" aria-label="Réduire" style="width:28px;height:28px;padding:0;border:0;border-radius:50%;background:transparent;color:#F2F0EC;font:inherit;font-size:1rem;line-height:1;cursor:pointer">×</button>
+      </div>
+    </sc-if>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const VERSION = '2026-10';
+const VALIDITY = 182 * 24 * 3600 * 1000;
+const CATS = [
+  { id: 'necessary', name: 'Nécessaires', locked: true, desc: "Indispensables au fonctionnement et à la sécurité du site, et à la mémorisation des choix que vous faites ici (cookies, mode sobre, taille du texte).", purpose: 'Fonctionnement, sécurité, mémorisation de vos préférences', vendors: 'Digital Solutions SA', duration: 'Session à 6 mois', location: 'Suisse' },
+  { id: 'analytics', name: "Mesure d'audience", desc: "Savoir quelles pages vous sont utiles pour améliorer nos contenus. Statistiques agrégées, adresses IP anonymisées.", purpose: 'Statistiques de fréquentation', vendors: 'Matomo, instance hébergée en Suisse', duration: '13 mois maximum', location: 'Suisse' },
+  { id: 'content', name: 'Contenus tiers', desc: "Lecture des vidéos et des cartes intégrées. Sans votre accord, un aperçu statique s'affiche à la place.", purpose: 'Vidéos et cartes intégrées', vendors: 'YouTube (Google), OpenStreetMap', duration: "Jusqu'à 6 mois", location: 'Suisse, UE, États-Unis (clauses contractuelles types)' },
+  { id: 'marketing', name: 'Marketing', desc: "Mesurer l'efficacité de nos campagnes sur les réseaux professionnels. Désactivé par défaut.", purpose: 'Mesure des campagnes', vendors: 'LinkedIn Insight Tag', duration: '6 mois', location: 'UE, États-Unis (clauses contractuelles types)' }
+];
+const NONE = { analytics: false, content: false, marketing: false };
+
+function readEco() { try { return !!JSON.parse(localStorage.getItem('ds-a11y') || '{}').eco; } catch (e) { return false; } }
+function readRecord() {
+  try { const r = JSON.parse(localStorage.getItem('ds-consent') || 'null'); return r && r.v === VERSION && r.expires > Date.now() ? r : null; } catch (e) { return null; }
+}
+
+class Component extends DCLogic {
+  state = { open: false, detail: false, eco: false, choices: { ...NONE }, record: null, gpc: false, msg: '' };
+  dialogRef = React.createRef();
+
+  componentDidMount() {
+    const record = readRecord();
+    const gpc = typeof navigator !== 'undefined' && navigator.globalPrivacyControl === true;
+    this.setState({ record, gpc, eco: readEco(), open: !record, choices: record ? { ...record.choices } : { ...NONE } }, () => { if (!record) this.enter(); });
+    if (record) this.apply(record.choices);
+    this.onOpen = () => { this.opener = document.activeElement; this.setState({ open: true, detail: true }, () => { this.enter(); const h = document.getElementById('ds-cc-title'); h && h.focus(); }); };
+    this.onPrefs = (e) => this.setState({ eco: !!(e.detail && e.detail.eco) });
+    window.addEventListener('ds-open-consent', this.onOpen);
+    window.addEventListener('ds-prefs', this.onPrefs);
+    this.onScroll = () => { const s = window.scrollY > window.innerHeight * 0.6; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+  }
+  componentWillUnmount() { window.removeEventListener('ds-open-consent', this.onOpen); window.removeEventListener('ds-prefs', this.onPrefs); window.removeEventListener('scroll', this.onScroll); }
+
+  enter() {
+    const el = this.dialogRef.current;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches || this.state.eco;
+    if (el && !reduced) el.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], { duration: 700, easing: 'cubic-bezier(.16,1,.3,1)' });
+  }
+
+  apply(choices) {
+    window.dsConsent = { ...choices, necessary: true };
+    window.dispatchEvent(new CustomEvent('ds-consent', { detail: window.dsConsent }));
+    if (typeof window.gtag === 'function') {
+      const g = (b) => (b ? 'granted' : 'denied');
+      window.gtag('consent', 'update', { analytics_storage: g(choices.analytics), ad_storage: g(choices.marketing), ad_user_data: g(choices.marketing), ad_personalization: g(choices.marketing) });
+    }
+    document.querySelectorAll('script[type="text/plain"][data-consent]').forEach((s) => {
+      if (s.__dsDone || !choices[s.getAttribute('data-consent')]) return;
+      s.__dsDone = true;
+      const n = document.createElement('script');
+      [...s.attributes].forEach((a) => { if (a.name !== 'type' && a.name !== 'data-consent') n.setAttribute(a.name, a.value); });
+      n.text = s.text; s.after(n);
+    });
+  }
+
+  save(choices, msg) {
+    const id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())).slice(0, 8).toUpperCase();
+    const record = { v: VERSION, id, date: new Date().toISOString(), expires: Date.now() + VALIDITY, choices, gpc: this.state.gpc };
+    try { localStorage.setItem('ds-consent', JSON.stringify(record)); } catch (e) {}
+    this.apply(choices);
+    this.setState({ record, choices, open: false, detail: false, msg });
+    if (this.opener && this.opener.focus) { this.opener.focus(); this.opener = null; }
+  }
+
+  toggleEco = () => {
+    const next = !this.state.eco;
+    if (window.DSMotion) window.DSMotion.setEco(next);
+    else { try { const p = JSON.parse(localStorage.getItem('ds-a11y') || '{}'); p.eco = next; localStorage.setItem('ds-a11y', JSON.stringify(p)); } catch (e) {} }
+    this.setState({ eco: next, msg: next ? 'Mode sobre activé : animations coupées, images allégées.' : 'Mode sobre désactivé.' });
+  };
+
+  renderVals() {
+    const { open, detail, eco, choices, record, gpc } = this.state;
+    const sw = (on) => ({ track: on ? '#F2F0EC' : 'transparent', knob: on ? '25px' : '3px', knobBg: on ? '#0B1215' : '#F2F0EC' });
+    return {
+      open, detail, gpc, detailStr: String(detail), liveMsg: this.state.msg,
+      dialogRef: this.dialogRef,
+      chip: !open, cornerOpen: !!this.state.corner, cornerShut: !this.state.corner,
+      expand: () => this.setState({ corner: true }), collapse: () => this.setState({ corner: false }),
+      ecoStr: String(eco), ecoState: eco ? 'activé' : 'désactivé',
+      ecoTrack: eco ? '#0B1215' : 'transparent', ecoKnob: eco ? '31px' : '3px', ecoKnobBg: eco ? '#E1B48D' : '#0B1215',
+      chipBg: eco ? '#E1B48D' : '#0B1215', chipFg: eco ? '#0B1215' : '#F2F0EC', chipBorder: eco ? '#E1B48D' : 'rgba(242,240,236,.35)',
+      toggleEco: this.toggleEco,
+      cats: CATS.map((c) => {
+        const on = !!c.locked || !!choices[c.id];
+        return { ...c, labelId: 'ds-cc-' + c.id, toggleable: !c.locked, on: String(on), ...sw(on),
+          toggle: () => this.setState((s) => ({ choices: { ...s.choices, [c.id]: !s.choices[c.id] } })) };
+      }),
+      hasRecord: !!record, recordId: record ? record.id : '', recordDate: record ? new Date(record.date).toLocaleString('fr-CH') : '',
+      middleLabel: detail ? 'Enregistrer mes choix' : 'Personnaliser',
+      middleAction: () => (detail ? this.save({ ...this.state.choices }, 'Vos choix ont été enregistrés.') : this.setState({ detail: true })),
+      refuseAll: () => this.save({ ...NONE }, 'Cookies non nécessaires refusés.'),
+      acceptAll: () => this.save({ analytics: true, content: true, marketing: true }, 'Tous les cookies acceptés.'),
+      continueWithout: () => this.save({ ...NONE }, 'Vous continuez sans accepter les cookies non nécessaires.'),
+      reopen: this.onOpen || (() => window.dispatchEvent(new CustomEvent('ds-open-consent'))),
+      onKey: (e) => { if (e.key === 'Escape') { if (this.state.record) { this.setState({ open: false, detail: false }); } else this.save({ ...NONE }, 'Vous continuez sans accepter les cookies non nécessaires.'); } }
+    };
+  }
+}
+</script>
+</body>
+</html>
