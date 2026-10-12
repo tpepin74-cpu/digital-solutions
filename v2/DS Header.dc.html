@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div>
+<a href="#contenu" style="position:fixed;left:-9999px;top:12px;z-index:700;background:#F2F0EC;color:#0B1215;padding:14px 20px;font-weight:700;text-decoration:none" style-focus="left:12px">Aller au contenu</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:80;color:#FFFFFF;mix-blend-mode:difference;pointer-events:none;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <div style="display:flex;align-items:center;gap:2rem;padding:clamp(14px,1.8vw,24px) clamp(20px,3vw,40px)">
+    <a href="Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="pointer-events:auto;display:flex;align-items:center;gap:12px;color:#FFFFFF;text-decoration:none;min-height:44px">
+      <span aria-hidden="true" style="position:relative;width:24px;height:27px;flex:none">
+        <span style="position:absolute;left:0;bottom:0;width:20px;height:20px;border:3px solid #FFFFFF;border-radius:50%"></span>
+        <span style="position:absolute;left:17px;top:0;width:3px;height:17px;background:#FFFFFF"></span>
+      </span>
+      <span style="font-size:1.0625rem;letter-spacing:-.01em;white-space:nowrap">digital solutions</span>
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Navigation principale" style="pointer-events:auto;margin:0 auto;display:flex;gap:clamp(18px,2.2vw,36px);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+          <a href="{{ n.href }}" aria-current="{{ n.cur }}" style="color:#FFFFFF;text-decoration:none;padding:14px 0 12px;border-bottom:1px solid {{ n.line }};white-space:nowrap" style-hover="border-bottom-color:#FFFFFF">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="pointer-events:auto;margin-left:auto;display:flex;align-items:center;gap:clamp(14px,2vw,28px);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase">
+      <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+        <a href="Contact.dc.html" style="color:#FFFFFF;text-decoration:none;padding:14px 0 12px;border-bottom:1px solid {{ contactLine }}" style-hover="border-bottom-color:#FFFFFF">Contact</a>
+      </sc-if>
+      <button type="button" id="ds-menu-btn" onClick="{{ openMenu }}" aria-expanded="{{ openStr }}" aria-controls="ds-menu" style="min-height:44px;display:flex;align-items:center;gap:12px;background:none;border:0;color:#FFFFFF;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:0">
+        Menu
+        <span aria-hidden="true" style="display:flex;flex-direction:column;gap:5px;width:26px"><span style="height:1.5px;background:#FFFFFF"></span><span style="height:1.5px;background:#FFFFFF;width:60%;margin-left:auto"></span></span>
+      </button>
+    </div>
+  </div>
+  <div data-progress="" style="height:1px;background:#FFFFFF;transform-origin:0 50%;transform:scaleX(0)"></div>
+</header>
+
+<sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
+<div id="ds-menu" role="dialog" aria-modal="true" aria-label="Menu principal" onKeyDown="{{ trap }}" style="position:fixed;inset:0;z-index:90;background:#0B1215;color:#F2F0EC;overflow:auto;display:flex;flex-direction:column;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:clamp(14px,1.8vw,24px) clamp(20px,3vw,40px);font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase">
+    <a href="Accueil.dc.html" style="display:flex;align-items:center;gap:12px;color:#F2F0EC;text-decoration:none;font-size:1.0625rem;letter-spacing:-.01em;text-transform:none;min-height:44px">
+      <span aria-hidden="true" style="position:relative;width:24px;height:27px"><span style="position:absolute;left:0;bottom:0;width:20px;height:20px;border:3px solid #F2F0EC;border-radius:50%"></span><span style="position:absolute;left:17px;top:0;width:3px;height:17px;background:#6DCDEA"></span></span>
+      digital solutions
+    </a>
+    <button type="button" id="ds-menu-close" onClick="{{ closeMenu }}" style="min-height:44px;display:flex;align-items:center;gap:12px;background:none;border:0;color:#F2F0EC;font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:0">Fermer<span aria-hidden="true" style="position:relative;width:22px;height:22px"><span style="position:absolute;left:0;top:10px;width:22px;height:1.5px;background:#F2F0EC;transform:rotate(45deg)"></span><span style="position:absolute;left:0;top:10px;width:22px;height:1.5px;background:#F2F0EC;transform:rotate(-45deg)"></span></span></button>
+  </div>
+
+  <div style="flex:1;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(16px,3vw,40px) clamp(20px,3vw,40px)">
+    <nav aria-label="Menu" style="flex:1 1 560px;min-width:0">
+      <ol data-lines="" style="list-style:none;margin:0;padding:0;border-top:1px solid rgba(242,240,236,.14)">
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="7">
+          <li style="overflow:hidden;border-bottom:1px solid rgba(242,240,236,.14)">
+            <a data-line="" href="{{ m.href }}" aria-current="{{ m.cur }}" onMouseEnter="{{ m.hover }}" onFocus="{{ m.hover }}" style="display:flex;align-items:baseline;gap:clamp(14px,2vw,28px);padding:clamp(6px,.8vw,12px) 0;color:{{ m.color }};text-decoration:none;font-family:'Bodoni Moda',Didot,serif;font-style:{{ m.fstyle }};font-size:clamp(2.2rem,5.2vw,5rem);line-height:1.04;letter-spacing:-.015em" style-hover="font-style:italic;color:#6DCDEA">
+              <span style="font-family:'IBM Plex Mono',monospace;font-style:normal;font-size:.75rem;letter-spacing:.06em;color:#9FB0B6;min-width:2.4em">{{ m.idx }}</span>{{ m.label }}
+            </a>
+          </li>
+        </sc-for>
+      </ol>
+    </nav>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <figure style="flex:0 1 min(30vw,440px);margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="aspect-ratio:4/5;overflow:hidden;background:#1A262B">
+          <img src="{{ previewSrc }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s">
+        </div>
+        <figcaption style="font-size:.8125rem;color:#9FB0B6">{{ previewCaption }}</figcaption>
+      </figure>
+    </sc-if>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;padding:20px clamp(20px,3vw,40px) clamp(20px,3vw,32px);border-top:1px solid rgba(242,240,236,.14);font-size:.8125rem">
+    <div role="group" aria-label="Accessibilité et sobriété" style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px">
+      <button type="button" role="switch" aria-checked="{{ ecoStr }}" onClick="{{ toggleEco }}" style="min-height:44px;display:inline-flex;align-items:center;gap:10px;padding:0 16px;border-radius:999px;border:1px solid {{ ecoBorder }};background:{{ ecoBg }};color:{{ ecoFg }};font:inherit;font-weight:700;cursor:pointer">Mode sobre · {{ ecoState }}</button>
+      <span style="display:flex;align-items:center;gap:4px" role="group" aria-label="Taille du texte">
+        <span style="color:#9FB0B6;margin-right:6px">Texte</span>
+        <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+          <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" style="min-width:44px;min-height:44px;border-radius:999px;border:1px solid {{ s.bd }};background:transparent;color:#F2F0EC;font:inherit;font-weight:700;cursor:pointer">{{ s.label }}</button>
+        </sc-for>
+      </span>
+      <button type="button" role="switch" aria-checked="{{ spacingStr }}" onClick="{{ toggleSpacing }}" style="min-height:44px;padding:0 16px;border-radius:999px;border:1px solid {{ spacingBd }};background:transparent;color:#F2F0EC;font:inherit;cursor:pointer">Espacement de lecture</button>
+    </div>
+    <nav aria-label="Langue" style="display:flex;gap:16px;margin-left:auto;letter-spacing:.14em">
+      <a href="#" aria-current="true" lang="fr" style="color:#F2F0EC;padding:12px 0">FR</a>
+      <a href="#" lang="de" style="color:#9FB0B6;padding:12px 0;text-decoration:none">DE</a>
+      <a href="#" lang="en" style="color:#9FB0B6;padding:12px 0;text-decoration:none">EN</a>
+    </nav>
+    <p style="margin:0;color:#9FB0B6"><a href="tel:+41324671109" style="color:#F2F0EC;text-decoration:none">+41 32 467 11 09</a> · <a href="mailto:contact@digital-solutions.io" style="color:#F2F0EC;text-decoration:none">contact@digital-solutions.io</a></p>
+  </div>
+</div>
+</sc-if>
+
+<dc-import name="DS Consentement" hint-size="0px,0px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;accueil&quot;,&quot;ia&quot;,&quot;expertises&quot;,&quot;usages&quot;,&quot;maison&quot;,&quot;carrieres&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;accueil&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+const IMG = {
+  mist: 'https://images.unsplash.com/photo-1576017609857-da8426c5af3e?w=1000&q=70&auto=format&fit=crop',
+  appenzell: 'https://unsplash.com/photos/ig5JsKMQpIU/download?w=1000',
+  basel: 'https://unsplash.com/photos/drJCfa6h6Is/download?w=1000',
+  chur: 'https://unsplash.com/photos/9AjwOAIdsII/download?w=1000',
+  bern: 'https://unsplash.com/photos/Td-XqY8xexs/download?w=1000',
+  team: 'https://unsplash.com/photos/UikYLDQj9_I/download?w=1000',
+  lenzer: 'https://unsplash.com/photos/2ltzMVdpeO0/download?w=1000'
+};
+const MENU = [
+  ['accueil', 'Accueil', 'Accueil.dc.html', IMG.mist, 'Lauterbrunnen, au petit matin'],
+  ['ia', 'Intelligence artificielle', 'Intelligence%20Artificielle.dc.html', IMG.appenzell, 'Agents IA, RAG, MCP, conçus en Suisse'],
+  ['expertises', 'Expertises', 'Expertises.dc.html', IMG.basel, 'Développement, intégration, consulting'],
+  ['usages', "Cas d'usage", 'Usages.dc.html', IMG.chur, 'Quatorze scénarios livrables'],
+  ['maison', 'La Maison', 'Maison.dc.html', IMG.bern, 'Née dans le Jura en 2016'],
+  ['carrieres', 'Carrières', 'Carrieres.dc.html', IMG.team, 'Rejoindre nos équipes'],
+  ['contact', 'Contact', 'Contact.dc.html', IMG.lenzer, 'Six sites en Suisse']
+];
+const NAV_KEYS = ['ia', 'expertises', 'usages', 'maison', 'carrieres'];
+const SIZES = [100, 112.5, 125];
+
+class Component extends DCLogic {
+  state = { open: false, hover: 0, eco: false, size: 100, spacing: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+
+  componentDidMount() {
+    this.sync = () => {
+      let p = {}; try { p = JSON.parse(localStorage.getItem('ds-a11y') || '{}'); } catch (e) {}
+      this.setState({ eco: !!p.eco, size: p.size || 100, spacing: !!p.spacing });
+    };
+    this.sync();
+    window.addEventListener('ds-prefs', this.sync);
+    this.onR = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onR);
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.open) this.closeMenu(); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('ds-prefs', this.sync); window.removeEventListener('resize', this.onR); window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+  }
+  openMenu = () => {
+    const i = Math.max(0, MENU.findIndex((m) => m[0] === this.props.current));
+    this.setState({ open: true, hover: i });
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => { const b = document.getElementById('ds-menu-close'); b && b.focus(); }, 60);
+  };
+  closeMenu = () => {
+    this.setState({ open: false });
+    document.body.style.overflow = '';
+    setTimeout(() => { const b = document.getElementById('ds-menu-btn'); b && b.focus(); }, 60);
+  };
+  trap = (e) => {
+    if (e.key !== 'Tab') return;
+    const f = [...document.querySelectorAll('#ds-menu a[href], #ds-menu button')];
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  };
+  setPref(fn) { const M = window.DSMotion; if (M) fn(M); }
+
+  renderVals() {
+    const cur = this.props.current || 'accueil';
+    const { open, hover, eco, size, spacing, w } = this.state;
+    const wide = w >= 1100;
+    return {
+      wide, open, openStr: String(open),
+      openMenu: this.openMenu, closeMenu: this.closeMenu, trap: this.trap,
+      nav: NAV_KEYS.map((k) => { const m = MENU.find((x) => x[0] === k); return { label: m[1], href: m[2], cur: k === cur ? 'page' : 'false', line: k === cur ? '#FFFFFF' : 'transparent' }; }),
+      contactLine: cur === 'contact' ? '#FFFFFF' : 'transparent',
+      menu: MENU.map((m, i) => ({
+        idx: '0' + (i + 1), label: m[1], href: m[2], cur: m[0] === cur ? 'page' : 'false',
+        fstyle: m[0] === cur ? 'italic' : 'normal', color: m[0] === cur ? '#6DCDEA' : '#F2F0EC',
+        hover: () => this.setState({ hover: i })
+      })),
+      previewSrc: MENU[hover][3], previewCaption: MENU[hover][4],
+      ecoStr: String(eco), ecoState: eco ? 'activé' : 'désactivé',
+      ecoBg: eco ? '#E1B48D' : 'transparent', ecoFg: eco ? '#0B1215' : '#F2F0EC', ecoBorder: eco ? '#E1B48D' : 'rgba(242,240,236,.4)',
+      toggleEco: () => { const n = !eco; this.setPref((M) => M.setEco(n)); this.setState({ eco: n }); },
+      sizes: SIZES.map((v, i) => ({
+        label: ['A', 'A+', 'A++'][i], aria: ['Texte normal', 'Texte agrandi', 'Texte très agrandi'][i],
+        pressed: String(size === v), bd: size === v ? '#F2F0EC' : 'rgba(242,240,236,.25)',
+        onClick: () => { this.setPref((M) => M.setSize(v)); this.setState({ size: v }); }
+      })),
+      spacingStr: String(spacing), spacingBd: spacing ? '#F2F0EC' : 'rgba(242,240,236,.25)',
+      toggleSpacing: () => { const n = !spacing; this.setPref((M) => M.setSpacing(n)); this.setState({ spacing: n }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+[
+  {
+    "id": "ACC-01",
+    "file": "exec-4f677ae0-4545-4c65-aae0-34ff967d363e.png",
+    "format": "16:9",
+    "scene": "Quatre collègues autour bureau réglable, écran flou et espace calme en bas à gauche"
+  },
+  {
+    "id": "ACC-02",
+    "file": "exec-170a6c6c-2efd-4fc1-b83e-fd9b346ebf24.png",
+    "format": "1:1",
+    "scene": "Portrait buste de Léa, personnage de démonstration juriste femme 35 ans, sourire léger, regard légèrement hors champ, box vitré flou derrière, lumière fenêtre."
+  },
+  {
+    "id": "ACC-03",
+    "file": "exec-3614b8f5-8555-4e82-815e-4d5910441fcf.png",
+    "format": "1:1",
+    "scene": "Portrait buste de Marc, personnage de démonstration directeur financier homme 50 ans chemise ouverte, cuisine chêne floue derrière. Regard légèrement hors champ."
+  },
+  {
+    "id": "ACC-04",
+    "file": "exec-fc5e0b27-4868-4354-8a03-457616ceed1d.png",
+    "format": "4:5",
+    "scene": "Agente communale aidant citoyen âgé au guichet d'une mairie jurassienne lumineuse."
+  },
+  {
+    "id": "ACC-05",
+    "file": "exec-8528df9f-e817-4a6d-a2b9-d8c0e0289984.png",
+    "format": "4:5",
+    "scene": "Conseillère et cliente autour d'une tablette au contenu flou dans salon bancaire bois et plantes."
+  },
+  {
+    "id": "ACC-06",
+    "file": "exec-c7ac5adc-6943-4c10-9ebf-a95c1c1c47d5.png",
+    "format": "4:5",
+    "scene": "Technicienne en blouse contrôlant un mouvement horloger à la loupe dans atelier de la vallée de Joux."
+  },
+  {
+    "id": "ACC-07",
+    "file": "exec-d5eadf63-24e7-4ec4-9ed8-c7713977a098.png",
+    "format": "16:9",
+    "scene": "Deux collègues marchant sur un chemin de l'Ajoie suisse en automne, Porrentruy et son château au loin, ciel libre en haut."
+  },
+  {
+    "id": "CAR-01",
+    "file": "exec-56c8fe21-708a-4949-8759-9581ad6e73c3.png",
+    "format": "16:9",
+    "scene": "Équipe mixte rit autour bureau"
+  },
+  {
+    "id": "CAR-02",
+    "file": "exec-6ed6273f-fb09-4ca9-847a-7d92bf47d635.png",
+    "format": "1:1",
+    "scene": "Apéro de quatre collègues dans cuisine en chêne autour îlot bois. Scène spontanée sans cadres polaroid ni texte."
+  },
+  {
+    "id": "CAR-03",
+    "file": "exec-19677fbf-b8a4-4257-989b-086baadf3426.png",
+    "format": "1:1",
+    "scene": "Démo sprint review debout à trois devant écran flou dans box vitré noir."
+  },
+  {
+    "id": "CAR-05",
+    "file": "exec-71975eac-1fff-41ae-81e6-b579a4c6ee29.png",
+    "format": "4:3",
+    "scene": "Deux collègues en pair programming, une femme porte discrètement appareil auditif, gestes naturels au clavier."
+  },
+  {
+    "id": "CAR-06",
+    "file": "exec-7c14ce17-857b-472b-aad2-79c511e48839.png",
+    "format": "3:4",
+    "scene": "Deux collègues discutent autour du café du lundi dans cuisine en chêne, vapeur légère."
+  },
+  {
+    "id": "CAR-07",
+    "file": "exec-d6be1034-f146-441f-886f-cde3b5fa65b5.png",
+    "format": "4:3",
+    "scene": "Sortie équipe adulte mixte sur sentier au Clos du Doubs suisse automnal, marche et conversation spontanées."
+  },
+  {
+    "id": "CAR-08",
+    "file": "exec-26a1be91-c157-403c-8bd0-1e40ed549a76.png",
+    "format": "1:1",
+    "scene": "Atelier client dans salle vitrée noire, quatre adultes dont une femme voilée, notes sur table sans écriture lisible."
+  },
+  {
+    "id": "CAR-09",
+    "file": "exec-ddf7057a-ddb4-4e52-aa32-91d6f75f4fcc.png",
+    "format": "3:4",
+    "scene": "Trois collègues adultes en randonnée de week-end au Chasseral, crêtes jurassiennes naturelles, herbe et roches calcaires."
+  },
+  {
+    "id": "CAR-10",
+    "file": "exec-a6944af3-8169-4bc1-aa67-3ce544000781.png",
+    "format": "4:3",
+    "scene": "Repas d'été convivial de cinq collègues sur terrasse en gravier derrière baies de cette référence, bacs végétaux et collines vertes. Sans pose collective."
+  },
+  {
+    "id": "CAR-11",
+    "file": "exec-8f2e38fb-f6ee-4708-aa32-13989c199d62.png",
+    "format": "1:1",
+    "scene": "Rétro de sprint trois collègues dans salle vitrée à profilés noirs, post-it de couleurs sans texte, conversation animée."
+  },
+  {
+    "id": "CAR-12",
+    "file": "exec-da22045c-e2c1-4973-b830-08487e4f9b5d.png",
+    "format": "3:4",
+    "scene": "Deux collègues font une partie de putting sur mini-green réel dans couloir vitré de référence, l'un se penche avec putter l'autre sourit, robot blanc à côté."
+  },
+  {
+    "id": "CAR-13",
+    "file": "exec-7f411617-8988-4746-9e17-706d7e0368d4.png",
+    "format": "3:4",
+    "scene": "Collaboratrice adulte en appel concentré dans cette cabine acoustique blanche arrondie intérieur feutre gris tablette bois tabouret noir petite plante. Angle extérieur naturel."
+  },
+  {
+    "id": "CAR-19",
+    "file": "exec-8e392d85-74eb-4f50-be6c-a297d91714ea.png",
+    "format": "4:3",
+    "scene": "Entretien bienveillant plan de carrière entre deux adultes à haute table blanche de référence, écoute attentive."
+  },
+  {
+    "id": "CAR-20",
+    "file": "exec-f76693ce-5bff-4c53-9ab0-74508e4509b5.png",
+    "format": "4:3",
+    "scene": "Formation en petit groupe de quatre collègues dans box vitré noir, explication sur ordinateur au contenu flou."
+  },
+  {
+    "id": "CAR-21",
+    "file": "exec-06ca9848-1715-4738-9d81-960cf82348be.png",
+    "format": "4:3",
+    "scene": "Deux collègues en balade paisible sur crêtes du Jura suisse, équilibre vie privée travail, lumière douce paysage naturel."
+  },
+  {
+    "id": "CAR-22",
+    "file": "exec-8ffb14e9-50ed-4e22-bb8b-14639bf687e6.png",
+    "format": "4:3",
+    "scene": "Équipe de quatre collègues planifie projet au tableau dans open space, formes abstraites et post-it sans texte."
+  },
+  {
+    "id": "CAR-23",
+    "file": "exec-a4574dfb-2fe1-4244-8843-d6f5cd282ecf.png",
+    "format": "3:2",
+    "scene": "Candidate adulte au téléphone dans cabine acoustique blanche arrondie de référence, écoute souriante, tablette bois et plante."
+  },
+  {
+    "id": "CAR-24",
+    "file": "exec-843e950b-060a-476a-97f1-47ab3d053885.png",
+    "format": "3:2",
+    "scene": "Premier entretien recrutement naturel entre candidate et recruteur à haute table blanche, orchidée et tabourets moutarde et pétrole."
+  },
+  {
+    "id": "CAR-25",
+    "file": "exec-59ce619e-f5a4-44a6-8bc5-7979ae4f80be.png",
+    "format": "3:2",
+    "scene": "Visite de l'open space, collaboratrice fait découvrir bureaux à un candidat adulte, gestes en cours."
+  },
+  {
+    "id": "CAR-26",
+    "file": "exec-cc453f41-c742-454b-8308-cceb593dc34b.png",
+    "format": "3:2",
+    "scene": "Nouvelle arrivée accueillie avec café par deux collègues dans open space, échange spontané bienveillant."
+  },
+  {
+    "id": "CAR-27",
+    "file": "exec-9dff92cd-69b0-4988-88ca-5a8fa5468979.png",
+    "format": "3:2",
+    "scene": "Professionnelle adulte au premier plan marche le long du lac Léman à Genève, Jet d'eau reconnaissable flou derrière. Pas de bureau fictif."
+  },
+  {
+    "id": "CAR-28",
+    "file": "exec-5a6dc754-d7d8-4010-a360-6363c82d11df.png",
+    "format": "3:2",
+    "scene": "Professionnel adulte au premier plan sur sentier bordant vignes du Valais suisse, vallée et montagnes floues derrière."
+  },
+  {
+    "id": "CAR-29",
+    "file": "exec-80e2a7b7-5936-4428-a069-ec33175c461d.png",
+    "format": "3:2",
+    "scene": "Professionnelle adulte au premier plan sur quais d'Ouchy Lausanne, lac Léman et château d'Ouchy flous derrière."
+  },
+  {
+    "id": "CON-01",
+    "file": "exec-642fd022-85e0-4fda-aa01-a4d7c9c936c0.png",
+    "format": "16:9",
+    "scene": "Collaboratrice accueille visiteur à haute table"
+  },
+  {
+    "id": "EXP-01",
+    "file": "exec-9f2ac10e-d175-43e8-be40-4ca8ad3a1584.png",
+    "format": "16:9",
+    "scene": "Pair programming dans open space"
+  },
+  {
+    "id": "EXP-02",
+    "file": "exec-03571f02-edc4-4eda-acb4-6a8cb37c6013.png",
+    "format": "3:2",
+    "scene": "Développeuse concentrée avec casque et deux écrans flous, chaise bleu pétrole dans open space."
+  },
+  {
+    "id": "EXP-03",
+    "file": "exec-2f62377c-2ec7-41e3-84c6-aad6629799cc.png",
+    "format": "3:2",
+    "scene": "Deux ingénieurs dont l'un en fauteuil roulant échangent devant schéma abstrait sans écriture au tableau blanc dans box vitré noir."
+  },
+  {
+    "id": "EXP-04",
+    "file": "exec-1513eef0-d78f-4041-bec7-73b5740102e6.png",
+    "format": "3:2",
+    "scene": "Consultante IT échange avec équipe locale dans bureaux d'un client suisse avec plantes."
+  },
+  {
+    "id": "IA-01",
+    "file": "exec-f422419c-d156-4445-98a0-da36b2bc4532.png",
+    "format": "16:9",
+    "scene": "Ingénieure et collègue dans couloir vitré avec robot blanc"
+  },
+  {
+    "id": "MAI-01",
+    "file": "exec-99e2a5cf-826f-4004-8788-ff83a420dff7.png",
+    "format": "16:9",
+    "scene": "Lever du jour sur l'Ajoie suisse, Porrentruy et son château au loin, trois collègues à vélo sur une route de campagne. Paysage réaliste vallonné jurassien."
+  },
+  {
+    "id": "MAI-02",
+    "file": "exec-a51909d8-f3d0-4ab4-bef1-d6dbfe268346.png",
+    "format": "4:5",
+    "scene": "Collaboratrice arrosant bacs de plantes sur terrasse en gravier située derrière baies vitrées de cette référence, collines boisées automnales derrière."
+  },
+  {
+    "id": "USA-01",
+    "file": "exec-56baebe8-f07b-4deb-b6e9-716d1dc5c3ed.png",
+    "format": "16:9",
+    "scene": "Atelier avec post-it dans salle vitrée"
+  },
+  {
+    "id": "USA-SECT-01",
+    "file": "exec-5865bc5c-fc59-407d-a9f3-0376e790f8b7.png",
+    "format": "4:3",
+    "scene": "Équipe adulte mixte en réunion autour bureau blanc, développeur et opératrice avec casque échangent."
+  },
+  {
+    "id": "USA-SECT-02",
+    "file": "exec-4cc42ecb-120a-46cc-86aa-1ebdb130d431.png",
+    "format": "4:3",
+    "scene": "Médecin femme échange avec patient adulte dans consultation lumineuse moderne, gestes attentionnés."
+  },
+  {
+    "id": "USA-SECT-03",
+    "file": "exec-f10c1069-795d-4fd3-b215-9542980df923.png",
+    "format": "4:3",
+    "scene": "Formatrice adulte accompagne deux apprenants adultes dans bibliothèque lumineuse."
+  },
+  {
+    "id": "USA-SECT-04",
+    "file": "exec-6287fac0-b555-4460-8165-236bf3af461b.png",
+    "format": "4:3",
+    "scene": "Ingénieure et opérateur équipés de protections dans atelier moderne avec bras robot industriel sécurisé."
+  },
+  {
+    "id": "USA-SECT-05",
+    "file": "exec-15d865df-9c70-43f2-acfb-a4846845a539.png",
+    "format": "4:3",
+    "scene": "Conductrice ferroviaire adulte sur quai suisse près d'un train, uniforme sobre sans logo, échange avec collègue."
+  },
+  {
+    "id": "USA-SECT-06",
+    "file": "exec-aec97e40-868b-4100-a2be-5905114dabc1.png",
+    "format": "4:3",
+    "scene": "Agricultrice adulte inspecte récolte dans champ jurassien avec collègue, gestes naturels."
+  },
+  {
+    "id": "USA-SECT-07",
+    "file": "exec-53b191e8-30f6-4a6c-84f3-c26c9d80374d.png",
+    "format": "4:3",
+    "scene": "Vendeuse adulte conseille cliente dans magasin lumineux, étagères sans marque et plantes."
+  },
+  {
+    "id": "USA-SECT-08",
+    "file": "exec-7756d93d-bc7e-494d-9466-6c90e030267f.png",
+    "format": "4:3",
+    "scene": "Architecte femme et conducteur de travaux avec casques devant plans sans texte sur chantier suisse."
+  },
+  {
+    "id": "USA-SECT-09",
+    "file": "exec-968be595-637d-41d9-a404-8c502d877760.png",
+    "format": "4:3",
+    "scene": "Comptable adulte en échange avec collègue autour écran tableau de bord entièrement flou dans bureau bois plantes."
+  },
+  {
+    "id": "USA-SECT-10",
+    "file": "exec-a1e0717c-c2ad-4c3b-9037-93b9620461ac.png",
+    "format": "4:3",
+    "scene": "Guide de montagne adulte accompagne deux randonneurs sur sentier alpin suisse, vêtements fonctionnels, marche spontanée."
+  },
+  {
+    "id": "USA-SECT-11",
+    "file": "exec-97460c13-bd4d-4da5-8096-2b292c528ca3.png",
+    "format": "4:3",
+    "scene": "Horloger adulte à établi contrôle mouvement à loupe, outils précis, lumière fenêtre atelier suisse."
+  },
+  {
+    "id": "USA-SECT-12",
+    "file": "exec-e79f5a85-5a7e-49aa-a28e-8436c714833e.png",
+    "format": "4:3",
+    "scene": "Juriste adulte et spécialiste informatique échangent sur documents sans texte et ordinateur flou, protection des accès numériques, bureau suisse."
+  }
+]

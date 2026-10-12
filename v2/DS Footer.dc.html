@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="background:#0B1215;color:#F2F0EC;overflow:hidden;font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:.9375rem;line-height:1.6">
+  <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+    <section aria-labelledby="ft-cta" style="padding:clamp(96px,14vw,200px) clamp(20px,3vw,40px) clamp(64px,8vw,120px);border-bottom:1px solid rgba(242,240,236,.14);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:40px">
+      <div style="flex:1 1 640px;min-width:0">
+        <p style="margin:0 0 24px;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">Un projet, une question, une intuition&nbsp;?</p>
+        <h2 id="ft-cta" data-lines="" style="margin:0;font-weight:400;line-height:.88">
+          <span style="display:block;overflow:hidden;padding:.04em 0 .1em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(4rem,13vw,13rem);letter-spacing:-.03em">Parlons-</span></span>
+          <span style="display:block;overflow:hidden;padding-left:clamp(40px,12vw,220px)"><span data-line="" style="display:block;font-size:clamp(4.4rem,15vw,15rem);text-transform:uppercase;letter-spacing:-.05em">en.</span></span>
+        </h2>
+      </div>
+      <a href="Contact.dc.html" style="flex:none;width:clamp(132px,13vw,196px);aspect-ratio:1;border-radius:50%;border:1px solid #F2F0EC;display:grid;place-items:center;text-align:center;color:#F2F0EC;text-decoration:none;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;transition:background .4s,color .4s,border-color .4s" style-hover="background:#6DCDEA;color:#0B1215;border-color:#6DCDEA">Nous<br>écrire</a>
+    </section>
+  </sc-if>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:40px;padding:clamp(48px,6vw,88px) clamp(20px,3vw,40px)">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0 0 6px;font-size:.6875rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">Contact</h3>
+      <a href="tel:+41324671109" style="color:#F2F0EC;text-decoration:none;font-family:'Bodoni Moda',Didot,serif;font-size:1.5rem">+41 32 467 11 09</a>
+      <a href="mailto:contact@digital-solutions.io" style="color:#F2F0EC">contact@digital-solutions.io</a>
+      <a href="https://www.linkedin.com/company/digital-solutions-switzerland/" style="color:#F2F0EC">LinkedIn</a>
+      <a href="https://www.instagram.com/digitalsolutionsswitzerland/" style="color:#F2F0EC">Instagram</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <h3 style="margin:0 0 6px;font-size:.6875rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">Nos sites</h3>
+      <p style="margin:0">Porrentruy · siège<br><span style="color:#9FB0B6">Rue de la Roche-de-Mars 5, 2900</span></p>
+      <p style="margin:0;color:#C9D2D5">Delémont · Lausanne · Genève<br>Bâle · Martigny</p>
+    </div>
+    <nav aria-label="Pied de page" style="display:flex;flex-direction:column;gap:6px">
+      <h3 style="margin:0 0 6px;font-size:.6875rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">Explorer</h3>
+      <a href="Intelligence%20Artificielle.dc.html" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">Intelligence artificielle</a>
+      <a href="Expertises.dc.html" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">Expertises</a>
+      <a href="Usages.dc.html" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">Cas d'usage</a>
+      <a href="Maison.dc.html" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">La Maison</a>
+      <a href="Carrieres.dc.html" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">Carrières</a>
+      <a href="https://site.exkalibur.ai/" style="color:#F2F0EC;text-decoration:none;padding:3px 0" style-hover="color:#6DCDEA">exkalibur.ai ↗</a>
+    </nav>
+    <form aria-labelledby="ft-nl" onSubmit="{{ onSubmit }}" style="display:flex;flex-direction:column;gap:10px">
+      <h3 id="ft-nl" style="margin:0 0 6px;font-size:.6875rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">Le journal, une fois par mois</h3>
+      <label for="ft-email" style="font-size:.8125rem;color:#C9D2D5">Votre adresse e-mail</label>
+      <div style="display:flex;border-bottom:1px solid #F2F0EC">
+        <input id="ft-email" type="email" required="" autoComplete="email" style="flex:1;min-width:0;min-height:48px;background:transparent;border:0;color:#F2F0EC;font:inherit;padding:0">
+        <button type="submit" style="min-height:48px;background:none;border:0;color:#F2F0EC;font:inherit;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer">S'inscrire →</button>
+      </div>
+      <label style="display:flex;gap:10px;align-items:flex-start;font-size:.75rem;line-height:1.45;color:#C9D2D5"><input type="checkbox" required="" style="width:18px;height:18px;margin:2px 0 0;flex:none;accent-color:#6DCDEA">J'accepte que mon adresse soit utilisée pour recevoir le journal. Désinscription en un clic.</label>
+      <p role="status" style="margin:0;color:#6DCDEA;font-size:.8125rem">{{ msg }}</p>
+    </form>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;padding:20px clamp(20px,3vw,40px);border-top:1px solid rgba(242,240,236,.14);font-size:.75rem;color:#9FB0B6">
+    <span>© 2026 Digital Solutions SA</span>
+    <span style="color:#E1B48D">Médaille d'or EcoVadis 2025 · Swiss Made Software</span>
+    <a href="https://www.digital-solutions.io/politique-de-confidentialite/" style="color:#C9D2D5">Confidentialité</a>
+    <a href="https://www.digital-solutions.io/mentions-legales/" style="color:#C9D2D5">Mentions légales</a>
+    <button type="button" onClick="{{ openConsent }}" style="background:none;border:0;padding:8px 0;color:#C9D2D5;font:inherit;text-decoration:underline;text-underline-offset:.25em;cursor:pointer">Préférences cookies &amp; mode sobre</button>
+    <a href="#" style="color:#C9D2D5">Déclaration d'accessibilité</a>
+  </div>
+  <p aria-hidden="true" style="margin:0;padding:0 clamp(12px,1.4vw,24px);font-size:15.4vw;line-height:.78;letter-spacing:-.06em;white-space:nowrap;color:#F2F0EC;transform:translateY(10%)">digital solutions</p>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { msg: '' };
+  renderVals() {
+    return {
+      showCta: this.props.showCta ?? true,
+      msg: this.state.msg,
+      onSubmit: (e) => { e.preventDefault(); this.setState({ msg: 'Merci, à très vite dans votre boîte de réception.' }); },
+      openConsent: () => window.dispatchEvent(new CustomEvent('ds-open-consent'))
+    };
+  }
+}
+</script>
+</body>
+</html>

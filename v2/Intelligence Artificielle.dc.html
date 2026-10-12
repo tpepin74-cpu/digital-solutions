@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Intelligence artificielle souveraine en Suisse · Agents IA, RAG, MCP · Digital Solutions</title>
+<meta name="description" content="Agents IA, RAG, protocole MCP et A2A, vision, LLM open-weight, LLMOps et gouvernance : Digital Solutions conçoit et héberge en Suisse des solutions d'IA souveraines, du POC à la production.">
+<link rel="canonical" href="https://www.digital-solutions.io/intelligence-artificielle-suisse/">
+<meta property="og:title" content="L'intelligence artificielle souveraine · Digital Solutions">
+<meta property="og:locale" content="fr_CH">
+<meta name="theme-color" content="#0B1215">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..600&amp;family=Urbanist:wght@300..700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0;background:#F2F0EC;color:#0E1316;-webkit-font-smoothing:antialiased}*,*::before,*::after{box-sizing:border-box}a{color:inherit;text-underline-offset:.22em;text-decoration-thickness:1px}a:hover{color:inherit}:focus-visible{outline:2px solid #6DCDEA;outline-offset:3px;box-shadow:0 0 0 5px #0B1215}::selection{background:#6DCDEA;color:#0B1215}summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  { "@type": "Question", "name": "Mes données servent-elles à entraîner des modèles ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Vos données restent votre propriété et ne servent jamais à entraîner des modèles tiers." } },
+  { "@type": "Question", "name": "Comment limitez-vous les hallucinations ?", "acceptedAnswer": { "@type": "Answer", "text": "RAG avec citations obligatoires, évaluations systématiques et garde-fous qui bloquent les réponses non sourcées." } },
+  { "@type": "Question", "name": "Qu'est-ce que le protocole MCP ?", "acceptedAnswer": { "@type": "Answer", "text": "Un standard ouvert qui permet à un agent IA d'utiliser vos applications de façon contrôlée et journalisée." } }
+] }
+</script>
+<script src="ds-motion.js"></script>
+</helmet>
+<div style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:1.0625rem;line-height:1.65;background:#F2F0EC;color:#0E1316;overflow-x:clip">
+<dc-import name="DS Header" current="ia" hint-size="100%,0px"></dc-import>
+<main id="contenu" tabindex="-1" style="outline:none">
+
+<section data-hero="" aria-labelledby="h-hero" data-screen-label="IA 01 Hero" style="position:relative;height:100svh;min-height:640px;background:#0B1215;color:#F2F0EC;overflow:hidden">
+  <div data-hero-media="" style="position:absolute;inset:0;overflow:hidden">
+    <div data-hero-zoom="" style="position:absolute;inset:0"><img data-hero-img="" src="https://unsplash.com/photos/ig5JsKMQpIU/download?w=2400" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,.6) 0%,rgba(11,18,21,.35) 45%,rgba(11,18,21,.85) 100%)"></div>
+  </div>
+  <div data-hero-content="" style="position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(28px,5vh,56px);padding:0 clamp(20px,3vw,40px) clamp(24px,4vh,44px)">
+    <h1 id="h-hero" data-lines="" style="margin:0;font-weight:400;line-height:.9">
+      <span style="display:block;overflow:hidden;padding:.05em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.9rem,8.6vw,9.6rem);letter-spacing:-.025em">L'intelligence</span></span>
+      <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(3rem,11.6vw,13.6rem);text-transform:uppercase;letter-spacing:-.055em;line-height:.86">Artificielle</span></span>
+      <span style="display:block;overflow:hidden;padding:.05em 0 .12em;text-align:right"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.9rem,8.6vw,9.6rem);letter-spacing:-.025em;color:#6DCDEA">souveraine.</span></span>
+    </h1>
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;padding-top:20px;border-top:1px solid rgba(242,240,236,.3)">
+      <p data-reveal="fade" data-delay="500" style="margin:0;max-width:30em;font-size:1rem;line-height:1.55">Agents IA, RAG, protocole MCP, vision, automatisation intelligente. Nous maîtrisons toute la chaîne, des données au modèle et du modèle à l'usage. Conçu, entraîné et hébergé en Suisse.</p>
+      <nav data-reveal="fade" data-delay="650" aria-label="Fil d'Ariane" style="font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase"><a href="Accueil.dc.html" style="color:#F2F0EC">Accueil</a> <span aria-hidden="true">/</span> <span aria-current="page">Intelligence artificielle</span></nav>
+      <a data-reveal="fade" data-delay="800" href="Contact.dc.html" data-magnetic="" style="display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;background:#F2F0EC;color:#0B1215;border-radius:999px;text-decoration:none;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase">Demander une démo <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-bref" data-screen-label="IA 02 En bref" style="padding:clamp(100px,13vw,200px) clamp(20px,3vw,40px) clamp(64px,8vw,120px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px)">
+    <h2 id="h-bref" style="flex:0 0 200px;margin:.5em 0 0;font-size:.6875rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(01) En bref, en langage clair</h2>
+    <ol style="flex:1 1 640px;list-style:none;margin:0;padding:0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.7rem,3.4vw,3.4rem);line-height:1.15;letter-spacing:-.015em">
+      <li data-scrub="" style="padding:0 0 .6em">Nous créons des programmes d'IA qui <em>aident vos équipes</em> au quotidien.</li>
+      <li data-scrub="" style="padding:0 0 .6em">Ils lisent vos documents, utilisent vos logiciels et disent <em>toujours</em> d'où vient l'information.</li>
+      <li data-scrub="">Vos données restent en Suisse. Une personne valide <em>chaque décision importante</em>.</li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="h-stack" data-screen-label="IA 03 Chaîne IA" style="padding:0 clamp(20px,3vw,40px) clamp(100px,12vw,180px)">
+  <div style="display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,120px);align-items:flex-start">
+    <div style="flex:1 1 380px;position:sticky;top:clamp(80px,14vh,140px);display:flex;flex-direction:column;gap:28px">
+      <p style="margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(02) La chaîne de valeur</p>
+      <h2 id="h-stack" data-lines="" style="margin:0;font-weight:400;line-height:.94">
+        <span style="display:block;overflow:hidden;padding:.04em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.6rem,5vw,5.6rem);letter-spacing:-.025em">Six couches,</span></span>
+        <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(2.8rem,5.6vw,6.2rem);text-transform:uppercase;letter-spacing:-.05em">zéro maillon faible</span></span>
+      </h2>
+      <div aria-live="polite" style="display:flex;align-items:center;gap:20px">
+        <svg aria-hidden="true" width="84" height="84" viewBox="0 0 100 100" style="flex:none;transform:rotate(-90deg)">
+          <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(14,19,22,.14)" stroke-width="2"></circle>
+          <circle cx="50" cy="50" r="44" fill="none" stroke="#269CBD" stroke-width="4" stroke-dasharray="276.5" stroke-dashoffset="{{ ringOffset }}" style="transition:stroke-dashoffset .8s cubic-bezier(.16,1,.3,1)"></circle>
+        </svg>
+        <div><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#4A5A61">{{ layerCount }}</p><p style="margin:0;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;line-height:1.1">{{ layerName }}</p></div>
+      </div>
+    </div>
+    <ol style="flex:1 1 560px;list-style:none;margin:0;padding:0">
+      <sc-for list="{{ layers }}" as="l" hint-placeholder-count="6">
+        <li data-layer="" style="min-height:62vh;padding:clamp(32px,4vw,56px) 0;border-top:1px solid rgba(14,19,22,.2);display:flex;flex-direction:column;gap:18px;opacity:{{ l.op }};transition:opacity .6s">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#4A5A61">{{ l.tag }}</span>
+          <h3 style="margin:0;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:clamp(2rem,3.4vw,3.4rem);line-height:1.05;letter-spacing:-.02em">{{ l.name }}</h3>
+          <p style="margin:0;font-size:1.1875rem;max-width:32em">{{ l.change }}</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px 40px;margin-top:8px">
+            <ul aria-label="Méthodes" style="list-style:none;margin:0;padding:0">
+              <sc-for list="{{ l.methods }}" as="m" hint-placeholder-count="4"><li style="padding:8px 0;border-bottom:1px solid rgba(14,19,22,.12);color:#2E3B41">{{ m }}</li></sc-for>
+            </ul>
+            <ul aria-label="Technologies" style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start">
+              <sc-for list="{{ l.tech }}" as="t" hint-placeholder-count="6"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:6px 12px;border:1px solid rgba(14,19,22,.3);border-radius:999px">{{ t }}</li></sc-for>
+            </ul>
+          </div>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<section id="demo" aria-labelledby="h-demo" data-screen-label="IA 04 Démo agent" style="background:#0B1215;color:#F2F0EC;padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px);scroll-margin-top:60px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:clamp(40px,5vw,72px)">
+    <div>
+      <p style="margin:0 0 24px;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">(03) Démonstration</p>
+      <h2 id="h-demo" data-lines="" style="margin:0;font-weight:400;line-height:.92">
+        <span style="display:block;overflow:hidden;padding:.04em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.8rem,6vw,6.6rem);letter-spacing:-.025em">Regardez un agent</span></span>
+        <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(3rem,6.6vw,7.4rem);text-transform:uppercase;letter-spacing:-.05em">travailler</span></span>
+      </h2>
+    </div>
+    <div role="group" aria-label="Scénarios" style="display:flex;flex-wrap:wrap;gap:8px">
+      <sc-for list="{{ scenarios }}" as="s" hint-placeholder-count="3">
+        <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" style="min-height:48px;padding:0 22px;border-radius:999px;border:1px solid #F2F0EC;background:{{ s.bg }};color:{{ s.fg }};font:inherit;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s">{{ s.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,64px);align-items:stretch">
+    <ol aria-label="Étapes de l'agent" style="flex:1 1 280px;max-width:420px;list-style:none;margin:0;padding:0;border-top:1px solid rgba(242,240,236,.16)">
+      <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+        <li style="display:grid;grid-template-columns:auto 1fr;gap:4px 18px;padding:18px 0;border-bottom:1px solid rgba(242,240,236,.16);opacity:{{ st.op }};transition:opacity .4s">
+          <span style="grid-row:span 2;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2rem;line-height:1;color:{{ st.numColor }};transition:color .4s">{{ st.n }}</span>
+          <span style="font-size:1.0625rem">{{ st.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#9FB0B6">{{ st.tech }}</span>
+        </li>
+      </sc-for>
+    </ol>
+    <figure style="flex:999 1 520px;min-width:0;margin:0;border:1px solid rgba(242,240,236,.16);display:flex;flex-direction:column;background:#0F191D">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid rgba(242,240,236,.12)">
+        <span aria-hidden="true" data-loop="pulse" style="width:8px;height:8px;border-radius:50%;background:#6DCDEA"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#C9D2D5">{{ consoleTitle }}</span>
+        <span style="margin-left:auto;display:flex;gap:8px">
+          <button type="button" onClick="{{ toggleDemo }}" aria-pressed="{{ demoPausedStr }}" style="min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(242,240,236,.35);background:transparent;color:#F2F0EC;font:inherit;font-size:.75rem;cursor:pointer">{{ demoBtn }}</button>
+          <button type="button" onClick="{{ nextStep }}" style="min-height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(242,240,236,.35);background:transparent;color:#F2F0EC;font:inherit;font-size:.75rem;cursor:pointer">Étape suivante</button>
+        </span>
+      </div>
+      <div aria-live="polite" style="padding:24px 18px;min-height:24rem;flex:1;display:flex;flex-direction:column;gap:18px">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:6.5rem 1fr;gap:16px;align-items:start">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.6875rem;letter-spacing:.06em;text-transform:uppercase;color:#0B1215;background:{{ ln.tag }};padding:4px 8px;text-align:center">{{ ln.k }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;line-height:1.6;color:#E2E8EA;white-space:pre-line">{{ ln.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <figcaption style="padding:12px 18px;border-top:1px solid rgba(242,240,236,.12);font-size:.75rem;color:#9FB0B6">Démonstration scénarisée, données fictives. Aucune donnée réelle n'est traitée.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section aria-labelledby="h-rag" data-screen-label="IA 05 RAG" style="padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px);align-items:flex-end;margin-bottom:clamp(48px,6vw,96px)">
+    <p style="flex:0 0 200px;margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(04) RAG</p>
+    <h2 id="h-rag" data-lines="" style="flex:1 1 600px;margin:0;font-weight:400;line-height:.94">
+      <span style="display:block;overflow:hidden;padding:.04em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.6rem,5.4vw,6rem);letter-spacing:-.025em">Le RAG, fait</span></span>
+      <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(2.6rem,5.6vw,6.4rem);text-transform:uppercase;letter-spacing:-.05em">dans les règles</span></span>
+    </h2>
+  </div>
+  <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:40px 24px">
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">1</span><strong style="font-weight:400;font-size:1.1875rem">Ingestion</strong><span style="color:#4A5A61;font-size:.9375rem">PDF, scans, intranets, e-mails. Structure, tableaux et métadonnées extraits.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="100" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">2</span><strong style="font-weight:400;font-size:1.1875rem">Découpage</strong><span style="color:#4A5A61;font-size:.9375rem">Segmentation sémantique qui respecte titres, articles et paragraphes.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="200" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">3</span><strong style="font-weight:400;font-size:1.1875rem">Vectorisation</strong><span style="color:#4A5A61;font-size:.9375rem">Embeddings multilingues FR, DE, IT, EN, hébergés en Suisse.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="300" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">4</span><strong style="font-weight:400;font-size:1.1875rem">Recherche hybride</strong><span style="color:#4A5A61;font-size:.9375rem">Mots-clés et sens combinés, filtrés selon les droits de chacun.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="400" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">5</span><strong style="font-weight:400;font-size:1.1875rem">Reranking</strong><span style="color:#4A5A61;font-size:.9375rem">Un second modèle ne garde que les passages les plus pertinents.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="500" style="display:block;height:1px;background:#269CBD;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">6</span><strong style="font-weight:400;font-size:1.1875rem">Génération sourcée</strong><span style="color:#4A5A61;font-size:.9375rem">Pas de source, pas de réponse. Les citations sont obligatoires.</span></li>
+    <li style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="600" style="display:block;height:1px;background:#269CBD;transform-origin:0 50%"></span><span style="font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:2.4rem;line-height:1">7</span><strong style="font-weight:400;font-size:1.1875rem">Évaluation</strong><span style="color:#4A5A61;font-size:.9375rem">Fidélité, pertinence et couverture mesurées en continu.</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="h-mcp" data-screen-label="IA 06 MCP" style="background:#0B1215;color:#F2F0EC;padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:48px clamp(40px,7vw,120px);align-items:center">
+    <div data-reveal="img" style="flex:1 1 380px;aspect-ratio:4/5;max-height:84vh;overflow:hidden;background:#1A262B">
+      <img src="https://unsplash.com/photos/ra8E5aSathU/download?w=1400" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+    </div>
+    <div style="flex:1 1 480px;display:flex;flex-direction:column;gap:28px">
+      <p style="margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#9FB0B6">(05) Protocoles MCP &amp; A2A</p>
+      <h2 id="h-mcp" data-lines="" style="margin:0;font-weight:400;line-height:.94">
+        <span style="display:block;overflow:hidden;padding:.04em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.4rem,4.6vw,5.2rem);letter-spacing:-.025em">Un engrenage</span></span>
+        <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(2.6rem,5vw,5.6rem);text-transform:uppercase;letter-spacing:-.05em">de précision</span></span>
+      </h2>
+      <p style="margin:0;max-width:32em;color:#C9D2D5;font-size:1.0625rem">Le Model Context Protocol relie vos agents à vos applications comme les rouages d'un mouvement horloger&nbsp;: chaque pièce a un rôle précis, rien ne tourne pour rien.</p>
+      <dl style="margin:0;border-top:1px solid rgba(242,240,236,.16)">
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(242,240,236,.16)"><dt style="font-family:'Bodoni Moda',Didot,serif;font-size:1.25rem">Serveurs MCP</dt><dd style="margin:0;color:#C9D2D5">Outils, ressources et prompts métier pour votre ERP, votre GED, vos bases et vos API.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(242,240,236,.16)"><dt style="font-family:'Bodoni Moda',Didot,serif;font-size:1.25rem">Sécurité</dt><dd style="margin:0;color:#C9D2D5">OAuth, droits par outil, confirmation humaine pour toute action sensible.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(242,240,236,.16)"><dt style="font-family:'Bodoni Moda',Didot,serif;font-size:1.25rem">Passerelle</dt><dd style="margin:0;color:#C9D2D5">Point d'entrée unique qui journalise chaque appel et applique vos politiques.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(242,240,236,.16)"><dt style="font-family:'Bodoni Moda',Didot,serif;font-size:1.25rem">Agent-to-Agent</dt><dd style="margin:0;color:#C9D2D5">Des agents spécialisés se répartissent le travail et se transmettent le contexte.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-modeles" data-screen-label="IA 07 Modèles" style="background:#E7E1D8;padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px);align-items:flex-end;margin-bottom:clamp(48px,5vw,80px)">
+    <p style="flex:0 0 200px;margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(06) Modèles &amp; hébergement</p>
+    <div style="flex:1 1 600px">
+      <h2 id="h-modeles" style="margin:0 0 20px;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:clamp(2.4rem,4.6vw,5rem);line-height:1;letter-spacing:-.025em">Le bon modèle, <em>au bon endroit.</em></h2>
+      <p style="margin:0;max-width:38em;color:#3F4A4F">Indépendants des éditeurs, nous choisissons le modèle selon la tâche, la sensibilité des données et le coût, puis nous le déployons là où vous le décidez.</p>
+    </div>
+  </div>
+  <div tabindex="0" role="region" aria-label="Comparatif d'hébergement, défilement horizontal" style="overflow-x:auto">
+    <table style="width:100%;min-width:780px;border-collapse:collapse;text-align:left">
+      <caption style="position:absolute;left:-9999px">Options d'hébergement de vos modèles</caption>
+      <thead><tr>
+        <th scope="col" style="padding:0 20px 18px 0;width:22%;border-bottom:1px solid #0E1316"><span style="position:absolute;left:-9999px">Critère</span></th>
+        <th scope="col" style="padding:0 20px 18px 0;border-bottom:1px solid #0E1316;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:2rem">Sur site</th>
+        <th scope="col" style="padding:0 20px 18px 0;border-bottom:1px solid #0E1316;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:2rem;font-style:italic">Cloud suisse</th>
+        <th scope="col" style="padding:0 20px 18px 0;border-bottom:1px solid #0E1316;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:2rem">Hybride</th>
+      </tr></thead>
+      <tbody style="color:#2E3B41">
+        <tr><th scope="row" style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18);font-weight:400;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#0E1316">Où</th><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Vos serveurs GPU, dans vos locaux</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Centres de données situés en Suisse</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Le sensible sur site, le reste dans le cloud suisse</td></tr>
+        <tr><th scope="row" style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18);font-weight:400;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#0E1316">Modèles</th><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Open-weight quantifiés&nbsp;: Mistral, Llama, Qwen, Apertus</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Open-weight de grande taille, API souveraines</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Petits modèles locaux, grands modèles à distance</td></tr>
+        <tr><th scope="row" style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18);font-weight:400;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#0E1316">Idéal pour</th><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Secret professionnel, santé, défense</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Démarrer vite, charge variable</td><td style="padding:20px 20px 20px 0;border-bottom:1px solid rgba(14,19,22,.18)">Organisations multi-sites et multi-usages</td></tr>
+        <tr><th scope="row" style="padding:20px 20px 20px 0;font-weight:400;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#0E1316">Outillage</th><td style="padding:20px 20px 20px 0">vLLM, Ollama, Kubernetes</td><td style="padding:20px 20px 20px 0">Infrastructure as code, autoscaling</td><td style="padding:20px 20px 20px 0">Routage des requêtes selon la sensibilité</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section aria-labelledby="h-gouv" data-screen-label="IA 08 Gouvernance" style="padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px);align-items:flex-end;margin-bottom:clamp(48px,6vw,96px)">
+    <p style="flex:0 0 200px;margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(07) Qualité &amp; gouvernance</p>
+    <h2 id="h-gouv" data-lines="" style="flex:1 1 600px;margin:0;font-weight:400;line-height:.94">
+      <span style="display:block;overflow:hidden;padding:.04em 0 .12em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(2.4rem,4.8vw,5.4rem);letter-spacing:-.025em">On ne déploie que ce</span></span>
+      <span style="display:block;overflow:hidden"><span data-line="" style="display:block;font-size:clamp(2.4rem,5vw,5.6rem);text-transform:uppercase;letter-spacing:-.05em">qu'on sait mesurer</span></span>
+    </h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px clamp(40px,6vw,96px)">
+    <dl style="margin:0">
+      <dt style="font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61;padding-bottom:16px;border-bottom:1px solid #0E1316">Qualité &amp; LLMOps</dt>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">Évaluations systématiques</span><span style="color:#4A5A61">Jeux de questions de référence construits avec vos métiers, modèle juge et relecture humaine d'échantillons.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">Red teaming</span><span style="color:#4A5A61">Injections de prompt, contournements, fuites de données&nbsp;: nous attaquons nos agents avant les autres.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">Garde-fous</span><span style="color:#4A5A61">Filtrage des entrées et sorties, masquage des données personnelles, refus motivé hors périmètre.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">Observabilité</span><span style="color:#4A5A61">Traces, coûts, latence et dérive suivis en continu avec OpenTelemetry et Langfuse.</span></dd>
+    </dl>
+    <dl style="margin:0">
+      <dt style="font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61;padding-bottom:16px;border-bottom:1px solid #0E1316">Gouvernance &amp; conformité</dt>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">nLPD</span><span style="color:#4A5A61">Analyse d'impact, registre des traitements, minimisation et hébergement suisse dès la conception.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">AI Act européen</span><span style="color:#4A5A61">Pour nos clients actifs dans l'UE&nbsp;: classification des risques, documentation, transparence.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">ISO/IEC 42001</span><span style="color:#4A5A61">Une gouvernance de vos systèmes d'IA structurée selon ce référentiel de management.</span></dd>
+      <dd style="margin:0;padding:22px 0;border-bottom:1px solid rgba(14,19,22,.18)"><span style="display:block;font-family:'Bodoni Moda',Didot,serif;font-size:1.6rem;margin-bottom:6px">Secteurs régulés</span><span style="color:#4A5A61">Attentes de la FINMA en matière de gouvernance de l'IA, traçabilité et journal d'audit.</span></dd>
+    </dl>
+  </div>
+</section>
+
+<section aria-labelledby="h-acc" data-screen-label="IA 09 Accompagnement" style="padding:0 clamp(20px,3vw,40px) clamp(100px,12vw,180px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px);align-items:baseline;margin-bottom:clamp(40px,5vw,72px)">
+    <p style="flex:0 0 200px;margin:0;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(08) Accompagnement</p>
+    <h2 id="h-acc" style="flex:1 1 600px;margin:0;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:clamp(2.2rem,4vw,4.2rem);line-height:1.02;letter-spacing:-.02em">Trois façons de <em>travailler ensemble</em>, douze profils pour réussir.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><h3 style="margin:8px 0 0;font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:400;text-transform:uppercase;letter-spacing:-.03em">Sur mesure</h3><p style="margin:0;color:#4A5A61">Projet de bout en bout ou mission ciblée, avec engagement sur le résultat.</p><p style="margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#4A5A61">AI Sponsor · AI Champion · AI Change Manager · AI Steering Committee</p></div>
+    <div style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="120" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><h3 style="margin:8px 0 0;font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:400;text-transform:uppercase;letter-spacing:-.03em">Délégation</h3><p style="margin:0;color:#4A5A61">Chez vous, dans nos bureaux ou en location de services, selon votre organisation.</p><p style="margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#4A5A61">AI Lead · AI Business Analyst · AI Architect · AI Developer &amp; Tester</p></div>
+    <div style="display:flex;flex-direction:column;gap:12px"><span data-reveal="rule" data-delay="240" style="display:block;height:1px;background:#0E1316;transform-origin:0 50%"></span><h3 style="margin:8px 0 0;font-size:clamp(1.6rem,2.4vw,2.2rem);font-weight:400;text-transform:uppercase;letter-spacing:-.03em">Stratégie</h3><p style="margin:0;color:#4A5A61">Maîtrise d'ouvrage et maîtrise d'œuvre pour piloter vos programmes IA.</p><p style="margin:8px 0 0;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:#4A5A61">AI Supervisor · AI Operator · AI Service &amp; Support · AI Infrastructure Engineer</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="h-exk" data-screen-label="IA 10 exkalibur.ai" style="background:#269CBD;color:#0B1215;padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px);overflow:hidden">
+  <p style="margin:0 0 24px;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase">(09) Notre produit</p>
+  <h2 id="h-exk" data-lines="" style="margin:0;font-weight:400;line-height:.88;color:#FFFFFF">
+    <span style="display:block;overflow:hidden;padding:.04em 0 .14em"><span data-line="" style="display:block;font-family:'Bodoni Moda',Didot,serif;font-style:italic;font-size:clamp(4rem,14vw,15rem);letter-spacing:-.035em">exkalibur.ai</span></span>
+  </h2>
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(32px,4vw,56px)">
+    <p style="margin:0;max-width:30em;font-size:1.1875rem">Notre approche «&nbsp;AI by Design&nbsp;» en version produit&nbsp;: des agents intelligents et autonomes, hébergés en Suisse, qui collaborent avec vos équipes plutôt que de les remplacer.</p>
+    <a href="https://site.exkalibur.ai/" data-magnetic="" style="display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:0 28px;background:#0B1215;color:#F2F0EC;border-radius:999px;text-decoration:none;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase">Découvrir exkalibur.ai ↗</a>
+  </div>
+</section>
+
+<section aria-labelledby="h-faq" data-screen-label="IA 11 FAQ" style="padding:clamp(100px,12vw,180px) clamp(20px,3vw,40px)">
+  <div style="display:flex;flex-wrap:wrap;gap:24px clamp(32px,6vw,96px)">
+    <div style="flex:0 1 360px">
+      <p style="margin:0 0 20px;font-size:.6875rem;letter-spacing:.18em;text-transform:uppercase;color:#4A5A61">(10) Questions</p>
+      <h2 id="h-faq" style="margin:0;font-family:'Bodoni Moda',Didot,serif;font-weight:400;font-size:clamp(2.4rem,4vw,4rem);line-height:1;letter-spacing:-.02em">Vos questions <em>sur l'IA</em></h2>
+    </div>
+    <div style="flex:1 1 560px;border-top:1px solid #0E1316">
+      <details style="border-bottom:1px solid rgba(14,19,22,.2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.25rem,1.8vw,1.6rem);min-height:44px">Mes données servent-elles à entraîner des modèles&nbsp;?<span aria-hidden="true" style="font-family:'Century Gothic',Urbanist,sans-serif;font-size:1.5rem;font-weight:300">+</span></summary><p style="margin:0 0 24px;color:#4A5A61;max-width:40em">Non. Vos données restent votre propriété et ne servent jamais à entraîner des modèles tiers. Quand un fine-tuning est pertinent, le modèle obtenu vous appartient et reste dans votre périmètre.</p></details>
+      <details style="border-bottom:1px solid rgba(14,19,22,.2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.25rem,1.8vw,1.6rem);min-height:44px">Comment limitez-vous les hallucinations&nbsp;?<span aria-hidden="true" style="font-family:'Century Gothic',Urbanist,sans-serif;font-size:1.5rem;font-weight:300">+</span></summary><p style="margin:0 0 24px;color:#4A5A61;max-width:40em">Par la conception&nbsp;: RAG avec citations obligatoires, sorties structurées, évaluations sur un jeu de référence et garde-fous qui bloquent toute réponse non sourcée. Pour les décisions qui comptent, un humain valide.</p></details>
+      <details style="border-bottom:1px solid rgba(14,19,22,.2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.25rem,1.8vw,1.6rem);min-height:44px">Qu'est-ce que le protocole MCP&nbsp;?<span aria-hidden="true" style="font-family:'Century Gothic',Urbanist,sans-serif;font-size:1.5rem;font-weight:300">+</span></summary><p style="margin:0 0 24px;color:#4A5A61;max-width:40em">Un standard ouvert qui décrit comment un agent IA accède à vos applications. Nous exposons vos systèmes via des serveurs MCP sécurisés&nbsp;: droits maîtrisés, appels journalisés, et liberté de changer de modèle sans tout reconstruire.</p></details>
+      <details style="border-bottom:1px solid rgba(14,19,22,.2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.25rem,1.8vw,1.6rem);min-height:44px">Open-weight ou API&nbsp;: quel modèle choisir&nbsp;?<span aria-hidden="true" style="font-family:'Century Gothic',Urbanist,sans-serif;font-size:1.5rem;font-weight:300">+</span></summary><p style="margin:0 0 24px;color:#4A5A61;max-width:40em">Tout dépend de la sensibilité des données, du volume et de la difficulté de la tâche. Nous comparons plusieurs modèles sur vos propres cas de test avant de recommander, et gardons l'architecture ouverte.</p></details>
+      <details style="border-bottom:1px solid rgba(14,19,22,.2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:'Bodoni Moda',Didot,serif;font-size:clamp(1.25rem,1.8vw,1.6rem);min-height:44px">Par où commencer&nbsp;?<span aria-hidden="true" style="font-family:'Century Gothic',Urbanist,sans-serif;font-size:1.5rem;font-weight:300">+</span></summary><p style="margin:0 0 24px;color:#4A5A61;max-width:40em">Par un atelier. Nous identifions deux ou trois cas d'usage à forte valeur, puis nous en prouvons un sur vos données avec un POC à périmètre restreint, avant tout engagement plus large.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+<dc-import name="DS Footer" hint-size="100%,600px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const LAYERS = [
+  { tag: 'Couche 1 · Données & infrastructure', name: 'Les fondations', change: "Des données propres, des pipelines fiables et une infrastructure souveraine qui tient la charge.", methods: ['Data engineering', 'LLMOps & MLOps', 'Infrastructure as code', 'FinOps IA'], tech: ['Microsoft Fabric', 'Databricks', 'Kubernetes', 'vLLM', 'MLflow', 'Langfuse'] },
+  { tag: 'Couche 2 · Modèles', name: 'Le bon cerveau pour la tâche', change: "Le modèle le plus efficace pour chaque tâche, pas le plus cher. Et la liberté d'en changer.", methods: ['Benchmark sur vos cas', 'Fine-tuning LoRA / QLoRA', 'Distillation & quantification', 'Vision & ML prédictif'], tech: ['Mistral', 'Llama', 'Qwen', 'Apertus', 'YOLO', 'XGBoost'] },
+  { tag: 'Couche 3 · Connaissance & RAG', name: 'Vos documents, interrogeables', change: "Chaque réponse s'appuie sur vos sources, avec les citations pour la vérifier en un clic.", methods: ['Découpage sémantique', 'Recherche hybride & reranking', 'GraphRAG', 'Filtrage selon les droits'], tech: ['Docling', 'OCR', 'pgvector', 'Qdrant', 'OpenSearch', 'Embeddings multilingues'] },
+  { tag: 'Couche 4 · Agents & orchestration', name: 'Raisonner, planifier, agir', change: "Des agents qui enchaînent les étapes d'un processus, utilisent vos outils et savent quand passer la main.", methods: ['Agents outillés', 'Systèmes multi-agents', 'Planification & mémoire', 'Human-in-the-loop'], tech: ['MCP', 'A2A', 'LangGraph', 'Semantic Kernel', 'LlamaIndex', 'JSON Schema'] },
+  { tag: 'Couche 5 · Interfaces & usages', name: 'Là où travaillent vos équipes', change: "L'IA arrive dans les outils que vos équipes utilisent déjà, sans nouvelle application à apprendre.", methods: ['Design centré utilisateur', 'Copilotes métier', 'Interfaces vocales', 'Accessibilité dès la conception'], tech: ['Microsoft Teams', 'Web & mobile', 'API REST', 'Whisper', 'Widgets intégrés', 'SSO'] },
+  { tag: 'Couche 6 · Gouvernance & sécurité', name: 'Le cadre de confiance', change: "Une IA que votre direction, votre DPO et vos auditeurs peuvent approuver sans réserve.", methods: ['Analyse de risques IA', 'Red teaming', 'Garde-fous entrées / sorties', 'Supervision humaine'], tech: ['nLPD', 'AI Act', 'ISO/IEC 42001', 'OWASP LLM Top 10', 'Masquage PII', 'Journal d\u2019audit'] }
+];
+const SCENARIOS = [
+  { label: 'Administration', title: 'agent · urbanisme · commune', lines: [
+    { k: 'demande', t: '« Quelles pièces manquent au dossier de permis de construire 2026-114 ? »', tag: '#F2F0EC' },
+    { k: 'rag', t: 'Loi cantonale sur les constructions, art. 19\nRèglement communal, art. 12 · Check-list urbanisme v4', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'ged.lire_dossier("2026-114") → 14 pièces\nregistre.parcelle(1432) → zone mixte', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Il manque le plan de situation signé et le justificatif énergétique. Sources [1] [3]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Courrier au requérant préparé. En attente de validation par le service urbanisme.', tag: '#F2F0EC' } ] },
+  { label: 'Banque · KYC', title: 'agent · conformité · revue KYC', lines: [
+    { k: 'demande', t: '« Prépare la revue KYC périodique du client 88-301. »', tag: '#F2F0EC' },
+    { k: 'rag', t: 'Directive interne LBA, art. 4 · Check-list KYC entreprises v7', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'crm.client("88-301") → société anonyme\nged.pieces("88-301") → 9 documents', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Extrait du registre du commerce de plus de 12 mois. Ayant droit économique à reconfirmer. Note jointe. Sources [1] [2]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Décision réservée au compliance officer. Journal d\u2019audit complet et horodaté.', tag: '#F2F0EC' } ] },
+  { label: 'Helpdesk IT', title: 'agent · support IT · niveau 1', lines: [
+    { k: 'demande', t: '« Je n\u2019arrive plus à me connecter au VPN depuis ce matin. »', tag: '#F2F0EC' },
+    { k: 'rag', t: 'Procédure VPN v3 · Incident connu INC-2291 : certificats expirés', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'annuaire.compte("m.rossi") → actif\nmdm.poste("PC-0412") → certificat expiré', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Votre certificat VPN a expiré. Je peux le renouveler maintenant, cela prend deux minutes. Source [1]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Action sensible : renouvellement lancé après confirmation de l\u2019utilisatrice. Ticket clos.', tag: '#F2F0EC' } ] }
+];
+const STAGES = [['Demande', 'langage naturel'], ['Recherche RAG', 'hybride + reranking'], ['Outils MCP', 'appels journalisés'], ['Réponse sourcée', 'citations obligatoires'], ['Validation humaine', 'human-in-the-loop']];
+
+class Component extends DCLogic {
+  state = { layer: 0, sc: 0, demo: 0, demoPaused: false };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      if (this.raf) return;
+      this.raf = requestAnimationFrame(() => {
+        this.raf = 0;
+        const items = document.querySelectorAll('[data-layer]');
+        let idx = 0; const mark = window.innerHeight * 0.45;
+        items.forEach((el, i) => { if (el.getBoundingClientRect().top < mark) idx = i; });
+        if (idx !== this.state.layer) this.setState({ layer: idx });
+      });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.timer = setInterval(() => {
+      const still = window.DSMotion ? window.DSMotion.isPaused() : false;
+      if (still || this.state.demoPaused) return;
+      this.setState((s) => ({ demo: (s.demo + 1) % 7 }));
+    }, 2300);
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); clearInterval(this.timer); }
+
+  renderVals() {
+    const { layer, sc, demo, demoPaused } = this.state;
+    const d = Math.min(demo, 5);
+    const S = SCENARIOS[sc];
+    const still = typeof window !== 'undefined' && window.DSMotion ? window.DSMotion.isPaused() : false;
+    return {
+      layers: LAYERS.map((l, i) => ({ ...l, op: i === layer ? 1 : 0.55 })),
+      layerName: LAYERS[layer].name,
+      layerCount: String(layer + 1).padStart(2, '0') + ' / 06',
+      ringOffset: String(276.5 * (1 - (layer + 1) / LAYERS.length)),
+      scenarios: SCENARIOS.map((s, i) => ({ label: s.label, pressed: String(i === sc), bg: i === sc ? '#F2F0EC' : 'transparent', fg: i === sc ? '#0B1215' : '#F2F0EC', onClick: () => this.setState({ sc: i, demo: 0 }) })),
+      consoleTitle: S.title,
+      stages: STAGES.map(([label, tech], i) => ({ n: i + 1, label, tech, op: i <= d ? 1 : 0.4, numColor: i === d ? '#6DCDEA' : '#F2F0EC' })),
+      lines: S.lines.slice(0, d + 1),
+      demoPausedStr: String(demoPaused || still), demoBtn: demoPaused || still ? 'Lecture' : 'Pause',
+      toggleDemo: () => { if (still && window.DSMotion) { this.setState({ demoPaused: false }); } else this.setState((s) => ({ demoPaused: !s.demoPaused })); },
+      nextStep: () => this.setState((s) => ({ demo: (Math.min(s.demo, 5) + 1) % 6, demoPaused: true }))
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Générateur intégré imagegen. Chaque scène individuelle figure dans prompts.json.
+Direction commune : photographie documentaire ultra-réaliste, Canon R5 35 mm f/2.8, lumière naturelle douce chaude, grain léger, gestes spontanés et regards entre personnes. Adultes diversifiés de 25 à 60 ans. Palette blancs béton bois clair vert végétal moutarde bleu pétrole. Références du siège à conserver, avec plantes ajoutées et bureaux rangés. Aucun texte ni écran lisible demandé.
+Corrections finales : ACC-04 suppression drapeaux français et européen ; ACC-07 et MAI-01 reprise du château par une évocation avec tour ronde.

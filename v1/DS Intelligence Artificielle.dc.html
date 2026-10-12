@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Intelligence artificielle en Suisse · Agents IA, RAG, MCP · Digital Solutions</title>
+<meta name="description" content="Agents IA, RAG, protocole MCP, vision, LLM open-weight et LLMOps : Digital Solutions conçoit et héberge en Suisse des solutions d'IA souveraines, du POC à la production.">
+<link rel="canonical" href="https://www.digital-solutions.io/intelligence-artificielle-suisse/">
+<meta property="og:title" content="Intelligence artificielle souveraine, conçue et hébergée en Suisse">
+<meta property="og:description" content="Agents IA, RAG, MCP, vision, automatisation intelligente. Du prototype à la production.">
+<meta property="og:locale" content="fr_CH">
+<meta name="theme-color" content="#53676F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:#14232A}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#14232A;text-decoration-color:#269CBD;text-underline-offset:.22em;text-decoration-thickness:2px}
+a:hover{color:#1C7F9C}
+:focus-visible{outline:3px solid #14232A;outline-offset:2px;box-shadow:0 0 0 6px #fff}
+::selection{background:#6DCDEA;color:#14232A}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@graph": [
+ { "@type": "Service", "name": "Solutions d'intelligence artificielle souveraines", "provider": { "@type": "Organization", "name": "Digital Solutions SA", "url": "https://www.digital-solutions.io/" }, "areaServed": "CH",
+   "serviceType": ["Agents IA", "Retrieval-Augmented Generation", "Model Context Protocol", "Vision par ordinateur", "Automatisation intelligente des processus", "LLMOps"] },
+ { "@type": "FAQPage", "mainEntity": [
+   { "@type": "Question", "name": "Mes données servent-elles à entraîner des modèles ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. Vos données restent votre propriété et ne servent jamais à entraîner des modèles tiers." } },
+   { "@type": "Question", "name": "Comment limitez-vous les hallucinations ?", "acceptedAnswer": { "@type": "Answer", "text": "Par le RAG avec citations obligatoires, des évaluations systématiques et des garde-fous qui bloquent les réponses non sourcées." } }
+ ] }
+] }
+</script>
+</helmet>
+<div style="font-family:'Century Gothic','Urbanist','Avenir Next',system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;color:#14232A;background:#FFFFFF;letter-spacing:{{ ls }};word-spacing:{{ ws }};min-height:100vh">
+
+<a href="#contenu" style="position:absolute;left:-9999px;top:12px;z-index:100;background:#14232A;color:#FFFFFF;padding:.875rem 1.25rem;border-radius:10px;font-weight:700;text-decoration:none" style-focus="left:12px">Aller au contenu</a>
+
+<sc-if value="{{ showA11yBar }}" hint-placeholder-val="{{ true }}">
+<div role="region" aria-label="Préférences d'accessibilité" style="background:#53676F;color:#FFFFFF;font-size:.875rem;border-bottom:1px solid rgba(255,255,255,.18)">
+  <div style="max-width:1280px;margin:0 auto;padding:.375rem clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem">
+    <span style="font-weight:700">Accessibilité</span>
+    <button type="button" onClick="{{ togglePause }}" aria-pressed="{{ pausedStr }}" style="min-height:44px;display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#FFFFFF;border:0;font:inherit;cursor:pointer;padding:0 .25rem">
+      <span aria-hidden="true" style="width:1.125rem;height:1.125rem;border:2px solid #FFFFFF;border-radius:50%;display:inline-block;background:{{ pauseDot }}"></span>{{ pauseLabel }}
+    </button>
+    <div role="group" aria-label="Taille du texte" style="display:flex;align-items:center;gap:.25rem">
+      <span>Texte</span>
+      <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+        <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" style="min-width:44px;min-height:44px;background:{{ s.bg }};color:{{ s.fg }};border:0;border-radius:8px;font:inherit;font-weight:700;cursor:pointer">{{ s.label }}</button>
+      </sc-for>
+    </div>
+    <button type="button" onClick="{{ toggleSpacing }}" aria-pressed="{{ spacingStr }}" style="min-height:44px;display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#FFFFFF;border:0;font:inherit;cursor:pointer;padding:0 .25rem">
+      <span aria-hidden="true" style="width:1.125rem;height:1.125rem;border:2px solid #FFFFFF;border-radius:4px;display:inline-block;background:{{ spacingDot }}"></span>Espacement de lecture
+    </button>
+    <nav aria-label="Langue" style="margin-left:auto;display:flex;gap:.25rem">
+      <a href="#" aria-current="true" lang="fr" style="color:#FFFFFF;font-weight:700;padding:.625rem .5rem;text-decoration:underline">FR</a>
+      <a href="#" lang="de" style="color:#FFFFFF;padding:.625rem .5rem;text-decoration:none">DE</a>
+      <a href="#" lang="en" style="color:#FFFFFF;padding:.625rem .5rem;text-decoration:none">EN</a>
+    </nav>
+  </div>
+</div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid #DCE6EA">
+  <div style="max-width:1280px;margin:0 auto;padding:.75rem clamp(20px,4vw,48px);display:flex;align-items:center;gap:2rem">
+    <a href="DS%20Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="display:flex;align-items:center;flex:none">
+      <img src="https://www.digital-solutions.io/wp-content/uploads/2021/06/cropped-Digital-Solutions-Logo-retina.png" alt="Digital Solutions" style="height:42px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Navigation principale" style="display:flex;align-items:center;gap:.25rem;margin-left:auto;font-size:.9375rem;font-weight:600">
+        <a href="DS%20Intelligence%20Artificielle.dc.html" aria-current="page" style="padding:.75rem .875rem;text-decoration:underline;text-decoration-color:#269CBD;text-decoration-thickness:3px;text-underline-offset:.5em;border-radius:10px;color:#14232A">IA &amp; Automatisation</a>
+        <a href="DS%20Accueil.dc.html#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Développement</a>
+        <a href="DS%20Accueil.dc.html#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Intégration</a>
+        <a href="DS%20Accueil.dc.html#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Consulting</a>
+        <a href="DS%20Accueil.dc.html#histoire" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">À propos</a>
+        <a href="DS%20Accueil.dc.html#carrieres" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Carrières</a>
+        <a href="#contact" style="margin-left:.75rem;padding:.75rem 1.25rem;background:#14232A;color:#FFFFFF;text-decoration:none;border-radius:999px" style-hover="background:#269CBD;color:#14232A">Demander une démo</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuStr }}" aria-controls="menu-mobile" style="margin-left:auto;min-height:44px;padding:0 1.125rem;border-radius:999px;border:2px solid #14232A;background:#FFFFFF;color:#14232A;font:inherit;font-weight:700;cursor:pointer">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav id="menu-mobile" aria-label="Navigation principale" style="display:flex;flex-direction:column;padding:.5rem clamp(20px,4vw,48px) 1.25rem;font-size:1.125rem;font-weight:600;border-top:1px solid #DCE6EA;background:#FFFFFF">
+      <a href="DS%20Accueil.dc.html" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Accueil</a>
+      <a href="#stack" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Notre expertise IA</a>
+      <a href="#cas" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Cas d'usage</a>
+      <a href="#gouvernance" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Gouvernance</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:1rem;padding:.875rem 1.25rem;background:#14232A;color:#FFFFFF;text-decoration:none;border-radius:999px;text-align:center">Demander une démo</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="contenu" tabindex="-1" style="outline:none">
+
+<section aria-labelledby="h-hero" data-screen-label="IA · Hero" style="background:#53676F;color:#FFFFFF;position:relative;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,104px) clamp(20px,4vw,48px) clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:1.75rem">
+      <nav aria-label="Fil d'Ariane" style="font-size:.875rem"><ol style="list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap"><li><a href="DS%20Accueil.dc.html" style="color:#FFFFFF">Accueil</a></li><li aria-hidden="true">/</li><li aria-current="page">Intelligence artificielle</li></ol></nav>
+      <h1 id="h-hero" data-motion="rise" style="margin:0;font-weight:800;font-size:clamp(2.5rem,5.8vw,5rem);line-height:1;letter-spacing:-.035em;text-wrap:balance">Une intelligence artificielle souveraine, du prototype à la&nbsp;production.</h1>
+      <p data-motion="rise" data-motion-delay="120" style="margin:0;font-size:clamp(1.125rem,1.6vw,1.3125rem);line-height:1.55;max-width:34em;text-wrap:pretty">Agents IA, RAG, protocole MCP, vision, automatisation intelligente&nbsp;: nous maîtrisons toute la chaîne, des données au modèle et du modèle à l'usage. Conçu, entraîné et hébergé en Suisse.</p>
+      <div data-motion="rise" data-motion-delay="220" style="display:flex;flex-wrap:wrap;gap:.75rem">
+        <a href="#contact" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;background:#FFFFFF;color:#14232A;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#6DCDEA">Demander une démo</a>
+        <a href="#cas" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;border:2px solid #FFFFFF;color:#FFFFFF;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#FFFFFF;color:#14232A">Parcourir les cas d'usage</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:relative;width:min(100%,500px);aspect-ratio:1;justify-self:center">
+      <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <g data-motion="dial" style="transform-box:view-box;transform-origin:200px 200px">
+          <circle cx="200" cy="200" r="192" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="7" stroke-dasharray="1.1 19.006"></circle>
+          <circle cx="200" cy="200" r="192" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="2.6 97.93"></circle>
+        </g>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="1.5"></circle>
+        <circle cx="200" cy="200" r="110" fill="none" stroke="#FFFFFF" stroke-opacity=".28" stroke-width="1.5"></circle>
+        <g data-motion="dial-rev" style="transform-box:view-box;transform-origin:200px 200px"><circle cx="200" cy="50" r="11" fill="#6DCDEA"></circle><circle cx="200" cy="350" r="7" fill="#FFFFFF"></circle></g>
+        <g data-motion="arc" style="transform-box:view-box;transform-origin:200px 200px"><circle cx="90" cy="200" r="9" fill="#E1B48D"></circle></g>
+        <circle cx="200" cy="200" r="72" fill="#269CBD"></circle>
+        <circle cx="200" cy="200" r="72" fill="none" stroke="#FFFFFF" stroke-width="10"></circle>
+        <rect x="267" y="96" width="10" height="104" fill="#FFFFFF"></rect>
+        <g data-motion="seconds" style="transform-box:view-box;transform-origin:200px 200px"><circle cx="200" cy="8" r="6" fill="#E1B48D"></circle></g>
+      </svg>
+    </div>
+  </div>
+  <nav aria-label="Sommaire de la page" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px) 2rem">
+    <ul style="list-style:none;margin:0;padding:1.25rem 0 0;border-top:1px solid rgba(255,255,255,.3);display:flex;flex-wrap:wrap;gap:.25rem .5rem;font-size:.9375rem;font-weight:600">
+      <li><a href="#stack" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">La chaîne IA</a></li>
+      <li><a href="#demo" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">Démo agent</a></li>
+      <li><a href="#cas" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">Cas d'usage</a></li>
+      <li><a href="#rag" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">RAG</a></li>
+      <li><a href="#mcp" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">MCP &amp; A2A</a></li>
+      <li><a href="#modeles" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">Modèles &amp; hébergement</a></li>
+      <li><a href="#gouvernance" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">Qualité &amp; gouvernance</a></li>
+      <li><a href="#accompagnement" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">Accompagnement</a></li>
+      <li><a href="#faq" style="color:#FFFFFF;display:inline-block;padding:.5rem .75rem;border-radius:999px;text-decoration:none" style-hover="background:rgba(255,255,255,.14)">FAQ</a></li>
+    </ul>
+  </nav>
+</section>
+
+<section aria-labelledby="h-bref" data-screen-label="IA · En bref">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,6vw,80px) clamp(20px,4vw,48px) 0">
+    <div style="background:#EAF7FB;border-radius:28px;padding:clamp(24px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1.5rem 3rem;align-items:start">
+      <h2 id="h-bref" style="margin:0;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">En bref, en langage clair</h2>
+      <ul style="margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:.75rem;font-size:1.125rem;line-height:1.5">
+        <li>Nous créons des programmes d'IA qui aident vos équipes dans leur travail de tous les jours.</li>
+        <li>Ces programmes lisent vos documents et utilisent vos logiciels. Ils indiquent toujours d'où vient l'information.</li>
+        <li>Vos données restent en Suisse. Une personne valide toujours les décisions importantes.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="stack" aria-labelledby="h-stack" data-screen-label="IA · Chaîne de valeur" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+      <h2 id="h-stack" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Toute la chaîne de l'IA, maîtrisée de bout en bout.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em;text-wrap:pretty">Un projet IA solide repose sur six couches. Nous les concevons ensemble, pour qu'aucune ne devienne le maillon faible. Sélectionnez une couche pour voir nos méthodes et nos technologies.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:stretch">
+      <div role="group" aria-label="Couches de la chaîne IA" style="flex:1 1 320px;max-width:460px;display:flex;flex-direction:column;gap:.5rem">
+        <sc-for list="{{ layers }}" as="l" hint-placeholder-count="6">
+          <button type="button" onClick="{{ l.onClick }}" aria-pressed="{{ l.pressed }}" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:64px;padding:.75rem 1.25rem;border-radius:16px;border:2px solid {{ l.bd }};background:{{ l.bg }};color:#14232A;font:inherit;text-align:left;cursor:pointer;margin-left:{{ l.indent }};transition:background .2s,border-color .2s">
+            <span style="display:flex;flex-direction:column"><span style="font-weight:800;font-size:1.0625rem">{{ l.name }}</span><span style="font-size:.875rem;color:#3F5058">{{ l.short }}</span></span>
+            <span aria-hidden="true" style="width:1rem;height:1rem;border-radius:50%;border:3px solid #14232A;background:{{ l.dot }};flex:none"></span>
+          </button>
+        </sc-for>
+      </div>
+      <div aria-live="polite" style="flex:999 1 480px;min-width:0;background:#14232A;color:#FFFFFF;border-radius:28px;padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;gap:1.5rem;position:relative;overflow:hidden">
+        <h3 style="margin:0;font-size:clamp(1.625rem,2.8vw,2.375rem);letter-spacing:-.025em;line-height:1.05;font-weight:800;position:relative">{{ layerName }}</h3>
+        <p style="margin:0;font-size:1.125rem;color:#D9E4E8;max-width:34em;position:relative">{{ layerChange }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1.5rem 2.5rem;position:relative">
+          <div>
+            <h4 style="margin:0 0 .75rem;font-size:.9375rem;font-weight:800;color:#6DCDEA">Méthodes</h4>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column">
+              <sc-for list="{{ layerMethods }}" as="m" hint-placeholder-count="4"><li style="padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.14)">{{ m }}</li></sc-for>
+            </ul>
+          </div>
+          <div>
+            <h4 style="margin:0 0 .75rem;font-size:.9375rem;font-weight:800;color:#6DCDEA">Technologies</h4>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+              <sc-for list="{{ layerTech }}" as="t" hint-placeholder-count="6"><li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.375rem .75rem;border:1px solid rgba(255,255,255,.3);border-radius:999px">{{ t }}</li></sc-for>
+            </ul>
+          </div>
+        </div>
+        <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:-80px;top:-80px;width:260px;height:260px;opacity:.35">
+          <g data-motion="dial" style="transform-box:view-box;transform-origin:100px 100px"><circle cx="100" cy="100" r="92" fill="none" stroke="#6DCDEA" stroke-width="6" stroke-dasharray="1 8.63"></circle></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo" aria-labelledby="h-demo" data-screen-label="IA · Démo agent" style="background:#53676F;color:#FFFFFF;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(32px,4vw,48px)">
+      <h2 id="h-demo" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Regardez un agent travailler.</h2>
+      <p style="margin:0;font-size:1.125rem;max-width:36em">Demande, recherche documentaire, appels d'outils via MCP, réponse sourcée, validation humaine. Choisissez un scénario.</p>
+    </div>
+    <div role="group" aria-label="Scénarios de démonstration" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem">
+      <sc-for list="{{ scenarios }}" as="sc" hint-placeholder-count="3">
+        <button type="button" onClick="{{ sc.onClick }}" aria-pressed="{{ sc.pressed }}" style="min-height:48px;padding:0 1.25rem;border-radius:999px;border:2px solid #FFFFFF;background:{{ sc.bg }};color:{{ sc.fg }};font:inherit;font-weight:700;cursor:pointer">{{ sc.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:stretch">
+      <ol aria-label="Étapes de l'agent" style="flex:1 1 260px;max-width:360px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;position:relative">
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+          <li style="display:flex;gap:1rem;align-items:flex-start;padding:.875rem 0">
+            <span aria-hidden="true" style="width:1.75rem;height:1.75rem;border-radius:50%;border:3px solid #FFFFFF;background:{{ st.fill }};flex:none;transition:background .3s"></span>
+            <span style="display:flex;flex-direction:column"><span style="font-weight:800">{{ st.label }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;opacity:{{ st.op }}">{{ st.tech }}</span></span>
+          </li>
+        </sc-for>
+      </ol>
+      <figure style="flex:999 1 480px;min-width:0;margin:0;background:#14232A;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);display:flex;flex-direction:column">
+        <div style="display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.1)">
+          <span aria-hidden="true" data-motion="pulse" style="width:.625rem;height:.625rem;border-radius:50%;background:#6DCDEA"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#D9E4E8">{{ consoleTitle }}</span>
+          <button type="button" onClick="{{ toggleDemo }}" aria-pressed="{{ demoPausedStr }}" style="margin-left:auto;min-height:44px;padding:0 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#FFFFFF;font:inherit;font-size:.875rem;cursor:pointer">{{ demoBtn }}</button>
+          <button type="button" onClick="{{ restartDemo }}" style="min-height:44px;padding:0 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#FFFFFF;font:inherit;font-size:.875rem;cursor:pointer">Rejouer</button>
+        </div>
+        <div aria-live="polite" style="padding:1.5rem 1.25rem;min-height:22rem;flex:1;display:flex;flex-direction:column;gap:1rem">
+          <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;align-items:start">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:500;color:#14232A;background:{{ ln.tag }};padding:.25rem .5rem;border-radius:6px;text-align:center">{{ ln.k }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;line-height:1.55;color:#EAF2F5;white-space:pre-line">{{ ln.t }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <figcaption style="padding:.875rem 1.25rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8125rem;color:#C5D3D8">Démonstration scénarisée, données fictives. Aucune donnée réelle n'est traitée.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="cas" aria-labelledby="h-cas" data-screen-label="IA · Cas d'usage" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:2rem">
+      <h2 id="h-cas" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Bibliothèque de cas d'usage.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em">Des scénarios que nous savons livrer, classés par technologie. Le vôtre n'y figure pas&nbsp;? C'est souvent le plus intéressant.</p>
+    </div>
+    <div role="group" aria-label="Filtrer par technologie" style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="7">
+        <button type="button" onClick="{{ f.onClick }}" aria-pressed="{{ f.pressed }}" style="min-height:44px;padding:0 1.125rem;border-radius:999px;border:2px solid #14232A;background:{{ f.bg }};color:{{ f.fg }};font:inherit;font-weight:700;font-size:.9375rem;cursor:pointer">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <p role="status" style="margin:0 0 1.5rem;color:#53676F;font-size:.9375rem">{{ countLabel }}</p>
+    <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:1rem">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="6">
+        <li style="border:1px solid #D2DFE4;border-radius:22px;padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;background:#FFFFFF" style-hover="border-color:#53676F">
+          <span style="display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:700;color:#53676F"><span aria-hidden="true" style="width:.75rem;height:.75rem;border-radius:50%;border:3px solid {{ c.ring }}"></span>{{ c.sector }}</span>
+          <h3 style="margin:0;font-size:1.3125rem;line-height:1.2;letter-spacing:-.015em;font-weight:800">{{ c.title }}</h3>
+          <p style="margin:0;color:#3F5058;font-size:1rem;flex:1">{{ c.desc }}</p>
+          <ul aria-label="Technologies" style="list-style:none;margin:.25rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.375rem">
+            <sc-for list="{{ c.stack }}" as="t" hint-placeholder-count="3"><li style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:.3125rem .625rem;background:#F2F7F9;border-radius:999px">{{ t }}</li></sc-for>
+          </ul>
+        </li>
+      </sc-for>
+    </ul>
+  </div>
+</section>
+
+<section id="rag" aria-labelledby="h-rag" data-screen-label="IA · RAG" style="background:#F2F7F9;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 id="h-rag" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Le RAG, fait dans les règles de l'art.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em">Le Retrieval-Augmented Generation permet à un modèle de répondre à partir de vos documents. Simple sur le papier, exigeant en production. Voici les sept étapes que nous soignons.</p>
+    </div>
+    <div tabindex="0" role="region" aria-label="Pipeline RAG, défilement horizontal" style="overflow-x:auto;padding-bottom:1rem">
+      <ol style="list-style:none;margin:0;padding:0;min-width:980px;display:grid;grid-template-columns:repeat(7,1fr);gap:0;position:relative">
+        <li aria-hidden="true" style="position:absolute;left:1.25rem;right:1.25rem;top:1.25rem;height:0">
+          <svg viewBox="0 0 100 4" preserveAspectRatio="none" style="width:100%;height:4px;display:block;overflow:visible"><line x1="0" y1="2" x2="100" y2="2" stroke="#14232A" stroke-width="2" stroke-dasharray="4 4" vector-effect="non-scaling-stroke" data-motion="flow"></line></svg>
+        </li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#FFFFFF;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">1</span><strong style="font-size:1.0625rem">Ingestion</strong><span style="color:#3F5058;font-size:.9375rem">PDF, scans, intranets, e-mails. Extraction de la structure, des tableaux et des métadonnées.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#FFFFFF;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">2</span><strong style="font-size:1.0625rem">Découpage</strong><span style="color:#3F5058;font-size:.9375rem">Segmentation sémantique qui respecte titres, articles et paragraphes.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#FFFFFF;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">3</span><strong style="font-size:1.0625rem">Vectorisation</strong><span style="color:#3F5058;font-size:.9375rem">Embeddings multilingues FR, DE, IT, EN, hébergés en Suisse.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#FFFFFF;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">4</span><strong style="font-size:1.0625rem">Recherche hybride</strong><span style="color:#3F5058;font-size:.9375rem">Mots-clés et sens combinés, filtrés selon les droits de chaque utilisateur.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#FFFFFF;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">5</span><strong style="font-size:1.0625rem">Reranking</strong><span style="color:#3F5058;font-size:.9375rem">Un second modèle reclasse les passages pour ne garder que les plus pertinents.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#269CBD;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">6</span><strong style="font-size:1.0625rem">Génération</strong><span style="color:#3F5058;font-size:.9375rem">Réponse rédigée avec citations obligatoires. Pas de source, pas de réponse.</span></li>
+        <li style="display:flex;flex-direction:column;gap:.625rem;padding-right:1rem;position:relative"><span style="width:2.5rem;height:2.5rem;border-radius:50%;background:#E1B48D;border:3px solid #14232A;display:grid;place-items:center;font-weight:800">7</span><strong style="font-size:1.0625rem">Évaluation</strong><span style="color:#3F5058;font-size:.9375rem">Fidélité, pertinence et couverture mesurées en continu sur un jeu de référence.</span></li>
+      </ol>
+    </div>
+    <div style="margin-top:clamp(32px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1rem 3rem">
+      <p style="margin:0;padding-top:1rem;border-top:2px solid #14232A"><strong>GraphRAG</strong> pour les corpus où les liens comptent autant que le texte&nbsp;: réglementation, contrats, dossiers techniques.</p>
+      <p style="margin:0;padding-top:1rem;border-top:2px solid #14232A"><strong>RAG agentique</strong>&nbsp;: l'agent reformule, cherche en plusieurs passes et vérifie ses propres réponses.</p>
+      <p style="margin:0;padding-top:1rem;border-top:2px solid #14232A"><strong>Mise à jour incrémentale</strong>&nbsp;: un document modifié est réindexé dans la foulée, sans tout reconstruire.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mcp" aria-labelledby="h-mcp" data-screen-label="IA · MCP" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);align-items:center">
+    <div aria-hidden="true" style="position:relative;width:min(100%,480px);aspect-ratio:1;justify-self:center">
+      <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;font-family:'IBM Plex Mono',monospace">
+        <circle cx="200" cy="200" r="150" fill="none" stroke="#DCE6EA" stroke-width="10" stroke-dasharray="1 14.7"></circle>
+        <line x1="200" y1="200" x2="200" y2="50" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <line x1="200" y1="200" x2="330" y2="125" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <line x1="200" y1="200" x2="330" y2="275" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <line x1="200" y1="200" x2="200" y2="350" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <line x1="200" y1="200" x2="70" y2="275" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <line x1="200" y1="200" x2="70" y2="125" stroke="#53676F" stroke-width="2" stroke-dasharray="4 4" data-motion="flow"></line>
+        <circle cx="200" cy="50" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="200" y="55" text-anchor="middle" font-size="13" fill="#14232A">ERP</text>
+        <circle cx="330" cy="125" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="330" y="130" text-anchor="middle" font-size="13" fill="#14232A">GED</text>
+        <circle cx="330" cy="275" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="330" y="280" text-anchor="middle" font-size="13" fill="#14232A">CRM</text>
+        <circle cx="200" cy="350" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="200" y="355" text-anchor="middle" font-size="13" fill="#14232A">SQL</text>
+        <circle cx="70" cy="275" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="70" y="280" text-anchor="middle" font-size="13" fill="#14232A">ITSM</text>
+        <circle cx="70" cy="125" r="30" fill="#FFFFFF" stroke="#14232A" stroke-width="3"></circle><text x="70" y="130" text-anchor="middle" font-size="12" fill="#14232A">Agent B</text>
+        <circle cx="200" cy="200" r="58" fill="#269CBD"></circle>
+        <circle cx="200" cy="200" r="58" fill="none" stroke="#14232A" stroke-width="6"></circle>
+        <text x="200" y="196" text-anchor="middle" font-size="14" font-weight="500" fill="#0B2229">agent</text>
+        <text x="200" y="214" text-anchor="middle" font-size="11" fill="#0B2229">client MCP</text>
+      </svg>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <h2 id="h-mcp" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">MCP&nbsp;: vos applications, à portée d'agent.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:34em">Le Model Context Protocol est devenu le standard pour relier un agent IA à vos systèmes. Nous concevons des serveurs MCP qui exposent exactement ce qu'il faut, rien de plus.</p>
+      <dl style="margin:0;display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">Serveurs MCP</dt><dd style="margin:0;color:#3F5058">Outils, ressources et prompts métier pour votre ERP, votre GED, vos bases de données ou vos API internes.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">Sécurité</dt><dd style="margin:0;color:#3F5058">Authentification OAuth, droits par outil, confirmation humaine pour toute action sensible.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">Passerelle</dt><dd style="margin:0;color:#3F5058">Un point d'entrée unique qui journalise chaque appel et applique vos politiques.</dd></div>
+        <div style="display:grid;grid-template-columns:minmax(0,11rem) 1fr;gap:1rem;padding:1rem 0;border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA"><dt style="font-weight:800">Agent-to-Agent</dt><dd style="margin:0;color:#3F5058">Avec le protocole A2A, des agents spécialisés se répartissent le travail et se transmettent le contexte.</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="modeles" aria-labelledby="h-modeles" data-screen-label="IA · Modèles & hébergement" style="background:#6DCDEA;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <h2 id="h-modeles" style="margin:0 0 1rem;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;max-width:15em;text-wrap:balance">Le bon modèle, au bon endroit.</h2>
+    <p style="margin:0 0 clamp(32px,4vw,48px);font-size:1.125rem;max-width:38em;color:#0B2229">Nous sommes indépendants des éditeurs. Nous choisissons le modèle selon la tâche, la sensibilité des données et le coût, puis nous le déployons là où vous le décidez.</p>
+    <div tabindex="0" role="region" aria-label="Tableau comparatif, défilement horizontal" style="overflow-x:auto;background:#FFFFFF;border-radius:24px">
+      <table style="width:100%;min-width:760px;border-collapse:collapse;text-align:left;font-size:1rem">
+        <caption style="text-align:left;padding:1.25rem 1.5rem 0;font-weight:800;color:#53676F;font-size:.9375rem">Options d'hébergement de vos modèles</caption>
+        <thead>
+          <tr>
+            <th scope="col" style="padding:1rem 1.5rem;border-bottom:2px solid #14232A;width:22%"><span style="position:absolute;left:-9999px">Critère</span></th>
+            <th scope="col" style="padding:1rem 1.5rem;border-bottom:2px solid #14232A;font-size:1.25rem;font-weight:800">Sur site</th>
+            <th scope="col" style="padding:1rem 1.5rem;border-bottom:2px solid #14232A;font-size:1.25rem;font-weight:800">Cloud suisse</th>
+            <th scope="col" style="padding:1rem 1.5rem;border-bottom:2px solid #14232A;font-size:1.25rem;font-weight:800">Hybride</th>
+          </tr>
+        </thead>
+        <tbody style="color:#3F5058">
+          <tr><th scope="row" style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA;color:#14232A">Où tournent les modèles</th><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Vos serveurs GPU, dans vos locaux</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Centres de données situés en Suisse</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Données sensibles sur site, le reste dans le cloud suisse</td></tr>
+          <tr><th scope="row" style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA;color:#14232A">Modèles typiques</th><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Open-weight quantifiés&nbsp;: Mistral, Llama, Qwen, Apertus</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Open-weight de grande taille, API souveraines</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Petits modèles locaux, grands modèles à distance</td></tr>
+          <tr><th scope="row" style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA;color:#14232A">Idéal pour</th><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Secret professionnel, santé, défense</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Démarrer vite, charge variable</td><td style="padding:1rem 1.5rem;border-bottom:1px solid #DCE6EA">Organisations multi-sites et multi-usages</td></tr>
+          <tr><th scope="row" style="padding:1rem 1.5rem;color:#14232A">Notre outillage</th><td style="padding:1rem 1.5rem">vLLM, Ollama, Kubernetes</td><td style="padding:1rem 1.5rem">Infrastructure as code, autoscaling</td><td style="padding:1rem 1.5rem">Routage de modèles selon la sensibilité</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="gouvernance" aria-labelledby="h-gouv" data-screen-label="IA · Qualité & gouvernance" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <h2 id="h-gouv" style="margin:0 0 clamp(40px,5vw,64px);font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;max-width:16em;text-wrap:balance">On ne met en production que ce que l'on sait mesurer.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,80px)">
+      <div>
+        <h3 style="margin:0 0 1rem;font-size:1.5rem;font-weight:800;letter-spacing:-.015em">Qualité &amp; LLMOps</h3>
+        <dl style="margin:0">
+          <div style="padding:1.125rem 0;border-top:2px solid #14232A"><dt style="font-weight:800">Évaluations systématiques</dt><dd style="margin:.25rem 0 0;color:#3F5058">Jeux de questions de référence construits avec vos métiers, évaluation automatique par modèle juge et relecture humaine d'échantillons.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">Red teaming</dt><dd style="margin:.25rem 0 0;color:#3F5058">Injections de prompt, contournements, fuites de données&nbsp;: nous attaquons nos agents avant que d'autres ne le fassent.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">Garde-fous</dt><dd style="margin:.25rem 0 0;color:#3F5058">Filtrage des entrées et des sorties, masquage des données personnelles, refus motivé hors périmètre.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA"><dt style="font-weight:800">Observabilité</dt><dd style="margin:.25rem 0 0;color:#3F5058">Traces complètes, coûts, latence et dérive suivis en continu avec OpenTelemetry et Langfuse.</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3 style="margin:0 0 1rem;font-size:1.5rem;font-weight:800;letter-spacing:-.015em">Gouvernance &amp; conformité</h3>
+        <dl style="margin:0">
+          <div style="padding:1.125rem 0;border-top:2px solid #14232A"><dt style="font-weight:800">nLPD</dt><dd style="margin:.25rem 0 0;color:#3F5058">Analyse d'impact, registre des traitements, minimisation et hébergement en Suisse dès la conception.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">AI Act européen</dt><dd style="margin:.25rem 0 0;color:#3F5058">Pour nos clients actifs dans l'UE&nbsp;: classification des risques, documentation et transparence envers les utilisateurs.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA"><dt style="font-weight:800">ISO/IEC 42001</dt><dd style="margin:.25rem 0 0;color:#3F5058">Nous structurons la gouvernance de vos systèmes d'IA selon ce référentiel de management.</dd></div>
+          <div style="padding:1.125rem 0;border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA"><dt style="font-weight:800">Secteurs régulés</dt><dd style="margin:.25rem 0 0;color:#3F5058">Prise en compte des attentes de la FINMA en matière de gouvernance de l'IA, traçabilité et journal d'audit.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="accompagnement" aria-labelledby="h-acc" data-screen-label="IA · Accompagnement" style="background:#F2F7F9;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 id="h-acc" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Trois façons de travailler ensemble.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em">Projet clé en main, équipe déléguée ou assistance stratégique&nbsp;: vous choisissez le niveau d'engagement, nous apportons les bons profils.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1rem">
+      <div style="background:#14232A;color:#FFFFFF;border-radius:24px;padding:2rem;display:flex;flex-direction:column;gap:.75rem">
+        <h3 style="margin:0;font-size:1.5rem;font-weight:800">Solution sur mesure</h3>
+        <p style="margin:0;color:#D9E4E8">Projet de bout en bout ou mission ciblée, avec engagement sur le résultat.</p>
+      </div>
+      <div style="background:#FFFFFF;border-radius:24px;padding:2rem;display:flex;flex-direction:column;gap:.75rem;border:1px solid #D2DFE4">
+        <h3 style="margin:0;font-size:1.5rem;font-weight:800">Délégation d'équipe</h3>
+        <p style="margin:0;color:#3F5058">Chez vous, dans nos bureaux ou en location de services, selon votre organisation.</p>
+      </div>
+      <div style="background:#FFFFFF;border-radius:24px;padding:2rem;display:flex;flex-direction:column;gap:.75rem;border:1px solid #D2DFE4">
+        <h3 style="margin:0;font-size:1.5rem;font-weight:800">Assistance stratégique</h3>
+        <p style="margin:0;color:#3F5058">Maîtrise d'ouvrage et maîtrise d'œuvre pour piloter vos programmes IA.</p>
+      </div>
+    </div>
+    <h3 style="margin:clamp(48px,6vw,80px) 0 1.5rem;font-size:1.5rem;font-weight:800">Nos profils IA</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 3rem">
+      <div><h4 style="margin:0 0 .5rem;font-size:1rem;color:#53676F;font-weight:800">Pilotage</h4><ul style="list-style:none;margin:0;padding:0"><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Sponsor</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Champion</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Change Manager</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE;border-bottom:1px solid #C9D8DE">AI Steering Committee</li></ul></div>
+      <div><h4 style="margin:0 0 .5rem;font-size:1rem;color:#53676F;font-weight:800">Conception &amp; développement</h4><ul style="list-style:none;margin:0;padding:0"><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Lead</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Business Analyst</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Architect</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE;border-bottom:1px solid #C9D8DE">AI Developer &amp; Tester</li></ul></div>
+      <div><h4 style="margin:0 0 .5rem;font-size:1rem;color:#53676F;font-weight:800">Exploitation</h4><ul style="list-style:none;margin:0;padding:0"><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Supervisor</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Operator</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE">AI Service &amp; Support</li><li style="padding:.5rem 0;border-top:1px solid #C9D8DE;border-bottom:1px solid #C9D8DE">AI Infrastructure Engineer</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-exk" data-screen-label="IA · exkalibur.ai" style="background:#269CBD;position:relative;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:2rem 4rem;align-items:center;position:relative">
+    <h2 id="h-exk" style="margin:0;color:#FFFFFF;font-size:clamp(2.25rem,4.8vw,3.75rem);line-height:1;letter-spacing:-.03em;font-weight:800;text-wrap:balance">exkalibur.ai, nos agents IA prêts à déployer.</h2>
+    <div style="display:flex;flex-direction:column;gap:1.25rem;color:#0B2229">
+      <p style="margin:0;font-size:1.125rem">Notre approche «&nbsp;AI by Design&nbsp;» en version produit&nbsp;: des agents intelligents et autonomes, hébergés en Suisse, qui collaborent avec vos équipes plutôt que de les remplacer.</p>
+      <a href="https://site.exkalibur.ai/" style="align-self:flex-start;display:inline-flex;align-items:center;gap:.5rem;min-height:52px;padding:0 1.5rem;background:#14232A;color:#FFFFFF;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#FFFFFF;color:#14232A">Découvrir exkalibur.ai <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="h-faq" data-screen-label="IA · FAQ" style="scroll-margin-top:80px">
+  <div style="max-width:960px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <h2 id="h-faq" style="margin:0 0 2rem;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800">Vos questions sur l'IA</h2>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Mes données servent-elles à entraîner des modèles&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Non. Vos données restent votre propriété et ne servent jamais à entraîner des modèles tiers. Quand un fine-tuning est pertinent, le modèle obtenu vous appartient et reste dans votre périmètre.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Comment limitez-vous les hallucinations&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Par la conception&nbsp;: RAG avec citations obligatoires, sorties structurées, évaluations sur un jeu de référence et garde-fous qui bloquent une réponse non sourcée. Pour les décisions qui comptent, un humain valide.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Quel modèle choisir&nbsp;: open-weight ou API&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Cela dépend de la sensibilité des données, du volume et de la difficulté de la tâche. Nous comparons plusieurs modèles sur vos propres cas de test avant de recommander, et nous gardons l'architecture ouverte pour pouvoir en changer.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Par où commencer&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Par un atelier. Nous identifions avec vous deux ou trois cas d'usage à forte valeur, puis nous en prouvons un sur vos données avec un POC à périmètre restreint, avant tout engagement plus large.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE;border-bottom:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Formez-vous nos équipes&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Oui, et c'est essentiel. Sensibilisation des directions, ateliers pratiques pour les métiers, montée en compétence technique de vos équipes IT&nbsp;: la conduite du changement fait partie de chaque projet.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="h-contact" data-screen-label="IA · Contact" style="background:#53676F;color:#FFFFFF;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:2rem 4rem;align-items:end">
+    <h2 id="h-contact" style="margin:0;font-size:clamp(2.5rem,5.6vw,4.5rem);line-height:.98;letter-spacing:-.035em;font-weight:800">Voyons ce que l'IA peut faire pour vous.</h2>
+    <div style="display:flex;flex-direction:column;gap:1.25rem">
+      <p style="margin:0;font-size:1.125rem;max-width:30em">Une démonstration sur un cas proche du vôtre, sans engagement. Un ou une experte IA vous recontacte sous un jour ouvré.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+        <a href="https://www.digital-solutions.io/contact/" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;background:#FFFFFF;color:#14232A;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#6DCDEA">Demander une démo</a>
+        <a href="mailto:contact@digital-solutions.io" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;border:2px solid #FFFFFF;color:#FFFFFF;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#FFFFFF;color:#14232A">contact@digital-solutions.io</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#FFFFFF;border-top:1px solid #DCE6EA">
+  <div style="max-width:1280px;margin:0 auto;padding:2rem clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;font-size:.8125rem;color:#53676F">
+    <img src="https://www.digital-solutions.io/wp-content/uploads/2021/06/cropped-Digital-Solutions-Logo-retina.png" alt="Digital Solutions" style="height:34px;width:auto;margin-right:auto">
+    <span>© 2026 Digital Solutions SA · Rue de la Roche-de-Mars 5, 2900 Porrentruy</span>
+    <a href="https://www.digital-solutions.io/politique-de-confidentialite/" style="color:#53676F">Confidentialité</a>
+    <a href="https://www.digital-solutions.io/mentions-legales/" style="color:#53676F">Mentions légales</a>
+    <a href="#" style="color:#53676F">Déclaration d'accessibilité</a>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showA11yBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Accessibilité&quot;},&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.25,&quot;max&quot;:2,&quot;step&quot;:0.25,&quot;unit&quot;:&quot;×&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;demoAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animations&quot;}}">
+const LAYERS = [
+  { name: 'Gouvernance & sécurité', short: 'Le cadre de confiance', change: "Une IA que votre direction, votre DPO et vos auditeurs peuvent approuver sans réserve.", methods: ['Analyse de risques IA', 'Red teaming & tests adverses', 'Garde-fous entrées / sorties', 'Supervision humaine aux étapes clés'], tech: ['nLPD', 'AI Act', 'ISO/IEC 42001', 'OWASP LLM Top 10', 'Masquage PII', 'Journal d\u2019audit'] },
+  { name: 'Interfaces & usages', short: 'Là où travaillent vos équipes', change: "L'IA arrive dans les outils que vos équipes utilisent déjà, sans nouvelle application à apprendre.", methods: ['Design centré utilisateur', 'Copilotes métier', 'Interfaces vocales', 'Accessibilité dès la conception'], tech: ['Microsoft Teams', 'Web & mobile', 'API REST', 'Whisper', 'Widgets intégrés', 'SSO'] },
+  { name: 'Agents & orchestration', short: 'Raisonner, planifier, agir', change: "Des agents qui enchaînent les étapes d'un processus, utilisent vos outils et savent quand passer la main.", methods: ['Agents outillés', 'Systèmes multi-agents', 'Planification & mémoire', 'Human-in-the-loop'], tech: ['MCP', 'A2A', 'LangGraph', 'Semantic Kernel', 'LlamaIndex', 'Sorties JSON Schema'] },
+  { name: 'Connaissance & RAG', short: 'Vos documents, interrogeables', change: "Chaque réponse s'appuie sur vos sources, avec les citations pour le vérifier en un clic.", methods: ['Découpage sémantique', 'Recherche hybride & reranking', 'GraphRAG', 'Filtrage selon les droits'], tech: ['Docling', 'OCR', 'pgvector', 'Qdrant', 'OpenSearch', 'Embeddings multilingues'] },
+  { name: 'Modèles', short: 'Le bon cerveau pour la tâche', change: "Le modèle le plus efficace pour chaque tâche, pas le plus cher. Et la liberté d'en changer.", methods: ['Benchmark sur vos cas', 'Fine-tuning LoRA / QLoRA', 'Distillation & quantification', 'Vision & ML prédictif'], tech: ['Mistral', 'Llama', 'Qwen', 'Apertus', 'YOLO', 'XGBoost'] },
+  { name: 'Données & infrastructure', short: 'Les fondations', change: "Des données propres, des pipelines fiables et une infrastructure souveraine qui tient la charge.", methods: ['Data engineering', 'LLMOps & MLOps', 'Infrastructure as code', 'FinOps IA'], tech: ['Microsoft Fabric', 'Databricks', 'Kubernetes', 'vLLM', 'MLflow', 'Langfuse'] }
+];
+const SCENARIOS = [
+  { label: 'Helpdesk IT', title: 'agent · support IT · niveau 1', lines: [
+    { k: 'demande', t: '« Je n\u2019arrive plus à me connecter au VPN depuis ce matin. »', tag: '#FFFFFF' },
+    { k: 'rag', t: 'Procédure VPN v3 · Incident connu INC-2291 : certificats expirés', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'annuaire.compte("m.rossi") → actif\nmdm.poste("PC-0412") → certificat expiré', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Votre certificat VPN a expiré. Je peux le renouveler maintenant, cela prend deux minutes. Source [1]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Action sensible : renouvellement lancé après confirmation de l\u2019utilisatrice. Ticket documenté et clos.', tag: '#FFFFFF' } ] },
+  { label: 'Banque · KYC', title: 'agent · conformité · revue KYC', lines: [
+    { k: 'demande', t: '« Prépare la revue KYC périodique du client 88-301. »', tag: '#FFFFFF' },
+    { k: 'rag', t: 'Directive interne LBA, art. 4 · Check-list KYC entreprises v7', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'crm.client("88-301") → société anonyme\nged.pieces("88-301") → 9 documents', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Extrait du registre du commerce de plus de 12 mois. Ayant droit économique à reconfirmer. Note de synthèse jointe. Sources [1] [2]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Décision réservée au compliance officer. Journal d\u2019audit complet et horodaté.', tag: '#FFFFFF' } ] },
+  { label: 'Administration', title: 'agent · urbanisme · commune', lines: [
+    { k: 'demande', t: '« Quelles pièces manquent au dossier de permis de construire 2026-114 ? »', tag: '#FFFFFF' },
+    { k: 'rag', t: 'Loi cantonale sur les constructions, art. 19 · Règlement communal, art. 12 · Check-list urbanisme v4', tag: '#6DCDEA' },
+    { k: 'mcp', t: 'ged.lire_dossier("2026-114") → 14 pièces\nregistre.parcelle(1432) → zone mixte', tag: '#6DCDEA' },
+    { k: 'réponse', t: 'Il manque le plan de situation signé et le justificatif énergétique. Sources [1] [3]', tag: '#E1B48D' },
+    { k: 'humain', t: 'Courrier au requérant préparé. En attente de validation par le service urbanisme.', tag: '#FFFFFF' } ] }
+];
+const STAGES = [['Demande', 'langage naturel'], ['Recherche RAG', 'hybride + reranking'], ['Outils MCP', 'appels journalisés'], ['Réponse sourcée', 'citations obligatoires'], ['Validation humaine', 'human-in-the-loop']];
+const FILTERS = [['all', 'Tous'], ['agents', 'Agents & MCP'], ['rag', 'RAG'], ['vision', 'Vision'], ['ipa', 'IPA & RPA'], ['predictif', 'Prédictif'], ['langage', 'Langage & voix']];
+const RING = { agents: '#269CBD', rag: '#53676F', vision: '#E1B48D', ipa: '#14232A', predictif: '#6DCDEA', langage: '#269CBD' };
+const CASES = [
+  { sector: 'Administrations publiques', title: 'Guichet citoyen multilingue', desc: "Réponses sourcées sur la base légale en FR, DE et IT, contrôle de complétude des dossiers et orientation vers le bon service.", stack: ['RAG', 'MCP', 'LLM open-weight'], tags: ['rag', 'agents'] },
+  { sector: 'Banque & assurance', title: 'Instruction KYC et sinistres', desc: "Lecture des pièces, extraction structurée, détection d'incohérences et note de synthèse prête à valider.", stack: ['Document AI', 'JSON Schema', 'Audit'], tags: ['agents', 'langage'] },
+  { sector: 'Pharma & sciences de la vie', title: 'Veille réglementaire qualité', desc: "Comparaison d'un nouveau texte avec vos procédures, liste des impacts et propositions de modification paragraphe par paragraphe.", stack: ['GraphRAG', 'Citations', 'On-premise'], tags: ['rag'] },
+  { sector: 'Horlogerie & industrie', title: 'Contrôle qualité visuel', desc: "Détection de défauts d'aspect sur composants, en ligne de production, avec réentraînement continu sur les décisions des contrôleurs.", stack: ['Vision', 'Edge', 'Active learning'], tags: ['vision'] },
+  { sector: 'Fiduciaires', title: 'Saisie et rapprochement comptable', desc: "Lecture des QR-factures, proposition d'imputation, rapprochement bancaire et préparation du décompte TVA.", stack: ['IPA', 'RPA', 'Connecteurs ERP'], tags: ['ipa'] },
+  { sector: 'Retail & e-commerce', title: 'Conseiller produit et SAV', desc: "Un agent qui connaît le catalogue, consulte stock et commandes en temps réel, et passe la main à un conseiller au bon moment.", stack: ['RAG', 'MCP', 'Recommandation'], tags: ['rag', 'agents'] },
+  { sector: 'Services IT internes', title: 'Helpdesk niveau 1 augmenté', desc: "Diagnostic, réinitialisations et actions courantes via MCP vers l'annuaire et l'ITSM, avec confirmation pour toute action sensible.", stack: ['MCP', 'ITSM', 'Annuaire'], tags: ['agents'] },
+  { sector: 'Éditeurs & DSI', title: 'Modernisation de code legacy', desc: "Analyse, documentation et migration assistée d'applications anciennes, avec génération des tests de non-régression.", stack: ['LLM code', 'Tests générés', 'Revue humaine'], tags: ['langage', 'agents'] },
+  { sector: 'Services juridiques', title: 'Revue de contrats', desc: "Extraction des clauses clés, écarts par rapport à vos modèles et signalement des risques, avec renvoi exact vers le texte.", stack: ['RAG', 'Extraction', 'Citations'], tags: ['rag', 'langage'] },
+  { sector: 'Énergie & collectivités', title: 'Prévision de consommation', desc: "Modèles de séries temporelles croisant historiques, météo et calendrier pour anticiper la demande et planifier les ressources.", stack: ['Séries temporelles', 'XGBoost', 'BI'], tags: ['predictif'] },
+  { sector: 'Centres de contact', title: 'Transcription et synthèse d\u2019appels', desc: "Transcription hébergée en Suisse, résumé structuré et mise à jour automatique du CRM après chaque appel.", stack: ['Whisper', 'Résumé', 'CRM'], tags: ['langage'] },
+  { sector: 'Cybersécurité', title: 'Triage des alertes SOC', desc: "Corrélation et enrichissement des alertes, priorisation et proposition de remédiation soumise à l'analyste.", stack: ['Agents', 'Détection d\u2019anomalies', 'SIEM'], tags: ['agents', 'predictif'] },
+  { sector: 'Industrie', title: 'Maintenance prédictive', desc: "Analyse des données capteurs pour anticiper les pannes et planifier les interventions avant l'arrêt de production.", stack: ['IoT', 'ML prédictif', 'MES'], tags: ['predictif'] },
+  { sector: 'Toutes organisations', title: 'Automatisation de processus back-office', desc: "Robots logiciels augmentés par l'IA pour traiter courriers entrants, formulaires et validations entre applications.", stack: ['RPA', 'IPA', 'Process mining'], tags: ['ipa'] }
+];
+const SIZES = [100, 112.5, 125];
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, layer: 2, sc: 0, demo: 0, demoPaused: false, filter: 'all', paused: false, size: 0, spacing: false, menu: false };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reduced) this.setState({ paused: true });
+    fetch('ds-motion.json').then(r => r.json()).then(j => { this.scenes = j.scenes; this.applyMotion(); }).catch(() => {});
+    this.timer = setInterval(() => {
+      const auto = this.props.demoAutoplay ?? true;
+      if (!auto || this.state.paused || this.state.demoPaused) return;
+      this.setState(s => ({ demo: (s.demo + 1) % 7 }));
+    }, 2200);
+  }
+  componentDidUpdate() { this.applyMotion(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearInterval(this.timer); }
+
+  applyMotion() {
+    if (!this.scenes || this.reduced) return;
+    const rate = this.props.motionSpeed ?? 1;
+    document.querySelectorAll('[data-motion]').forEach(el => {
+      if (el.__ds) { el.__ds.playbackRate = rate; return; }
+      const s = this.scenes[el.getAttribute('data-motion')];
+      if (!s) return;
+      const o = Object.assign({}, s.options);
+      if (o.iterations === -1) o.iterations = Infinity;
+      o.delay = (o.delay || 0) + Number(el.getAttribute('data-motion-delay') || 0);
+      el.__ds = el.animate(s.keyframes, o);
+      el.__ds.playbackRate = rate;
+      if (this.state.paused && o.iterations === Infinity) el.__ds.pause();
+    });
+  }
+
+  togglePause = () => {
+    const p = !this.state.paused;
+    document.querySelectorAll('[data-motion]').forEach(el => { if (el.__ds) p ? el.__ds.pause() : el.__ds.play(); });
+    this.setState({ paused: p });
+  };
+
+  renderVals() {
+    const { w, layer, sc, demo, demoPaused, filter, paused, size, spacing, menu } = this.state;
+    const narrow = w < 1080;
+    const d = Math.min(demo, 5);
+    const L = LAYERS[layer];
+    const S = SCENARIOS[sc];
+    const shown = CASES.filter(c => filter === 'all' || c.tags.includes(filter));
+    return {
+      showA11yBar: this.props.showA11yBar ?? true,
+      wide: !narrow, narrow, menuOpen: narrow && menu,
+      menuStr: String(menu), menuLabel: menu ? 'Fermer' : 'Menu',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      ls: spacing ? '.06em' : 'normal', ws: spacing ? '.16em' : 'normal',
+      togglePause: this.togglePause, pausedStr: String(paused),
+      pauseLabel: paused ? 'Relancer les animations' : 'Mettre en pause les animations',
+      pauseDot: paused ? '#FFFFFF' : 'transparent',
+      toggleSpacing: () => this.setState(s => ({ spacing: !s.spacing })),
+      spacingStr: String(spacing), spacingDot: spacing ? '#FFFFFF' : 'transparent',
+      sizes: SIZES.map((v, i) => ({
+        label: ['A', 'A+', 'A++'][i], aria: ['Texte normal', 'Texte agrandi', 'Texte très agrandi'][i],
+        pressed: String(size === i), bg: size === i ? '#FFFFFF' : 'transparent', fg: size === i ? '#14232A' : '#FFFFFF',
+        onClick: () => { document.documentElement.style.fontSize = v + '%'; this.setState({ size: i }); }
+      })),
+      layers: LAYERS.map((l, i) => ({
+        name: l.name, short: l.short, pressed: String(i === layer),
+        bg: i === layer ? '#269CBD' : '#FFFFFF', bd: i === layer ? '#14232A' : '#D2DFE4', dot: i === layer ? '#14232A' : 'transparent',
+        indent: (narrow ? 0 : i * 6) + 'px',
+        onClick: () => this.setState({ layer: i })
+      })),
+      layerName: L.name, layerChange: L.change, layerMethods: L.methods, layerTech: L.tech,
+      scenarios: SCENARIOS.map((s, i) => ({ label: s.label, pressed: String(i === sc), bg: i === sc ? '#FFFFFF' : 'transparent', fg: i === sc ? '#14232A' : '#FFFFFF', onClick: () => this.setState({ sc: i, demo: 0 }) })),
+      consoleTitle: S.title,
+      stages: STAGES.map(([label, tech], i) => ({ label: (i + 1) + '. ' + label, tech, fill: i < d ? '#6DCDEA' : (i === d ? '#FFFFFF' : 'transparent'), op: i <= d ? 1 : .65 })),
+      lines: S.lines.slice(0, d + 1),
+      toggleDemo: () => this.setState(s => ({ demoPaused: !s.demoPaused })),
+      restartDemo: () => this.setState({ demo: 0 }),
+      demoPausedStr: String(demoPaused), demoBtn: demoPaused ? 'Lecture' : 'Pause',
+      filters: FILTERS.map(([id, label]) => ({ label, pressed: String(id === filter), bg: id === filter ? '#14232A' : '#FFFFFF', fg: id === filter ? '#FFFFFF' : '#14232A', onClick: () => this.setState({ filter: id }) })),
+      cases: shown.map(c => ({ ...c, ring: RING[c.tags[0]] })),
+      countLabel: shown.length + ' cas d\u2019usage affichés'
+    };
+  }
+}
+</script>
+</body>
+</html>

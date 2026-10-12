@@ -1,0 +1,15 @@
+{
+  "name": "Digital Solutions · Mouvement Clair",
+  "version": 1,
+  "note": "Scènes déclaratives jouées par l'API Web Animations native (0 dépendance). iterations -1 = infini. Les scènes non 'essential' sont ignorées si prefers-reduced-motion.",
+  "scenes": {
+    "dial":     { "keyframes": [{ "transform": "rotate(0deg)" }, { "transform": "rotate(360deg)" }], "options": { "duration": 240000, "iterations": -1, "easing": "linear" } },
+    "dial-rev": { "keyframes": [{ "transform": "rotate(0deg)" }, { "transform": "rotate(-360deg)" }], "options": { "duration": 300000, "iterations": -1, "easing": "linear" } },
+    "seconds":  { "keyframes": [{ "transform": "rotate(0deg)" }, { "transform": "rotate(360deg)" }], "options": { "duration": 60000, "iterations": -1, "easing": "steps(60, end)" } },
+    "arc":      { "keyframes": [{ "transform": "rotate(-40deg)" }, { "transform": "rotate(320deg)" }], "options": { "duration": 16000, "iterations": -1, "easing": "cubic-bezier(.65,0,.35,1)" } },
+    "float":    { "keyframes": [{ "transform": "translateY(0px)" }, { "transform": "translateY(-10px)" }], "options": { "duration": 7000, "iterations": -1, "direction": "alternate", "easing": "ease-in-out" } },
+    "pulse":    { "keyframes": [{ "opacity": 0.35 }, { "opacity": 1 }, { "opacity": 0.35 }], "options": { "duration": 2800, "iterations": -1, "easing": "ease-in-out" } },
+    "flow":     { "keyframes": [{ "strokeDashoffset": 0 }, { "strokeDashoffset": -24 }], "options": { "duration": 1200, "iterations": -1, "easing": "linear" } },
+    "rise":     { "keyframes": [{ "opacity": 0, "transform": "translateY(18px)" }, { "opacity": 1, "transform": "translateY(0)" }], "options": { "duration": 900, "iterations": 1, "easing": "cubic-bezier(.2,.7,.2,1)", "fill": "backwards" } }
+  }
+}

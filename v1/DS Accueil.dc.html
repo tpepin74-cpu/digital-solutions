@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Digital Solutions · Prestataire IA &amp; IT en Suisse · Agents IA, RAG, MCP</title>
+<meta name="description" content="Digital Solutions conçoit des agents IA, des solutions RAG et MCP, des logiciels et des intégrations hébergés en Suisse. Depuis 2016, de Porrentruy à Genève.">
+<link rel="canonical" href="https://www.digital-solutions.io/">
+<meta property="og:title" content="Digital Solutions · L'IA et l'IT qui font avancer la Suisse">
+<meta property="og:description" content="Agents IA, RAG, protocole MCP, développement logiciel et intégration. Conçus et hébergés en Suisse.">
+<meta property="og:locale" content="fr_CH">
+<meta name="theme-color" content="#269CBD">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:#14232A}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#14232A;text-decoration-color:#269CBD;text-underline-offset:.22em;text-decoration-thickness:2px}
+a:hover{color:#1C7F9C}
+:focus-visible{outline:3px solid #14232A;outline-offset:2px;box-shadow:0 0 0 6px #fff}
+::selection{background:#6DCDEA;color:#14232A}
+summary{list-style:none;cursor:pointer}
+summary::-webkit-details-marker{display:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@graph": [
+ { "@type": "Organization", "name": "Digital Solutions SA", "url": "https://www.digital-solutions.io/", "foundingDate": "2016", "email": "contact@digital-solutions.io", "telephone": "+41 32 467 11 09",
+   "address": { "@type": "PostalAddress", "streetAddress": "Rue de la Roche-de-Mars 5", "postalCode": "2900", "addressLocality": "Porrentruy", "addressCountry": "CH" },
+   "sameAs": ["https://www.linkedin.com/company/digital-solutions-switzerland/", "https://www.instagram.com/digitalsolutionsswitzerland/"],
+   "knowsAbout": ["Intelligence artificielle", "Agents IA", "Retrieval-Augmented Generation", "Model Context Protocol", "RPA", "Développement logiciel", "Intégration de systèmes"] },
+ { "@type": "FAQPage", "mainEntity": [
+   { "@type": "Question", "name": "Où sont hébergées les données de vos solutions IA ?", "acceptedAnswer": { "@type": "Answer", "text": "En Suisse, sur votre infrastructure ou chez un hébergeur suisse, conformément à la nLPD." } },
+   { "@type": "Question", "name": "Qu'est-ce que le protocole MCP ?", "acceptedAnswer": { "@type": "Answer", "text": "Le Model Context Protocol est un standard ouvert qui permet à un agent IA d'utiliser vos applications de manière contrôlée et auditable." } }
+ ] }
+] }
+</script>
+</helmet>
+<div style="font-family:'Century Gothic','Urbanist','Avenir Next',system-ui,sans-serif;font-size:1.0625rem;line-height:1.6;color:#14232A;background:#FFFFFF;letter-spacing:{{ ls }};word-spacing:{{ ws }};min-height:100vh">
+
+<a href="#contenu" style="position:absolute;left:-9999px;top:12px;z-index:100;background:#14232A;color:#FFFFFF;padding:.875rem 1.25rem;border-radius:10px;font-weight:700;text-decoration:none" style-focus="left:12px">Aller au contenu</a>
+
+<sc-if value="{{ showA11yBar }}" hint-placeholder-val="{{ true }}">
+<div role="region" aria-label="Préférences d'accessibilité" style="background:#53676F;color:#FFFFFF;font-size:.875rem">
+  <div style="max-width:1280px;margin:0 auto;padding:.375rem clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem">
+    <span style="font-weight:700">Accessibilité</span>
+    <button type="button" onClick="{{ togglePause }}" aria-pressed="{{ pausedStr }}" style="min-height:44px;display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#FFFFFF;border:0;font:inherit;cursor:pointer;padding:0 .25rem">
+      <span aria-hidden="true" style="width:1.125rem;height:1.125rem;border:2px solid #FFFFFF;border-radius:50%;display:inline-block;background:{{ pauseDot }}"></span>{{ pauseLabel }}
+    </button>
+    <div role="group" aria-label="Taille du texte" style="display:flex;align-items:center;gap:.25rem">
+      <span>Texte</span>
+      <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+        <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" style="min-width:44px;min-height:44px;background:{{ s.bg }};color:{{ s.fg }};border:0;border-radius:8px;font:inherit;font-weight:700;cursor:pointer">{{ s.label }}</button>
+      </sc-for>
+    </div>
+    <button type="button" onClick="{{ toggleSpacing }}" aria-pressed="{{ spacingStr }}" style="min-height:44px;display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:#FFFFFF;border:0;font:inherit;cursor:pointer;padding:0 .25rem">
+      <span aria-hidden="true" style="width:1.125rem;height:1.125rem;border:2px solid #FFFFFF;border-radius:4px;display:inline-block;background:{{ spacingDot }}"></span>Espacement de lecture
+    </button>
+    <nav aria-label="Langue" style="margin-left:auto;display:flex;gap:.25rem">
+      <a href="#" aria-current="true" lang="fr" style="color:#FFFFFF;font-weight:700;padding:.625rem .5rem;text-decoration:underline">FR</a>
+      <a href="#" lang="de" style="color:#FFFFFF;padding:.625rem .5rem;text-decoration:none">DE</a>
+      <a href="#" lang="en" style="color:#FFFFFF;padding:.625rem .5rem;text-decoration:none">EN</a>
+    </nav>
+  </div>
+</div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid #DCE6EA">
+  <div style="max-width:1280px;margin:0 auto;padding:.75rem clamp(20px,4vw,48px);display:flex;align-items:center;gap:2rem">
+    <a href="DS%20Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="display:flex;align-items:center;flex:none">
+      <img src="https://www.digital-solutions.io/wp-content/uploads/2021/06/cropped-Digital-Solutions-Logo-retina.png" alt="Digital Solutions" style="height:42px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Navigation principale" style="display:flex;align-items:center;gap:.25rem;margin-left:auto;font-size:.9375rem;font-weight:600">
+        <a href="DS%20Intelligence%20Artificielle.dc.html" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">IA &amp; Automatisation</a>
+        <a href="#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Développement</a>
+        <a href="#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Intégration</a>
+        <a href="#metiers" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Consulting</a>
+        <a href="#histoire" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">À propos</a>
+        <a href="#carrieres" style="padding:.75rem .875rem;text-decoration:none;border-radius:10px;color:#14232A" style-hover="background:#EEF6F9">Carrières</a>
+        <a href="#contact" style="margin-left:.75rem;padding:.75rem 1.25rem;background:#14232A;color:#FFFFFF;text-decoration:none;border-radius:999px" style-hover="background:#269CBD;color:#14232A">Parler à un expert</a>
+      </nav>
+    </sc-if>
+    <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuStr }}" aria-controls="menu-mobile" style="margin-left:auto;min-height:44px;padding:0 1.125rem;border-radius:999px;border:2px solid #14232A;background:#FFFFFF;color:#14232A;font:inherit;font-weight:700;cursor:pointer">{{ menuLabel }}</button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav id="menu-mobile" aria-label="Navigation principale" style="display:flex;flex-direction:column;padding:.5rem clamp(20px,4vw,48px) 1.25rem;font-size:1.125rem;font-weight:600;border-top:1px solid #DCE6EA;background:#FFFFFF">
+      <a href="DS%20Intelligence%20Artificielle.dc.html" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">IA &amp; Automatisation</a>
+      <a href="#metiers" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Nos métiers</a>
+      <a href="#cas-usage" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Cas d'usage</a>
+      <a href="#histoire" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">À propos</a>
+      <a href="#carrieres" onClick="{{ closeMenu }}" style="padding:.875rem 0;text-decoration:none;border-bottom:1px solid #EEF3F5">Carrières</a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="margin-top:1rem;padding:.875rem 1.25rem;background:#14232A;color:#FFFFFF;text-decoration:none;border-radius:999px;text-align:center">Parler à un expert</a>
+    </nav>
+  </sc-if>
+</header>
+
+<main id="contenu" tabindex="-1" style="outline:none">
+
+<section aria-labelledby="h-hero" data-screen-label="Accueil · Hero" style="background:#269CBD;position:relative;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,104px) clamp(20px,4vw,48px) clamp(40px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:1.75rem">
+      <h1 id="h-hero" data-motion="rise" style="margin:0;color:#FFFFFF;font-weight:800;font-size:clamp(2.75rem,6.4vw,5.5rem);line-height:.98;letter-spacing:-.035em;text-wrap:balance">L'IA et l'IT qui font avancer la&nbsp;Suisse.</h1>
+      <p data-motion="rise" data-motion-delay="120" style="margin:0;color:#0B2229;font-size:clamp(1.125rem,1.6vw,1.3125rem);line-height:1.55;max-width:34em;text-wrap:pretty">Nous concevons des agents IA, des logiciels et des intégrations pour les entreprises et les institutions suisses. Depuis 2016, du Jura à Genève, avec une règle simple&nbsp;: la technologie doit servir les personnes qui l'utilisent, et vos données restent chez vous.</p>
+      <div data-motion="rise" data-motion-delay="220" style="display:flex;flex-wrap:wrap;gap:.75rem">
+        <a href="DS%20Intelligence%20Artificielle.dc.html" style="display:inline-flex;align-items:center;gap:.625rem;min-height:52px;padding:0 1.5rem;background:#FFFFFF;color:#14232A;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#14232A;color:#FFFFFF">Explorer nos solutions IA <span aria-hidden="true">→</span></a>
+        <a href="#cas-usage" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;border:2px solid #0B2229;color:#0B2229;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#0B2229;color:#FFFFFF">Voir les cas d'usage</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="position:relative;width:min(100%,540px);aspect-ratio:1;justify-self:center">
+      <div style="position:absolute;inset:10.5%;border-radius:50%;overflow:hidden;background:#53676F">
+        <img src="https://www.digital-solutions.io/wp-content/uploads/2023/10/fille-en-bleu-1024x684.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+      </div>
+      <svg viewBox="0 0 400 400" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">
+        <g data-motion="dial" style="transform-box:view-box;transform-origin:200px 200px">
+          <circle cx="200" cy="200" r="192" fill="none" stroke="#FFFFFF" stroke-opacity=".75" stroke-width="7" stroke-dasharray="1.1 19.006"></circle>
+          <circle cx="200" cy="200" r="192" fill="none" stroke="#FFFFFF" stroke-width="14" stroke-dasharray="2.6 97.93"></circle>
+        </g>
+        <circle cx="200" cy="200" r="172" fill="none" stroke="#FFFFFF" stroke-width="15"></circle>
+        <g data-motion="arc" style="transform-box:view-box;transform-origin:200px 200px">
+          <circle cx="200" cy="200" r="172" fill="none" stroke="#E1B48D" stroke-width="15" stroke-linecap="round" stroke-dasharray="150 931"></circle>
+        </g>
+        <rect x="364.5" y="-58" width="15" height="258" fill="#FFFFFF"></rect>
+        <g data-motion="seconds" style="transform-box:view-box;transform-origin:200px 200px">
+          <circle cx="200" cy="8" r="6" fill="#14232A"></circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px) clamp(28px,4vw,40px)">
+    <ul aria-label="Reconnaissances" style="list-style:none;margin:0;padding:1.25rem 0 0;border-top:1px solid rgba(11,34,41,.28);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem 2rem;color:#0B2229;font-size:.9375rem;font-weight:600">
+      <li style="display:flex;align-items:center;gap:.625rem"><span aria-hidden="true" style="width:.75rem;height:.75rem;border-radius:50%;border:3px solid #0B2229;flex:none"></span>Médaille d'or EcoVadis 2025</li>
+      <li style="display:flex;align-items:center;gap:.625rem"><span aria-hidden="true" style="width:.75rem;height:.75rem;border-radius:50%;border:3px solid #0B2229;flex:none"></span>Label Swiss Made Software</li>
+      <li style="display:flex;align-items:center;gap:.625rem"><span aria-hidden="true" style="width:.75rem;height:.75rem;border-radius:50%;border:3px solid #0B2229;flex:none"></span>Top 100 des entreprises IT suisses</li>
+      <li style="display:flex;align-items:center;gap:.625rem"><span aria-hidden="true" style="width:.75rem;height:.75rem;border-radius:50%;border:3px solid #0B2229;flex:none"></span>6 sites, de Porrentruy à Genève</li>
+    </ul>
+  </div>
+</section>
+
+<section id="metiers" aria-labelledby="h-metiers" data-screen-label="Accueil · Métiers" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 id="h-metiers" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Quatre métiers, une seule équipe.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em;text-wrap:pretty">Nous intervenons de la stratégie à l'exploitation. L'IA irrigue désormais chacun de nos métiers&nbsp;: elle accélère le développement, fiabilise les intégrations et donne plus de valeur à vos données.</p>
+    </div>
+
+    <a href="DS%20Intelligence%20Artificielle.dc.html" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:2rem 3rem;padding:clamp(28px,4vw,48px);background:#14232A;color:#FFFFFF;border-radius:28px;text-decoration:none;position:relative;overflow:hidden" style-hover="background:#1A2E36">
+      <div style="display:flex;flex-direction:column;gap:1rem;position:relative">
+        <h3 style="margin:0;font-size:clamp(1.75rem,3vw,2.5rem);line-height:1.05;letter-spacing:-.025em;font-weight:800;color:#FFFFFF">IA &amp; automatisation intelligente</h3>
+        <p style="margin:0;color:#D9E4E8;max-width:30em">Des agents IA qui lisent vos documents, utilisent vos applications et préparent le travail de vos équipes. Conçus, entraînés et hébergés en Suisse.</p>
+        <span style="margin-top:.5rem;display:inline-flex;align-items:center;gap:.625rem;font-weight:700;color:#6DCDEA">Découvrir notre expertise IA <span aria-hidden="true">→</span></span>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 2rem;position:relative">
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16);display:flex;justify-content:space-between;gap:1rem"><span>Agents IA autonomes</span></li>
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16)">RAG &amp; recherche augmentée</li>
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16)">Serveurs &amp; protocole MCP</li>
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16)">RPA &amp; IPA</li>
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16)">Data, analytics &amp; BI</li>
+        <li style="padding:.875rem 0;border-bottom:1px solid rgba(255,255,255,.16)">Gouvernance &amp; LLMOps</li>
+      </ul>
+      <svg aria-hidden="true" viewBox="0 0 200 200" style="position:absolute;right:-90px;bottom:-110px;width:320px;height:320px;opacity:.5">
+        <g data-motion="dial-rev" style="transform-box:view-box;transform-origin:100px 100px"><circle cx="100" cy="100" r="92" fill="none" stroke="#6DCDEA" stroke-width="6" stroke-dasharray="1 8.63"></circle></g>
+      </svg>
+    </a>
+
+    <div style="margin-top:1rem">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem 3rem;padding:2rem 0;border-bottom:1px solid #DCE6EA;align-items:baseline">
+        <h3 style="margin:0;font-size:1.625rem;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:.875rem"><span aria-hidden="true" style="width:1.25rem;height:1.25rem;border-radius:50%;border:4px solid #269CBD;flex:none"></span>Développement logiciel</h3>
+        <p style="margin:0;color:#53676F">Des applications robustes, pensées pour durer. Agile &amp; Scrum, architecture, développement et tests, DevSecOps, maintenance et support.</p>
+        <a href="#contact" style="font-weight:700;justify-self:start;padding:.5rem 0">Développer avec nous <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem 3rem;padding:2rem 0;border-bottom:1px solid #DCE6EA;align-items:baseline">
+        <h3 style="margin:0;font-size:1.625rem;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:.875rem"><span aria-hidden="true" style="width:1.25rem;height:1.25rem;border-radius:50%;border:4px solid #E1B48D;flex:none"></span>Intégration &amp; innovation</h3>
+        <p style="margin:0;color:#53676F">Vos systèmes enfin connectés. ERP, CRM, GED, API et conteneurisation pour que l'information circule sans ressaisie.</p>
+        <a href="#contact" style="font-weight:700;justify-self:start;padding:.5rem 0">Connecter vos outils <span aria-hidden="true">→</span></a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem 3rem;padding:2rem 0;border-bottom:1px solid #DCE6EA;align-items:baseline">
+        <h3 style="margin:0;font-size:1.625rem;letter-spacing:-.02em;font-weight:800;display:flex;align-items:center;gap:.875rem"><span aria-hidden="true" style="width:1.25rem;height:1.25rem;border-radius:50%;border:4px solid #53676F;flex:none"></span>Consulting &amp; outsourcing</h3>
+        <p style="margin:0;color:#53676F">Les bons profils, au bon endroit. Délégation chez vous, équipe dédiée dans nos bureaux ou mandat au forfait.</p>
+        <a href="#contact" style="font-weight:700;justify-self:start;padding:.5rem 0">Renforcer vos équipes <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-agents" data-screen-label="Accueil · Démo agent" style="background:#53676F;color:#FFFFFF">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(40px,6vw,80px);align-items:center">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <h2 id="h-agents" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Des agents qui agissent, pas seulement des chatbots.</h2>
+      <p style="margin:0;font-size:1.125rem;max-width:32em;text-wrap:pretty">Un agent IA bien conçu cherche l'information dans vos documents, interroge vos applications via le protocole MCP, rédige une réponse sourcée, puis laisse la décision à un humain. Voici à quoi cela ressemble dans une administration communale.</p>
+      <ol style="list-style:none;margin:.5rem 0 0;padding:0;display:flex;flex-direction:column">
+        <sc-for list="{{ stages }}" as="st" hint-placeholder-count="5">
+          <li style="display:flex;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.18)">
+            <span aria-hidden="true" style="width:1.5rem;height:1.5rem;border-radius:50%;border:3px solid #FFFFFF;background:{{ st.fill }};flex:none;transition:background .3s"></span>
+            <span style="font-weight:700;flex:1">{{ st.label }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;opacity:{{ st.op }}">{{ st.tech }}</span>
+          </li>
+        </sc-for>
+      </ol>
+    </div>
+    <figure style="margin:0;background:#14232A;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)">
+      <div style="display:flex;align-items:center;gap:.75rem;padding:1rem 1.25rem;border-bottom:1px solid rgba(255,255,255,.1)">
+        <span aria-hidden="true" data-motion="pulse" style="width:.625rem;height:.625rem;border-radius:50%;background:#6DCDEA"></span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#D9E4E8">agent · urbanisme · hébergé en Suisse</span>
+        <button type="button" onClick="{{ toggleDemo }}" aria-pressed="{{ demoPausedStr }}" style="margin-left:auto;min-height:44px;padding:0 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#FFFFFF;font:inherit;font-size:.875rem;cursor:pointer">{{ demoBtn }}</button>
+      </div>
+      <div aria-live="polite" style="padding:1.5rem 1.25rem;min-height:22rem;display:flex;flex-direction:column;gap:1rem">
+        <sc-for list="{{ lines }}" as="ln" hint-placeholder-count="3">
+          <div style="display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;align-items:start">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:500;color:#14232A;background:{{ ln.tag }};padding:.25rem .5rem;border-radius:6px;text-align:center">{{ ln.k }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:.875rem;line-height:1.55;color:#EAF2F5;white-space:pre-line">{{ ln.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <figcaption style="padding:.875rem 1.25rem;border-top:1px solid rgba(255,255,255,.1);font-size:.8125rem;color:#C5D3D8">Démonstration scénarisée, données fictives.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="cas-usage" aria-labelledby="h-cas" data-screen-label="Accueil · Cas d'usage" style="scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+      <h2 id="h-cas" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Des cas d'usage concrets, secteur par secteur.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em;text-wrap:pretty">Chaque projet part d'un irritant réel. Voici ceux que nous rencontrons le plus souvent, et la manière dont nous y répondons.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:2rem;align-items:flex-start">
+      <div role="tablist" aria-label="Secteurs" aria-orientation="vertical" style="display:flex;flex-direction:column;gap:.375rem;flex:1 1 260px;max-width:340px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+          <button type="button" role="tab" id="{{ t.id }}" aria-selected="{{ t.selected }}" aria-controls="uc-panel" tabIndex="{{ t.tabIndex }}" onClick="{{ t.onClick }}" onKeyDown="{{ tabKey }}" style="text-align:left;min-height:52px;padding:.75rem 1.125rem;border-radius:14px;border:0;background:{{ t.bg }};color:{{ t.fg }};font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.75rem;transition:background .2s">
+            <span aria-hidden="true" style="width:.875rem;height:.875rem;border-radius:50%;border:3px solid {{ t.ring }};flex:none"></span>{{ t.label }}
+          </button>
+        </sc-for>
+      </div>
+      <div id="uc-panel" role="tabpanel" aria-labelledby="{{ tabLabelledBy }}" tabIndex="0" style="flex:999 1 520px;min-width:0;background:#F2F7F9;border-radius:28px;padding:clamp(24px,4vw,48px);position:relative;overflow:hidden">
+        <sc-if value="{{ uc0 }}" hint-placeholder-val="{{ true }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">Un guichet citoyen qui répond juste, en trois langues.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">Les services communaux et cantonaux reçoivent les mêmes questions des dizaines de fois par jour&nbsp;: permis, impôts, état civil. Les réponses existent, mais elles sont dispersées dans des règlements et des intranets.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">L'agent répond en français, en allemand ou en italien en citant la base légale, vérifie la complétude d'un dossier dans la GED et oriente vers le bon service.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Toute décision administrative reste prise par un collaborateur ou une collaboratrice. L'agent prépare, l'humain tranche.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">RAG sur la base légale</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">MCP · GED &amp; registres</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">LLM open-weight hébergé en Suisse</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">FR · DE · IT</li>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ uc1 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">Des dossiers de sinistre et KYC instruits en amont.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">Des gestionnaires passent leurs journées à ouvrir des PDF, des scans et des courriels pour vérifier qu'un dossier est complet avant même de pouvoir l'analyser.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">Lecture des pièces, extraction structurée des données, contrôle des incohérences au regard de vos règles métier et note de synthèse prête à relire.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Le gestionnaire décide. Chaque proposition de l'agent est horodatée et justifiée dans un journal d'audit exploitable par la conformité.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Document AI · OCR &amp; mise en page</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Sorties structurées JSON Schema</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Moteur de règles</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Journal d'audit</li>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ uc2 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">Une veille réglementaire qui ne laisse rien passer.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">Chaque évolution réglementaire impose de relire des centaines de procédures qualité pour savoir lesquelles sont touchées.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">L'agent compare le nouveau texte à votre corpus documentaire, liste les procédures impactées et propose les modifications, paragraphe par paragraphe.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Le responsable qualité valide chaque modification. Les sources sont toujours affichées, jamais résumées sans lien.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">GraphRAG</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Comparaison sémantique</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Citations vérifiables</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Hébergement on-premise</li>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ uc3 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">Un contrôle qualité à la précision horlogère.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">L'inspection visuelle des composants est exigeante, fatigante et difficile à standardiser d'une équipe à l'autre.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">Un modèle de vision entraîné sur vos propres images repère rayures, inclusions et défauts d'aspect directement en ligne de production, et alimente votre MES.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Les cas douteux sont présentés au contrôleur, dont la décision sert à réentraîner le modèle. L'expertise du métier reste au centre.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Vision par ordinateur</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Inférence en périphérie</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Active learning</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">API MES / ERP</li>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ uc4 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">La saisie comptable qui se fait (presque) toute seule.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">Factures, QR-factures, relevés bancaires&nbsp;: les fiduciaires consacrent une part considérable de leur temps à la saisie et au rapprochement.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">L'automatisation intelligente lit chaque pièce, propose l'imputation, rapproche les paiements et prépare le décompte TVA dans votre logiciel comptable.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Le ou la fiduciaire valide les écritures et se concentre sur le conseil, là où sa valeur est la plus forte.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">IPA · RPA + LLM</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Lecture QR-facture</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Détection d'anomalies</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Connecteurs ERP</li>
+          </ul>
+        </sc-if>
+        <sc-if value="{{ uc5 }}" hint-placeholder-val="{{ false }}">
+          <h3 style="margin:0 0 1.5rem;font-size:clamp(1.5rem,2.6vw,2.125rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">Un conseiller produit disponible à toute heure.</h3>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem 2.5rem">
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Le point de départ</h4><p style="margin:0;color:#3F5058">Disponibilité, délai, compatibilité, retour&nbsp;: le service client répond sans cesse aux mêmes questions, souvent en dehors des heures d'ouverture.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">Ce que fait la solution</h4><p style="margin:0;color:#3F5058">L'agent connaît le catalogue, consulte le stock et le statut des commandes en temps réel, et recommande des produits adaptés au besoin exprimé.</p></div>
+            <div><h4 style="margin:0 0 .375rem;font-size:1rem;font-weight:800">La place de l'humain</h4><p style="margin:0;color:#3F5058">Dès qu'une demande sort du cadre, l'échange passe à un conseiller avec tout l'historique. Personne ne répète son problème deux fois.</p></div>
+          </div>
+          <ul aria-label="Briques techniques" style="list-style:none;margin:2rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem">
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">RAG catalogue</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">MCP · e-shop &amp; logistique</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Recommandation</li>
+            <li style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;padding:.5rem .875rem;border:1px solid #B9CBD2;border-radius:999px;background:#FFFFFF">Escalade humaine</li>
+          </ul>
+        </sc-if>
+        <p style="margin:2rem 0 0"><a href="DS%20Intelligence%20Artificielle.dc.html#cas" style="font-weight:700">Voir toute la bibliothèque de cas d'usage <span aria-hidden="true">→</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-methode" data-screen-label="Accueil · Méthode" style="background:#6DCDEA">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <h2 id="h-methode" style="margin:0 0 1rem;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;max-width:16em;text-wrap:balance">Huit étapes, du premier atelier à l'amélioration continue.</h2>
+    <p style="margin:0 0 clamp(40px,5vw,64px);font-size:1.125rem;max-width:36em;color:#0B2229">Une méthode éprouvée sur nos projets IA, qui sécurise chaque décision avant d'engager la suivante.</p>
+    <div role="group" aria-label="Étapes de la méthode" style="position:relative;overflow-x:auto;padding-bottom:.5rem">
+      <div style="min-width:720px;position:relative;padding-top:1.5rem">
+        <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:12px;background:repeating-linear-gradient(90deg,#0B2229 0 1.5px,transparent 1.5px 14px);opacity:.45"></div>
+        <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(8,1fr);gap:.5rem;border-top:3px solid #0B2229">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+            <li style="display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;padding-top:0;position:relative">
+              <span aria-hidden="true" style="width:3px;height:22px;background:#0B2229;margin-top:-1px"></span>
+              <button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" style="text-align:left;background:{{ s.bg }};color:{{ s.fg }};border:2px solid #0B2229;border-radius:16px;padding:.625rem .75rem;font:inherit;font-weight:700;font-size:.9375rem;line-height:1.25;cursor:pointer;min-height:76px;width:100%;display:flex;flex-direction:column;gap:.25rem;transition:background .2s">
+                <span style="font-size:1.5rem;font-weight:800;line-height:1">{{ s.n }}</span>{{ s.label }}
+              </button>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+    <div aria-live="polite" style="margin-top:2rem;background:#FFFFFF;border-radius:24px;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1rem 3rem;align-items:start">
+      <h3 style="margin:0;font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;line-height:1.1;font-weight:800">{{ stepTitle }}</h3>
+      <p style="margin:0;color:#3F5058;font-size:1.0625rem;text-wrap:pretty">{{ stepText }}</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-confiance" data-screen-label="Accueil · Confiance">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px)">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <h2 id="h-confiance" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Une IA responsable, par construction.</h2>
+      <p style="margin:0;font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.4;color:#14232A;max-width:22em">Vos données restent en Suisse. Vos équipes gardent la main. Chaque réponse est traçable jusqu'à sa source.</p>
+      <p style="margin:0;color:#53676F;max-width:32em">Nous concevons l'IA pour soutenir les personnes, jamais pour les remplacer. C'est une conviction, et c'est aussi la meilleure façon de réussir un projet.</p>
+    </div>
+    <dl style="margin:0;display:flex;flex-direction:column">
+      <div style="display:grid;grid-template-columns:minmax(0,10rem) 1fr;gap:1.5rem;padding:1.5rem 0;border-top:2px solid #14232A">
+        <dt style="font-weight:800;font-size:1.25rem">Éthique</dt>
+        <dd style="margin:0;color:#3F5058">Données hébergées localement, conformité à la nLPD, supervision humaine systématique et respect strict de la vie privée.</dd>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,10rem) 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid #DCE6EA">
+        <dt style="font-weight:800;font-size:1.25rem">Transparence</dt>
+        <dd style="margin:0;color:#3F5058">Des résultats explicables, des sources citées, des règles de fonctionnement documentées et compréhensibles par les utilisateurs autorisés.</dd>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,10rem) 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid #DCE6EA">
+        <dt style="font-weight:800;font-size:1.25rem">Sécurité</dt>
+        <dd style="margin:0;color:#3F5058">Gestion fine des droits, chiffrement, tests d'intrusion spécifiques à l'IA et traitements reproductibles.</dd>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(0,10rem) 1fr;gap:1.5rem;padding:1.5rem 0;border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA">
+        <dt style="font-weight:800;font-size:1.25rem">ESG</dt>
+        <dd style="margin:0;color:#3F5058">Des modèles dimensionnés au juste besoin, pour limiter l'empreinte énergétique. Une démarche reconnue par la médaille d'or EcoVadis 2025.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<section id="histoire" aria-labelledby="h-histoire" data-screen-label="Accueil · Histoire" style="background:#F2F7F9;scroll-margin-top:80px">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:1.5rem 4rem;align-items:end;margin-bottom:clamp(40px,5vw,64px)">
+      <h2 id="h-histoire" style="margin:0;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800;text-wrap:balance">Nés dans le Jura, présents dans toute la Suisse.</h2>
+      <p style="margin:0;color:#53676F;font-size:1.125rem;max-width:36em;text-wrap:pretty">Digital Solutions est née en 2016 à Porrentruy. Dix ans plus tard, nos ingénieurs et ingénieures accompagnent banques, cantons, industriels et horlogers depuis six sites.</p>
+    </div>
+    <div tabindex="0" role="region" aria-label="Chronologie, défilement horizontal" style="overflow-x:auto;padding-bottom:1rem">
+      <ol style="list-style:none;margin:0;padding:2.25rem 0 0;min-width:860px;display:grid;grid-template-columns:repeat(6,1fr);position:relative;border-top:3px solid #14232A">
+        <li aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:14px;background:repeating-linear-gradient(90deg,#53676F 0 1px,transparent 1px 12px)"></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em">2016</span><span style="color:#3F5058">Fondation à Porrentruy par Xavier Van Nuvel.</span></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em">2019</span><span style="color:#3F5058">Passage en SA et label Great Place to Work.</span></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em">2020</span><span style="color:#3F5058">Ouverture à Bâle, sur le Campus Novartis. Lancement de l'offre RPA.</span></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em">2021</span><span style="color:#3F5058">Entrée dans le top 100 des entreprises IT suisses, au 49<sup>e</sup> rang.</span></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em">2023</span><span style="color:#3F5058">Les critères ESG au cœur de toutes nos décisions stratégiques.</span></li>
+        <li style="padding-right:1.5rem;display:flex;flex-direction:column;gap:.5rem"><span style="font-size:2rem;font-weight:800;letter-spacing:-.02em;color:#14232A">2025</span><span style="color:#3F5058">Médaille d'or EcoVadis et agents IA souverains avec exkalibur.ai.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Actualités et carrières" data-screen-label="Accueil · Actus & carrières">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(48px,6vw,96px)">
+    <div>
+      <h2 style="margin:0 0 1.5rem;font-size:clamp(1.75rem,3vw,2.5rem);letter-spacing:-.025em;font-weight:800">Nos derniers décryptages</h2>
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="border-top:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/nos-actualites/architecture-llm/" style="display:flex;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;text-decoration:none;font-weight:700;font-size:1.125rem" style-hover="color:#1C7F9C">Architecture et diversité des grands modèles de langage<span aria-hidden="true">→</span></a></li>
+        <li style="border-top:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/nos-actualites/ia-et-embeddings/" style="display:flex;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;text-decoration:none;font-weight:700;font-size:1.125rem" style-hover="color:#1C7F9C">Comment les IA comprennent le langage&nbsp;: les embeddings<span aria-hidden="true">→</span></a></li>
+        <li style="border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/nos-actualites/communique-le-chiffrement-completement-homomorphe/" style="display:flex;justify-content:space-between;gap:1.5rem;padding:1.25rem 0;text-decoration:none;font-weight:700;font-size:1.125rem" style-hover="color:#1C7F9C">Le chiffrement complètement homomorphe<span aria-hidden="true">→</span></a></li>
+      </ul>
+      <p style="margin:1.25rem 0 0"><a href="https://www.digital-solutions.io/actualites-it-suisse/" style="font-weight:700">Toutes nos actualités</a></p>
+    </div>
+    <div id="carrieres" style="scroll-margin-top:80px">
+      <h2 style="margin:0 0 .75rem;font-size:clamp(1.75rem,3vw,2.5rem);letter-spacing:-.025em;font-weight:800">Rejoignez-nous</h2>
+      <p style="margin:0 0 1.5rem;color:#53676F;max-width:32em">Un métier à la hauteur de vos ambitions, un plan de carrière construit avec vous, et des projets qui comptent. Nous recrutons sans distinction d'âge, de genre, d'origine ou de handicap.</p>
+      <ul style="list-style:none;margin:0;padding:0">
+        <li style="border-top:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/postes-a-pourvoir/ingenieur-devops-devsecops-geneve/" style="display:grid;grid-template-columns:1fr auto;gap:.25rem 1.5rem;padding:1rem 0;text-decoration:none" style-hover="color:#1C7F9C"><span style="font-weight:700">Ingénieur·e DevOps</span><span style="color:#53676F;font-size:.9375rem">Genève · CDI</span></a></li>
+        <li style="border-top:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/postes-a-pourvoir/ingenieur-securite-information-protection-donnees-geneve/" style="display:grid;grid-template-columns:1fr auto;gap:.25rem 1.5rem;padding:1rem 0;text-decoration:none" style-hover="color:#1C7F9C"><span style="font-weight:700">Ingénieur·e sécurité de l'information</span><span style="color:#53676F;font-size:.9375rem">Genève · CDI</span></a></li>
+        <li style="border-top:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/postes-a-pourvoir/developpeur-mendix-low-code-valais/" style="display:grid;grid-template-columns:1fr auto;gap:.25rem 1.5rem;padding:1rem 0;text-decoration:none" style-hover="color:#1C7F9C"><span style="font-weight:700">Développeur·se Mendix</span><span style="color:#53676F;font-size:.9375rem">Valais · CDI</span></a></li>
+        <li style="border-top:1px solid #DCE6EA;border-bottom:1px solid #DCE6EA"><a href="https://www.digital-solutions.io/postes-a-pourvoir/manager-de-programme-it-geneve/" style="display:grid;grid-template-columns:1fr auto;gap:.25rem 1.5rem;padding:1rem 0;text-decoration:none" style-hover="color:#1C7F9C"><span style="font-weight:700">Manager de programme</span><span style="color:#53676F;font-size:.9375rem">Genève · CDI</span></a></li>
+      </ul>
+      <p style="margin:1.25rem 0 0"><a href="https://www.digital-solutions.io/offres-demploi/" style="font-weight:700">Toutes nos offres d'emploi</a></p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-faq" data-screen-label="Accueil · FAQ" style="background:#F2F7F9">
+  <div style="max-width:960px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px)">
+    <h2 id="h-faq" style="margin:0 0 2rem;font-size:clamp(2.125rem,4.4vw,3.5rem);line-height:1.02;letter-spacing:-.03em;font-weight:800">Questions fréquentes</h2>
+    <details style="border-top:1px solid #C9D8DE;padding:0">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Où sont hébergées les données de vos solutions IA&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">En Suisse. Selon votre contexte, sur votre propre infrastructure, chez un hébergeur suisse certifié ou dans une architecture hybride. Les modèles open-weight peuvent tourner entièrement chez vous, sans qu'aucune donnée ne quitte votre périmètre. Nos projets respectent la nLPD.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Qu'est-ce qu'un agent IA, concrètement&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Un programme qui s'appuie sur un modèle de langage pour comprendre une demande, chercher l'information utile, utiliser des outils (votre ERP, votre GED, une base de données) et enchaîner plusieurs étapes pour atteindre un objectif. Nous le dotons toujours de garde-fous et d'une validation humaine aux moments clés.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Quelle différence entre RAG et fine-tuning&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Le RAG donne au modèle accès à vos documents au moment de répondre&nbsp;: l'information reste à jour et chaque réponse peut citer sa source. Le fine-tuning modifie le modèle lui-même pour lui apprendre un ton, un format ou un vocabulaire métier. Les deux se combinent souvent&nbsp;; nous recommandons celui qui répond à votre besoin, au coût le plus juste.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Qu'est-ce que le protocole MCP et pourquoi l'utiliser&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Le Model Context Protocol est un standard ouvert qui décrit comment un agent IA accède à vos applications. Plutôt que de bricoler une intégration par outil, nous exposons vos systèmes via des serveurs MCP sécurisés&nbsp;: droits maîtrisés, appels journalisés, et liberté de changer de modèle sans tout reconstruire.</p>
+    </details>
+    <details style="border-top:1px solid #C9D8DE;border-bottom:1px solid #C9D8DE">
+      <summary style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.375rem 0;font-weight:700;font-size:1.1875rem;min-height:44px">Travaillez-vous avec le secteur public&nbsp;?<span aria-hidden="true" style="font-size:1.5rem;font-weight:400">+</span></summary>
+      <p style="margin:0 0 1.5rem;color:#3F5058;max-width:44em">Oui. Nous accompagnons des communes, des cantons et des institutions, de la stratégie à l'automatisation des processus, en nous appuyant sur l'écosystème suisse d'innovation, notamment l'initiative Swiss Administration RPA.</p>
+    </details>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="h-contact" data-screen-label="Accueil · Contact" style="background:#53676F;color:#FFFFFF;scroll-margin-top:80px;position:relative;overflow:hidden">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(64px,9vw,120px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,6vw,96px);position:relative">
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+      <h2 id="h-contact" style="margin:0;font-size:clamp(2.5rem,5.6vw,4.5rem);line-height:.98;letter-spacing:-.035em;font-weight:800">Parlons de votre projet.</h2>
+      <p style="margin:0;font-size:1.125rem;max-width:30em">Une idée, un irritant, une question sur l'IA&nbsp;? Un ou une experte vous répond sous un jour ouvré.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem">
+        <a href="https://www.digital-solutions.io/contact/" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;background:#FFFFFF;color:#14232A;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#6DCDEA">Écrire à un expert</a>
+        <a href="tel:+41324671109" style="display:inline-flex;align-items:center;min-height:52px;padding:0 1.5rem;border:2px solid #FFFFFF;color:#FFFFFF;font-weight:700;text-decoration:none;border-radius:999px" style-hover="background:#FFFFFF;color:#14232A">+41 32 467 11 09</a>
+      </div>
+    </div>
+    <div>
+      <h3 style="margin:0 0 1rem;font-size:1.125rem;font-weight:800">Nos bureaux</h3>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem 2rem;font-size:.9375rem">
+        <li><strong style="display:block">Porrentruy · siège</strong>Rue de la Roche-de-Mars 5<br>2900 Porrentruy</li>
+        <li><strong style="display:block">Delémont</strong>Route de Moutier 9<br>2800 Delémont</li>
+        <li><strong style="display:block">Lausanne</strong>Avenue d'Ouchy 4<br>1006 Lausanne</li>
+        <li><strong style="display:block">Genève</strong>Chemin des Mines 2<br>1202 Genève</li>
+        <li><strong style="display:block">Bâle</strong>Campus Novartis, Fabrikstrasse 2<br>4056 Bâle</li>
+        <li><strong style="display:block">Martigny</strong>Avenue de la Gare 46b<br>1920 Martigny</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer style="background:#FFFFFF;border-top:1px solid #DCE6EA">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(40px,5vw,64px) clamp(20px,4vw,48px) 2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2.5rem">
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <img src="https://www.digital-solutions.io/wp-content/uploads/2021/06/cropped-Digital-Solutions-Logo-retina.png" alt="Digital Solutions" style="height:40px;width:auto;align-self:flex-start">
+      <p style="margin:0;color:#53676F;font-size:.9375rem">Prestataire IA &amp; IT suisse depuis 2016.<br><a href="mailto:contact@digital-solutions.io">contact@digital-solutions.io</a></p>
+    </div>
+    <nav aria-label="Solutions" style="display:flex;flex-direction:column;gap:.5rem;font-size:.9375rem">
+      <strong>Solutions</strong>
+      <a href="DS%20Intelligence%20Artificielle.dc.html" style="text-decoration:none;padding:.25rem 0">Intelligence artificielle</a>
+      <a href="https://www.digital-solutions.io/automatisation-intelligente-des-processus/" style="text-decoration:none;padding:.25rem 0">Automatisation intelligente (IPA)</a>
+      <a href="https://www.digital-solutions.io/robotic-process-automation/" style="text-decoration:none;padding:.25rem 0">RPA</a>
+      <a href="https://site.exkalibur.ai/" style="text-decoration:none;padding:.25rem 0">exkalibur.ai</a>
+    </nav>
+    <nav aria-label="Entreprise" style="display:flex;flex-direction:column;gap:.5rem;font-size:.9375rem">
+      <strong>Entreprise</strong>
+      <a href="https://www.digital-solutions.io/entreprise-it-suisse/" style="text-decoration:none;padding:.25rem 0">Qui sommes-nous</a>
+      <a href="https://www.digital-solutions.io/nos-engagements/" style="text-decoration:none;padding:.25rem 0">Nos engagements</a>
+      <a href="https://www.digital-solutions.io/offres-demploi/" style="text-decoration:none;padding:.25rem 0">Carrières</a>
+      <a href="https://www.linkedin.com/company/digital-solutions-switzerland/" style="text-decoration:none;padding:.25rem 0">LinkedIn</a>
+    </nav>
+    <form aria-labelledby="nl-title" onSubmit="{{ onNewsletter }}" style="display:flex;flex-direction:column;gap:.75rem;font-size:.9375rem">
+      <strong id="nl-title">Newsletter</strong>
+      <label for="nl-email" style="color:#53676F">Votre adresse e-mail</label>
+      <div style="display:flex;gap:.5rem">
+        <input id="nl-email" type="email" required="" autoComplete="email" style="flex:1;min-width:0;min-height:48px;padding:0 1rem;border:2px solid #53676F;border-radius:12px;font:inherit;color:#14232A">
+        <button type="submit" style="min-height:48px;padding:0 1rem;border:0;border-radius:12px;background:#14232A;color:#FFFFFF;font:inherit;font-weight:700;cursor:pointer">S'inscrire</button>
+      </div>
+      <label style="display:flex;gap:.5rem;align-items:flex-start;color:#3F5058;font-size:.8125rem;line-height:1.45"><input type="checkbox" required="" style="width:20px;height:20px;margin:0;flex:none;accent-color:#14232A">J'accepte que mes données soient traitées selon la politique de confidentialité. Je peux me désinscrire à tout moment.</label>
+      <p role="status" style="margin:0;color:#14232A;font-weight:700">{{ nlMsg }}</p>
+    </form>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:1.25rem clamp(20px,4vw,48px) 2rem;border-top:1px solid #DCE6EA;display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-size:.8125rem;color:#53676F">
+    <span>© 2026 Digital Solutions SA</span>
+    <a href="https://www.digital-solutions.io/politique-de-confidentialite/" style="color:#53676F">Confidentialité</a>
+    <a href="https://www.digital-solutions.io/mentions-legales/" style="color:#53676F">Mentions légales</a>
+    <a href="https://www.digital-solutions.io/politique-de-cookies-ue/" style="color:#53676F">Cookies</a>
+    <a href="#" style="color:#53676F">Déclaration d'accessibilité</a>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showA11yBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Accessibilité&quot;},&quot;motionSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.25,&quot;max&quot;:2,&quot;step&quot;:0.25,&quot;unit&quot;:&quot;×&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Animations&quot;},&quot;demoAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animations&quot;}}">
+const UC_TABS = ['Administrations publiques', 'Banque & assurance', 'Santé & pharma', 'Industrie & horlogerie', 'Fiduciaires', 'Retail & e-commerce'];
+const STEPS = [
+  ['Audit & ateliers', "Tout part de vos besoins réels. Nous auditons l'existant et animons des ateliers avec les métiers pour retenir les cas d'usage qui créent vraiment de la valeur."],
+  ['Stratégie IA', "Nous priorisons, chiffrons et choisissons l'architecture : modèles, hébergement, données, sécurité. Une feuille de route lisible par la direction comme par l'IT."],
+  ['Proof of Concept', "Un prototype sur vos données, dans votre environnement, pour prouver la faisabilité et mesurer la qualité des réponses avant d'investir davantage."],
+  ['Formation & changement', "Un projet IA réussit quand les équipes se l'approprient. Formations, ambassadeurs internes et accompagnement au quotidien."],
+  ['Suivi & optimisation', "En production, nous surveillons la qualité, les coûts et la latence. Les dérives sont détectées tôt et corrigées."],
+  ['ROI & KPI', "Des indicateurs définis dès le départ : temps gagné, taux de résolution, satisfaction. Le bénéfice se mesure, il ne se suppose pas."],
+  ['Business Intelligence', "Les données produites par vos agents alimentent vos tableaux de bord et éclairent vos prochaines décisions."],
+  ['Amélioration continue', "Les modèles évoluent, vos besoins aussi. Nous restons à vos côtés pour faire grandir la solution avec votre organisation."]
+];
+const STAGES = [['Demande', 'langage naturel'], ['Recherche RAG', 'hybride + reranking'], ['Outils MCP', 'GED · registre'], ['Réponse sourcée', 'citations'], ['Validation humaine', 'human-in-the-loop']];
+const LINES = [
+  { k: 'demande', t: '« Quelles pièces manquent au dossier de permis de construire 2026-114 ? »', tag: '#FFFFFF' },
+  { k: 'rag', t: '3 passages retenus · Loi cantonale sur les constructions, art. 19 · Règlement communal, art. 12 · Check-list urbanisme v4', tag: '#6DCDEA' },
+  { k: 'mcp', t: 'ged.lire_dossier("2026-114") → 14 pièces\nregistre.parcelle(1432) → zone mixte', tag: '#6DCDEA' },
+  { k: 'réponse', t: 'Il manque le plan de situation signé et le justificatif énergétique. Sources [1] [3].', tag: '#E1B48D' },
+  { k: 'humain', t: 'Courrier au requérant préparé. En attente de validation par le service urbanisme.', tag: '#FFFFFF' }
+];
+const SIZES = [100, 112.5, 125];
+
+class Component extends DCLogic {
+  state = { w: typeof window !== 'undefined' ? window.innerWidth : 1280, tab: 0, step: 0, demo: 0, demoPaused: false, paused: false, size: 0, spacing: false, menu: false, nl: '' };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    window.addEventListener('resize', this.onResize);
+    this.reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (this.reduced) this.setState({ paused: true });
+    fetch('ds-motion.json').then(r => r.json()).then(j => { this.scenes = j.scenes; this.applyMotion(); }).catch(() => {});
+    this.timer = setInterval(() => {
+      const auto = this.props.demoAutoplay ?? true;
+      if (!auto || this.state.paused || this.state.demoPaused) return;
+      this.setState(s => ({ demo: (s.demo + 1) % 7 }));
+    }, 2200);
+  }
+  componentDidUpdate() { this.applyMotion(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearInterval(this.timer); }
+
+  applyMotion() {
+    if (!this.scenes || this.reduced) return;
+    const rate = this.props.motionSpeed ?? 1;
+    document.querySelectorAll('[data-motion]').forEach(el => {
+      if (el.__ds) { el.__ds.playbackRate = rate; return; }
+      const s = this.scenes[el.getAttribute('data-motion')];
+      if (!s) return;
+      const o = Object.assign({}, s.options);
+      if (o.iterations === -1) o.iterations = Infinity;
+      o.delay = (o.delay || 0) + Number(el.getAttribute('data-motion-delay') || 0);
+      el.__ds = el.animate(s.keyframes, o);
+      el.__ds.playbackRate = rate;
+      if (this.state.paused && o.iterations === Infinity) el.__ds.pause();
+    });
+  }
+
+  togglePause = () => {
+    const p = !this.state.paused;
+    document.querySelectorAll('[data-motion]').forEach(el => { if (el.__ds) p ? el.__ds.pause() : el.__ds.play(); });
+    this.setState({ paused: p });
+  };
+
+  tabKey = (e) => {
+    const n = UC_TABS.length; let t = this.state.tab;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') t = (t + 1) % n;
+    else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') t = (t - 1 + n) % n;
+    else if (e.key === 'Home') t = 0; else if (e.key === 'End') t = n - 1; else return;
+    e.preventDefault();
+    this.setState({ tab: t }, () => { const b = document.getElementById('uc-tab-' + t); b && b.focus(); });
+  };
+
+  renderVals() {
+    const { w, tab, step, demo, paused, size, spacing, menu, demoPaused } = this.state;
+    const narrow = w < 1080;
+    const d = Math.min(demo, 5);
+    const uc = {}; UC_TABS.forEach((_, i) => { uc['uc' + i] = i === tab; });
+    return {
+      ...uc,
+      showA11yBar: this.props.showA11yBar ?? true,
+      wide: !narrow, narrow, menuOpen: narrow && menu,
+      menuStr: String(menu), menuLabel: menu ? 'Fermer' : 'Menu',
+      toggleMenu: () => this.setState(s => ({ menu: !s.menu })),
+      closeMenu: () => this.setState({ menu: false }),
+      ls: spacing ? '.06em' : 'normal', ws: spacing ? '.16em' : 'normal',
+      togglePause: this.togglePause, pausedStr: String(paused),
+      pauseLabel: paused ? 'Relancer les animations' : 'Mettre en pause les animations',
+      pauseDot: paused ? '#FFFFFF' : 'transparent',
+      toggleSpacing: () => this.setState(s => ({ spacing: !s.spacing })),
+      spacingStr: String(spacing), spacingDot: spacing ? '#FFFFFF' : 'transparent',
+      sizes: SIZES.map((v, i) => ({
+        label: ['A', 'A+', 'A++'][i], aria: ['Texte normal', 'Texte agrandi', 'Texte très agrandi'][i],
+        pressed: String(size === i), bg: size === i ? '#FFFFFF' : 'transparent', fg: size === i ? '#14232A' : '#FFFFFF',
+        onClick: () => { document.documentElement.style.fontSize = v + '%'; this.setState({ size: i }); }
+      })),
+      stages: STAGES.map(([label, tech], i) => ({ label: (i + 1) + '. ' + label, tech, fill: i < d ? '#6DCDEA' : (i === d ? '#FFFFFF' : 'transparent'), op: i <= d ? 1 : .6 })),
+      lines: LINES.slice(0, d + 1),
+      toggleDemo: () => this.setState(s => ({ demoPaused: !s.demoPaused })),
+      demoPausedStr: String(demoPaused), demoBtn: demoPaused ? 'Lecture' : 'Pause',
+      tabs: UC_TABS.map((label, i) => ({
+        label, id: 'uc-tab-' + i, selected: String(i === tab), tabIndex: i === tab ? 0 : -1,
+        bg: i === tab ? '#14232A' : 'transparent', fg: i === tab ? '#FFFFFF' : '#14232A', ring: i === tab ? '#6DCDEA' : '#53676F',
+        onClick: () => this.setState({ tab: i })
+      })),
+      tabKey: this.tabKey, tabLabelledBy: 'uc-tab-' + tab,
+      steps: STEPS.map(([label], i) => ({ n: i + 1, label, pressed: String(i === step), bg: i === step ? '#0B2229' : 'transparent', fg: i === step ? '#FFFFFF' : '#0B2229', onClick: () => this.setState({ step: i }) })),
+      stepTitle: (step + 1) + '. ' + STEPS[step][0], stepText: STEPS[step][1],
+      onNewsletter: (e) => { e.preventDefault(); this.setState({ nl: 'Merci, votre inscription est enregistrée.' }); },
+      nlMsg: this.state.nl
+    };
+  }
+}
+</script>
+</body>
+</html>
