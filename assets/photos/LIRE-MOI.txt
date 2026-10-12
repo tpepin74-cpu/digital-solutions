@@ -1,0 +1,10 @@
+Digital Solutions — Brief photos v2
+
+51 illustrations générées avec le générateur intégré, plus 7 recadrages menu en WebP.
+Option Usages réduite : 12 secteurs réutilisables, USA-SECT-01 à USA-SECT-12.
+
+Photos réelles à fournir : direction ; CAR-04 photo de groupe ; CAR-14 à CAR-18 portraits métier ; CAR-30 à CAR-32 visages candidature ; autres bureaux. Journal inchangé.
+
+Les scènes et personnes sont des illustrations IA. Les locaux sont inspirés des références du siège. Les paysages, monuments et villes restent des évocations et ne constituent pas une documentation exacte des lieux. Ne pas présenter les personnes générées comme de véritables collaborateurs.
+
+Exports aux dimensions du brief, WebP qualité 82. Certaines sources natives sont plus petites : les exports ont été redimensionnés, ce qui ne crée pas de détails supplémentaires. Dimensions sources et finales dans inventaire.csv. Menus : 640 × 800 px.
