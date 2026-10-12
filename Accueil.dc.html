@@ -204,22 +204,6 @@
     </div>
   </div>
 </section>
-
-<section aria-labelledby="h-journal" data-screen-label="07 Journal" style="padding:clamp(88px,11vw,150px) clamp(20px,3vw,40px)">
-  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(32px,4vw,48px)">
-    <h2 id="h-journal" style="margin:0;font-weight:700;font-size:clamp(2rem,3.6vw,3.25rem);line-height:1.05;letter-spacing:-.035em">Nos <em>décryptages</em>.</h2>
-    <a href="https://www.digital-solutions.io/actualites-it-suisse/" style="font-weight:700;padding:12px 0">Tout le journal →</a>
-  </div>
-  <ul style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(16px,2vw,28px)">
-    <sc-for list="{{ posts3 }}" as="j" hint-placeholder-count="3">
-      <li><a href="{{ j.href }}" style="display:flex;flex-direction:column;gap:16px;color:#0E1316;text-decoration:none">
-        <span style="display:block;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:#DDE4E7"><img src="{{ j.src }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.16,1,.3,1)"></span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:.8125rem;color:#4A5A61">{{ j.tag }}</span>
-        <span style="font-size:clamp(1.25rem,1.6vw,1.6rem);font-weight:700;line-height:1.25;letter-spacing:-.02em;text-wrap:balance">{{ j.title }}</span>
-      </a></li>
-    </sc-for>
-  </ul>
-</section>
 </main>
 <dc-import name="DS Footer" hint-size="100%,600px"></dc-import>
 </div>

@@ -13,7 +13,7 @@
 <p role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:-1px">{{ liveMsg }}</p>
 
 <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
-<div id="ds-cc" ref="{{ dialogRef }}" role="dialog" aria-modal="false" aria-labelledby="ds-cc-title" aria-describedby="ds-cc-desc" onKeyDown="{{ onKey }}" style="position:fixed;left:clamp(10px,2vw,24px);bottom:clamp(10px,2vw,24px);z-index:600;width:min(620px,calc(100vw - 20px));max-height:calc(100dvh - 20px);overflow:auto;overscroll-behavior:contain;background:#0B1215;color:#F2F0EC;border:1px solid rgba(242,240,236,.16);box-shadow:0 40px 90px -20px rgba(0,0,0,.6);font-size:.9375rem;line-height:1.55">
+<div id="ds-cc" ref="{{ dialogRef }}" role="dialog" aria-modal="false" aria-labelledby="ds-cc-title" aria-describedby="ds-cc-desc" onKeyDown="{{ onKey }}" style="position:fixed;left:clamp(10px,2vw,24px);bottom:calc(clamp(10px,2vw,24px) + var(--ds-tab,0px));z-index:600;width:min(620px,calc(100vw - 20px));max-height:calc(100dvh - 20px);overflow:auto;overscroll-behavior:contain;background:#0B1215;color:#F2F0EC;border:1px solid rgba(242,240,236,.16);box-shadow:0 40px 90px -20px rgba(0,0,0,.6);font-size:.9375rem;line-height:1.55">
 
   <div style="background:#E1B48D;color:#0B1215;padding:clamp(18px,3vw,26px);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 18px;align-items:center">
     <span aria-hidden="true" style="position:relative;width:52px;height:56px;flex:none">
@@ -89,7 +89,7 @@
 </sc-if>
 
 <sc-if value="{{ chip }}" hint-placeholder-val="{{ false }}">
-  <div onMouseLeave="{{ collapse }}" style="position:fixed;left:0;bottom:0;z-index:550;display:flex;align-items:flex-end">
+  <div onMouseLeave="{{ collapse }}" style="position:fixed;left:0;bottom:var(--ds-tab,0px);z-index:550;display:flex;align-items:flex-end">
     <sc-if value="{{ cornerShut }}" hint-placeholder-val="{{ true }}">
       <button type="button" onClick="{{ expand }}" onMouseEnter="{{ expand }}" aria-expanded="false" aria-label="Préférences : mode sobre et cookies" title="Mode sobre et cookies" style="width:30px;height:30px;padding:0 0 6px 6px;display:flex;align-items:flex-end;justify-content:flex-start;border:0;border-radius:0 16px 0 0;background:{{ chipBg }};color:{{ chipFg }};opacity:.55;cursor:pointer;transition:opacity .25s,width .25s,height .25s" style-hover="opacity:1;width:36px;height:36px" style-focus="opacity:1">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;display:block"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path><circle cx="8.5" cy="8.5" r=".6" fill="currentColor"></circle><circle cx="16" cy="15.5" r=".6" fill="currentColor"></circle><circle cx="11" cy="17" r=".6" fill="currentColor"></circle><circle cx="7" cy="13" r=".6" fill="currentColor"></circle></svg>

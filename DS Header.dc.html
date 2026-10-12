@@ -9,9 +9,122 @@
 </head>
 <body>
 <x-dc>
+<helmet><style>html[data-ds-app]{-webkit-tap-highlight-color:transparent;background:#EEF2F3}
+html[data-ds-app] body{background:#EEF2F3!important}
+html[data-ds-app] div:has(> main#contenu){background:#EEF2F3!important}
+html[data-ds-app] main#contenu{display:flex;flex-direction:column;gap:10px;padding:calc(64px + env(safe-area-inset-top)) 8px 0}
+html[data-ds-app] main#contenu > section{background-color:#FFFFFF;border-radius:28px!important;overflow:hidden!important;padding-left:18px!important;padding-right:18px!important;padding-top:44px!important;padding-bottom:44px!important;margin:0!important;scroll-margin-top:72px}
+html[data-ds-app] main#contenu > section:first-child{padding:0!important;height:auto!important;min-height:min(78svh,640px)!important;max-height:none!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important}
+html[data-ds-app] main#contenu > section:first-child > div:last-child{padding:120px 20px 24px!important}
+html[data-ds-app] main#contenu h1{font-size:clamp(2.25rem,10.6vw,2.75rem)!important;line-height:1.02!important;letter-spacing:-.04em!important}
+html[data-ds-app] main#contenu h2{font-size:1.75rem!important;line-height:1.1!important;letter-spacing:-.03em!important}
+html[data-ds-app] main#contenu h3{font-size:1.1875rem!important;line-height:1.25!important}
+html[data-ds-app] main#contenu [style*="border-radius: 6px"],html[data-ds-app] main#contenu [style*="border-radius: 8px"]{border-radius:20px!important}
+html[data-ds-app] main#contenu [style*="border-radius: 20px"]{border-radius:22px!important}
+html[data-ds-app] a[style*="border-radius: 999px"][style*="min-height: 56px"]{width:100%;justify-content:center;min-height:54px!important}
+html[data-ds-app] main#contenu a,html[data-ds-app] main#contenu button,html[data-ds-app] footer a,html[data-ds-app] footer button{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html[data-ds-app] main#contenu a:active,html[data-ds-app] main#contenu button:active,html[data-ds-app] footer a:active,html[data-ds-app] footer button:active{transform:scale(.97);transition:transform 120ms cubic-bezier(.23,1,.32,1)}
+html[data-ds-app] main#contenu [style*="overflow-x: auto"]{scroll-padding:0 18px}
+html[data-ds-app] canvas[data-ds-scene]{display:none!important}
+html[data-ds-app] section[data-screen-label="01 Hero"] video{display:none!important}
+html[data-ds-app] section[data-screen-label="01 Hero"]{min-height:min(64svh,540px)!important}
+html[data-ds-app] section[data-screen-label="01 Hero"] h1{font-size:clamp(2rem,9.4vw,2.5rem)!important}
+html[data-ds-app] section[data-screen-label="01 Hero"] a[href="#demo"]{display:none!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"]{padding:14px 0!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"] ul{display:flex!important;gap:8px!important;overflow-x:auto;scrollbar-width:none;padding:0 14px!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"] li{flex:none;padding:10px 14px;border-radius:16px;background:#F2F5F6}
+html[data-ds-app] section[data-screen-label="02 Preuves"] li > span:first-child,html[data-ds-app] section[data-screen-label="02 Preuves"] li strong{font-size:1rem!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"] li img{width:32px!important;height:32px!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"] li span span:first-child{font-size:1rem!important}
+html[data-ds-app] section[data-screen-label="02 Preuves"] li span{font-size:.8125rem}
+html[data-ds-app] div:has(> ul[aria-label="Exemples d'agents"]){display:none!important}
+html[data-ds-app] section[data-screen-label="03 Équipe d'agents"] p:has(+ div[aria-label="Choisir une situation"]){border:0!important;padding:0!important;margin:0!important;font-size:.9375rem!important}
+html[data-ds-app] div[aria-label="Choisir une situation"]{flex-direction:row!important;gap:8px;overflow-x:auto;scrollbar-width:none;border:0!important;margin:0 -18px;padding:0 18px 2px}
+html[data-ds-app] div[aria-label="Choisir une situation"] button{flex:none;min-height:40px!important;padding:0 14px!important;border:1px solid #DCE4E7!important;border-radius:999px;font-size:.875rem!important;white-space:nowrap}
+html[data-ds-app] div[aria-label="Choisir une situation"] button[aria-pressed="true"]{background:#0E1316!important;border-color:#0E1316!important;color:#FFFFFF!important}
+html[data-ds-app] div[aria-label="Choisir une situation"] button > span:first-child,html[data-ds-app] div[aria-label="Choisir une situation"] button > span:last-child{display:none}
+
+html[data-ds-app] section[data-screen-label="03 Équipe d'agents"] > div:last-child > p{font-size:1.0625rem!important}
+html[data-ds-app] section[data-screen-label="04 Besoins"] ul{border:0!important;border-radius:22px;background:#F2F5F6;overflow:hidden}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li{border-bottom:1px solid #DEE5E8!important}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li:last-child{border-bottom:0!important}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li a{padding:14px 16px!important;gap:12px!important}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li a > span:first-child > span:first-child{font-size:1.0625rem!important}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li a > span:first-child > span:last-child{font-size:.8125rem!important;width:100%}
+html[data-ds-app] section[data-screen-label="04 Besoins"] li a > span:last-child{width:auto!important;height:auto!important;border:0!important;color:#9AA8AE;font-size:1.125rem!important}
+html[data-ds-app] section[data-screen-label="05 Cas d'usage"] div[aria-label="Faire défiler les cas d'usage"]{display:none!important}
+html[data-ds-app] section[data-screen-label="05 Cas d'usage"] ul > li{flex-basis:78%!important}
+html[data-ds-app] section[data-screen-label="05 Cas d'usage"] ul a{aspect-ratio:auto!important;height:300px}
+html[data-ds-app] section[data-screen-label="06 La Maison"]{min-height:0!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] > div:last-child{padding-top:200px!important;gap:24px!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] ul{grid-template-columns:1fr 1fr!important;gap:14px!important;padding-top:18px!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] ul li > span{font-size:.8125rem!important;line-height:1.4!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] ul li strong{font-size:1rem!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] ul li:last-child{grid-column:1 / -1}
+html[data-ds-app] section[data-screen-label="06 La Maison"] > div:last-child > div:first-child > p{font-size:1rem!important}
+html[data-ds-app] div[style*="64px + var(--ds-tab"]{display:none!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]){margin:0 -10px;border-radius:22px!important;box-shadow:none!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) > div:first-child{padding:10px 12px!important;font-size:.75rem!important;flex-wrap:nowrap!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) > div:first-child > span:first-child{min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) > div:first-child > span:last-child > span{display:none}
+html[data-ds-app] [aria-label^="Graphe de l'équipe"]{height:380px!important;background-size:20px 20px!important}
+html[data-ds-app] [aria-label^="Graphe de l'équipe"] > p{display:none!important}
+html[data-ds-app] [aria-label^="Graphe de l'équipe"] [data-node] > div{transform:scale(.8);transform-origin:50% 30%}
+html[data-ds-app] [aria-label^="Graphe de l'équipe"] [data-node] > div > span:last-child{font-size:.875rem!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) > div:last-child{padding:14px 14px 16px!important;gap:10px!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) > div:last-child p{font-size:.9375rem!important}
+html[data-ds-app] div:has(> [aria-label^="Graphe de l'équipe"]) ul[aria-label="Déjà fait"]{display:none!important}
+html[data-ds-app] section[data-screen-label="03 Équipe d'agents"] > div:first-child > div:first-child > p:nth-of-type(1){display:none}
+html[data-ds-app] section[data-screen-label="03 Équipe d'agents"] > div:last-child{display:none!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] ul{display:none!important}
+html[data-ds-app] section[data-screen-label="06 La Maison"] > div:last-child > div:first-child > p{display:none}
+html[data-ds-app] section[data-screen-label="IA 01 Hero"] nav[aria-label="Fil d'Ariane"],html[data-ds-app] section[data-screen-label="IA 01 Hero"] a[href="#demo"]{display:none!important}
+html[data-ds-app] section[data-screen-label="IA 01 Hero"]{min-height:min(66svh,560px)!important}
+html[data-ds-app] section[data-screen-label="IA 01 Hero"] h1{font-size:clamp(2rem,9.6vw,2.6rem)!important}
+html[data-ds-app] section[data-screen-label="IA 01 Hero"] p{font-size:1rem!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"]{padding-top:32px!important;padding-bottom:20px!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] > div:first-child{margin-bottom:16px!important;gap:16px!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] > div:first-child p{display:none}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] div[aria-label="Scénarios"]{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:0 18px 2px;width:calc(100% + 36px)}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] div[aria-label="Scénarios"] button{flex:none;min-height:40px!important;padding:0 16px!important;font-size:.875rem!important;white-space:nowrap;border-color:#DCE4E7!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] div[aria-label="Scénarios"] button[aria-pressed="true"]{border-color:#0E1316!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] ol[aria-label="Étapes de l'agent"]{display:none!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure{margin:0 -10px!important;border-radius:22px!important;flex-basis:100%!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:first-child{padding:8px!important;gap:8px!important;flex-wrap:nowrap!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:first-child button{min-height:36px!important;padding:0 12px!important;font-size:.8125rem!important;white-space:nowrap}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:first-child > span{gap:4px!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:first-child > span > button:last-child{display:none!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:nth-child(2){min-height:24rem!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure [aria-live="polite"]{padding:12px!important;gap:10px!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure [aria-live="polite"] > div,html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure [aria-live="polite"] > p{max-width:90%!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure [aria-live="polite"] p{font-size:.9375rem!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figure > div:nth-child(2) > div:last-child{padding:8px 10px!important}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] figcaption{display:none}
+html[data-ds-app] section[data-screen-label="IA 02 Démo agent"] > div:last-child{display:none!important}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > div:first-child{margin-bottom:18px!important}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > div:first-child p{font-size:.9375rem}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > ul{display:flex!important;gap:10px!important;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -18px;padding:0 18px 4px!important;scroll-padding:0 18px}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > ul > li{flex:0 0 84%;scroll-snap-align:start;padding:20px!important;border:0!important;border-radius:22px!important;background:#F2F5F6!important;gap:12px!important}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > ul > li h3{font-size:1.25rem!important}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > ul > li > p{font-size:.9375rem!important}
+html[data-ds-app] section[data-screen-label="IA 03 Ce que nous construisons"] > ul > li > p:nth-of-type(2){background:#FFFFFF!important}
+html[data-ds-app] section[data-screen-label="IA 04 La confiance"] h2{margin-bottom:20px!important}
+html[data-ds-app] section[data-screen-label="IA 04 La confiance"] > ul{gap:10px!important}
+html[data-ds-app] section[data-screen-label="IA 04 La confiance"] > ul > li{padding:18px!important;border-top:0!important;border-radius:20px;background:#F2F5F6;gap:6px!important}
+html[data-ds-app] section[data-screen-label="IA 04 La confiance"] > ul > li h3{font-size:1.1875rem!important;color:#1C7E9A}
+html[data-ds-app] section[data-screen-label="IA 04 La confiance"] > ul > li p{font-size:.9375rem!important}
+html[data-ds-app] section[data-screen-label="IA 05 exkalibur.ai"] > div{margin-top:16px!important;gap:20px!important}
+html[data-ds-app] section[data-screen-label="IA 05 exkalibur.ai"] p{font-size:1rem!important}
+html[data-ds-app] section[data-screen-label="IA 05 exkalibur.ai"] a{width:100%;justify-content:center}
+html[data-ds-app] section[data-screen-label="IA 06 FAQ"] > div{gap:18px!important}
+html[data-ds-app] section[data-screen-label="IA 06 FAQ"] > div > div{border-top:0!important;border-radius:22px;background:#F2F5F6;padding:0 16px}
+html[data-ds-app] section[data-screen-label="IA 06 FAQ"] details{border-color:#DEE5E8!important}
+html[data-ds-app] section[data-screen-label="IA 06 FAQ"] details:last-child{border-bottom:0!important}
+html[data-ds-app] section[data-screen-label="IA 06 FAQ"] summary{font-size:1rem!important;min-height:56px;padding:14px 0!important;line-height:1.3!important}</style></helmet>
 <div>
 <a href="#contenu" style="position:fixed;left:-9999px;top:12px;z-index:700;background:#0E1316;color:#FFFFFF;padding:14px 20px;font-weight:700;text-decoration:none" style-focus="left:12px">Aller au contenu</a>
 
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
 <header data-solid="{{ solidStr }}" style="position:fixed;top:0;left:0;right:0;z-index:80;background:{{ hBg }};backdrop-filter:{{ hBlur }};-webkit-backdrop-filter:{{ hBlur }};border-bottom:1px solid {{ hBd }};color:{{ fg }};transition:background .45s cubic-bezier(.16,1,.3,1),border-color .45s,color .45s;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
   <div style="display:flex;align-items:center;gap:clamp(16px,2.4vw,40px);height:76px;padding:0 clamp(20px,3vw,40px)">
     <a href="Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="flex:none;display:flex;align-items:center;min-height:44px">
@@ -28,6 +141,54 @@
     </div>
   </div>
 </header>
+</sc-if>
+
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<header style="position:fixed;top:0;left:0;right:0;z-index:80;padding-top:env(safe-area-inset-top);background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ mLine }};transition:border-color .2s;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <div style="position:relative;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px">
+    <a href="Accueil.dc.html" aria-label="Digital Solutions, retour à l'accueil" style="display:flex;align-items:center;min-height:44px;opacity:{{ logoOp }};transform:translateY({{ logoY }});transition:opacity 200ms ease,transform 260ms cubic-bezier(.23,1,.32,1)"><img src="assets/logo-digital-solutions.png" alt="Digital Solutions" style="height:24px;width:auto;display:block"></a>
+    <span aria-hidden="true" style="position:absolute;left:96px;right:96px;text-align:center;font-weight:700;font-size:17px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:{{ titleOp }};transform:translateY({{ titleY }});transition:opacity 200ms ease,transform 260ms cubic-bezier(.23,1,.32,1);pointer-events:none">{{ pageTitle }}</span>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;font-size:14px;text-decoration:none;transition:transform 160ms ease-out" style-active="transform:scale(.96)">Réserver</a>
+  </div>
+</header>
+
+<nav aria-label="Navigation principale" style="position:fixed;left:0;right:0;bottom:0;z-index:560;display:flex;padding:6px 6px max(8px,env(safe-area-inset-bottom));background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #E3E8EA;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
+  <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+    <a href="{{ t.href }}" onClick="{{ t.click }}" aria-current="{{ t.cur }}" style="flex:1;min-width:0;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:{{ t.fg }};text-decoration:none;transition:transform 160ms ease-out" style-active="transform:scale(.92)">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="{{ t.fill }}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.d }}"></path></svg>
+      <span style="font-size:11px;font-weight:700">{{ t.label }}</span>
+    </a>
+  </sc-for>
+</nav>
+
+<div aria-hidden="true" onClick="{{ closeSheet }}" style="position:fixed;inset:0;z-index:700;background:rgba(11,18,21,.42);opacity:{{ shOp }};pointer-events:{{ shPE }};transition:opacity 300ms ease"></div>
+<div ref="{{ sheetRef }}" role="dialog" aria-modal="true" aria-label="Plus" onPointerDown="{{ sheetDown }}" onPointerMove="{{ sheetMove }}" onPointerUp="{{ sheetUp }}" onPointerCancel="{{ sheetUp }}" style="position:fixed;left:0;right:0;bottom:0;z-index:701;max-height:90svh;display:flex;flex-direction:column;border-radius:28px 28px 0 0;background:#FFFFFF;color:#0E1316;box-shadow:0 -10px 40px -10px rgba(14,19,22,.3);transform:translateY({{ shY }});visibility:{{ shVis }};transition:transform 420ms cubic-bezier(.32,.72,0,1),visibility 0s linear {{ shVisDelay }};touch-action:none;font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:16px;line-height:1.4">
+  <span aria-hidden="true" style="flex:none;display:block;width:38px;height:5px;margin:8px auto 4px;border-radius:3px;background:#C5D0D4"></span>
+  <div style="flex:1;overflow-y:auto;padding:8px 16px max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:20px">
+    <ul style="list-style:none;margin:0;padding:0;border-radius:22px;background:#F2F5F6;overflow:hidden">
+      <sc-for list="{{ more }}" as="m" hint-placeholder-count="4">
+        <li><a href="{{ m.href }}" aria-current="{{ m.cur }}" style="display:flex;align-items:center;gap:14px;min-height:68px;padding:10px 14px;color:#0E1316;text-decoration:none;transition:background 160ms ease" style-active="background:#E3EAEC">
+          <img src="{{ m.img }}" alt="" style="flex:none;width:46px;height:46px;border-radius:12px;object-fit:cover">
+          <span style="flex:1;min-width:0;display:flex;flex-direction:column"><strong style="font-size:16px;color:{{ m.fg }}">{{ m.label }}</strong><span style="font-size:13px;color:#4A5A61">{{ m.desc }}</span></span>
+          <svg aria-hidden="true" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#9AA8AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"></path></svg>
+        </a></li>
+      </sc-for>
+    </ul>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="padding:0 4px;font-size:13px;font-weight:700;letter-spacing:.04em;color:#4A5A61">PRÉFÉRENCES</span>
+      <div style="border-radius:22px;background:#F2F5F6;overflow:hidden">
+        <button type="button" role="switch" aria-checked="{{ ecoStr }}" onClick="{{ toggleEco }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px;border:0;border-bottom:1px solid #DEE5E8;background:none;color:#0E1316;font:inherit;font-weight:700;cursor:pointer">Mode sobre<span aria-hidden="true" style="position:relative;width:51px;height:31px;border-radius:999px;background:{{ swBg }};transition:background 200ms ease"><span style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#FFFFFF;box-shadow:0 2px 6px rgba(0,0,0,.2);transform:translateX({{ swX }});transition:transform 250ms cubic-bezier(.23,1,.32,1)"></span></span></button>
+        <div role="group" aria-label="Taille du texte" style="display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:56px;padding:0 10px 0 16px;border-bottom:1px solid #DEE5E8"><span style="font-weight:700">Texte</span><span style="display:flex;gap:4px;padding:3px;border-radius:12px;background:#E3EAEC"><sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3"><button type="button" onClick="{{ s.onClick }}" aria-pressed="{{ s.pressed }}" aria-label="{{ s.aria }}" style="min-width:48px;min-height:38px;border:0;border-radius:9px;background:{{ s.segBg }};box-shadow:{{ s.segSh }};color:#0E1316;font:inherit;font-weight:700;cursor:pointer;transition:background .2s">{{ s.label }}</button></sc-for></span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 16px"><span style="font-weight:700">Langue</span><span style="display:flex;gap:16px;font-weight:700;letter-spacing:.08em"><a href="#" aria-current="true" lang="fr" style="color:#1C7E9A;text-decoration:none;padding:10px 0">FR</a><a href="#" lang="de" style="color:#4A5A61;text-decoration:none;padding:10px 0">DE</a><a href="#" lang="en" style="color:#4A5A61;text-decoration:none;padding:10px 0">EN</a></span></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <a href="tel:+41324671109" style="display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:16px;background:#F2F5F6;color:#0E1316;font-weight:700;text-decoration:none">Appeler</a>
+      <a href="mailto:contact@digital-solutions.io" style="display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:16px;background:#F2F5F6;color:#0E1316;font-weight:700;text-decoration:none">Écrire</a>
+    </div>
+  </div>
+</div>
+</sc-if>
 
 <sc-if value="{{ open }}" hint-placeholder-val="{{ false }}">
 <div id="ds-menu" role="dialog" aria-modal="true" aria-label="Menu principal" onKeyDown="{{ trap }}" style="position:fixed;inset:0;z-index:90;background:#FFFFFF;color:#0E1316;overflow:auto;display:flex;flex-direction:column;font-family:'Century Gothic','Urbanist',system-ui,sans-serif">
@@ -81,6 +242,7 @@
 
 <dc-import name="DS Consentement" hint-size="0px,0px"></dc-import>
 <dc-import name="DS Assistant" hint-size="0px,0px"></dc-import>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;current&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;accueil&quot;,&quot;ia&quot;,&quot;expertises&quot;,&quot;usages&quot;,&quot;maison&quot;,&quot;carrieres&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;accueil&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
@@ -107,7 +269,7 @@ const NAV_KEYS = ['ia', 'expertises', 'usages', 'maison', 'carrieres'];
 const SIZES = [100, 112.5, 125];
 
 class Component extends DCLogic {
-  state = { open: false, hover: 0, eco: false, size: 100, spacing: false, scrolled: typeof window !== 'undefined' ? window.scrollY > 40 : false, w: typeof window !== 'undefined' ? window.innerWidth : 1440 };
+  state = { open: false, hover: 0, eco: false, size: 100, spacing: false, scrolled: typeof window !== 'undefined' ? window.scrollY > 40 : false, w: (typeof document !== 'undefined' ? (document.documentElement.clientWidth || window.innerWidth) : 1440) };
 
   componentDidMount() {
     this.sync = () => {
@@ -116,15 +278,16 @@ class Component extends DCLogic {
     };
     this.sync();
     window.addEventListener('ds-prefs', this.sync);
-    this.onR = () => this.setState({ w: window.innerWidth });
-    window.addEventListener('resize', this.onR);
-    this.onS = () => { const s = window.scrollY > 40; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onR = () => { const w = document.documentElement.clientWidth || window.innerWidth; if (w !== this.state.w) this.setState({ w }); this.applyMobile(w); };
+    const dv = document.defaultView || window; dv.addEventListener('resize', this.onR); this.onR();
+    if (dv.ResizeObserver) { this.ro = new dv.ResizeObserver(this.onR); this.ro.observe(document.documentElement); }
+    this.onS = () => { const s = window.scrollY > 40, d = window.scrollY > 280; if (s !== this.state.scrolled || d !== this.state.deep) this.setState({ scrolled: s, deep: d }); };
     window.addEventListener('scroll', this.onS, { passive: true }); this.onS();
-    this.onKey = (e) => { if (e.key === 'Escape' && this.state.open) this.closeMenu(); };
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.open) this.closeMenu(); if (e.key === 'Escape' && this.state.sheet) this.closeSheet(); };
     window.addEventListener('keydown', this.onKey);
   }
   componentWillUnmount() {
-    window.removeEventListener('ds-prefs', this.sync); window.removeEventListener('resize', this.onR); window.removeEventListener('scroll', this.onS); window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('ds-prefs', this.sync); (document.defaultView || window).removeEventListener('resize', this.onR); if (this.ro) this.ro.disconnect(); window.removeEventListener('scroll', this.onS); window.removeEventListener('keydown', this.onKey);
     document.body.style.overflow = '';
   }
   openMenu = () => {
@@ -146,12 +309,43 @@ class Component extends DCLogic {
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   };
+  isMobile() { return this.state.w < 720; }
+  componentDidUpdate(_, p) { if (p.w !== this.state.w) this.applyMobile(); }
+  applyMobile(w) { const m = (w != null ? w : this.state.w) < 720, r = document.documentElement; r.style.setProperty('--ds-tab', m ? '72px' : '0px'); document.body.style.paddingBottom = m ? 'calc(64px + env(safe-area-inset-bottom))' : ''; r.style.scrollPaddingTop = m ? '72px' : ''; if (m) r.setAttribute('data-ds-app', ''); else r.removeAttribute('data-ds-app'); }
+  sheetRef = React.createRef();
+  openSheet = (e) => { e.preventDefault(); this.setState({ sheet: true }); };
+  closeSheet = () => this.setState({ sheet: false });
+  sheetDown = (e) => {
+    if (e.target.closest('a,button')) return; const el = this.sheetRef.current, sc = el && el.children[1];
+    if (sc && sc.scrollTop > 0) return;
+    this.drag = { y: e.clientY, t: performance.now(), dy: 0 }; el.style.transition = 'none'; el.setPointerCapture(e.pointerId);
+  };
+  sheetMove = (e) => { if (!this.drag) return; let dy = e.clientY - this.drag.y; if (dy < 0) dy *= 0.15; this.drag.dy = dy; this.sheetRef.current.style.transform = 'translateY(' + dy + 'px)'; };
+  sheetUp = () => {
+    if (!this.drag) return; const el = this.sheetRef.current, { dy, t } = this.drag; this.drag = null; el.style.transition = '';
+    const v = dy / Math.max(1, performance.now() - t);
+    if (dy > 120 || (dy > 16 && v > 0.11)) { el.style.transform = 'translateY(105%)'; this.setState({ sheet: false }); } else el.style.transform = 'translateY(0%)';
+  };
   setPref(fn) { const M = window.DSMotion; if (M) fn(M); }
 
   renderVals() {
     const cur = this.props.current || 'accueil';
     const { open, hover, eco, size, spacing, w } = this.state;
     const wide = w >= 1100;
+    const mobile = this.isMobile(), sh = !!this.state.sheet;
+    const TABS = [['accueil', 'Accueil', 'Accueil.dc.html', 'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z'], ['ia', 'IA', 'Intelligence%20Artificielle.dc.html', 'M6 8h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM12 4v4M9.5 13.5h.01M14.5 13.5h.01'], ['usages', 'Cas', 'Usages.dc.html', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'], ['maison', 'Maison', 'Maison.dc.html', 'M2 20 9 8l4 6 3-4 6 10z'], ['plus', 'Plus', '#plus', 'M5 12h.01M12 12h.01M19 12h.01']];
+    const MORE = ['expertises', 'sustainability', 'carrieres', 'contact'];
+    const tabKey = TABS.some((t) => t[0] === cur) ? cur : 'plus';
+    const mobileVals = {
+      mobile, desktop: !mobile, book: 'https://bookings.cloud.microsoft/book/DigitalSolutionsSAAgendadeThibaultPEPIN@digital-solutions.io/?ismsaljsauthenabled',
+      mLine: this.state.scrolled ? '#E3E8EA' : 'transparent',
+      tabs: TABS.map((t) => { const on = t[0] === tabKey; return { label: t[1], href: t[2], d: t[3], cur: on ? 'page' : undefined, fg: on ? '#1C7E9A' : '#7D8B91', fill: on && t[0] !== 'plus' ? 'rgba(38,156,189,.14)' : 'none', click: t[0] === 'plus' ? this.openSheet : undefined }; }),
+      more: MORE.map((k) => { const m = MENU.find((x) => x[0] === k); return { label: m[1], href: m[2], img: m[3], desc: m[4], cur: k === cur ? 'page' : undefined, fg: k === cur ? '#1C7E9A' : '#0E1316' }; }),
+      sheetRef: this.sheetRef, closeSheet: this.closeSheet, sheetDown: this.sheetDown, sheetMove: this.sheetMove, sheetUp: this.sheetUp,
+      shOp: sh ? 1 : 0, shPE: sh ? 'auto' : 'none', shY: sh ? '0%' : '105%', shVis: sh ? 'visible' : 'hidden', shVisDelay: sh ? '0s' : '420ms',
+      swBg: eco ? '#269CBD' : '#C5D0D4', swX: eco ? '20px' : '0px',
+      pageTitle: (MENU.find((x) => x[0] === cur) || MENU[0])[1], titleOp: this.state.deep && cur !== 'accueil' ? 1 : 0, titleY: this.state.deep && cur !== 'accueil' ? '0px' : '6px', logoOp: this.state.deep && cur !== 'accueil' ? 0 : 1, logoY: this.state.deep && cur !== 'accueil' ? '-6px' : '0px'
+    };
     const solid = this.state.scrolled || open;
     return {
       solidStr: String(solid),
@@ -162,6 +356,7 @@ class Component extends DCLogic {
       logoSrc: solid ? 'assets/logo-digital-solutions.png' : 'assets/logo-digital-solutions-blanc.png',
       ctaBg: solid ? '#0E1316' : '#FFFFFF', ctaFg: solid ? '#FFFFFF' : '#0E1316',
       mBd: solid ? '#C5D0D4' : 'rgba(255,255,255,.6)', mBg: solid ? '#FFFFFF' : 'transparent',
+      ...mobileVals,
       wide, open, openStr: String(open),
       openMenu: this.openMenu, closeMenu: this.closeMenu, trap: this.trap,
       nav: NAV_KEYS.map((k) => { const m = MENU.find((x) => x[0] === k); return { label: m[1], href: m[2], cur: k === cur ? 'page' : 'false', line: k === cur ? '#269CBD' : 'transparent' }; }),
@@ -176,7 +371,7 @@ class Component extends DCLogic {
       toggleEco: () => { const n = !eco; this.setPref((M) => M.setEco(n)); this.setState({ eco: n }); },
       sizes: SIZES.map((v, i) => ({
         label: ['A', 'A+', 'A++'][i], aria: ['Texte normal', 'Texte agrandi', 'Texte très agrandi'][i],
-        pressed: String(size === v), bd: size === v ? '#0E1316' : '#C5D0D4',
+        pressed: String(size === v), bd: size === v ? '#0E1316' : '#C5D0D4', segBg: size === v ? '#FFFFFF' : 'transparent', segSh: size === v ? '0 1px 3px rgba(14,19,22,.18)' : 'none',
         onClick: () => { this.setPref((M) => M.setSize(v)); this.setState({ size: v }); }
       })),
       spacingStr: String(spacing), spacingBd: spacing ? '#0E1316' : '#C5D0D4',

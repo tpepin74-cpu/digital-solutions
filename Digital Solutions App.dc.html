@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Digital Solutions · App mobile</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400..800&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>html,body{margin:0;height:100%;-webkit-text-size-adjust:100%}body{background:#E9EEF0;color:#0E1316;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}*,*::before,*::after{box-sizing:border-box}a{color:#1C7E9A;text-decoration:none}a:hover{color:#0E1316}button{font:inherit;-webkit-tap-highlight-color:transparent}[data-scroll]{scrollbar-width:none}[data-scroll]::-webkit-scrollbar{display:none}:focus-visible{outline:2px solid #269CBD;outline-offset:2px}@keyframes dsBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}@keyframes dsPulse{0%,100%{opacity:1}50%{opacity:.3}}@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}</style>
+</helmet>
+<div ref="{{ outerRef }}" style="min-height:100svh;display:grid;place-items:center;font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:16px;line-height:1.45;padding:{{ outerPad }}">
+<div data-screen-label="App" style="position:relative;width:{{ phoneW }};height:{{ phoneH }};border-radius:{{ phoneR }};background:#FFFFFF;overflow:hidden;display:flex;flex-direction:column;box-shadow:{{ phoneShadow }};isolation:isolate">
+
+<sc-if value="{{ framed }}" hint-placeholder-val="{{ true }}">
+  <div aria-hidden="true" style="flex:none;height:50px;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0 34px;font-size:15px;font-weight:700;background:#FFFFFF;position:relative;z-index:6">
+    <span>9:41</span>
+    <span style="position:absolute;left:50%;top:11px;width:122px;height:35px;margin-left:-61px;border-radius:20px;background:#0E1316"></span>
+    <span style="display:flex;gap:6px;align-items:center"><svg width="18" height="12" viewBox="0 0 18 12" fill="#0E1316"><rect x="0" y="8" width="3" height="4" rx="1"></rect><rect x="5" y="5.5" width="3" height="6.5" rx="1"></rect><rect x="10" y="3" width="3" height="9" rx="1"></rect><rect x="15" y="0" width="3" height="12" rx="1"></rect></svg><svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x=".5" y=".5" width="22" height="11" rx="3.5" stroke="#0E1316" opacity=".4"></rect><rect x="2" y="2" width="19" height="8" rx="2" fill="#0E1316"></rect><rect x="24" y="4" width="1.6" height="4" rx=".8" fill="#0E1316" opacity=".4"></rect></svg></span>
+  </div>
+</sc-if>
+
+<div style="flex:1;min-height:0;position:relative">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div data-scroll="" ref="{{ scrollRef }}" onScroll="{{ onScroll }}" data-screen-label="01 Accueil" style="position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:32px">
+  <div style="position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ navLine }};transition:border-color .2s">
+    <img src="assets/logo-digital-solutions.png" alt="Digital Solutions" style="height:22px;width:auto;display:block">
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;font-size:14px;transition:transform 160ms ease-out" style-active="transform:scale(.96)">Réserver</a>
+  </div>
+
+  <div style="padding:8px 16px 0">
+    <div style="position:relative;height:500px;border-radius:28px;overflow:hidden;background:#0E1316;color:#FFFFFF;display:flex;flex-direction:column;justify-content:flex-end">
+      <img src="assets/photos/ACC/ACC-01.webp" alt="Une équipe échange devant un tableau dans un bureau lumineux" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+      <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,.1) 20%,rgba(11,18,21,.88) 100%)"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:14px;padding:22px">
+        <span style="align-self:flex-start;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.16);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:12px;font-weight:700;letter-spacing:.04em">CONÇU ET HÉBERGÉ EN SUISSE</span>
+        <h1 style="margin:0;font-size:38px;line-height:1;font-weight:700;letter-spacing:-.04em;text-wrap:balance">La précision suisse, <span style="color:#6DCDEA">augmentée</span> par l'IA.</h1>
+        <p style="margin:0;font-size:16px;line-height:1.45;text-wrap:pretty">Des agents IA qui travaillent avec vos équipes. Supervisés par des humains.</p>
+        <button type="button" onClick="{{ goDemo }}" style="display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;margin-top:4px;padding:0 8px 0 20px;border:0;border-radius:999px;background:#FFFFFF;color:#0E1316;font-weight:700;font-size:16px;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Voir nos agents travailler<span aria-hidden="true" style="display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#269CBD;color:#FFFFFF"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></span></button>
+      </div>
+    </div>
+  </div>
+
+  <ul data-scroll="" aria-label="En bref" style="list-style:none;margin:16px 0 0;padding:0 16px;display:flex;gap:8px;overflow-x:auto">
+    <li style="flex:none;display:flex;flex-direction:column;padding:12px 16px;border-radius:18px;background:#F2F5F6"><strong style="font-size:17px;letter-spacing:-.02em">Depuis 2016</strong><span style="font-size:13px;color:#4A5A61">Porrentruy</span></li>
+    <li style="flex:none;display:flex;flex-direction:column;padding:12px 16px;border-radius:18px;background:#F2F5F6"><strong style="font-size:17px;letter-spacing:-.02em">5 sites</strong><span style="font-size:13px;color:#4A5A61">Suisse romande</span></li>
+    <li style="flex:none;display:flex;flex-direction:column;padding:12px 16px;border-radius:18px;background:#F2F5F6"><strong style="font-size:17px;letter-spacing:-.02em">Top 100</strong><span style="font-size:13px;color:#4A5A61">IT suisse</span></li>
+    <li style="flex:none;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:18px;background:#F2F5F6"><img src="assets/ecovadis-gold-2025.png" alt="" width="36" height="36" style="width:36px;height:36px"><span style="display:flex;flex-direction:column"><strong style="font-size:17px;letter-spacing:-.02em">EcoVadis Or</strong><span style="font-size:13px;color:#4A5A61">Top 5 %</span></span></li>
+  </ul>
+
+  <h2 style="margin:36px 16px 12px;font-size:24px;line-height:1.1;font-weight:700;letter-spacing:-.03em">Par où commencer&nbsp;?</h2>
+  <ul style="list-style:none;margin:0 16px;padding:0;border-radius:22px;background:#F2F5F6;overflow:hidden">
+    <sc-for list="{{ needs }}" as="n" hint-placeholder-count="5">
+      <li>
+        <button type="button" onClick="{{ n.open }}" style="width:100%;display:flex;align-items:center;gap:14px;min-height:68px;padding:10px 14px;border:0;background:transparent;color:#0E1316;text-align:left;cursor:pointer;transition:background 160ms ease" style-active="background:#E3EAEC">
+          <img src="{{ n.src }}" alt="" style="flex:none;width:46px;height:46px;border-radius:12px;object-fit:cover">
+          <span style="flex:1;min-width:0;display:flex;flex-direction:column;padding:4px 0;border-bottom:{{ n.sep }}"><strong style="font-size:16px;line-height:1.25">{{ n.title }}</strong><span style="font-size:13px;color:#4A5A61">{{ n.line }}</span></span>
+          <svg aria-hidden="true" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#9AA8AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"></path></svg>
+        </button>
+      </li>
+    </sc-for>
+  </ul>
+
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin:36px 16px 12px">
+    <h2 style="margin:0;font-size:24px;line-height:1.1;font-weight:700;letter-spacing:-.03em">Ce que l'IA change</h2>
+    <button type="button" onClick="{{ goCases }}" style="min-height:44px;padding:0;border:0;background:none;color:#1C7E9A;font-weight:700;font-size:15px;cursor:pointer">Tout voir</button>
+  </div>
+  <ul data-scroll="" style="list-style:none;margin:0;padding:0 16px;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px">
+    <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+      <li style="flex:0 0 76%;scroll-snap-align:start">
+        <button type="button" onClick="{{ c.open }}" style="position:relative;width:100%;height:300px;display:flex;align-items:flex-end;padding:0;border:0;border-radius:22px;overflow:hidden;background:#0B1215;color:#FFFFFF;text-align:left;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.97)">
+          <img src="{{ c.src }}" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,0) 35%,rgba(11,18,21,.86) 100%)"></span>
+          <span style="position:relative;display:flex;flex-direction:column;gap:6px;padding:18px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ c.sector }}</span><span style="font-size:19px;font-weight:700;line-height:1.2;letter-spacing:-.02em;text-wrap:balance">{{ c.title }}</span></span>
+        </button>
+      </li>
+    </sc-for>
+  </ul>
+
+
+  <div style="margin:36px 16px 0;padding:24px 20px 20px;border-radius:26px;background:#269CBD;color:#FFFFFF;display:flex;flex-direction:column;gap:18px">
+    <p style="margin:0;font-size:22px;line-height:1.15;font-weight:700;letter-spacing:-.025em;text-wrap:balance">Quels agents pour votre équipe&nbsp;? On la dessine ensemble en 30&nbsp;minutes.</p>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:999px;background:#FFFFFF;color:#0E1316;font-weight:700;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Réserver 30 min avec un expert</a>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAgents }}" hint-placeholder-val="{{ false }}">
+<div data-scroll="" ref="{{ scrollRef }}" onScroll="{{ onScroll }}" data-screen-label="02 Agents" style="position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch">
+  <div style="position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ navLine }};transition:border-color .2s">
+    <strong style="font-size:17px;opacity:{{ compactOp }};transition:opacity .2s">Vos agents</strong>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;font-size:14px;transition:transform 160ms ease-out" style-active="transform:scale(.96)">Réserver</a>
+  </div>
+  <h1 style="margin:0 16px 6px;font-size:34px;line-height:1.05;font-weight:700;letter-spacing:-.035em">Vos agents</h1>
+  <p style="margin:0 16px 18px;font-size:15px;color:#4A5A61;text-wrap:pretty">Une équipe type de 6 agents IA et 2 humains. Choisissez une mission.</p>
+
+  <div data-scroll="" role="group" aria-label="Missions" style="display:flex;gap:8px;overflow-x:auto;padding:0 16px 4px">
+    <sc-for list="{{ missions }}" as="m" hint-placeholder-count="4">
+      <button type="button" onClick="{{ m.run }}" aria-pressed="{{ m.on }}" style="flex:none;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid {{ m.bd }};background:{{ m.bg }};color:{{ m.fg }};font-weight:700;font-size:14px;cursor:pointer;transition:transform 160ms ease-out,background .2s,color .2s" style-active="transform:scale(.96)">{{ m.name }}</button>
+    </sc-for>
+  </div>
+
+  <ul data-scroll="" aria-label="L'équipe" style="list-style:none;margin:16px 0 0;padding:4px 16px 12px;display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid #EEF2F3">
+    <sc-for list="{{ team }}" as="t" hint-placeholder-count="8">
+      <li style="flex:none;width:62px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:{{ t.op }};transition:opacity .3s">
+        <sc-if value="{{ t.human }}" hint-placeholder-val="{{ false }}"><img src="{{ t.img }}" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid #E1B48D;box-shadow:{{ t.ring }};transform:scale({{ t.sc }});transition:transform 300ms cubic-bezier(.23,1,.32,1),box-shadow .3s"></sc-if>
+        <sc-if value="{{ t.agent }}" hint-placeholder-val="{{ true }}"><span style="display:grid;place-items:center;width:44px;height:44px;border-radius:13px;background:{{ t.bg }};color:{{ t.fg }};box-shadow:{{ t.ring }};transform:scale({{ t.sc }});transition:transform 300ms cubic-bezier(.23,1,.32,1),box-shadow .3s,background .3s,color .3s"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><path d="M12 3v4"></path><circle cx="9" cy="13" r="1.3" fill="currentColor"></circle><circle cx="15" cy="13" r="1.3" fill="currentColor"></circle></svg></span></sc-if>
+        <span style="font-size:11px;font-weight:700;line-height:1.1;text-align:center;color:#0E1316">{{ t.short }}</span>
+      </li>
+    </sc-for>
+  </ul>
+
+  <sc-if value="{{ idle }}" hint-placeholder-val="{{ true }}">
+    <div style="margin:28px 16px;padding:28px 20px;border-radius:22px;border:1.5px dashed #C5D0D4;text-align:center;color:#4A5A61;font-size:15px">Touchez une mission pour la lancer.</div>
+  </sc-if>
+
+  <ol aria-live="polite" style="list-style:none;margin:0;padding:16px 16px 0;display:flex;flex-direction:column;gap:10px">
+    <sc-for list="{{ feed }}" as="f" hint-placeholder-count="0">
+      <li style="display:flex;gap:12px;padding:14px;border-radius:20px;border:1.5px solid {{ f.bd }};background:{{ f.bg }}">
+        <sc-if value="{{ f.human }}" hint-placeholder-val="{{ false }}"><img src="{{ f.img }}" alt="" style="flex:none;width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #E1B48D"></sc-if>
+        <sc-if value="{{ f.agent }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#E3F3F8;color:#1C7E9A"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"></rect><path d="M12 3v4"></path><circle cx="9" cy="13" r="1.3" fill="currentColor"></circle><circle cx="15" cy="13" r="1.3" fill="currentColor"></circle></svg></span></sc-if>
+        <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;gap:8px;font-size:13px"><strong style="color:{{ f.whoC }}">{{ f.who }}</strong><span style="font-family:'IBM Plex Mono',monospace;color:#4A5A61">{{ f.t }}</span></div>
+          <p style="margin:0;font-size:15px;line-height:1.35;text-wrap:pretty">{{ f.text }}</p>
+          <sc-if value="{{ f.done }}" hint-placeholder-val="{{ false }}"><p style="margin:0;display:flex;gap:6px;font-size:14px;font-weight:700;color:{{ f.okC }}"><span aria-hidden="true">✓</span>{{ f.out }}</p></sc-if>
+          <sc-if value="{{ f.running }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display:block;height:3px;border-radius:2px;background:#E3EAEC;overflow:hidden;margin-top:4px"><span style="display:block;height:100%;background:#269CBD;transform-origin:left;animation:dsBar {{ dur }} linear forwards;animation-play-state:{{ playState }}"></span></span></sc-if>
+          <sc-if value="{{ f.waiting }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+              <span style="font-size:13px;color:#7A5230">{{ f.who }} doit valider. Jouez son rôle&nbsp;:</span>
+              <button type="button" onClick="{{ approve }}" style="min-height:48px;border:0;border-radius:999px;background:#0E1316;color:#FFFFFF;font-weight:700;font-size:15px;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Valider</button>
+            </div>
+          </sc-if>
+        </div>
+      </li>
+    </sc-for>
+  </ol>
+
+  <sc-if value="{{ finished }}" hint-placeholder-val="{{ false }}">
+    <div style="margin:14px 16px 0;padding:22px 20px 20px;border-radius:24px;background:#0E1316;color:#FFFFFF;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6DCDEA">MISSION ACCOMPLIE</span>
+      <p style="margin:0;font-size:21px;line-height:1.2;font-weight:700;letter-spacing:-.02em">{{ summary }}</p>
+      <a href="{{ book }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:52px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Réserver 30 min avec un expert</a>
+    </div>
+  </sc-if>
+  <div style="height:96px"></div>
+
+  <sc-if value="{{ showControls }}" hint-placeholder-val="{{ false }}">
+    <div style="position:sticky;bottom:12px;z-index:5;margin:0 auto;width:max-content;display:flex;align-items:center;gap:6px;padding:6px;border-radius:999px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);box-shadow:0 10px 30px -10px rgba(14,19,22,.35),0 0 0 1px rgba(14,19,22,.06)">
+      <button type="button" onClick="{{ restart }}" aria-label="Recommencer" style="display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:transparent;color:#0E1316;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.92)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg></button>
+      <button type="button" onClick="{{ togglePlay }}" aria-label="{{ playLabel }}" style="display:grid;place-items:center;width:48px;height:48px;border:0;border-radius:50%;background:#269CBD;color:#FFFFFF;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.92)">
+        <sc-if value="{{ playing }}" hint-placeholder-val="{{ true }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"></path></svg></sc-if>
+        <sc-if value="{{ notPlaying }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></sc-if>
+      </button>
+      <span style="min-width:44px;padding:0 12px 0 4px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4A5A61;text-align:center">{{ stepCount }}</span>
+    </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+<div data-scroll="" ref="{{ scrollRef }}" onScroll="{{ onScroll }}" data-screen-label="03 Cas d'usage" style="position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:32px">
+  <div style="position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ navLine }};transition:border-color .2s">
+    <strong style="font-size:17px;opacity:{{ compactOp }};transition:opacity .2s">Cas d'usage</strong>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;font-size:14px;transition:transform 160ms ease-out" style-active="transform:scale(.96)">Réserver</a>
+  </div>
+  <h1 style="margin:0 16px 6px;font-size:34px;line-height:1.05;font-weight:700;letter-spacing:-.035em">Cas d'usage</h1>
+  <p style="margin:0 16px 20px;font-size:15px;color:#4A5A61">Ce que l'IA change, secteur par secteur.</p>
+  <ul style="list-style:none;margin:0 16px;padding:0;display:flex;flex-direction:column;gap:12px">
+    <sc-for list="{{ cases }}" as="c" hint-placeholder-count="5">
+      <li><button type="button" onClick="{{ c.open }}" style="width:100%;display:flex;flex-direction:column;padding:0;border:0;border-radius:22px;overflow:hidden;background:#F2F5F6;color:#0E1316;text-align:left;cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.98)">
+        <img src="{{ c.src }}" alt="" loading="lazy" style="width:100%;height:190px;object-fit:cover;display:block">
+        <span style="display:flex;align-items:center;gap:12px;padding:14px 16px 16px"><span style="flex:1;display:flex;flex-direction:column;gap:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4A5A61">{{ c.sector }}</span><strong style="font-size:18px;line-height:1.2;letter-spacing:-.015em;text-wrap:balance">{{ c.title }}</strong></span><svg aria-hidden="true" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#9AA8AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"></path></svg></span>
+      </button></li>
+    </sc-for>
+  </ul>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMaison }}" hint-placeholder-val="{{ false }}">
+<div data-scroll="" ref="{{ scrollRef }}" onScroll="{{ onScroll }}" data-screen-label="04 Maison" style="position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:32px">
+  <div style="position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ navLine }};transition:border-color .2s">
+    <strong style="font-size:17px;opacity:{{ compactOp }};transition:opacity .2s">La Maison</strong>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;font-size:14px;transition:transform 160ms ease-out" style-active="transform:scale(.96)">Réserver</a>
+  </div>
+  <h1 style="margin:0 16px 16px;font-size:34px;line-height:1.05;font-weight:700;letter-spacing:-.035em">La Maison</h1>
+  <div style="margin:0 16px;position:relative;height:340px;border-radius:26px;overflow:hidden;display:flex;align-items:flex-end;color:#FFFFFF;background:#0B1215">
+    <img src="assets/photos/ACC/ACC-07b.png" alt="Deux randonneurs sur un sentier d'automne au-dessus de Porrentruy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+    <span aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,18,21,0) 40%,rgba(11,18,21,.85) 100%)"></span>
+    <p style="position:relative;margin:0;padding:20px;font-size:24px;line-height:1.1;font-weight:700;letter-spacing:-.03em;text-wrap:balance">Née dans le Jura, <span style="color:#6DCDEA">au pays de la précision</span>.</p>
+  </div>
+  <p style="margin:18px 16px 0;font-size:16px;line-height:1.5;text-wrap:pretty">Derrière chaque agent, une personne&nbsp;: un seul interlocuteur, du premier atelier à la mise en production.</p>
+
+  <ul style="list-style:none;margin:24px 16px 0;padding:0;display:flex;flex-direction:column;gap:8px">
+    <li style="display:flex;gap:14px;padding:16px;border-radius:20px;background:#F2F5F6"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#269CBD;color:#FFFFFF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px">Souveraine</strong><span style="font-size:14px;color:#4A5A61">Vos données restent en Suisse, sur notre infrastructure.</span></span></li>
+    <li style="display:flex;gap:14px;padding:16px;border-radius:20px;background:#F2F5F6"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#269CBD;color:#FFFFFF"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"></path><path d="M9 12h7M9 16h5"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px">Sourcée</strong><span style="font-size:14px;color:#4A5A61">Chaque réponse cite les documents dont elle provient.</span></span></li>
+    <li style="display:flex;gap:14px;padding:16px;border-radius:20px;background:#F2F5F6"><span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#E1B48D;color:#0E1316"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:16px">Supervisée</strong><span style="font-size:14px;color:#4A5A61">Les décisions clés restent entre les mains de vos équipes.</span></span></li>
+  </ul>
+
+  <ul style="list-style:none;margin:24px 16px 0;padding:0;border-radius:22px;background:#F2F5F6;overflow:hidden">
+    <sc-for list="{{ maisonLinks }}" as="l" hint-placeholder-count="3">
+      <li><a href="{{ l.href }}" style="display:flex;align-items:center;gap:14px;min-height:60px;padding:0 16px;color:#0E1316;transition:background 160ms ease" style-active="background:#E3EAEC">
+        <span style="flex:1;display:flex;align-items:center;gap:12px;min-height:60px;border-bottom:{{ l.sep }}"><sc-if value="{{ l.eco }}" hint-placeholder-val="{{ false }}"><img src="assets/ecovadis-gold-2025.png" alt="" width="30" height="30" style="width:30px;height:30px"></sc-if><span style="display:flex;flex-direction:column"><strong style="font-size:16px">{{ l.title }}</strong><span style="font-size:13px;color:#4A5A61">{{ l.line }}</span></span></span>
+        <svg aria-hidden="true" width="8" height="14" viewBox="0 0 8 14" fill="none" stroke="#9AA8AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1l6 6-6 6"></path></svg>
+      </a></li>
+    </sc-for>
+  </ul>
+</div>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<div data-scroll="" ref="{{ scrollRef }}" onScroll="{{ onScroll }}" data-screen-label="05 Contact" style="position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:32px">
+  <div style="position:sticky;top:0;z-index:5;height:56px;display:flex;align-items:center;justify-content:flex-start;padding:0 16px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid {{ navLine }};transition:border-color .2s">
+    <strong style="font-size:17px;opacity:{{ compactOp }};transition:opacity .2s">Contact</strong>
+  </div>
+  <h1 style="margin:0 16px 20px;font-size:34px;line-height:1.05;font-weight:700;letter-spacing:-.035em">Parlons-en</h1>
+  <div style="margin:0 16px;padding:22px 20px 20px;border-radius:26px;background:#269CBD;color:#FFFFFF;display:flex;flex-direction:column;gap:16px">
+    <div style="display:flex;align-items:center;gap:12px"><img src="assets/photos/ACC/ACC-03.webp" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #FFFFFF"><span style="display:flex;flex-direction:column"><strong style="font-size:17px">30 minutes avec un expert</strong><span style="font-size:14px">Visio · gratuit · sans engagement</span></span></div>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:999px;background:#FFFFFF;color:#0E1316;font-weight:700;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Réserver 30 min avec un expert</a>
+  </div>
+  <ul style="list-style:none;margin:16px 16px 0;padding:0;border-radius:22px;background:#F2F5F6;overflow:hidden">
+    <sc-for list="{{ contacts }}" as="k" hint-placeholder-count="3">
+      <li><a href="{{ k.href }}" target="{{ k.target }}" rel="noopener" style="display:flex;align-items:center;gap:14px;min-height:64px;padding:0 16px;color:#0E1316;transition:background 160ms ease" style-active="background:#E3EAEC">
+        <span aria-hidden="true" style="flex:none;display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#FFFFFF;color:#1C7E9A"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ k.icon }}"></path></svg></span>
+        <span style="flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;min-height:64px;border-bottom:{{ k.sep }}"><span style="font-size:13px;color:#4A5A61">{{ k.label }}</span><strong style="font-size:16px;line-height:1.3">{{ k.value }}</strong></span>
+      </a></li>
+    </sc-for>
+  </ul>
+  <p style="margin:20px 16px 0;font-size:13px;color:#4A5A61;text-align:center">Digital Solutions SA · Porrentruy · depuis 2016</p>
+  <a href="?site=1" style="display:flex;align-items:center;justify-content:center;min-height:44px;margin:4px 16px 0;font-size:14px;font-weight:700;color:#1C7E9A">Voir la version complète du site</a>
+</div>
+</sc-if>
+
+</div>
+
+<nav aria-label="Navigation principale" style="flex:none;position:relative;z-index:6;display:flex;padding:6px 6px {{ tabPadB }};background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-top:1px solid #E6ECEE">
+  <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+    <button type="button" onClick="{{ t.go }}" aria-current="{{ t.cur }}" style="flex:1;min-width:0;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:none;color:{{ t.fg }};cursor:pointer;transition:transform 160ms ease-out" style-active="transform:scale(.92)">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="{{ t.fill }}" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.d }}"></path></svg>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.01em">{{ t.label }}</span>
+    </button>
+  </sc-for>
+</nav>
+<sc-if value="{{ framed }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="position:absolute;left:50%;bottom:8px;width:134px;height:5px;margin-left:-67px;border-radius:3px;background:#0E1316;z-index:7"></span></sc-if>
+
+<div aria-hidden="{{ sheetHidden }}" onClick="{{ closeSheet }}" style="position:absolute;inset:0;z-index:20;background:rgba(11,18,21,.42);opacity:{{ backdropOp }};pointer-events:{{ sheetPE }};transition:opacity 300ms ease"></div>
+<div ref="{{ sheetRef }}" role="dialog" aria-modal="true" aria-label="{{ sheet.title }}" onPointerDown="{{ sheetDown }}" onPointerMove="{{ sheetMove }}" onPointerUp="{{ sheetUp }}" onPointerCancel="{{ sheetUp }}" style="position:absolute;left:0;right:0;bottom:0;z-index:21;max-height:88%;display:flex;flex-direction:column;border-radius:28px 28px 0 0;background:#FFFFFF;box-shadow:0 -10px 40px -10px rgba(14,19,22,.3);transform:translateY({{ sheetY }});transition:transform 420ms cubic-bezier(.32,.72,0,1);touch-action:none;overflow:hidden">
+  <span aria-hidden="true" style="flex:none;display:block;width:38px;height:5px;margin:8px auto 0;border-radius:3px;background:#C5D0D4"></span>
+  <div style="flex:1;overflow-y:auto;padding:12px 16px {{ tabPadB }};display:flex;flex-direction:column;gap:14px">
+    <img src="{{ sheet.src }}" alt="" style="width:100%;height:200px;border-radius:20px;object-fit:cover;display:block;background:#E3EAEC">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4A5A61">{{ sheet.kicker }}</span>
+      <h2 style="margin:0;font-size:26px;line-height:1.1;font-weight:700;letter-spacing:-.03em;text-wrap:balance">{{ sheet.title }}</h2>
+    </div>
+    <p style="margin:0;font-size:16px;line-height:1.5;color:#2A363B;text-wrap:pretty">{{ sheet.body }}</p>
+    <a href="{{ book }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:6px;border-radius:999px;background:#269CBD;color:#FFFFFF;font-weight:700;transition:transform 160ms ease-out" style-active="transform:scale(.97)">Réserver 30 min avec un expert</a>
+    <button type="button" onClick="{{ closeSheet }}" style="min-height:48px;border:0;background:none;color:#4A5A61;font-weight:700;font-size:15px;cursor:pointer">Fermer</button>
+  </div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;startTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;agents&quot;,&quot;cases&quot;,&quot;maison&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;demoSpeed&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:0.5,&quot;max&quot;:2,&quot;step&quot;:0.25,&quot;default&quot;:1,&quot;tsType&quot;:&quot;number&quot;}}">
+const BOOK = 'https://bookings.cloud.microsoft/book/DigitalSolutionsSAAgendadeThibaultPEPIN@digital-solutions.io/?ismsaljsauthenabled';
+const NEEDS = [
+  { title: 'Automatiser un processus', line: 'Agents IA & IPA', src: 'assets/photos/EXP/EXP-02.webp', body: 'Nos agents prennent en charge les tâches répétitives : saisie, tri, relances. Vos équipes gardent les décisions.' },
+  { title: 'Exploiter vos documents', line: 'RAG sourcé', src: 'assets/photos/USA/USA-01.webp', body: 'Vous posez une question, l’agent répond et cite le document et la page d’où vient la réponse.' },
+  { title: 'Moderniser vos applications', line: 'Développement sur mesure', src: 'assets/photos/EXP/EXP-01.webp', body: 'Nous reprenons vos applications métier et les faisons évoluer sans interrompre votre activité.' },
+  { title: 'Connecter vos outils', line: 'ERP · CRM · GED', src: 'assets/photos/EXP/EXP-03.webp', body: 'Vos outils échangent leurs données. Vous ne saisissez plus deux fois la même information.' },
+  { title: 'Renforcer vos équipes', line: 'Consulting & outsourcing', src: 'assets/photos/EXP/EXP-04.webp', body: 'Nos experts rejoignent vos projets pour la durée dont vous avez besoin.' }
+];
+const CASES = [
+  { sector: 'Administrations publiques', title: 'Un guichet citoyen en trois langues.', src: 'assets/photos/ACC/ACC-04.webp', body: 'Les citoyens posent leurs questions en français, en allemand ou en italien. L’agent répond à partir des règlements officiels et transmet le dossier à un collaborateur quand il le faut.' },
+  { sector: 'Banque & assurance', title: 'Des dossiers KYC instruits d’avance.', src: 'assets/photos/ACC/ACC-05.webp', body: 'L’agent rassemble et vérifie les pièces du dossier. Le conseiller reçoit un dossier complet, prêt à valider.' },
+  { sector: 'Horlogerie & industrie', title: 'Un contrôle qualité horloger.', src: 'assets/photos/ACC/ACC-06.webp', body: 'L’agent compare chaque relevé aux tolérances et signale les écarts au contrôleur, qui tranche.' },
+  { sector: 'Hôpitaux', title: 'La lettre de sortie prête avant la visite.', src: 'assets/photos/USA/USA-SECT-02.webp', body: 'L’agent prépare le brouillon de la lettre de sortie depuis le dossier patient. Le médecin relit et signe.' },
+  { sector: 'Tourisme', title: 'Un concierge qui parle chaque langue.', src: 'assets/photos/USA/USA-SECT-10.webp', body: 'Le concierge répond aux hôtes dans leur langue, jour et nuit, à partir des informations de l’établissement.' }
+];
+const POSTS = [
+  { title: 'Architecture et diversité des grands modèles de langage', tag: 'Analyse · LLM', href: 'https://www.digital-solutions.io/nos-actualites/architecture-llm/', src: 'assets/photos/RPL/RPL-10.webp' },
+  { title: 'Comment les IA comprennent le langage : les embeddings', tag: 'Pédagogie · RAG', href: 'https://www.digital-solutions.io/nos-actualites/ia-et-embeddings/', src: 'assets/photos/RPL/RPL-11.webp' },
+  { title: 'Le chiffrement complètement homomorphe', tag: 'Recherche · Sécurité', href: 'https://www.digital-solutions.io/nos-actualites/communique-le-chiffrement-completement-homomorphe/', src: 'assets/photos/RPL/RPL-12.webp' }
+];
+const AG = {
+  acc: { name: 'Agent Commercial', short: 'Commercial' }, doc: { name: 'Agent Documents', short: 'Documents' },
+  jur: { name: 'Agent Juridique', short: 'Juridique' }, fin: { name: 'Agent Finance', short: 'Finance' },
+  it: { name: 'Agent IT', short: 'IT' }, red: { name: 'Agent Rédaction', short: 'Rédaction' },
+  lea: { name: 'Léa', short: 'Léa · juriste', human: true, img: 'assets/photos/ACC/ACC-02.webp' },
+  marc: { name: 'Marc', short: 'Marc · CFO', human: true, img: 'assets/photos/ACC/ACC-03.webp' }
+};
+const TEAM = ['acc', 'doc', 'jur', 'fin', 'it', 'red', 'lea', 'marc'];
+const MISSIONS = [
+  { name: 'Nouveau client', took: '42 minutes', steps: [
+    ['acc', 'Lit l’e-mail d’une banque cliente et crée la fiche CRM', 'Fiche client créée'],
+    ['doc', 'Vérifie les pièces KYC reçues (6 documents)', '6/6 pièces conformes'],
+    ['jur', 'Prépare le contrat cadre depuis le modèle 2026', 'Contrat de 14 pages prêt'],
+    ['lea', 'Relit la clause de responsabilité, art. 9', 'Contrat validé'],
+    ['fin', 'Ouvre le compte et programme la facturation', 'Compte n° 40-218 ouvert'],
+    ['it', 'Crée les accès SSO et l’espace projet', '12 accès provisionnés'],
+    ['red', 'Rédige le message de bienvenue en FR et DE', 'Message envoyé'] ] },
+  { name: 'Réclamation', took: '18 minutes', steps: [
+    ['acc', 'Reçoit l’appel d’un client et le transcrit en direct', 'Réclamation qualifiée'],
+    ['doc', 'Retrouve le contrat, les 3 dernières factures et l’historique', '4 documents retrouvés'],
+    ['fin', 'Recalcule la facture et détecte une double ligne', 'Erreur de 1 280 CHF confirmée'],
+    ['marc', 'Approuve l’avoir et le geste commercial', 'Avoir approuvé'],
+    ['red', 'Rédige la réponse personnalisée en allemand', 'Réponse prête'],
+    ['acc', 'Envoie la réponse et clôt le ticket', 'Ticket clos'] ] },
+  { name: 'Devis', took: '6 minutes', steps: [
+    ['acc', 'Reçoit la demande de devis d’un distributeur', '3 références demandées'],
+    ['doc', 'Retrouve le client et ses conditions tarifaires', 'Client remisé à 12 %'],
+    ['it', 'Consulte le stock dans l’ERP', 'Délai 10 jours'],
+    ['fin', 'Calcule le prix, la remise et la marge', '18 640 CHF · marge 31 %'],
+    ['marc', 'Valide la remise exceptionnelle', 'Remise approuvée'],
+    ['red', 'Rédige le devis et le message d’accompagnement', 'Devis prêt'],
+    ['acc', 'Envoie le devis et crée l’opportunité CRM', 'Devis envoyé'] ] },
+  { name: 'Incident IT', took: '9 minutes', steps: [
+    ['acc', 'Reçoit l’alerte : messagerie lente pour 40 utilisateurs', 'Incident prioritaire ouvert'],
+    ['it', 'Diagnostique le serveur et relance le service', 'Service rétabli'],
+    ['doc', 'Retrouve la procédure et l’historique des incidents', 'Cause identifiée'],
+    ['jur', 'Vérifie si des données ont été exposées (nLPD)', 'Aucune donnée exposée'],
+    ['lea', 'Confirme qu’aucune annonce au PFPDT n’est requise', 'Conformité confirmée'],
+    ['red', 'Informe les utilisateurs et rédige le rapport', 'Rapport publié'] ] }
+];
+const TABS = [
+  { id: 'home', label: 'Accueil', d: 'M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z' },
+  { id: 'agents', label: 'Agents', d: 'M6 8h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2zM12 4v4M9.5 13.5h.01M14.5 13.5h.01' },
+  { id: 'cases', label: 'Cas', d: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z' },
+  { id: 'maison', label: 'Maison', d: 'M2 20 9 8l4 6 3-4 6 10z' },
+  { id: 'contact', label: 'Contact', d: 'M4 5h16v11H9l-5 4z' }
+];
+const CONTACTS = [
+  { label: 'Appeler', value: '+41 32 467 11 09', href: 'tel:+41324671109', target: '_self', icon: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2' },
+  { label: 'Écrire', value: 'contact@digital-solutions.io', href: 'mailto:contact@digital-solutions.io', target: '_self', icon: 'M3 6h18v12H3zM3 7l9 6 9-6' },
+  { label: 'Nous rendre visite', value: 'Rue de la Roche-de-Mars 5, Porrentruy', href: 'https://maps.apple.com/?q=Rue+de+la+Roche-de-Mars+5,+2900+Porrentruy', target: '_blank', icon: 'M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12zM12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5' }
+];
+const MAISON = [
+  { title: 'Notre engagement durable', line: 'EcoVadis Or 2025 · top 5 %', href: 'Sustainability.dc.html?site=1', eco: true },
+  { title: 'Carrières', line: 'Rejoindre l’équipe', href: 'Carrieres.dc.html?site=1' },
+  { title: 'La Maison en détail', line: 'Histoire, sites, équipe', href: 'Maison.dc.html?site=1' }
+];
+const pad = (n) => String(n).padStart(2, '0');
+
+class Component extends DCLogic {
+  state = { tab: this.props.startTab || 'home', scrolled: false, mis: -1, step: 0, playing: false, waiting: false, finished: false, sheetOpen: false, sheet: { title: NEEDS[0].title, kicker: NEEDS[0].line, body: NEEDS[0].body, src: NEEDS[0].src }, vw: typeof window !== 'undefined' ? window.innerWidth : 1200, vh: typeof window !== 'undefined' ? window.innerHeight : 900 };
+  scrollRef = React.createRef(); sheetRef = React.createRef();
+  outerRef = React.createRef();
+  componentDidMount() {
+    const el = this.outerRef.current, win = (el && el.ownerDocument.defaultView) || window;
+    this.win = win;
+    this.onResize = () => { const vw = win.innerWidth, vh = win.innerHeight; if (vw !== this.state.vw || vh !== this.state.vh) this.setState({ vw, vh }); };
+    win.addEventListener('resize', this.onResize); this.onResize(); requestAnimationFrame(this.onResize);
+    if (win.ResizeObserver && el) { this.ro = new win.ResizeObserver(this.onResize); this.ro.observe(el.ownerDocument.documentElement); }
+  }
+  componentWillUnmount() { if (this.win) this.win.removeEventListener('resize', this.onResize); if (this.ro) this.ro.disconnect(); clearTimeout(this.timer); }
+  componentDidUpdate(_, prev) {
+    if (this.state.tab === 'agents' && (prev.step !== this.state.step || prev.finished !== this.state.finished || prev.waiting !== this.state.waiting) && this.state.mis >= 0) {
+      const el = this.scrollRef.current; if (el) setTimeout(() => el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' }), 60);
+    }
+  }
+  dur() { return 2600 / (this.props.demoSpeed || 1); }
+  setTab(id) {
+    if (id === this.state.tab) { const el = this.scrollRef.current; if (el) el.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+    this.setState({ tab: id, scrolled: false });
+  }
+  run(k) {
+    clearTimeout(this.timer); this.t0 = new Date(2026, 9, 12, 9, 41).getTime();
+    this.setState({ mis: k, step: 0, playing: true, waiting: false, finished: false }, () => this.schedule());
+  }
+  schedule() {
+    clearTimeout(this.timer);
+    if (!this.state.playing || this.state.waiting || this.state.finished) return;
+    this.timer = setTimeout(() => this.advance(), this.dur());
+  }
+  advance() {
+    const M = MISSIONS[this.state.mis]; if (!M) return;
+    const who = M.steps[this.state.step][0];
+    if (AG[who].human) { this.setState({ waiting: true }); return; }
+    this.next();
+  }
+  next() {
+    const M = MISSIONS[this.state.mis], s = this.state.step + 1;
+    if (s >= M.steps.length) this.setState({ step: s, finished: true, playing: false, waiting: false });
+    else this.setState({ step: s, waiting: false }, () => this.schedule());
+  }
+  openSheet(d) { this.setState({ sheet: d, sheetOpen: true }); }
+  sheetDown = (e) => {
+    if (e.target.closest('a,button')) return;
+    const el = this.sheetRef.current; const sc = el && el.children[1];
+    if (sc && sc.scrollTop > 0) return;
+    this.drag = { y: e.clientY, t: performance.now(), dy: 0 };
+    el.style.transition = 'none'; el.setPointerCapture(e.pointerId);
+  };
+  sheetMove = (e) => {
+    if (!this.drag) return; let dy = e.clientY - this.drag.y;
+    if (dy < 0) dy = dy * 0.15;
+    this.drag.dy = dy; this.sheetRef.current.style.transform = 'translateY(' + dy + 'px)';
+  };
+  sheetUp = () => {
+    if (!this.drag) return; const el = this.sheetRef.current; const { dy, t } = this.drag; this.drag = null;
+    el.style.transition = '';
+    const v = dy / Math.max(1, performance.now() - t);
+    if (dy > 120 || (dy > 16 && v > 0.11)) { el.style.transform = 'translateY(105%)'; this.setState({ sheetOpen: false }); }
+    else el.style.transform = 'translateY(0%)';
+  };
+  renderVals() {
+    const s = this.state, full = !!this.props.embedded || s.vw < 520;
+    const M = MISSIONS[s.mis], cur = M && !s.finished ? M.steps[s.step][0] : null;
+    const doneSet = {}; if (M) M.steps.slice(0, s.step).forEach((x) => { doneSet[x[0]] = true; });
+    const stamp = (i) => { const d = new Date((this.t0 || 0) + i * 47000); return pad(d.getHours()) + ':' + pad(d.getMinutes()); };
+    const feed = M ? M.steps.slice(0, Math.min(s.step + 1, M.steps.length)).map((x, i) => {
+      const a = AG[x[0]], done = i < s.step, running = !done && !s.waiting, waiting = !done && s.waiting;
+      return { who: a.name, human: !!a.human, agent: !a.human, img: a.img || '', text: x[1], out: x[2], t: stamp(i), done, running, waiting,
+        whoC: a.human ? '#7A5230' : '#1C7E9A', okC: a.human ? '#7A5230' : '#1C7E9A',
+        bd: waiting ? '#E1B48D' : running ? '#269CBD' : '#E6ECEE', bg: waiting ? '#FBF4EE' : '#FFFFFF' };
+    }) : [];
+    const sep = (i, n) => i < n - 1 ? '1px solid #DEE5E8' : '0';
+    return {
+      book: BOOK, framed: !full,
+      outerPad: full ? '0' : '32px 16px',
+      phoneW: full ? '100vw' : '390px', phoneH: full ? '100svh' : Math.max(700, Math.min(844, s.vh - 64)) + 'px',
+      phoneR: full ? '0' : '48px', phoneShadow: full ? 'none' : '0 0 0 10px #0E1316,0 0 0 11px #2A363B,0 40px 80px -20px rgba(14,19,22,.45)',
+      tabPadB: full ? 'max(8px, env(safe-area-inset-bottom))' : '24px',
+      isHome: s.tab === 'home', isAgents: s.tab === 'agents', isCases: s.tab === 'cases', isMaison: s.tab === 'maison', isContact: s.tab === 'contact',
+      scrollRef: this.scrollRef, outerRef: this.outerRef,
+      onScroll: (e) => { const v = e.currentTarget.scrollTop > 36; if (v !== this.state.scrolled) this.setState({ scrolled: v }); },
+      navLine: s.scrolled ? '#E6ECEE' : 'transparent', compactOp: s.scrolled ? 1 : 0,
+      tabs: TABS.map((t) => ({ ...t, go: () => this.setTab(t.id), cur: s.tab === t.id ? 'page' : undefined, fg: s.tab === t.id ? '#1C7E9A' : '#7D8B91', fill: s.tab === t.id ? 'rgba(38,156,189,.14)' : 'none' })),
+      goDemo: () => { this.setState({ tab: 'agents', scrolled: false }); if (s.mis < 0) this.run(0); },
+      goCases: () => this.setTab('cases'),
+      needs: NEEDS.map((n, i) => ({ ...n, sep: sep(i, NEEDS.length), open: () => this.openSheet({ title: n.title, kicker: n.line, body: n.body, src: n.src }) })),
+      cases: CASES.map((c) => ({ ...c, open: () => this.openSheet({ title: c.title, kicker: c.sector, body: c.body, src: c.src }) })),
+      maisonLinks: MAISON.map((l, i) => ({ ...l, eco: !!l.eco, sep: sep(i, MAISON.length) })),
+      contacts: CONTACTS.map((k, i) => ({ ...k, sep: sep(i, CONTACTS.length) })),
+      missions: MISSIONS.map((m, k) => { const on = k === s.mis; return { name: m.name, on, run: () => this.run(k), bg: on ? '#0E1316' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0E1316', bd: on ? '#0E1316' : '#DCE4E7' }; }),
+      team: TEAM.map((id) => { const a = AG[id], act = id === cur; return { short: a.short, human: !!a.human, agent: !a.human, img: a.img || '',
+        sc: act ? 1.1 : 1, ring: act ? '0 0 0 3px #FFFFFF,0 0 0 5px ' + (a.human ? '#E1B48D' : '#269CBD') : 'none',
+        bg: act ? '#269CBD' : '#E3F3F8', fg: act ? '#FFFFFF' : '#1C7E9A', op: !M || act || doneSet[id] || s.finished ? 1 : 0.45 }; }),
+      idle: s.mis < 0, feed, finished: s.finished,
+      summary: M ? M.name + ' : ' + M.steps.length + ' étapes bouclées en ' + M.took + ', avec une validation humaine.' : '',
+      dur: this.dur() + 'ms', playState: s.playing ? 'running' : 'paused',
+      approve: () => this.next(),
+      showControls: s.mis >= 0, playing: s.playing && !s.finished, notPlaying: !(s.playing && !s.finished),
+      playLabel: s.playing ? 'Pause' : 'Lecture',
+      togglePlay: () => { if (s.finished) return this.run(s.mis); this.setState({ playing: !s.playing }, () => this.schedule()); },
+      restart: () => this.run(Math.max(0, s.mis)),
+      stepCount: M ? Math.min(s.step + 1, M.steps.length) + '/' + M.steps.length : '',
+      sheet: s.sheet, sheetRef: this.sheetRef, sheetY: s.sheetOpen ? '0%' : '105%',
+      backdropOp: s.sheetOpen ? 1 : 0, sheetPE: s.sheetOpen ? 'auto' : 'none', sheetHidden: s.sheetOpen ? 'false' : 'true',
+      closeSheet: () => this.setState({ sheetOpen: false }),
+      sheetDown: this.sheetDown, sheetMove: this.sheetMove, sheetUp: this.sheetUp
+    };
+  }
+}
+</script>
+</body>
+</html>

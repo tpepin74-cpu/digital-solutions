@@ -9,6 +9,42 @@
 </head>
 <body>
 <x-dc>
+<sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+<footer style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:15px;line-height:1.45;color:#0E1316;display:flex;flex-direction:column;gap:10px;padding:10px 8px 12px">
+  <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
+    <section aria-labelledby="ft-cta-m" data-bg="{{ ctaBg }}" style="position:relative;overflow:hidden;border-radius:28px;background:#269CBD;color:#FFFFFF;padding:28px 20px 20px;display:flex;flex-direction:column;gap:14px">
+      <p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:12px">Un projet, une question&nbsp;?</p>
+      <h2 id="ft-cta-m" style="margin:0;font-size:30px;line-height:1.05;font-weight:700;letter-spacing:-.035em;text-wrap:balance">Parlons de votre prochain projet.</h2>
+      <p style="margin:0;font-size:15px">Réponse sous 24 h ouvrées par une ingénieure ou un ingénieur.</p>
+      <a href="https://bookings.cloud.microsoft/book/DigitalSolutionsSAAgendadeThibaultPEPIN@digital-solutions.io/?ismsaljsauthenabled" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:54px;margin-top:6px;border-radius:999px;background:#FFFFFF;color:#0E1316;text-decoration:none;font-weight:700;transition:transform 120ms cubic-bezier(.23,1,.32,1)" style-active="transform:scale(.97)">Réserver 30 min avec un expert</a>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <a href="tel:+41324671109" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);color:#FFFFFF;text-decoration:none;font-weight:700;font-size:14px">Appeler</a>
+        <a href="mailto:contact@digital-solutions.io" style="display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;border:1.5px solid rgba(255,255,255,.7);color:#FFFFFF;text-decoration:none;font-weight:700;font-size:14px">Écrire</a>
+      </div>
+    </section>
+  </sc-if>
+  <div style="border-radius:28px;background:#FFFFFF;padding:22px 20px 18px;display:flex;flex-direction:column;gap:18px">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <img src="assets/logo-digital-solutions.png" alt="Digital Solutions" style="height:26px;width:auto;display:block">
+      <img src="assets/ecovadis-gold-2025.png" alt="EcoVadis, médaille d'or 2025" width="44" height="44" style="width:44px;height:44px">
+    </div>
+    <p style="margin:0;font-size:14px;color:#4A5A61">IA &amp; IT conçues et hébergées en Suisse depuis 2016. Porrentruy (siège) · Delémont · Lausanne · Genève · Martigny.</p>
+    <div style="display:flex;gap:8px">
+      <a href="https://www.linkedin.com/company/digital-solutions-switzerland/" style="display:flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#F2F5F6;color:#0E1316;text-decoration:none;font-weight:700;font-size:13px">LinkedIn</a>
+      <a href="https://www.instagram.com/digitalsolutionsswitzerland/" style="display:flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#F2F5F6;color:#0E1316;text-decoration:none;font-weight:700;font-size:13px">Instagram</a>
+      <a href="https://site.exkalibur.ai/" style="display:flex;align-items:center;min-height:40px;padding:0 14px;border-radius:999px;background:#F2F5F6;color:#0E1316;text-decoration:none;font-weight:700;font-size:13px">exkalibur.ai ↗</a>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:2px 14px;padding-top:14px;border-top:1px solid #E6ECEE;font-size:12px;color:#4A5A61">
+      <a href="https://www.digital-solutions.io/politique-de-confidentialite/" style="color:#4A5A61;padding:6px 0">Confidentialité</a>
+      <a href="https://www.digital-solutions.io/mentions-legales/" style="color:#4A5A61;padding:6px 0">Mentions légales</a>
+      <button type="button" onClick="{{ openConsent }}" style="background:none;border:0;padding:6px 0;color:#4A5A61;font:inherit;text-decoration:underline;text-underline-offset:.25em;cursor:pointer">Cookies &amp; mode sobre</button>
+      <a href="#" style="color:#4A5A61;padding:6px 0">Accessibilité</a>
+      <span style="width:100%;padding-top:4px">© 2026 Digital Solutions SA · Swiss Made Software</span>
+    </div>
+  </div>
+</footer>
+</sc-if>
+<sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
 <footer style="font-family:'Century Gothic','Urbanist',system-ui,sans-serif;font-size:.9375rem;line-height:1.6;color:#0E1316">
   <sc-if value="{{ showCta }}" hint-placeholder-val="{{ true }}">
     <section aria-labelledby="ft-cta" data-bg="{{ ctaBg }}" style="background:#269CBD;color:#FFFFFF">
@@ -71,12 +107,16 @@
     </div>
   </div>
 </footer>
+</sc-if>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;showCta&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;ctaBg&quot;:{&quot;editor&quot;:null,&quot;default&quot;:&quot;waveCiel&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
 class Component extends DCLogic {
-  state = { msg: '' };
+  state = { msg: '', w: typeof document !== 'undefined' ? (document.documentElement.clientWidth || window.innerWidth) : 1440 };
+  componentDidMount() { this.onR = () => { const w = document.documentElement.clientWidth || window.innerWidth; if (w !== this.state.w) this.setState({ w }); }; window.addEventListener('resize', this.onR); this.onR(); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onR); }
   renderVals() {
     return {
+      mobile: this.state.w < 720, desktop: this.state.w >= 720,
       showCta: this.props.showCta ?? true,
       ctaBg: this.props.ctaBg ?? 'waveCiel',
       msg: this.state.msg,
